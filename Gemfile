@@ -12,6 +12,17 @@ gem "httparty"
 gem "nokogiri"
 gem "RedCloth"
 gem "devise"
+gem "rails3_acts_as_paranoid"
+gem "validates_timeliness"
+gem "acts_as_state_machine", "~> 2.2.0"
+gem "geokit-rails3-1beta", "~> 0.3.1.beta1"
+gem 'acts-as-taggable-on'
+gem "acts_as_list", "~> 0.1.4"
+gem "gravtastic", "~> 3.2.4"
+gem "icalendar", "~> 1.1.6"
+gem "restful-authentication", :git => "git://github.com/Satish/restful-authentication.git", :branch => "rails3"
+gem "rmagick", "~> 2.13.1"
+gem "mini_magick", "~> 3.3"
 
 group :test, :development do
   gem "sqlite3"

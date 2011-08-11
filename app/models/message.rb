@@ -18,12 +18,12 @@ class Message < ActiveRecord::Base
 
   ##
   # Scopes 
-  named_scope :unread, :conditions => 'read_at IS NULL'
-  named_scope :none_system_message, :conditions => ["system_message = ?", false] 
-  named_scope :for_conversation, lambda { |conversation_id|
+  scope :unread, :conditions => 'read_at IS NULL'
+  scope :none_system_message, :conditions => ["system_message = ?", false] 
+  scope :for_conversation, lambda { |conversation_id|
     { :conditions => ['messages.conversation_id = ?', conversation_id] }
   }
-  named_scope :grouped_by_conversation,
+  scope :grouped_by_conversation,
               :from => "(SELECT messages.* FROM messages ORDER BY sent_at DESC) AS messages",
               :group => 'messages.conversation_id', 
               :order => "messages.sent_at DESC"

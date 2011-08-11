@@ -1,7 +1,22 @@
+=begin
+  This file is part of bewegung.
 
+  Bewegung is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Foobar is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with bewegung.  If not, see <http://www.gnu.org/licenses/>.
+=end
 class Activity < ActiveRecord::Base
-  include Commentable
-  include Bookmarkable
+  #include Commentable
+  #include Bookmarkable
 
   # Plugins
   acts_as_paranoid
@@ -50,16 +65,16 @@ class Activity < ActiveRecord::Base
   ##
   # Scopes and finders
 
-  named_scope :running, { :conditions => ["activities.ends_at > ?", Time.now] }
-  named_scope :active, { :conditions => "activities.state = 'active'" }
-  named_scope :recent, { :order => "activities.starts_at ASC" }
-  named_scope :latest, { :order => "activities.created_at DESC" }
-  named_scope :finished, { :conditions => ["activities.continuous = ? AND activities.ends_at < ?", false, Time.now] }
-  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
-  named_scope :ordered, lambda { |*order|
+  scope :running, { :conditions => ["activities.ends_at > ?", Time.now] }
+  scope :active, { :conditions => "activities.state = 'active'" }
+  scope :recent, { :order => "activities.starts_at ASC" }
+  scope :latest, { :order => "activities.created_at DESC" }
+  scope :finished, { :conditions => ["activities.continuous = ? AND activities.ends_at < ?", false, Time.now] }
+  scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
+  scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'activities.created_at DESC' }
   }
-  named_scope :limit, lambda { |*num|
+  scope :limit, lambda { |*num|
     { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
   }
 
@@ -69,17 +84,17 @@ class Activity < ActiveRecord::Base
 
 
 #  Acts as ferret
- acts_as_ferret(
-   :fields => {
-     :title => { :boost => 5 },
-     :description => { :boost => 3 },
-     :index_user => { :boost => 2 },
-     :index_address => { :boost => 2 }
-   },
-   :store_class_name => true,
-   :remote => true,
-   :if => Proc.new { |activity| activity.running? }
- )
+ #acts_as_ferret(
+ #  :fields => {
+ #    :title => { :boost => 5 },
+ #    :description => { :boost => 3 },
+ #    :index_user => { :boost => 2 },
+ #    :index_address => { :boost => 2 }
+ #  },
+ #  :store_class_name => true,
+ #  :remote => true,
+ #  :if => Proc.new { |activity| activity.running? }
+ #)
 
   def wikileaked?
     true if self.permalink == '4wikileaks'
@@ -263,9 +278,9 @@ class Activity < ActiveRecord::Base
 
   def check_iframe(doc)
     host = URI.parse(doc.attributes["src"]).host
-    errors.add(:code, "Diese Domain wird nicht unterstützt") unless BlogContentVideoWithCode::ALLOWED_SITES.include?(host)
+    if BlogContentVideoWithCode::ALLOWED_SITES.include?(host)
+      errors.add(:code, "Diese Domain wird nicht unterstuetzt")
+    end
   end
-
-
 
 end

@@ -7,5 +7,5 @@ class EventCategory < ActiveRecord::Base
   end
   
   # Finder
-  named_scope :available
+  scope :available
 end

@@ -19,7 +19,7 @@ class BlogMessage < ActiveRecord::Base
     self.id || "0"
   end  
   
-  named_scope :latest, { :order => "blog_messages.created_at DESC" }    
+  scope :latest, { :order => "blog_messages.created_at DESC" }    
   
   # Static find methods
   

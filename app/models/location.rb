@@ -1,7 +1,7 @@
 class Location < ActiveRecord::Base
 
-  include Commentable
-  include Bookmarkable
+  #include Commentable
+  #include Bookmarkable
 
   # Plugins
   acts_as_paranoid
@@ -32,7 +32,7 @@ class Location < ActiveRecord::Base
   # Validations
   validates_presence_of :name, :permalink, :description
   validates_uniqueness_of :permalink, :on => :create
-  validates_format_of :email, :with => Authentication.email_regex, :allow_blank => true
+  validates_format_of :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
 
   attr_accessor :temp_image
 
@@ -40,13 +40,13 @@ class Location < ActiveRecord::Base
   ##
   # Scopes and finders
 
-  named_scope :active, { :conditions => { :state => 'active' } }
-  named_scope :latest, { :order => "locations.created_at DESC" }
-  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
-  named_scope :ordered, lambda { |*order|
+  scope :active, { :conditions => { :state => 'active' } }
+  scope :latest, { :order => "locations.created_at DESC" }
+  scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
+  scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'locations.created_at DESC' }
   }
-  named_scope :limit, lambda { |*num|
+  scope :limit, lambda { |*num|
     { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
   }
 
@@ -55,16 +55,16 @@ class Location < ActiveRecord::Base
   end
 
 
-#Acts as ferret
-  acts_as_ferret(
-  :fields => {
-    :name => { :boost => 5  },
-    :description => { :boost => 3 }
-    },
-    :additional_fields => [:index_address],
-    :store_class_name => true,
-    :remote => true
-    )
+##Acts as ferret
+#  acts_as_ferret(
+#  :fields => {
+#    :name => { :boost => 5  },
+#    :description => { :boost => 3 }
+#    },
+#    :additional_fields => [:index_address],
+#    :store_class_name => true,
+#    :remote => true
+#    )
 
   def index_address
     self.address.to_short

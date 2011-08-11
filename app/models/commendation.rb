@@ -10,7 +10,7 @@ class Commendation < ActiveRecord::Base
   validates_presence_of :receiver_email
   validates_presence_of :sender_name
   validates_presence_of :sender_email
-  validates_with_hidden_captcha  
+  #validates_with_hidden_captcha  
   
                       
   validates_format_of :sender_email, 

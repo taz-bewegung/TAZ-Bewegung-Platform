@@ -8,6 +8,6 @@ class OccupationType < ActiveRecord::Base
     find(:all).map { |f| [f.name, f.id] }
   end  
   
-  named_scope :available
+  scope :available
   
 end

@@ -1,3 +1,20 @@
+# -*- coding: utf-8 -*-
+=begin
+  This file is part of bewegung.
+
+  Bewegung is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  Foobar is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with bewegung.  If not, see <http://www.gnu.org/licenses/>.
+=end
 require 'digest/sha1'
 
 class User < ActiveRecord::Base
@@ -19,9 +36,9 @@ class User < ActiveRecord::Base
   MESSAGES_PER_PAGE = 20 unless defined?(MESSAGES_PER_PAGE)
 
   # Include modules
-  include Authentication
-  include Authentication::ByPassword
-  include Authentication::ByCookieToken
+  #include Authentication
+  #include Authentication::ByPassword
+  #include Authentication::ByCookieToken
   #include Authorization::StatefulRoles
 
   # Virtual attributes
@@ -86,11 +103,11 @@ class User < ActiveRecord::Base
   validates_length_of       :last_name,     :within => 2..100
   validates_presence_of     :email
   validates_length_of       :email,    :within => 6..100 #r@a.wk
-  validates_format_of       :email,    :with => Authentication.email_regex
+  validates_format_of       :email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
   validates_presence_of     :password, :if =>  Proc.new { |user| user.password_required? || user.force_password_required? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password_required? || user.force_password_required? }
   validates_confirmation_of :email, :only => :create
-  validates_overall_uniqueness_of :email, :if => :email_changed?
+  #validates_overall_uniqueness_of :email, :if => :email_changed?
   validates_uniqueness_of   :email
   validates_uniqueness_of   :permalink, :case_sensitive => false
   validates_presence_of     :permalink
@@ -101,9 +118,9 @@ class User < ActiveRecord::Base
   # Finders
 
   scope :with_public_profile, where( :users => { :visibility => 3 })
-  scope :active, where(:users => { :state => 'active' }})
+  scope :active, where(:users => { :state => 'active' })
   scope :latest, order('users.created_at DESC')
-  named_scope :limit, lambda { |*num|
+  scope :limit, lambda { |*num|
     { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
   }
 
@@ -371,7 +388,6 @@ class User < ActiveRecord::Base
                                       :page => page,
                                       :per_page => MESSAGES_PER_PAGE)
    end
-
 
   # Keep track of login
   def log_login!
