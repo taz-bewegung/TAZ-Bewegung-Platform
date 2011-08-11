@@ -10,11 +10,11 @@ class Admin::Text
   end
   
   def load_from(file)
-    YAML::load(File.open("#{RAILS_ROOT}/app/locales/de/#{file}.yml"))
+    YAML::load(File.open("#{Rails.root}/app/locales/de/#{file}.yml"))
   end
   
   def save_to(file)
-    File.open("#{RAILS_ROOT}/app/locales/de/#{file}.yml", "w") do |out|
+    File.open("#{Rails.root}/app/locales/de/#{file}.yml", "w") do |out|
       YAML.dump(self.data, out)
     end
     I18n.reload!
