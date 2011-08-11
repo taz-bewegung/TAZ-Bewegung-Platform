@@ -1,0 +1,3 @@
+class ContentContainer < Container
+    
+end
