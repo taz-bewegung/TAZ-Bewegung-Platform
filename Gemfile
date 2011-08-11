@@ -35,6 +35,10 @@ end
 
 gem 'jquery-rails'
 
+
+gem 'iconv'
+gem 'state_machine'
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
