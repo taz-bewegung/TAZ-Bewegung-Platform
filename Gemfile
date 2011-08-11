@@ -14,6 +14,7 @@ gem "RedCloth"
 gem "devise"
 
 group :test, :development do
+  gem "sqlite3"
   gem "populator"
   gem "faker"
   gem "metric_fu"
@@ -35,8 +36,6 @@ end
 
 gem 'jquery-rails'
 
-
-gem 'iconv'
 gem 'state_machine'
 
 # Use unicorn as the web server
