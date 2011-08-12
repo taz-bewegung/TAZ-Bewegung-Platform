@@ -1,25 +1,24 @@
-== Welcome to bewegung.taz.de
+# Welcome to bewegung.taz.de
+
+## Installation
+
+* gem install bundler
+
+* bundle install
+
+* rake db:create
+
+* rake db:migrate
+
+* rails server
 
 
-= Installation
+## RVM problems
 
-  gem install bundler
+###  Iconv error:
 
-  bundle install
+* rvm package install iconv
 
-  rake db:create
+* rvm remove 1.9.2
 
-  rake db:migrate
-
-  rails server
-
-
-= RVM problems
-
-  Iconv error:
-
-    rvm package install iconv
-
-    rvm remove 1.9.2
-
-    rvm install 1.9.2 --with-iconv-dir=$rvm_path/usr
+* rvm install 1.9.2 --with-iconv-dir=$rvm_path/usr
