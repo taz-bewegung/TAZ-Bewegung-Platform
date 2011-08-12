@@ -5,3 +5,5 @@ tmp/
 .sass-cache/
 .svn
 config/database.yml
+
+README.md -> README.markdown
