@@ -1,6 +1,6 @@
 class PetitionUser < ActiveRecord::Base
 
-  establish_connection "petition_#{RAILS_ENV}"
+  establish_connection "petition_#{Rails.env}"
   set_table_name "users"
 
   named_scope :activated, { :conditions => "users.activated_at IS NOT NULL" }

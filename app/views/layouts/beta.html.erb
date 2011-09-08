@@ -37,7 +37,7 @@
   		   </div> <!-- /wrap-content-inner -->
   		</div> <!-- /wrap-content -->
     </div> <!-- /wrap -->
-  <%= render :partial => "/shared/piwik" if RAILS_ENV == "production" %>
+  <%= render :partial => "/shared/piwik" if Rails.env == "production" %>
 	</body>
 </html>
 

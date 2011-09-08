@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
   include RoleRequirementSystem
-  include Helpedia::SslRequirement
-  include ExceptionNotifiable
+  #include Helpedia::SslRequirement
+  #include ExceptionNotifiable
 
   TAZ_TINY_MCE_OPTIONS = {
     :theme => 'advanced',
@@ -26,9 +26,9 @@ class ApplicationController < ActionController::Base
 
   helper :all # include all helpers, all the time
   protect_from_forgery
-  filter_parameter_logging :password
+  #filter_parameter_logging :password
 
-#  before_filter :beta_check if RAILS_ENV == 'production'
+#  before_filter :beta_check if Rails.env == 'production'
   attr_accessor :cache_key
 
   before_filter :set_locale
@@ -38,19 +38,19 @@ class ApplicationController < ActionController::Base
   after_filter  :wikileaked
   after_filter :iranized
 
-  rescue_from Exception, :with => :render_500 if RAILS_ENV == 'production'
-  rescue_from Helpedia::UserIsNotOrganisation, :with => :render_401_not_organisation if RAILS_ENV == 'production'
-  rescue_from Helpedia::UserIsNotUser, :with => :render_401_not_user if RAILS_ENV == 'production'
-  rescue_from ActiveRecord::RecordNotFound, :with => :render_404 if RAILS_ENV == 'production'
-  rescue_from RuntimeError, :with => :render_500 if RAILS_ENV == 'production'
-  rescue_from NoMethodError, :with => :render_500 if RAILS_ENV == 'production'
-  rescue_from ActionController::UnknownAction, :with => :render_404 if RAILS_ENV == 'production'
-  rescue_from ActionView::TemplateError, :with => :render_500 if RAILS_ENV == 'production'
-  rescue_from ::ActionController::RoutingError, :with => :render_404 if RAILS_ENV == 'production'
-  rescue_from ActionController::RoutingError, :with => :render_404 if RAILS_ENV == 'production'
-  rescue_from Helpedia::ItemNotVisible, :with => :render_401_item_not_visible if RAILS_ENV == 'production'
-  rescue_from Helpedia::PageNotAvailableAnymore, :with => :render_404 if RAILS_ENV == 'production'
-  rescue_from WillPaginate::InvalidPage, :with => :render_404 if RAILS_ENV == 'production'
+  rescue_from Exception, :with => :render_500 if Rails.env == 'production'
+  rescue_from Helpedia::UserIsNotOrganisation, :with => :render_401_not_organisation if Rails.env == 'production'
+  rescue_from Helpedia::UserIsNotUser, :with => :render_401_not_user if Rails.env == 'production'
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404 if Rails.env == 'production'
+  rescue_from RuntimeError, :with => :render_500 if Rails.env == 'production'
+  rescue_from NoMethodError, :with => :render_500 if Rails.env == 'production'
+  rescue_from ActionController::UnknownAction, :with => :render_404 if Rails.env == 'production'
+  rescue_from ActionView::TemplateError, :with => :render_500 if Rails.env == 'production'
+  rescue_from ::ActionController::RoutingError, :with => :render_404 if Rails.env == 'production'
+  rescue_from ActionController::RoutingError, :with => :render_404 if Rails.env == 'production'
+  rescue_from Helpedia::ItemNotVisible, :with => :render_401_item_not_visible if Rails.env == 'production'
+  rescue_from Helpedia::PageNotAvailableAnymore, :with => :render_404 if Rails.env == 'production'
+  rescue_from WillPaginate::InvalidPage, :with => :render_404 if Rails.env == 'production'
 
   protected
 
@@ -159,7 +159,7 @@ class ApplicationController < ActionController::Base
     end
 
     def setup_default
-      I18n.reload! unless %w( production ahoi).include?(RAILS_ENV)
+      I18n.reload! unless %w( production ahoi).include?(Rails.env)
     end
 
     def set_cache_key

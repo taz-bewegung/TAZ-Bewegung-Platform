@@ -23,7 +23,7 @@ module MenuHelper
   end
   
   def main_menu(id)
-    @current_main_menu_id = id
+    @current_main_menu_id = id || :start
   end
   
   def title(title)

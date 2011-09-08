@@ -87,6 +87,6 @@ DD_belatedPNG.fix('#nav-main ul li, #hc-home,  #sticker, #bd, #hc-content, #ft, 
     
   <%# render :partial => "/activities/wikileaks" if session[:wikileaked].blank? and cookies[:wikileaked].blank? %>  
   <%# render :partial => "/activities/iran" if session[:iranized].blank? and cookies[:iranized].blank?%>
-  <%= render :partial => "/shared/piwik" if RAILS_ENV == "production" %>
+  <%= render :partial => "/shared/piwik" if Rails.env == "production" %>
 </body>
 </html>

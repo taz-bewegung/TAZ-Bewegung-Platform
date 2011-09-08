@@ -414,7 +414,7 @@ module ApplicationHelper
     if options[:ignore_roles].present? and logged_in? and current_user.has_role?(options[:ignore_roles])
       yield
     else
-      cache("#{RAILS_ENV.to_s}_#{key}", cache_options, &block)
+      cache("#{Rails.env.to_s}_#{key}", cache_options, &block)
     end
   end  
   

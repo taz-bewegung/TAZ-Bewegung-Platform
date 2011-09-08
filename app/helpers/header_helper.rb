@@ -14,7 +14,7 @@ module HeaderHelper
   
   def welcome_header(left, right)
     content_for(:magick_header) do
-#      cache("#{RAILS_ENV.to_s}_welcome_header", :expires_in => 30.minutes) do        
+#      cache("#{Rails.env.to_s}_welcome_header", :expires_in => 30.minutes) do        
       "<h2><span style='float:left'>#{left}</span><span class='right'>#{right}</span></h2>"
 #      end
     end

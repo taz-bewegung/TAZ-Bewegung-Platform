@@ -1,12 +1,12 @@
+# encoding: UTF-8
 require 'open-uri'
 
 class WelcomeController < ApplicationController
   
   caches_page :index, :if => Proc.new { |c| c.request.format.json? }
-  
+
   layout 'home'
-  before_filter :setup, :only => [:index]
-  
+
   include ImageHelper
   
 
@@ -56,11 +56,7 @@ class WelcomeController < ApplicationController
   end
   
   private
-  
-    def setup
-      @template.main_menu :start
-    end
-    
+
     def render_json
       hash = Hash.new
       hash[:events] = {
