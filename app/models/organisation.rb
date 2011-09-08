@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Organisation < ActiveRecord::Base
   
   # Plugins
@@ -88,34 +89,38 @@ class Organisation < ActiveRecord::Base
   
   ##
   # Finders
-  named_scope :active, { :conditions => "organisations.state = 'active'" }  
-  named_scope :suspended, { :conditions => "organisations.state = 'suspended'" }
-  named_scope :recent, { :order => "created_at ASC" }
-  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }  
-  named_scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || 'organisations.created_at DESC' }
-  }  
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }    
-  named_scope :latest, { :order => "organisations.created_at DESC" }
+  #named_scope :active, { :conditions => "organisations.state = 'active'" }  
+  #named_scope :suspended, { :conditions => "organisations.state = 'suspended'" }
+  #named_scope :recent, { :order => "created_at ASC" }
+  #named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }  
+  #named_scope :ordered, lambda { |*order|
+  #  { :order => order.flatten.first || 'organisations.created_at DESC' }
+  #}  
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}    
+  #named_scope :latest, { :order => "organisations.created_at DESC" }
   
   def self.find_latest_for_teaser_elements(offset)
     self.active.with_image.latest.find(:all, :limit => "#{offset},1")[0]
   end
-
-  ##
-  # Acts as ferret
-  acts_as_ferret(
-    :fields => {
-      :name => { :boost => 5 },
-      :description => { :boost => 3 }
-    },
-    :additional_fields => [:index_address],
-    :store_class_name => true,
-    :remote => true,
-    :if => Proc.new { |organisation| organisation.active? }
-  ) 
+  
+  def self.active
+    where("organisations.state", "active")
+  end
+  
+ # ##
+ # # Acts as ferret
+ # acts_as_ferret(
+ #   :fields => {
+ #     :name => { :boost => 5 },
+ #     :description => { :boost => 3 }
+ #   },
+ #   :additional_fields => [:index_address],
+ #   :store_class_name => true,
+ #   :remote => true,
+ #   :if => Proc.new { |organisation| organisation.active? }
+ # ) 
 
   def index_address
     address.to_short

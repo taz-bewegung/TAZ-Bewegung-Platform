@@ -65,6 +65,7 @@ module Content::ContentsHelper
   
   def render_start_carousel_container(shortcut, options = {})
     container = ContentContainer.find_by_shortcut(shortcut)
+    Rails.logger.info container.content_elements.inspect
     html = render :partial => "/content/start_page/carousel", :locals => { :elements => container.content_elements, :container => container, :options => options }
     html
   end

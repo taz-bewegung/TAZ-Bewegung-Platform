@@ -100,14 +100,17 @@ class User < ActiveRecord::Base
   
   ##
   # Finders
-  named_scope :with_public_profile, { :conditions => "users.visibility = '3'" }
-  named_scope :active, { :conditions => "users.state = 'active'" }
-  named_scope :latest, { :order => "users.created_at DESC" }
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }
-  named_scope :beta, { :conditions => ["created_at BETWEEN ? AND ? AND state = 'pending'", Date.new(2009, 04, 17).beginning_of_day, Date.new(2009, 04, 19).end_of_day] }
-
+  #named_scope :with_public_profile, { :conditions => "users.visibility = '3'" }
+  #named_scope :active, { :conditions => "users.state = 'active'" }
+  #named_scope :latest, { :order => "users.created_at DESC" }
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}
+  #named_scope :beta, { :conditions => ["created_at BETWEEN ? AND ? AND state = 'pending'", Date.new(2009, 04, 17).beginning_of_day, Date.new(2009, 04, 19).end_of_day] }
+  
+  def self.active
+    where("users.state", "active")
+  end
 
 ##
 # States

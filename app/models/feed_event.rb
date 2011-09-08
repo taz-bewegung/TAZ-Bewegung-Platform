@@ -9,21 +9,35 @@ class FeedEvent < ActiveRecord::Base
   belongs_to :trigger, :polymorphic => true       # Which object called the action  
   belongs_to :concerned, :polymorphic => true     # Which main object is concered (User, Event, Activity, Location, Organisation)
   
-  named_scope :latest, { :order => "feed_events.created_at DESC" }  
-  named_scope :public_visible, { :conditions => ["feed_events.is_public = ?", true] }
-  
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }
-  
-  named_scope :around, lambda { |address|
-    { :conditions => ["#{FeedEvent.distance_sql(address)} < ?", 50] }
-  }
-  
-  named_scope :by_type, lambda { |parameters|
-      { :conditions => { :type => parameters.map{ |t| t[0].camelize } } } 
-    }
+  #named_scope :latest, { :order => "feed_events.created_at DESC" }  
+  #named_scope :public_visible, { :conditions => ["feed_events.is_public = ?", true] }
+  #
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}
+  #
+  #named_scope :around, lambda { |address|
+  #  { :conditions => ["#{FeedEvent.distance_sql(address)} < ?", 50] }
+  #}
+  #
+  #named_scope :by_type, lambda { |parameters|
+  #    { :conditions => { :type => parameters.map{ |t| t[0].camelize } } } 
+  #  }
+  class << self
+    
+    def latest
+      order("feed_events.created_at DESC")
+    end
 
+    def public_visible
+      where("feed_events.is_public", true)
+    end
+
+    def limit(num)
+      limit(num.flatten.first || (defined?(per_page) ? per_page : 10))
+    end
+  end
+  
 end
 
 class PublicFeedEvent < FeedEvent

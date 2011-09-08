@@ -9,10 +9,8 @@
    <meta name="description" content="bewegung taz termine aktionen orte" />
    <meta name="keywords" content="bewegung taz termine aktionen orte" />
 
-    <%= include_stylesheets :home %>
-    <%= include_javascripts :default, :home %>   
-    
-   <%#= javascript_include_merged :home %>
+  <%= stylesheet_link_tag "home", :cache => true %>
+
    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>                                                                  
    
    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
@@ -41,7 +39,7 @@
         <%= render :partial => "/menu/top_menu" -%>
         <div style="clear: both;"></div>
       </div>
-		<%= render :partial => "/menu/bewegungs_finder" -%>
+		<%#= render :partial => "/menu/bewegungs_finder" -%>
       <div id="hc-home">
         <%= render :partial => "/users/user_bar_home" %>
       </div>
@@ -65,8 +63,6 @@
   <%# render :partial => "/activities/wikileaks" if session[:wikileaked].blank? and cookies[:wikileaked].blank? %>
   <%# render :partial => "/activities/iran" if session[:iranized].blank? and cookies[:iranized].blank? %>
   <%= render :partial => "/shared/piwik" if Rails.env == "production" %>
+  <%= javascript_tag "home" %>
 </body>
 </html>
-
-
-

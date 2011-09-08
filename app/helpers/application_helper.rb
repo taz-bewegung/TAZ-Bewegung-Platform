@@ -152,8 +152,8 @@ module ApplicationHelper
     options.reverse_merge!({ :size => 35 })
     html_options.reverse_merge!({ :class => "#{options[:class]} shadow-button-#{options[:css_class]}", :href => target })
     content_tag :a, html_options do
-      content_tag(:span, :class => "left") do
-        shadow_text(label, options)
+      content_tag(:button, :class => "left") do
+        label
       end
     end
   end

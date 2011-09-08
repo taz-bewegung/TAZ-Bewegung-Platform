@@ -16,8 +16,8 @@
 </script>
 <div id="finder-wrapper" style="display: block">
 
-<%- @search = ISearch.new(params[:i_search]) -%>
-<% form_for @search, :url => search_path, :html => { :method => :get } do |form| %>
+<%#- @search = ISearch.new(params[:i_search]) -%>
+<% form_for @search, :url => "#", :html => { :method => :get } do |form| %>
 <%= form.hidden_field :search_type, :id => "i_search_type", :value => params[:i_search].blank? ? "events" : params[:i_search][:search_type]-%>
 <%= render :partial => "/menu/finder_menu" -%>
 <%= render :partial => '/menu/finder_input', :locals => {:form => form} %>

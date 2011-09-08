@@ -1,6 +1,59 @@
 Bewegung::Application.routes.draw do
   
-  match '/kontakt' => 'feedbacks#contact'
+  #match '/kontakt' => 'feedbacks#contact'
+  
+  # Feed Events
+  resources :feed_events
+  
+  # Events
+  resources :events
+  
+  # Activities
+  resources :activities
+  
+  # Organisations
+  resources :organisations
+  
+  # Locations
+  resources :locations
+  
+  # Users
+
+  match 'logout' => 'sessions#destroy'
+  match 'login' => 'sessions#new'
+  match 'register' => 'sessions#create'
+
+  resources :users do
+    collection do
+      get 'split'
+      get 'registered'
+    end
+  end
+  
+  # Old Helpedia Stuff, to be renamed
+  
+  match 'my_helpedia' => 'my_helpedia#index'
+  
+  namespace :my_helpedia do
+  end
+  
+  # Request
+  resource :request
+  
+  # Newsletter
+  match 'unsubscribe_newsletter' => 'newsletter#unsubscribe'
+  match 'unsubscribed_newsletter' => 'newsletter#unsubscribed'   
+
+  match 'subscribe_newsletter' => 'newsletter#subscribe'
+  match 'subscribed_newsletter' => 'newsletter#subscribed'
+  match 'confirm_newsletter/:id' => 'newsletter#confirm', :id => nil  
+  match 'confirmed_newsletter' => 'newsletter#confirmed'
+  
+  # Flyers
+  resources :flyer_orders
+  
+  # Commendations
+  resources :commendations
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -49,11 +102,11 @@ Bewegung::Application.routes.draw do
   #     resources :products
   #   end
 
-  # You can have the root of your site routed with "root"
+  # You can have the root of your site routed with 'root'
   # just remember to delete public/index.html.
   root :to => 'welcome#index'
 
-  # See how all your routes lay out with "rake routes"
+  # See how all your routes lay out with 'rake routes'
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.

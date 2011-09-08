@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class NewsletterSubscriber < ActiveRecord::Base
   
   before_create :create_confirmation_code

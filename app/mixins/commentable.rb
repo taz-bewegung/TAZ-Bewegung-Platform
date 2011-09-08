@@ -1,3 +1,4 @@
+# encoding: UTF-8
 =begin
   This file is part of bewegung.
 
@@ -18,13 +19,23 @@
 # The (polymorphic) commentable module enables models to be commentable.
 # The model needs a field comment_state to store if comments are allowed.
 module Commentable
-
+  # Constants
+  COMMENTS_ALLOWED = "1" unless defined?(COMMENTS_ALLOWED)
+  COMMENTS_ALLOWED_FOR_USERS = "2" unless defined?(COMMENTS_ALLOWED_FOR_USERS)
+  COMMENTS_NOT_ALLOWED = "3" unless defined?(COMMENTS_NOT_ALLOWED)
+  COMMENTABLE = [["Erlaubt", COMMENTS_ALLOWED],
+                ["Nur für registrierte Benutzer", COMMENTS_ALLOWED_FOR_USERS],
+                ["Nicht erlaubt", COMMENTS_NOT_ALLOWED]] unless defined?(COMMENTABLE)
   def self.included(base)
-    base.send :include, InstanceMethods
+
     base.class_eval do
 
       # Add association
       has_many :comments, :as => :commentable, :dependent => :destroy
+
+      def commentable_humanized
+        COMMENTABLE[self.commentable.to_i-1].first
+      end
 
       # Ad
       state_machine :comment_state, :initial => :allowed do

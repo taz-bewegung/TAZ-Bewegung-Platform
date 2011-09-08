@@ -1,4 +1,4 @@
-<div id="<%= dom_id container %>">
+<div id="<%#= dom_id container %>">
   <% if cookies[:edit_texts] == "1" and logged_in? and current_user.has_role?(:admin) %>
     <%= link_to "Editieren", { :controller => "contents", :action => "edit_landing_carousel", :id => container.id, :cache_fragment => options[:cache_fragment] }, :class => "remote-link" %>  
   <% end %>

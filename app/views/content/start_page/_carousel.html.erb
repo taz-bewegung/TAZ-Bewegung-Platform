@@ -1,7 +1,7 @@
 <% if cookies[:edit_texts] == "1" and logged_in? and current_user.has_role?(:admin) %>
   <%= link_to "Editieren", { :controller => "contents", :action => "edit_welcome_carousel", :id => container.id, :cache_fragment => options[:cache_fragment] }, :class => "remote-link" %>  
 <% end %>
-
+<% if elements.present? %>
 <div class="teaser-items">  
   <% 0.upto 0 do |i| %>
   <h2 class="size-21"><%= elements[i].element.title %></h2>  
@@ -28,4 +28,5 @@
       
     <% end %>
  <% end %>
+<% end %>
 </div>
