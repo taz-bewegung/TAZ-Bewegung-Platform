@@ -1,0 +1,55 @@
+<div id="finder-top">
+&nbsp;
+</div>
+<script type="text/javascript" charset="utf-8">
+  
+  
+  $(document).ready(function(){  
+   
+      <%- if not params[:i_search].blank? and not params[:i_search][:search_type].blank? -%>
+        $("#finder-wrapper div, #finder-wrapper").show();$("#finder-top").hide();
+        <%= '$("a.' + params[:i_search][:search_type] + '").click();' -%>    
+      <%- end -%>
+    
+  });//document.ready
+  
+</script>
+<div id="finder-wrapper" style="display: block">
+
+<%- @search = ISearch.new(params[:i_search]) -%>
+<% form_for @search, :url => search_path, :html => { :method => :get } do |form| %>
+<%= form.hidden_field :search_type, :id => "i_search_type", :value => params[:i_search].blank? ? "events" : params[:i_search][:search_type]-%>
+<%= render :partial => "/menu/finder_menu" -%>
+<%= render :partial => '/menu/finder_input', :locals => {:form => form} %>
+<div id="finder-category">
+   <div id="finder-arrow-one"> </div>
+   <div class="finder-content">
+  	 <table border="0" cellspacing="5" cellpadding="5" width="100%">
+  		<tr>
+  		  <th class="finder-category-filter">Was <span>(Themen)</span></th>
+        <th class="finder-date-filter">Wann <span>(Tage)</span></th>
+        <th>Wo <span>(Stadtnamen)</span></th>
+  		</tr>
+  		<tr>
+  		  <td class="finder-category-filter">
+  		    <%= form.select :category_id, SocialCategory.to_select_options, :include_blank => "alle" %>
+  		    <%= form.select :location_category_id, LocationCategory.to_select_options, :include_blank => "alle" %>
+  		  </td>
+		  <td class="finder-date-filter">
+  	      <%= form.text_field :from_date, :title => "Zeitraum - alle Termine ab ...", :class => "toggle", :disabled => false -%>
+  		  </td> 
+  		  <td>
+  		    <%= form.text_field :place, :title => "eingeben und ...", :class => "toggle" %>
+  		    <br />
+  		    <%= form.select :radius, ISearch::RADIUS_OPTIONS, :include_blank => "... Radius auswählen, sonst 10km" %>
+        </td>
+  		</tr>
+  	</table>
+	</div><!-- end #finder-category -->
+  
+  <%= render :partial => "/menu/finder_controls" %>
+</div><!-- end #finder-wrapper -->
+
+<%- end -%>
+
+</div>

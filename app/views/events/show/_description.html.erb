@@ -1,0 +1,35 @@
+<%= event_sub_menu(:description) %> 
+<div id="sub-content"> 
+
+  <div class="two-column">
+
+    <div class="column-75">
+      <%= secured_rte_text(@event.description) %>
+    </div>
+    
+    <div class="column-25">
+
+      <div class="meta-info">
+        <h4>Themenkategorien:</h4>
+        <%=v @event.social_categories.map(&:title).join(", ") || "-" -%>
+      </div>
+      
+      <%- unless @event.website.blank? -%>
+      <div class="meta-info">
+        <h4>Website:</h4>
+        <%= website_link(@event.website) -%>
+      </div>
+      <%- end -%>
+      
+      <%- if @event.activity.present? -%>
+      <div class="meta-info">
+        <h4>Verknüpfte Aktion:</h4>
+        <%= image_for(@event.activity, :"32x24c", :link_to => @event.activity) -%> <%= link_to h(@event.activity.title), @event.activity -%>
+      </div>
+      <%- end -%>      
+     
+    </div>
+  </div>
+  
+
+</div>

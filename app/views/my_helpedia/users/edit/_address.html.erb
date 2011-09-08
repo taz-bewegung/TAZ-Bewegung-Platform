@@ -1,0 +1,33 @@
+<div class="edit-container" id="address">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Adresse", 
+                                                                     :object => @user,
+                                                                     :path => edit_part_my_helpedia_user_path(@user, :part => "address"),
+                                                                     :prefix => "address",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= User.human_attribute_name("street") -%>:</dt>
+          <dd><%=v @user.address.street -%></dd>
+          <dt><%= User.human_attribute_name("zip_code") -%>:</dt>
+          <dd><%=v @user.address.zip_code -%></dd>
+          <dt><%= User.human_attribute_name("city") -%>:</dt>
+          <dd><%=v @user.address.city -%></dd>
+          <dt><%= User.human_attribute_name("country_code#{}") -%>:</dt>
+          <%= get_country_translation(@user.address.country_code) %>
+          
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= User.human_attribute_name("has_geo_information") -%>:</dt>
+          <dd><%= wordify_geo_information(@user.address) -%></dd>
+        </dl>
+      </div>      
+    </div>
+  </div>
+</div>

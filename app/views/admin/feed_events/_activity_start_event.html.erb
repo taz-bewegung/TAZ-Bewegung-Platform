@@ -1,0 +1,7 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  Die Aktion <%= link_to feed_event.trigger.title, activity_path(feed_event.trigger) %> ist gestartet.
+</div>  
+

@@ -1,0 +1,48 @@
+<div class="profile-container">
+  <div class="profile-container-top"> </div>
+  <div class="profile-container-middle">
+    <div class="split-bg">
+      <div class="profile-image">
+        <div class="image-wrap">
+          <%= image_for(@organisation, :large) %>
+        </div>
+        
+        <%- if not (@organisation.participants + [@organisation]).include?(current_user) %>
+          <div class="profile-symphatize-button">
+            <%= shadow_link_button("Sympathisieren".upcase, new_organisation_activity_membership_path(@organisation, :format => :lightbox), :css_class => "60-block remote-lightbox", :font_size => 22)%>
+          </div>
+        <%- end -%>
+      </div>
+      <div class="profile-content">
+        <h2><%=h @organisation.name %></h2>
+        <%= truncate secured_rte_text(@organisation.description, :plain => true), :length => 350 %>
+        <%= link_to "mehr &raquo;", about_organisation_path(@organisation) -%>
+      </div>
+
+
+       <div class="profile-meta">
+
+          <div class="meta-info">
+            <h4>Adresse:</h4>
+            <%= @organisation.address.to_html_long || "-" %>
+          </div>
+          
+          <% unless @organisation.website.blank? %>
+          <div class="meta-info">
+            <h4>Website:</h4>
+            <%= website_link(@organisation.website) %>
+          </div>
+          <% end %>
+
+          <% unless @organisation.email.blank? %>
+          <div class="meta-info">
+            <h4>E-Mail:</h4>
+            <%= mail_to @organisation.email, nil, :replace_at => "(at)", :encode => "hex" -%>
+          </div>
+          <% end %>
+        </div>
+      
+    </div>
+  </div>  
+  <div class="profile-container-bottom"> </div>  
+</div>

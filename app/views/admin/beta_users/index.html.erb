@@ -1,0 +1,14 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Beta-Anmelder", admin_beta_users_path) ]%>
+<% title 'Beta-Anmelder' %>
+<% magick_header "Beta-Anmelder" %>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:beta_list) -%>
+<%- end -%>
+
+<div class="admin">
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'user', :collection => @users, :as => :user %>
+  </table>
+</div>

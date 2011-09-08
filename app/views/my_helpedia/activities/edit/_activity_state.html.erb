@@ -1,0 +1,28 @@
+<div id="activity_state"  class="edit-container">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Aktionsstatus", 
+                                                                     :object => @activity,
+                                                                     :path => edit_part_my_helpedia_activity_path(@activity, :part => "activity_state"),
+                                                                     :prefix => "activity_state",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>
+  
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("state") -%>:</dt>
+          <dd><%= activity_status_for(@activity) -%></dd>  
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("starts_at") -%>:</dt>
+          <dd><%=l @activity.starts_at -%></dd>
+          <dt><%= Activity.human_attribute_name("ends_at") -%>:</dt>
+          <dd><%=l @activity.ends_at -%></dd>          
+        </dl>          
+      </div>        
+    </div>
+  </div>
+</div>

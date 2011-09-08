@@ -1,0 +1,10 @@
+<%- title "Meine Seite" -%>
+<%- breadcrumb [ link_to(t(:"breadcrumb.my_helpedia"), my_helpedia_path)] -%>
+<%= render :partial => "/my_helpedia/users/show/right_column" -%>      
+
+<% unless current_user.already_logged_in? -%>
+  <%= render :partial => "/my_helpedia/users/first_login" %>
+<% end -%>
+
+<%= edit_header render_user_info_box(@user, :private) -%>
+<%= render :partial => content_partial %>

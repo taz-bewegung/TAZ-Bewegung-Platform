@@ -1,0 +1,14 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Gesperrte Aktionen", suspended_admin_activities_path) ]%>
+<%- title 'Aktionsliste' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:suspended_activities) -%>
+<%- end -%>
+
+<div class="admin">
+  <h1>Gesperrte Aktionen</h1>
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'activity', :collection => @activities %>
+  </table>
+</div>

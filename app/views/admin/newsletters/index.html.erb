@@ -1,0 +1,41 @@
+<%- breadcrumb [ link_to("Admin", admin_path), link_to("Newsletter", admin_newsletter_path)] -%>
+<%- title 'Admin - Newsletter' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:newsletter) -%>
+<%- end -%>
+
+<h1>Newsletter</h1>
+
+<h2>Campaign Monitor</h2>
+<table>
+  <tr>
+    <td>Angemeldet</td>
+    <td><%= @list.active_subscribers(Date.today - 50.years).size %></td>
+  </tr>
+  <tr>
+    <td>Abgemeldet</td>
+    <td><%= @list.unsubscribed(Date.today - 50.years).size %></td>
+  </tr>  
+</table>
+<br />
+<h2>Lokale Daten</h2>
+<table>
+  <tr>
+    <td>Angemeldet</td>
+    <td><%= NewsletterSubscriber.count %></td>
+  </tr>
+  <tr>
+    <td>Organisationen</td>
+    <td><%= Organisation.count(:conditions => ["subscribed_newsletter = ?", true]) %></td>
+  </tr>
+  <tr>
+    <td>Benutzer</td>
+    <td><%= User.count(:conditions => ["subscribed_newsletter = ?", true]) %></td>
+  </tr>    
+</table>  
+<br />
+<%= link_to "Synchronisiere lokale Daten mit Campaign-Monitor", sync_local_admin_newsletter_path, :method => :put -%><br />
+<%= link_to "Synchronisiere Campaign-Monitor mit lokalen Daten", sync_external_admin_newsletter_path, :method => :put -%>
+
+

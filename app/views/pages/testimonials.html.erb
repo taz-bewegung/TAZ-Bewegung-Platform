@@ -1,0 +1,8 @@
+<%- title "Testimonials" -%>
+<% breadcrumb [ link_to("Testimonials", url_for(:controller => 'pages', :action => "testimonials"))] %>  
+
+
+
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:testimonials) -%>
+<%- end -%>

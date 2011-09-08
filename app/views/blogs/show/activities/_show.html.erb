@@ -1,0 +1,4 @@
+<% title @activity.title %>
+<% breadcrumb [ link_to("Aktionen", activities_path), link_to(@activity.title, activity_path(@activity)) ] %>
+
+<%= activity_sub_menu(:blog) %>

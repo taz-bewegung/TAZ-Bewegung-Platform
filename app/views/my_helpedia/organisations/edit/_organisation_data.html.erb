@@ -1,0 +1,41 @@
+<div id="organisation_data" class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Organisationsdaten", 
+                                                         :object => @organisation,
+                                                         :path => edit_part_my_helpedia_organisation_path(@organisation, :part => "organisation_data"), 
+                                                         :prefix => "organisation_data",
+                                                         :button => image_tag("buttons/btn-edit.png")
+                                                        } -%>  
+
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= Organisation.human_attribute_name("name") -%>:</dt>
+          <dd><%=v @organisation.name -%></dd>          
+          <dt><%= Organisation.human_attribute_name("corporate_form_id") -%>:</dt>
+          <dd><%=h @organisation.corporate_form.try(:name) || "-" -%></dd>  
+        </dl>          
+      </div>      
+      <div class="column-50">
+        <dl>
+          <dt><%= Organisation.human_attribute_name("image") -%>:</dt>
+          <dd><%= organisation_image_for(@organisation, :mini) %></dd>            
+        </dl>          
+      </div>
+    </div>
+    <div>
+      <dl class="clearfloats">
+        <dt><%= Organisation.human_attribute_name("permalink") -%>:</dt>
+        <dd><%=v @organisation.permalink -%></dd>
+        <dt><%= Organisation.human_attribute_name("email") -%>:</dt>
+        <dd><%=v @organisation.email -%></dd>          
+      </dl>
+      <dl class="clearfloats">
+        <dt><%= Organisation.human_attribute_name("website") -%>:</dt>
+        <dd><%=v @organisation.website -%></dd>          
+      </dl>      
+    </div>
+  </div>
+</div>

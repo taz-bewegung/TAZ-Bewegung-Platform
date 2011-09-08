@@ -1,0 +1,10 @@
+<%- title " - " + "Aktionen" -%>
+<%- breadcrumb [ "", link_to("Aktionen", event_activities_path(@event))] -%>
+
+<%= event_sub_menu(:activities) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/activities/index/shared/list_header", :locals => { :list_title => "Aktionen" } %>    
+  <div id="sub-content-list">
+    <%= render :partial => "/activities/index/shared/list_cards", :locals => { :activities => @activities } %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="document-item" style="overflow: hidden; margin-bottom: 8px">
+  <div style="float: left; width: 300px;">
+    <%= image_tag(document.media_type_icon) %>
+    <%= document.filename -%>
+  </div>
+  <div style="float: right;">
+    <%= link_to image_tag("buttons/btn-small-chose.png"), document_path(document, :part => params[:part]), :class => "ajax-link-put" -%>
+  </div>
+</div>

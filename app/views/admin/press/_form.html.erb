@@ -1,0 +1,66 @@
+<div class="edit-container" id="<%= @news.object_id %>"> 
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h2><%= @news.title || "Neuer Eintrag" -%></h2>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_admin_press_instance_path(@news.temp_id, :part => @news.object_id), 
+                :class => "ajax-link",
+                :rel => "#{@news.object_id}-spinner" -%>
+  </div>  
+
+  <div class="edit-part-content">  
+    <%- form_for(@news, 
+                :url => @form_url, 
+                :builder => EditFormBuilder,
+                :html => {:class => "remote-form",
+                          :rel => "#{@news.object_id}-spinner" } ) do |f| -%> 
+      
+      <table width="100%" class="reg-form" rowspan="0" colspan="0">
+      <%= f.text_field :title, :required => true %>
+      <%= f.text_field :subtitle, :required => true %>
+      <%= f.text_field :publisher, :required => true %>            
+      <%= f.date_select :published_on, { :order => [:day, :month, :year], :use_month_numbers => true, 
+      									:end_year => Date.today.year-5, :start_year => Date.today.year+5, :include_blank => true },
+      									:required => false, :class => "date" -%>
+      <%= f.text_field :url, :required => true %>      
+      <%= f.text_area :message, :required => false %>
+      <%= f.image_field :image %>
+      <%= f.document_field :document %>   
+      <tr>
+        <th valign="top" width="200">
+          <label>
+            Nebentätigkeitsfelder:
+          </label>
+        </th>
+        <td width="100%">
+          <% for category in NewsCategory.find(:all) -%>                                                                
+          <%= check_box_tag "news[news_category_ids][]", category.id, @news.news_category_ids.include?(category.id) -%>
+          <span><%= category.title -%></span>
+          <br/>
+          <% end %>
+        </td>
+      </tr>      
+      </table>
+      
+      <div class="edit-part-bottom">
+         <div class="buttons">
+            <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+            <%= link_to image_tag("buttons/btn-cancel.png"), 
+                cancel_edit_part_admin_press_instance_path(@news.temp_id, :part => @news.object_id), 
+                :class => "ajax-link",
+                :rel => "#{@news.object_id}-spinner" -%>
+            <%- unless @news.new_record? -%>  
+            <%= link_to image_tag("buttons/btn-delete.png"), 
+                  admin_press_instance_path(@news, :part => @news.object_id), 
+                 :class => "ajax-link-delete",
+                 :rel => "#{@news.object_id}-blog-spinner" -%>                 
+            <%- end -%>                
+         </div>
+           <div class="edit-form-spinner">
+              <%= image_tag "ajax-spinner.gif", :id => "#{@news.object_id}-spinner", :style => "display: none" -%>
+            </div>         
+       </div>      
+    <%- end -%>
+</div>

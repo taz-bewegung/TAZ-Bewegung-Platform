@@ -1,0 +1,78 @@
+<div class="modal-left-content">
+  <h2>Editieren</h2>
+  <p>Einzelne Tabs werden individuell gespeichert.</p>
+  <div id="lightbox-tab-container">
+    
+    <%
+      items = []
+      @container.content_elements.each do |content|
+        items << { :name => content.element.name, 
+                   :link_to => "javascript:void(0);",
+                   :id => dom_id(content.element)  }
+      end
+    %>
+
+    <%= render :partial => "/menu/sub_menu", :locals => { :menu_items => items, :active => dom_id(@container.content_elements[0].element) }  %>
+    <div id="sub-content-lightbox" class="">
+	    <div id="sub-content-inner" style="height: 500px">
+      <% for content in @container.content_elements %>
+      
+      <div class="<%= dom_id(content.element) %> container">
+        <br /><br />
+        <iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="<%= root_url -%>blank.html"></iframe>
+        <% form_for(content.element, 
+           :url => { :controller => "contents", :action => "save_welcome_carousel", :id => content.element.id, :cache_fragment => params[:cache_fragment] },
+           :builder => EditFormBuilder,
+           :html => { :multipart => true, :target => 'upload_frame' }) do |f| %>
+
+          <table class="reg-form w-140" width="100%" colspan="0" rowspan="0">
+            <%= f.text_field :title, :required => false, :id => dom_id(content.element, "title") -%>
+            <%= f.check_box :show_element, :required => false, :id => dom_id(content.element, "latest") -%>
+            <%= f.select :element_type, Content::LandingPageTab::ELEMENT_TYPES, { }, :required => true, 
+                         :"data-update" => "##{dom_id(content.element, "element_id")}", 
+                         :"data-href" => "/contents/get_data",
+                         :class => "get-data",
+                         :id => dom_id(content.element, "element_type") -%>
+                         
+            <%= f.select :element_id, 
+                          content.element.element_type.to_class.with_image.latest.map{ |item| [item.title, item.id] }, 
+                          { :include_blank => "Kein Element ausgewählt" },
+                          :id => dom_id(content.element, "element_id"),
+                          :required => true -%>
+
+            <%= f.check_box :show_text, :required => false, :id => dom_id(content.element, "latest") -%>
+            <%= f.text_area :bodytext, :required => false, :id => dom_id(content.element, "bodytext") -%>
+            
+            <% image = Content::WelcomePageTeaserImage.new if f.object.image.blank? %>
+            <% fields_for image, :builder => EditFormBuilder do |image_form| %>
+            <% if f.object.image.blank? %>
+              <%= image_form.file_field :uploaded_data %>
+            <% else %>
+            <tr id="content-image">
+              <th><label>Bild:</label></th>
+              <td>
+                <%= image_tag f.object.image.public_filename(:icon) %>
+                <%= link_to "Löschen", { :controller => "contents", :action => "destroy_image", :id => f.object.image.id }, :class => "remote-link" %>
+              </td>
+            </tr>
+
+            <% end %> 
+            <% end %>
+          <tr>
+            <th>
+            </th>
+            <td>
+              <%= shadow_form_button("Speichern", :css_class => 35, :font_size => 14) %> 
+              oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+            </td>
+          </tr>
+          </table>
+        <% end %>
+
+      </div>
+          
+      <% end %>
+      </div>    
+    </div>
+  </div>
+</div>

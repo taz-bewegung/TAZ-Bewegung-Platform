@@ -1,0 +1,13 @@
+<%- title " - " + "Orte" -%>
+<%- breadcrumb [ "", link_to("Orte", my_helpedia_locations_path)] -%>
+<% magick_header "Meine Orte" %>
+<%= my_helpedia_user_sub_menu(:locations) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/my_helpedia/locations/index/shared/list_header", :locals => { :view => params[:list_type],
+                                                                                         :list_title => "Meine Orte" } -%>
+  <div id="sub-content-list">
+    <div class="locations">                                                                           
+      <%= render :partial => "/my_helpedia/locations/index/shared/list_#{params[:list_type]}" %>
+    </div>
+  </div>                                                                                       
+</div>

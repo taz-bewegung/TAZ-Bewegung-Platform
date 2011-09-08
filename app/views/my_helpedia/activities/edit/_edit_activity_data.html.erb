@@ -1,0 +1,54 @@
+<div id="activity_data" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Aktionsdaten</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_activity_path(@activity, :part => "activity_data"), 
+                :class => "ajax-link",
+                :rel => "#{@activity.object_id}-activity-data-spinner"                
+                 -%>
+  </div>
+  
+  <div class="edit-part-content">  
+  <%- form_for(@activity, 
+              :url => my_helpedia_activity_path(@activity, :part => "activity_data"), 
+              :builder => EditFormBuilder,
+              :html => { :class => "remote-form" ,
+                         :rel => "#{@activity.object_id}-activity-data-spinner" } ) do |f| -%>
+
+  <table width="100%" class="reg-form" rowspan="0" colspan="0">
+     <% f.fields_for :image_attachment, 
+                      (@activity.image_attachment || @activity.build_image_attachment), 
+                      :builder => EditFormBuilder do |image_form| %>
+        <%= image_form.image_field :image_id, :id => "image_attachment", :labels_from => Activity, :image_object => @activity %>      
+      <% end %>
+    <%= f.text_field :title, :required => true -%>
+    <%= f.text :permalink -%>
+    <%= f.text_field :activity_type, :required => false -%>
+    <%= f.text_field :website, :required => false -%>    
+    <tr id="activity_ends_at_wrap">
+      <th><%= content_tag :label, Activity.human_attribute_name("end_date") %>:</th>
+      <td class="input-area">
+        <%= f.text_field :end_date, :required => true, :render_table => false, :hide_label => true, :float_table => true, :class => "tooltip-top" -%>
+      </td>
+    </tr> 
+ 	  <%= f.select :commentable, Activity::COMMENTABLE, :required => true %>
+  </table>
+
+    <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_activity_path(@activity, :part => "activity_data"), 
+                     :class => "ajax-link",
+                     :rel => "#{@activity.object_id}-activity-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@activity.object_id}-activity-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

@@ -1,16 +1,15 @@
-# This file is auto-generated from the current state of the database. Instead
-# of editing this file, please use the migrations feature of Active Record to
-# incrementally modify your database, and then regenerate this schema definition.
+# This file is auto-generated from the current state of the database. Instead of editing this file, 
+# please use the migrations feature of Active Record to incrementally modify your database, and
+# then regenerate this schema definition.
 #
-# Note that this schema.rb definition is the authoritative source for your
-# database schema. If you need to create the application database on another
-# system, you should be using db:schema:load, not running all the migrations
-# from scratch. The latter is a flawed and unsustainable approach (the more migrations
+# Note that this schema.rb definition is the authoritative source for your database schema. If you need
+# to create the application database on another system, you should be using db:schema:load, not running
+# all the migrations from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811103017) do
+ActiveRecord::Schema.define(:version => 20110908123906) do
 
   create_table "activities", :id => false, :force => true do |t|
     t.string   "uuid",                 :limit => 36
@@ -41,10 +40,13 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.text     "goal"
     t.text     "participation"
     t.string   "commentable",                        :default => "1"
+    t.text     "code"
+    t.boolean  "active_petition",                    :default => true
   end
 
   add_index "activities", ["activity_category_id"], :name => "index_activities_on_activity_category_id"
   add_index "activities", ["event_id"], :name => "index_activities_on_event_id"
+  add_index "activities", ["location_id"], :name => "index_activities_on_location_id"
   add_index "activities", ["owner_id"], :name => "index_activities_on_owner_id"
   add_index "activities", ["owner_type"], :name => "index_activities_on_owner_type"
   add_index "activities", ["permalink"], :name => "index_activities_on_permalink"
@@ -84,6 +86,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "updated_at"
   end
 
+  add_index "activity_event_memberships", ["activity_id"], :name => "index_activity_event_memberships_on_activity_id"
+  add_index "activity_event_memberships", ["event_id"], :name => "index_activity_event_memberships_on_event_id"
+
   create_table "activity_memberships", :id => false, :force => true do |t|
     t.string   "uuid",          :limit => 36
     t.string   "user_id"
@@ -95,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "activity_type"
   end
 
+  add_index "activity_memberships", ["activity_id", "activity_type"], :name => "index_activity_memberships_on_activity_id_and_activity_type"
   add_index "activity_memberships", ["activity_id"], :name => "index_activity_memberships_on_activity_id"
   add_index "activity_memberships", ["user_id"], :name => "index_activity_memberships_on_user_id"
   add_index "activity_memberships", ["uuid"], :name => "index_activity_memberships_on_uuid", :unique => true
@@ -243,6 +249,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "deleted_at"
   end
 
+  add_index "blog_post_contents", ["blog_post_id"], :name => "index_blog_post_contents_on_blog_post_id"
+  add_index "blog_post_contents", ["contentable_id", "contentable_type"], :name => "index_blog_post_contents_on_contentable_id_and_contentable_type"
+
   create_table "blog_posts", :id => false, :force => true do |t|
     t.string   "uuid",                     :limit => 36
     t.string   "blog_id"
@@ -261,6 +270,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.boolean  "synced",                                 :default => false
   end
 
+  add_index "blog_posts", ["blog_id"], :name => "index_blog_posts_on_blog_id"
+  add_index "blog_posts", ["blogger_id", "blogger_type"], :name => "index_blog_posts_on_blogger_id_and_blogger_type"
+
   create_table "blogs", :id => false, :force => true do |t|
     t.string   "uuid",           :limit => 36
     t.string   "bloggable_id"
@@ -270,6 +282,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "deleted_at"
   end
 
+  add_index "blogs", ["bloggable_id", "bloggable_type"], :name => "index_blogs_on_bloggable_id_and_bloggable_type"
+
   create_table "bookmarks", :id => false, :force => true do |t|
     t.string   "uuid",              :limit => 36
     t.string   "user_id"
@@ -278,6 +292,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "bookmarks", ["bookmarkable_id", "bookmarkable_type"], :name => "index_bookmarks_on_bookmarkable_id_and_bookmarkable_type"
+  add_index "bookmarks", ["user_id"], :name => "index_bookmarks_on_user_id"
 
   create_table "brain_busters", :id => false, :force => true do |t|
     t.string "uuid",     :limit => 36
@@ -308,6 +325,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "updated_at"
   end
 
+  add_index "commendations", ["commendable_id", "commendable_type"], :name => "index_commendations_on_commendable_id_and_commendable_type"
+
   create_table "comments", :id => false, :force => true do |t|
     t.string   "uuid",             :limit => 36
     t.string   "author_id"
@@ -326,6 +345,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "commentable_type"
   end
 
+  add_index "comments", ["author_id", "author_type"], :name => "index_comments_on_author_id_and_author_type"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+
   create_table "containers", :id => false, :force => true do |t|
     t.string   "uuid",               :limit => 36
     t.string   "shortcut"
@@ -336,6 +358,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "sub_container_type"
     t.integer  "positions"
   end
+
+  add_index "containers", ["type", "uuid"], :name => "index_containers_on_type_and_uuid"
 
   create_table "content_elements", :id => false, :force => true do |t|
     t.string   "uuid",           :limit => 36
@@ -348,6 +372,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "content_elements", ["container_id", "container_type"], :name => "index_content_elements_on_container_id_and_container_type"
+  add_index "content_elements", ["element_id", "element_type"], :name => "index_content_elements_on_element_id_and_element_type"
 
   create_table "content_landing_page_tabs", :id => false, :force => true do |t|
     t.string   "uuid",         :limit => 36
@@ -465,6 +492,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "updated_at"
   end
 
+  add_index "days_with_events", ["event_id"], :name => "index_days_with_events_on_event_id"
+
   create_table "document_attachments", :id => false, :force => true do |t|
     t.string   "uuid",            :limit => 36
     t.string   "attachable_type"
@@ -541,6 +570,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "commentable",                     :default => "1"
   end
 
+  add_index "events", ["location_id"], :name => "index_events_on_location_id"
+  add_index "events", ["organisation_id"], :name => "index_events_on_organisation_id"
   add_index "events", ["originator_id"], :name => "index_events_on_originator_id"
   add_index "events", ["originator_type"], :name => "index_events_on_originator_type"
   add_index "events", ["uuid"], :name => "index_events_on_uuid", :unique => true
@@ -555,6 +586,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "description"
   end
 
+  add_index "external_profile_memberships", ["external_profile_id"], :name => "index_external_profile_memberships_on_external_profile_id"
+  add_index "external_profile_memberships", ["user_id"], :name => "index_external_profile_memberships_on_user_id"
   add_index "external_profile_memberships", ["uuid"], :name => "index_external_profile_memberships_on_uuid", :unique => true
 
   create_table "external_profiles", :id => false, :force => true do |t|
@@ -567,6 +600,71 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
 
   add_index "external_profiles", ["uuid"], :name => "index_external_profiles_on_uuid", :unique => true
 
+  create_table "fd_activity_memberships", :primary_key => "tmp_id", :force => true do |t|
+    t.integer  "user_fairdo_id",                       :null => false
+    t.string   "activity_type",                        :null => false
+    t.string   "activity_id",                          :null => false
+    t.string   "state",          :default => "active", :null => false
+    t.datetime "created_at",                           :null => false
+  end
+
+  add_index "fd_activity_memberships", ["user_fairdo_id"], :name => "fk_activity_memberships_users1"
+
+  create_table "fd_addresses", :primary_key => "tmp_id", :force => true do |t|
+    t.integer "addressable_fairdo_id", :null => false
+    t.string  "addressable_type",      :null => false
+    t.string  "city"
+    t.string  "zip_code"
+    t.string  "country_code"
+  end
+
+  add_index "fd_addresses", ["addressable_fairdo_id"], :name => "fk_addresses_users"
+
+  create_table "fd_double_profiles_choice", :id => false, :force => true do |t|
+    t.integer "user_fairdo_id",               :null => false
+    t.string  "user_taz_uuid",  :limit => 45, :null => false
+    t.string  "choice",         :limit => 0
+  end
+
+  add_index "fd_double_profiles_choice", ["user_fairdo_id"], :name => "fk_fd_double_profiles_choice_fd_users1"
+
+  create_table "fd_external_profile_memberships", :primary_key => "tmp_id", :force => true do |t|
+    t.integer "user_fairdo_id",                                                          :null => false
+    t.string  "url"
+    t.string  "description"
+    t.string  "external_profile_id", :default => "f5ecbce6-2aa6-11de-bfc1-0019dbf8d19d", :null => false
+  end
+
+  add_index "fd_external_profile_memberships", ["user_fairdo_id"], :name => "fk_external_profile_memberships_users1"
+
+  create_table "fd_friendships", :primary_key => "tmp_id", :force => true do |t|
+    t.string   "user_type",        :default => "User", :null => false
+    t.integer  "user_fairdo_id",                       :null => false
+    t.integer  "friend_fairdo_id",                     :null => false
+    t.datetime "created_at",                           :null => false
+  end
+
+  add_index "fd_friendships", ["friend_fairdo_id"], :name => "fk_friendships_users2"
+  add_index "fd_friendships", ["user_fairdo_id"], :name => "fk_friendships_users1"
+
+  create_table "fd_users", :primary_key => "fairdo_id", :force => true do |t|
+    t.string  "photo_path"
+    t.string  "fairdo_username",              :limit => 250
+    t.string  "first_name",                   :limit => 100
+    t.string  "last_name",                    :limit => 100
+    t.string  "gender"
+    t.date    "birthday"
+    t.text    "about_me"
+    t.boolean "receive_message_notification"
+    t.boolean "subscribed_newsletter"
+    t.string  "visibility"
+    t.text    "changed_my_life"
+    t.text    "inspires_me"
+    t.text    "my_contribution"
+    t.text    "dislike"
+    t.string  "email",                        :limit => 100
+  end
+
   create_table "feed_event_streams", :id => false, :force => true do |t|
     t.string   "uuid",            :limit => 36
     t.string   "feed_event_id"
@@ -575,6 +673,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "feed_event_streams", ["feed_event_id"], :name => "index_feed_event_streams_on_feed_event_id"
+  add_index "feed_event_streams", ["streamable_id", "streamable_type"], :name => "index_feed_event_streams_on_streamable_id_and_streamable_type"
 
   create_table "feed_events", :id => false, :force => true do |t|
     t.string   "uuid",           :limit => 36
@@ -594,6 +695,10 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "lat"
   end
 
+  add_index "feed_events", ["concerned_id", "concerned_type"], :name => "index_feed_events_on_concerned_id_and_concerned_type"
+  add_index "feed_events", ["operator_id", "operator_type"], :name => "index_feed_events_on_operator_id_and_operator_type"
+  add_index "feed_events", ["trigger_id", "trigger_type"], :name => "index_feed_events_on_trigger_id_and_trigger_type"
+
   create_table "friendships", :id => false, :force => true do |t|
     t.string   "uuid",       :limit => 36
     t.string   "user_id"
@@ -603,6 +708,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "friendships", ["friend_id"], :name => "index_friendships_on_friend_id"
+  add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
   create_table "image_attachments", :id => false, :force => true do |t|
     t.string   "uuid",               :limit => 36
@@ -656,6 +764,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string "location_category_id", :limit => 36
   end
 
+  add_index "location_category_memberships", ["location_category_id"], :name => "index_location_category_memberships_on_location_category_id"
+  add_index "location_category_memberships", ["location_id"], :name => "index_location_category_memberships_on_location_id"
+
   create_table "location_memberships", :id => false, :force => true do |t|
     t.string   "uuid",        :limit => 36
     t.string   "location_id"
@@ -664,6 +775,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "location_memberships", ["location_id"], :name => "index_location_memberships_on_location_id"
+  add_index "location_memberships", ["member_id", "member_type"], :name => "index_location_memberships_on_member_id_and_member_type"
 
   create_table "locations", :id => false, :force => true do |t|
     t.string   "uuid",           :limit => 36
@@ -684,6 +798,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.text     "admin_comment"
     t.string   "commentable",                  :default => "1"
   end
+
+  add_index "locations", ["owner_id", "owner_type"], :name => "index_locations_on_owner_id_and_owner_type"
 
   create_table "messages", :id => false, :force => true do |t|
     t.string   "uuid",                 :limit => 36
@@ -706,6 +822,10 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.boolean  "system_message",                     :default => false
   end
 
+  add_index "messages", ["recipient_id", "recipient_type"], :name => "index_messages_on_recipient_id_and_recipient_type"
+  add_index "messages", ["reply_to_id"], :name => "index_messages_on_reply_to_id"
+  add_index "messages", ["sender_id", "sender_type"], :name => "index_messages_on_sender_id_and_sender_type"
+
   create_table "news", :id => false, :force => true do |t|
     t.string   "uuid",         :limit => 36
     t.string   "title"
@@ -723,6 +843,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.date     "published_on"
   end
 
+  add_index "news", ["created_by"], :name => "index_news_on_created_by"
+
   create_table "news_categories", :id => false, :force => true do |t|
     t.string   "uuid",       :limit => 36
     t.string   "title"
@@ -739,6 +861,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "news_memberships", ["news_category_id"], :name => "index_news_memberships_on_news_category_id"
+  add_index "news_memberships", ["news_id"], :name => "index_news_memberships_on_news_id"
 
   create_table "newsletter_subscribers", :id => false, :force => true do |t|
     t.string   "uuid",              :limit => 36
@@ -859,6 +984,8 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "updated_at"
   end
 
+  add_index "page_views", ["viewable_id", "viewable_type"], :name => "index_page_views_on_viewable_id_and_viewable_type"
+
   create_table "pages", :id => false, :force => true do |t|
     t.string   "uuid",           :limit => 36
     t.string   "name"
@@ -927,6 +1054,9 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "social_category_images", ["parent_id"], :name => "index_social_category_images_on_parent_id"
+  add_index "social_category_images", ["social_category_id"], :name => "index_social_category_images_on_social_category_id"
 
   create_table "social_category_memberships", :id => false, :force => true do |t|
     t.string   "uuid",               :limit => 36
@@ -999,6 +1129,12 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.string   "organisation_id"
   end
 
+  create_table "tmp_organizations", :id => false, :force => true do |t|
+    t.integer "mem_id",       :limit => 8,  :null => false
+    t.string  "organization", :limit => 40, :null => false
+    t.integer "no_use"
+  end
+
   create_table "users", :id => false, :force => true do |t|
     t.string   "uuid",                         :limit => 36
     t.string   "permalink",                    :limit => 40
@@ -1043,7 +1179,7 @@ ActiveRecord::Schema.define(:version => 20110811103017) do
     t.datetime "first_logged_in_at"
   end
 
-  add_index "users", ["permalink"], :name => "index_users_on_permalink", :unique => true
+  add_index "users", ["permalink"], :name => "index_users_on_permalink"
   add_index "users", ["uuid"], :name => "index_users_on_uuid", :unique => true
 
 end

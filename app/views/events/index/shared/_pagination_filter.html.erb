@@ -1,0 +1,19 @@
+<div class="pagination-filter">
+  
+  <% filter_select "view-filter", "Ansicht" do %>
+  <%= layout_icons(params[:list_type].to_sym, :tiny => url_for(params.merge(:list_type => "tiny")),
+                                              :cards => url_for(params.merge(:list_type => "cards")),
+                                              :cal => url_for(params.merge(:list_type => "cal")),                                              
+                                              :maps => url_for(params.merge(:list_type => "maps"))) %>
+   <% end %>
+    
+  <% filter_select "sort-filter", "Sortieren" do %>
+    <ul>
+      <li class="act"><%= link_to "Startdatum", url_for(params.merge(:order => "starts_at")), :"data-value" => "starts_at" %></li>
+      <li><%= link_to "Titel", url_for(params.merge(:order => "title")), :"data-value" => "title" %></li>
+    </ul>
+  <% end %>
+  
+  <%= pagination_filter(@events) %>
+</div>
+<br style="clear: both" />

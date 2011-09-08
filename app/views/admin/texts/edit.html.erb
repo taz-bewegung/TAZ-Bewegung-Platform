@@ -1,0 +1,17 @@
+<%- breadcrumb [ link_to("Admin", admin_path)] -%>
+<%- title 'Admin' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:texts) -%>
+<%- end -%>
+
+<h1>Texte editieren</h1>
+
+<div id="edit-texts">
+  <% form_for(@text, :url => admin_text_path(:id => @text.file ), :method => :put) do |f| %>
+    <%= render_to_form(@text.data) %>
+    <p>
+      <%= f.submit "Speichern" %>
+    </p>
+  <% end %>
+</div>

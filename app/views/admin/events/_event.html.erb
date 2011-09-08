@@ -1,0 +1,15 @@
+<tr id="<%= dom_id(event) %>">
+  <td><%= image_for(event, :mini) -%></td>
+	<td><%= link_to h(event.title), event %></td>
+  <td class="icons">
+    <%= event_icons_for(event) -%>
+  </td>
+</tr>
+<tr>
+  <td colspan="8">
+    <div class="edit-admin-comment" rel="<%= update_comment_admin_event_path(event) -%>">
+      <%=h event.admin_comment -%>
+    </div>
+  </td>
+</tr>
+<%= render :partial => "details", :locals => { :event => event } -%>

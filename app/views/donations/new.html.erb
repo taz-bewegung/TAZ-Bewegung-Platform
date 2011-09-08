@@ -1,0 +1,13 @@
+<%= render :partial => "/donations/head" -%>
+<h1>Sicheres Spenden bei Helpedia</h1>
+<%= render :partial => "/donations/#{@presenter.current_step}" %>
+
+<% content_for :right_column do %>
+  <div style="margin: 15px; padding: 14px; background-color: #fff; border: 1px solid #ccc;">
+    <h2>Sicheres Spenden</h2>
+    <p class="bodytext">
+      Deine Daten werden über eine verschlüsselte Internet-Verbindung (SSL) übertragen. 
+      Die Verschlüsselung mittels SSL (Secure-Socket-Layer) sorgt dafür, dass Deine Daten sicher von Deinem Browser zu uns übertragen werden.
+    </p>
+  </div>
+<% end %>

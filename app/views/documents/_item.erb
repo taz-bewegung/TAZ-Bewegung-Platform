@@ -1,0 +1,5 @@
+<div>
+  <%= image_tag(@document.media_type_icon) %>
+  <%= @document.filename -%>
+  <%= hidden_field_tag :document, @document.id -%>
+</div>

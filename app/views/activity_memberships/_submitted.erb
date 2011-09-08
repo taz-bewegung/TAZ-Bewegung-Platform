@@ -1,0 +1,11 @@
+<div class="modal-left-content">
+  <h2>Sympathisieren</h2>
+  <p>
+    Du sympathisierst jetzt mit <%=h @membershipable.title %>.
+  </p>
+  <p>
+    Eine Übersicht über Deine Sympathisierungen findest Du auf <%= link_to "Deiner Seite", my_helpedia_activity_memberships_path %>.
+  </p>
+  <br />
+  <%= custom_link_button "Fenster schließen", "#", { :size => "33-beige" }, :onclick => "$.nyroModalRemove(); return false;"  %>  
+</div>

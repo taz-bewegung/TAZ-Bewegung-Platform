@@ -1,0 +1,31 @@
+<%- content_for :right_column do -%>
+<h2>Organisation ...</h2>
+<ul class="menu">
+  <%- if @organisation.bookmarkable_for?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @organisation.id %>">
+    <%= link_to "... zu meinen Favoriten", organisation_bookmarks_path(@organisation), :class => "ajax-link-post" -%>
+  </li>  
+  <%- end -%>
+  <%- if @organisation.bookmarked_by?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @organisation.id %>">
+    <%= link_to "... Favorit entfernen", organisation_bookmark_path(@organisation, @organisation.bookmarks.find_by_user_id(current_user.id)), :class => "ajax-link-delete-without-confirm" -%>
+  </li>  
+  <%- end -%>  
+  <%- if not @organisation == current_user -%>  
+  <li>
+    <%= link_to "... Nachricht an die Organisation", polymorphic_path([:new, @organisation, :message], {:format => :lightbox}), :class => "remote-lightbox" -%>    
+  </li>
+  <%- end -%>
+  <li class="last">
+    <%= link_to t(:"context_menu.public.shared.feedback.create"), new_organisation_feedback_path(@organisation, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>  
+</ul>
+
+<% render_or_cache "share_#{@organisation.uuid}" do %>
+<div class="share-icons">
+  <%= twitter_link organisation_url(@organisation)  %>
+</div>
+<% end %>
+
+
+<%- end -%>

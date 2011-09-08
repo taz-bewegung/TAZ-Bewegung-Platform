@@ -1,0 +1,50 @@
+<%- title " - #{t(:"activity.public_profile.sub_content.tabs.about.title")}" -%>
+<%- breadcrumb [ "" , link_to( t(:"activity.public_profile.sub_content.tabs.about.title"), description_activity_path(@activity))] -%>
+
+<div id="sub-content">
+  <div class="full-content blog">
+    <div class="full-content-left blog">
+      <div class="two-column">
+        <div class="column-75">
+          <%= secured_rte_text @activity.description %>
+          <% if @activity.code.present? %>
+            <div class="code">
+              <%= secured_video_code @activity.code, {:small => false} %>
+            </div>
+          <% end %>
+        </div>
+        <div class="column-25">
+          <div class="meta-info">
+            <h4>Themenkategorien:</h4>
+            <%=v @activity.social_categories.map(&:title).join(", ") || "-" -%>
+          </div>
+          <% if address_or_location_for(@activity).present? %>
+          <div class="meta-info">
+            <h4>Adresse:</h4>
+            <%= address_or_location_for(@activity) || "-" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="comments">
+        <%= render :partial => "/comments/index", :locals => { :commentable => @activity } %>
+      </div>
+    </div>
+    <div class="full-content-right">
+      <%= render :partial => "/activities/show/sidebar" -%>
+    </div>
+  </div>
+</div>
+
+<% if @activating %>
+<% show_lightbox_onload :selector => "show-wikileaks-lightbox" do %>
+  <div class="modal-left-content">
+  <% if @activity.wikileaked? %>
+    <iframe noresize="noresize" frameborder="0" border="0" cellspacing="0" scrolling="no" width="100%" marginwidth="0" marginheight="0" src="http://petition.bewegung.taz.de/users/<%= params[:user_id] -%>/activate/?activation_code=<%= params[:activation_code] %>"></iframe>
+  <% else %>
+    <iframe noresize="noresize" frameborder="0" border="0" cellspacing="0" scrolling="no" width="100%" marginwidth="0" marginheight="0" src="http://iran-petition.bewegung.taz.de/users/<%= params[:user_id] -%>/activate/?activation_code=<%= params[:activation_code] %>"></iframe>
+  <% end %>
+  </div>
+<% end %>
+<% end %>

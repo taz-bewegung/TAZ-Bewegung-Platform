@@ -1,0 +1,11 @@
+<h3>Vielen Dank für Deine Bestellung</h3>
+<p>
+  Du wirst nun in den kommenden Tagen Post von uns erhalten.
+</p>
+<p>  
+  Du möchtest noch mehr machen?
+  <ul>
+    <li><%= link_to "Wir bieten auch Webbanner zum download an", { :controller => 'pages', :action => 'downloads' } %></li>
+    <li><%= link_to "Oder Du kannst andere aktive Menschen einladen", new_commendation_path(:format => :lightbox), :class => "remote-lightbox" %></li>
+  </ul>
+</p>

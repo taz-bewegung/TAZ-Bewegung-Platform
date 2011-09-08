@@ -1,0 +1,17 @@
+<div class="message" id="message_<%= message.id %>">
+  <div class="sender_image">
+    <%= image_for(message.sender, :mini) %>
+  </div>
+  <div class="sender_info">
+    <div class="name">
+      <%= message.sender.full_name -%>     
+    </div>
+    <div class="date">
+      <%=l message.created_at -%>
+    </div>
+  </div>
+  <div class="body">  
+	  <%= simple_format(h(message.body)) -%>
+  </div>
+</div>
+<div class="msg_divide_bottom"> </div>

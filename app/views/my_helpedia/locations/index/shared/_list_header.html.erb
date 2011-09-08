@@ -1,0 +1,14 @@
+<div class="view-filter">
+  <h2 class="colored-21"><%= list_title %></h2>
+  <%= layout_switch_icons(params[:list_type].to_sym, :list => url_for(params.merge(:list_type => "rows", :filter => params[:filter])),
+                                                     :card => url_for(params.merge(:list_type => "cards", :filter => params[:filter])),
+                                                     :maps => url_for(params.merge(:list_type => "maps",  :filter => params[:filter]))) %>
+
+ 
+  <div class="spinner"> 
+  <%= image_tag "ajax-spinner.gif",
+                 :id => "table-spinner",
+                 :class => "table-spinner" -%>
+  </div>
+  <br style="clear: both;">
+</div>

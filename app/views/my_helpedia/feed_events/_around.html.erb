@@ -1,0 +1,17 @@
+<%= my_helpedia_user_feed_event_menu :around  %>  
+<h2><%= t("feed_event.location.header.#{current_user.class.to_s.downcase}") %></h2>
+<br />
+
+<% if @feed_events.present? %>
+  <div id="feed_event_results" class="list-tiny">
+    <%= render :partial => "/feed_events/list" %>
+  </div>
+
+  <%= will_paginate(@feed_events) %>
+  <%= pageless(@feed_events.total_pages, :url => feed_events_path, 
+                                         :message => " ...lade weitere Einträge", 
+                                         :element => "#feed_event_results") %>
+                                       
+<% else %>
+  <p>Trage deine Adresse auf deiner Seite ein und du siehst hier, was rund um deinen Standort passiert.</p>
+<% end %>                                       

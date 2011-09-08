@@ -1,0 +1,8 @@
+<% unless @object.errors.on(:permalink).blank? %>
+<div class="fieldWithErrors">
+<% end %>
+<%= text_field_tag_for :permalink, :class => @object.class, :value => @object.permalink, :tooltip => true, :id => 'permalink' %>   
+<% unless @object.errors.on(:permalink).blank? %>
+</div>
+<% end %>
+<div class="permalink"><%= polymorphic_url(@object) + "/" + content_tag(:span, @object.permalink, :class => span_class(@object, :permalink) ) %></div>

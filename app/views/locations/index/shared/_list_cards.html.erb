@@ -1,0 +1,8 @@
+<div class="locations">
+  <div class="list-card">
+    <%= render :collection => locations, 
+               :partial => "/locations/index/shared/list_cards_item", 
+               :as => :location, 
+               :locals => { :locations => locations } %>    
+  </div>  
+</div>

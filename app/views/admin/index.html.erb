@@ -1,0 +1,48 @@
+<%- breadcrumb [ link_to("Admin", admin_path)] -%>
+<%- title 'Admin' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:index) -%>
+<%- end -%>
+
+<h1>News zum Admin</h1>
+
+<%# restrict_to "(admin | moderator)" do %>
+  <%#= link_to "Admin & Moderator only link", :action =>'foo' %>
+<%# end %>
+
+<p>
+  Die rudimentären Funktionen zum Freischalten, Verstecken, Simulieren von Benutzern, Organisationen und Aktionen sind mittlerweile drin.
+</p>
+<p>
+  Design/Icons sind noch rudimentär und einige Funktionen (Veranstaltungen, Jobs, Spenden, Editieren von Daten im Admin...) fehlen noch. Work in progress...
+</p>
+
+<h2>Erklärungen zu den Icons</h2>
+<div>
+  <%= image_tag("fam-icons/accept.png") %>
+  Aktion / Organisation freischalten
+</div>
+<div>
+  <%= image_tag("fam-icons/add.png") %>
+  Aktion / Benutzer / Organisation wieder aktivieren (falls gesperrt)
+</div>
+<div>
+  <%= image_tag("fam-icons/delete.png") %>
+  Aktion / Benutzer / Organisation verstecken/sperren
+</div>
+<%# image_tag("fam-icons/exclamation.png") %>
+<%# image_tag("fam-icons/information.png") %> 
+<div>
+  <%= image_tag("fam-icons/pencil.png") %> 
+  Aktion / Organisation / Aktion bearbeiten (noch nicht implementiert)
+</div>
+<%# image_tag("fam-icons/lightbulb_off.png") %>
+<div>
+  <%= image_tag("fam-icons/lightbulb.png") %>
+  Mehr Infos zeigen
+</div>
+<div>
+  <%= image_tag("fam-icons/user_go.png") %>
+  Organisation / Benutzer simulieren
+</div>

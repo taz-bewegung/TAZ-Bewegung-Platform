@@ -1,0 +1,12 @@
+  <% menu_items.each do |item| -%>
+    <h2><%= item[:name] %></h2>
+    <ul class="menu">              
+    <% if item[:submenuitems].is_a?(Array) && !item[:submenuitems].empty? then -%>
+      <% item[:submenuitems].each do |subitem| -%>
+      <%- item[:submenuitems].last == subitem ? css_class = 'class="last"' : css_class = "" -%>
+      <li <%= css_class -%> id="<%= subitem[:id] %>">
+        <%= link_to "#{subitem[:name]}", subitem[:link_to], nav_content_is_active?(subitem, active, item[:submenuitems]) %>
+      <%- end -%>
+    </ul>
+    <%- end -%> 
+  <%- end -%>

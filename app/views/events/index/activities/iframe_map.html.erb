@@ -1,0 +1,15 @@
+<%- title "Termine für #{@activity.title}" -%>
+<%= @map.div(:width => 320, :height => 240) %>
+<script type="text/javascript" charset="utf-8">
+  $(document).ready(function(){
+    $("#map_div").height($(document).height()).width($(document).width());
+  });
+</script>
+<%= @map.to_html %>
+<script type="text/javascript" charset="utf-8">
+   $(document).ready(function(){
+     $("#map_div").click(function() {
+       $(".info-window a").attr("target", "_blank");
+      })
+   });
+</script>

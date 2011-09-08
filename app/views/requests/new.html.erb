@@ -1,0 +1,30 @@
+<% title t(:"request.new.header,") %>
+<% breadcrumb [ link_to(t(:"request.new.header"), new_request_path) ] %>
+<% magick_header t(:"request.new.header") %>
+<%- content_for :left_column do -%>	
+  <%= contact_sub_menu(:contact_form) -%>
+<%- end -%>
+
+
+<p>
+  Wir freuen uns über jede Frage, Anregung oder Kritik. Eine Antwort ist Euch sicher. Allgemeine Fragen können Sie in das untenstehende Kontaktformular eingeben. 
+  <br />Oder Sie kontaktieren einen Ansprechpartner, der zu Ihrem Anliegen passt.  
+</p>
+
+<% form_for(@request, 
+   :url => request_path,
+   :builder => EditFormBuilder ) do |f| %>
+  <table class="reg-form w-230" width="100%" colspan="0" rowspan="0">
+  <%= f.text_field :name, :required => true -%>      
+  <%= f.text_field :email, :required => true -%>    
+  <%= f.text_area :message, :required => true -%>      
+  <%# show_simple_captcha(:object=>"commendation", :label => "Antispam-Code") %>  
+    <tr>
+    	<td></td>
+    	<td align="left" style="padding-left: 6px">
+    	  <%= shadow_form_button("Absenden", :css_class => 35, :font_size => 14) %>
+    	</td>
+    </tr>
+  </table>
+<% end %>
+

@@ -1,0 +1,48 @@
+<%= donation_sub_menu(:userdata) %>
+<div id="sub-content">
+  <h2>Deine Kontodaten angeben</h2>
+  <%- form_for(@presenter, 
+               :url => @path,
+               :builder => EditFormBuilder,
+               :html => { :method => :post }) do |form| -%>
+  
+    <table border="0" class="reg-form w-230">             
+    <%= form.text_field :donation_account_owner, :required => true, :labels_from => Donation -%>    
+    <%= form.text_field :donation_account_number, :required => true, :labels_from => Donation -%>
+    <%= form.text_field :donation_account_number_confirmation, 
+                        :required => true, 
+                        :hide_label => true,
+                        :labels_from => Donation,                        
+                        :style => 'width:185px',
+                        :class => "make-me-short",
+                        :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Wiederholen" />' -%>  
+    <%= form.text_field :donation_bank_number, :required => true, :labels_from => Donation -%>   
+    <%= form.text_field :donation_bank_number_confirmation, 
+                        :required => true, 
+                        :hide_label => true, 
+                        :labels_from => Donation,
+                        :style => 'width:185px',
+                        :class => "make-me-short",
+                        :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Wiederholen" />' -%>  
+    <%= form.text_field :donation_bank, :required => true, :labels_from => Donation -%>
+    </table>
+    
+    <div class="form-footer">
+      <table border="0" class="reg-form w-230">
+        <tr>
+          <th>
+            <%- unless @activity.blank? -%>
+            <%= link_to image_tag("buttons/btn-back.png"), activity_donations_path(@activity, :step => @presenter.step_back), :method => :post %>            
+            <%- else -%>
+            <%= link_to image_tag("buttons/btn-back.png"), organisation_donations_path(@organisation, :step => @presenter.step_back), :method => :post %>                      
+            <%- end -%>
+          </th>
+          <td>
+            <%= image_submit_tag "buttons/btn-next.png", :class => "image-submit" -%>
+          </td>
+      </table>
+    </div>
+  
+    <%= hidden_field_tag "current_step", "#{@presenter.current_step}"%>
+  <%- end -%>
+</div>

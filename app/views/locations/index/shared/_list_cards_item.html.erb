@@ -1,0 +1,17 @@
+<div class="list-card-item">
+  <div class="item-inner-wrap">
+    <div class="item-title not-logged-in">
+      <%= link_to h(truncate(location.title, :length => 52)), location_path(location), :title => h(location.title) -%>   
+    </div>
+    <div class="item-text">
+      <div class="item-left">
+        <div class="item-image-wrap">
+          <%= image_for(location, :"90x69c", :context_menu => location_context_menu(location), :link_to => location_path(location)) -%>
+        </div>
+      </div>
+      <div class="description">
+        <%= truncate(secured_rte_text(location.description, :plain => true), :length => 140) -%>
+      </div>
+    </div>
+  </div>
+</div>

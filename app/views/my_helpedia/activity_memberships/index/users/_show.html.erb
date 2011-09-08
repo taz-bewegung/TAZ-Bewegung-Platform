@@ -1,0 +1,8 @@
+<%- title " - Sympathisierungen" -%>
+<%- breadcrumb [ "" , link_to( "Sympathisierungen", my_helpedia_activity_memberships_path)] -%>
+<%- magick_header "Sympathisierungen" -%>
+
+<%= my_helpedia_user_sub_menu(:memberships) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/my_helpedia/activity_memberships/index/users/index" %>
+</div>

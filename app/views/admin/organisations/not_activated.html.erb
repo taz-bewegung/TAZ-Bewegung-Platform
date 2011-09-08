@@ -1,0 +1,14 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Wartende Organisationen", not_activated_admin_organisations_path) ]%>
+<%- title 'Benutzerliste' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:new_organisations) -%>
+<%- end -%>
+
+<div class="admin">
+  <h1>Wartende Organisationen</h1>
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'organisation', :collection => @organisations %>
+  </table>
+</div>

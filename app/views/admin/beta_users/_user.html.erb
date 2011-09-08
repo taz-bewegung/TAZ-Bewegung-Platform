@@ -1,0 +1,6 @@
+<tr>
+  <td><%=h user.name -%></td>
+  <td><%=h user.comment -%></td>
+  <td><%= mail_to user.email, user.email %></td>
+  <td><%=l user.created_at.to_date %></td>  
+</tr>

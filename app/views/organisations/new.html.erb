@@ -1,0 +1,10 @@
+<%- title "Anmelden als Organisation" -%>
+<%- breadcrumb [ link_to("Anmelden als Organsation", new_organisation_path)] -%>
+<%- magick_header "Anmelden als Organisation" -%>
+
+<p>
+  Melde Deine Organisation, Initiative, Verein, Kampagne, Ortsgruppe, Stiftung oder Genossenschaft neu an.
+</p>
+
+<%= render :partial => "#{@presenter.current_step}" -%>
+

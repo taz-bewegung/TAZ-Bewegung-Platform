@@ -1,0 +1,2 @@
+<%= truncate(content.bodytext, :length => 800) %>
+<%= link_to 'mehr &raquo;', activity_blog_post_path(@activity, :id => content.blog_post_content.blog_post.permalink ) %>

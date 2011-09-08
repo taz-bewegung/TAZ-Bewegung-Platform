@@ -1,0 +1,10 @@
+<div id="new-content-<%= blog_post_content_element.blog_post_content.position+1 %>" class="new-content">
+  <%= link_to "Inhalte einfügen", polymorphic_path([:chose, :my_helpedia, @bloggable, :blog_post_contents], 
+                                                   { :position => blog_post_content_element.blog_post_content.position+1, 
+                                                     :part => "new-content-#{blog_post_content_element.blog_post_content.position+1}", 
+                                                     :blog_post_id => @blog_post.id
+                                                   }), 
+                                                   :class => "remote-link",
+                                                   :rel => "new-content-#{blog_post_content_element.blog_post_content.position+1}-spinner" -%>
+      <%= image_tag "ajax-spinner.gif", :id => "new-content-#{ blog_post_content_element.blog_post_content.position+1}-spinner", :style => "display: none;" %>                                                                                                                                              
+</div>

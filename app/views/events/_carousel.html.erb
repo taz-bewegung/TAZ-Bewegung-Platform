@@ -1,0 +1,38 @@
+<div id="slide_holder">
+   <div id='slide_holder_inner'>
+     <div id='row_of_slides'> 
+       <% 0.upto events.size-1 do |i| %>
+       <div class='slide' id="<%= "slide_#{i+1}" %>"> 
+         <%= link_to image_for(events[i], "393x197c"), events[i] %>
+         <div class="title"><%= h(events[i].title) %></div>
+       </div>
+       <% end %>
+     </div> 
+   </div>
+   <div id='carousel_controls'>
+     <div class="carousel_split"></div>
+     <div id='hover_prev_button' class='prev_button hover_button'></div>
+     <div class="carousel_split"></div>
+     <div id='hover_next_button' class='next_button hover_button'></div>
+     <div class="carousel_split"></div>
+     <ul id='slide_buttons'>        
+       <% 0.upto events.size-1 do |i| %>   
+       <li class='<%= "slide_#{i+1}" %>'></li>
+       <% end %>
+     </ul>
+   </div>
+ </div>
+ <script type="text/javascript">
+
+ $('#slide_holder').agile_carousel({
+   disable_on_first_last: "yes",
+   next_prev_buttons: "yes",
+   number_slides_visible: "1",
+   slide_buttons: "yes",
+   slide_captions: "",
+   timer_on: "no",
+   transition_duration: 1500,
+   transition_easing: "easeOutQuint"
+ });
+
+ </script>

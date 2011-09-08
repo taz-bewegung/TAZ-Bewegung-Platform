@@ -1,0 +1,25 @@
+<div class="organisations">
+  <div class="list-card">
+  <%- for organisation in organisations -%> 
+    <div class="list-card-item">
+      <div class="item-inner-wrap">
+        <div class="item-title">
+          <%= link_to h(truncate(organisation.name, :length => 45)), 
+                        organisation_path(organisation.permalink), 
+ 											  :title => h(organisation.name) -%>   
+        </div>
+        <div class="item-text">
+          <div class="item-left">
+            <div class="item-image-wrap">
+              <%= organisation_image_for(organisation, :small, :context_menu => organisation_context_menu(organisation), :link_to => organisation) -%>	
+            </div>
+          </div>
+          <div class="description">
+            <%= truncate(secured_rte_text(organisation.description, :plain => true), :length => 140) -%>          
+          </div>
+        </div>
+      </div>
+    </div>                                                               
+  <%- end -%>
+  </div>  
+</div>

@@ -1,0 +1,31 @@
+<%- breadcrumb [ link_to("Presse", news_path) ] -%>
+<%- title "News" -%>
+
+<%- content_for :left_column do -%>	
+  <%= news_sub_menu(:press) -%>
+<%- end -%>
+
+<h1>Presse</h1>
+<p>
+  Willkommen im Pressebereich von Helpedia. Hier finden Sie die aktuelle Berichterstattung über Helpedia und einige Materialen, die für Ihre Berichterstattung nützlich sein werden. 
+  Bei offen gebliebenen Fragen stehen wir Ihnen auch jederzeit persönlich zur Verfügung. Bitte wenden Sie sich dazu an den untenstehenden Presse-Kontakt.  
+</p>     
+
+<p>
+  Achim Ritzmann<br />
+  Presse- und Öffentlichkeitsarbeit<br />
+  Helpedia GmbH<br />
+  <br />
+  Tel.:      +40 (0)69-99999-3000<br />
+  Fax.:     +49 (0)69-99999-3004<br />
+  E-Mail:    <%= mail_to 'a.ritzmann@helpedia.de', nil, :encode => "hex" -%>  
+</p>  
+
+<h2>Downloads</h2>
+<ul class="small-margin">
+  <li><%= link_to "Helpedia in Kürze (PDF)", "/downloads/press/helpedia-in-kuerze.pdf" -%></li>
+  <li><%= link_to "Helpedia-Pressschau 2008 (PDF)", "/downloads/press/helpedia-presseschau.pdf" -%></li>  
+  <li><%= link_to "Screenshot Startseite (PNG)", "/downloads/press/helpedia-einfach-helfen.png" -%></li>    
+  <li><%= link_to "Helpedia - Logo (JPG)", "/downloads/press/helpedia-logo.jpg" -%></li>      
+  <li><%= link_to "Helpedia - Das Team (JPG)", "/downloads/press/helpedia-team.jpg" -%></li>        
+</ul>

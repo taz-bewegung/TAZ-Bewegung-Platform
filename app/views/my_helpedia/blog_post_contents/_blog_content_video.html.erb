@@ -1,0 +1,5 @@
+<% begin %>
+<%= image_tag thumbnail_url(content), :width => 64 %>
+<% rescue %>
+<p>Vorschaubild des Videos konnte leider nicht geladen werden.</p>
+<% end %>

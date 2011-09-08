@@ -9,18 +9,18 @@ class FeedEvent < ActiveRecord::Base
   belongs_to :trigger, :polymorphic => true       # Which object called the action  
   belongs_to :concerned, :polymorphic => true     # Which main object is concered (User, Event, Activity, Location, Organisation)
   
-  scope :latest, { :order => "feed_events.created_at DESC" }  
-  scope :public_visible, { :conditions => ["feed_events.is_public = ?", true] }
+  named_scope :latest, { :order => "feed_events.created_at DESC" }  
+  named_scope :public_visible, { :conditions => ["feed_events.is_public = ?", true] }
   
-  scope :limit, lambda { |*num|
+  named_scope :limit, lambda { |*num|
     { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
   }
   
-  scope :around, lambda { |address|
+  named_scope :around, lambda { |address|
     { :conditions => ["#{FeedEvent.distance_sql(address)} < ?", 50] }
   }
   
-  scope :by_type, lambda { |parameters|
+  named_scope :by_type, lambda { |parameters|
       { :conditions => { :type => parameters.map{ |t| t[0].camelize } } } 
     }
 

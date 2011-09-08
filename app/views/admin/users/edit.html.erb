@@ -1,0 +1,41 @@
+<%- title 'Benutzerliste' -%>
+<% breadcrumb [ link_to("Admin", admin_path), 
+                link_to("Benutzerliste", admin_users_path), 
+                link_to(h(@user.full_name), edit_admin_user_path(@user)) ]%>
+<% magick_header "Nutzer editieren" %>
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:user_list) -%>
+<%- end -%>
+
+<div class="admin"> 
+  <div class="edit-container">  
+  
+    <div class="edit-part-content">    
+      <%- form_for(@user, 
+                   :url => admin_user_path(@user), 
+                   :builder => EditFormBuilder) do |f| -%>
+  
+      <table width="100%" class="reg-form" rowspan="0" colspan="0">
+        <%= f.text_field :first_name, :required => false %>
+        <%= f.text_field :last_name, :required => false %>      
+        <%= f.text_field :permalink, :required => false %>      
+        <%= f.check_box :subscribed_newsletter %>
+        <%= f.check_box :receive_message_notification %>
+        <%= f.select :gender, User::GENDERS, { :include_blank => t(:"shared.form.select.blank") }, :required => false %>    
+        <%= f.date_select :birthday, { :order => [:day, :month, :year], :use_month_numbers => true, 
+        									:end_year => Date.today.year-100, :start_year => Date.today.year-10, :include_blank => true },
+        									:required => false -%>
+        <%= f.text_area :about_me, :required => false, :class => "mceEditor" %>      									
+      </table>
+    
+       <div class="edit-part-bottom">
+         <div class="buttons">
+           <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+           <%= link_to image_tag("buttons/btn-cancel.png"), admin_users_path -%>
+         </div>   
+       </div>
+      <%- end -%>
+    </div>
+  </div>
+  
+</div>

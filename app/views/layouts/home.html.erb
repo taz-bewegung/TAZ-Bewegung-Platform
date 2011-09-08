@@ -1,0 +1,72 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+
+   <title>bewegung.taz - Startseite</title>
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+   <meta name="description" content="bewegung taz termine aktionen orte" />
+   <meta name="keywords" content="bewegung taz termine aktionen orte" />
+
+    <%= include_stylesheets :home %>
+    <%= include_javascripts :default, :home %>   
+    
+   <%#= javascript_include_merged :home %>
+   <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>                                                                  
+   
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
+   
+  <!--[if lt IE 7]>
+    <%= stylesheet_link_tag 'ie6' %>	  
+    <%= stylesheet_link_tag 'ie6_home' %>    
+    <script src="/javascripts/DD_belatedPNG_0.0.6a-min.js"></script>
+    <script>
+      DD_belatedPNG.fix('#nav-main ul li, #hc-home,  #sticker, #bd, #hc-content, #ft, #logo-link');
+    </script>
+  <![endif]-->
+  <!--[if IE 7]>
+    <%= stylesheet_link_tag 'ie7' %>	  
+  <![endif]-->
+  
+<%= yield :googlemaps -%>
+</head>
+<body>
+  <%= render :partial => "/shared/noscript" %>
+  <%= render :partial => "/shared/google_analytics" %>
+  <div id="background-wrapper">
+    <div id="custom-doc" class="yui-t4">
+      <div id="hd">
+        <a href="/" id="logo-link">&nbsp;</a>
+        <%= render :partial => "/menu/top_menu" -%>
+        <div style="clear: both;"></div>
+      </div>
+		<%= render :partial => "/menu/bewegungs_finder" -%>
+      <div id="hc-home">
+        <%= render :partial => "/users/user_bar_home" %>
+      </div>
+  <div id="bd">         
+        <div class="main"> 
+		<div class="fancy-header">
+			<%= yield :magick_header %>
+		</div>
+          <div class="content">
+	          <%= yield %>
+          </div>
+        </div> 
+      </div>
+      <div id="ft">
+        <%#- render_or_cache("footer", { :ignore_roles => :admin }, :expires_in => 2.hours ) do -%>
+        <%= render :partial => "/shared/footer" %>
+       <%#- end -%>
+      </div>
+    </div>
+  </div>
+  <%# render :partial => "/activities/wikileaks" if session[:wikileaked].blank? and cookies[:wikileaked].blank? %>
+  <%# render :partial => "/activities/iran" if session[:iranized].blank? and cookies[:iranized].blank? %>
+  <%= render :partial => "/shared/piwik" if RAILS_ENV == "production" %>
+</body>
+</html>
+
+
+

@@ -1,0 +1,31 @@
+<% if cookies[:edit_texts] == "1" and logged_in? and current_user.has_role?(:admin) %>
+  <%= link_to "Editieren", { :controller => "contents", :action => "edit_welcome_carousel", :id => container.id, :cache_fragment => options[:cache_fragment] }, :class => "remote-link" %>  
+<% end %>
+
+<div class="teaser-items">  
+  <% 0.upto 0 do |i| %>
+  <h2 class="size-21"><%= elements[i].element.title %></h2>  
+  <% if elements[i].element.show_element? %>
+    <div class="teaser-image">
+      <%= link_to image_for(elements[i].element.element, :"278x205c"), polymorphic_path(elements[i].element.element) %>
+    </div>
+    <div>
+      <div class="title-link" <%= font_size_for_title(elements[i].element.element.title) %>>
+        <%= link_to elements[i].element.element.title, elements[i].element.element %>
+      </div>
+    </div>
+            
+  <% else %>
+    
+      <div class="teaser-image" >
+        <%= image_tag elements[i].element.image.public_filename(:teaser)  %>
+      </div>
+      <div>
+        <div>
+          <%= RedCloth.new(elements[i].element.bodytext).to_html %>
+        </div>
+      </div>
+      
+    <% end %>
+ <% end %>
+</div>

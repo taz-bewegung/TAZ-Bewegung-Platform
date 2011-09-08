@@ -1,0 +1,7 @@
+<%- title " - Unterzeichner" -%>
+<%- breadcrumb [ "" , link_to('Unterzeichner', activity_petition_users_path(@activity))] -%>
+
+<div id="sub-content">
+  <p><strong>Diese Petition ist abgeschlossen.</strong></p>
+  <p>UnterzeicherInnen insgesamt: <%= number_with_delimiter(@activity.petition_users_count, :delimiter => ".") %></p>
+</div>

@@ -1,0 +1,11 @@
+<div class="teaser-text" id="<%= dom_id content.element %>">
+  <% if cookies[:edit_texts] == "1" and logged_in? and current_user.has_role?(:admin) %>
+    <%= link_to "Editieren", { :controller => "contents", :action => "edit_top_element", :id => content.element.id }, :class => "remote-link" %>  
+  <% end %>
+  
+  <% if content.element.element_type == "BlogPost" %>
+    <%= render :partial => "/content/start_page/top_element_blog", :locals => { :content => content }%>
+  <% else %>
+    <%= render :partial => "/content/start_page/top_element_element", :locals => { :content => content } %>  
+  <% end %>
+</div>

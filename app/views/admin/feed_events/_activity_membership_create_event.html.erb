@@ -1,0 +1,8 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  Der Nutzer <%= link_to feed_event.operator.full_name, user_path(feed_event.operator) %>  
+  macht nun bei der Aktion <%= link_to feed_event.trigger.activity.title, activity_path(feed_event.trigger.activity) %> mit.
+</div>  
+

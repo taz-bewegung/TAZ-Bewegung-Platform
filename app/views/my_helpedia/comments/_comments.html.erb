@@ -1,0 +1,8 @@
+<%= my_helpedia_blog_sub_menu(:comments) -%> 
+<% if not @comments.blank? then %>
+<table class="message-table" border="0" cellspacing="5" cellpadding="5" width="100%">
+  <%= render :partial => "/my_helpedia/comments/comment", :collection => @comments %>
+</table>
+<% else -%>
+Es existieren noch keine Kommentare.
+<% end -%>

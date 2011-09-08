@@ -1,0 +1,22 @@
+<%- form_for(@response, 
+             :url => reply_my_helpedia_message_path(@message), 
+             :builder => EditFormBuilder,
+             :html => { :class => "remote-form", :rel => "spinner" }) do |form| -%>
+
+  <table class="reg-form w-165">
+    <%= form.text_area :body, :labels_from => Message, :required => true, :rows => 10 -%>
+    <tr>
+      <th></th>
+      <td>
+        <%= custom_form_button "Antworten", :size => "33-beige" %>
+      </td>
+    </tr>
+  </table>
+  <%- if current_user == @message.recipient -%>
+    <%= form.hidden_field :recipient_id, :value => @message.sender_id %>
+    <%= form.hidden_field :recipient_type, :value => @message.sender_type %>  
+  <%- else -%>  
+    <%= form.hidden_field :recipient_id, :value => @message.recipient_id %>
+    <%= form.hidden_field :recipient_type, :value => @message.recipient_type %>  
+  <%- end -%>  
+<%- end -%>

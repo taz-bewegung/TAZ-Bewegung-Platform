@@ -1,0 +1,23 @@
+<%- if @message.sender == current_user and not @message.system_message? -%>
+<%= my_helpedia_user_message_menu(:sent) -%>
+<%- elsif @message.recipient == current_user and not @message.system_message? -%>
+<%= my_helpedia_user_message_menu(:index) -%> 
+<%- else -%>
+<%= my_helpedia_user_message_menu(:system) -%>
+<%- end -%>
+
+<div class="message_header">
+  <h2><%=h @message.subject %></h2>
+  <div class="conversation">
+    Konversation zwischen <span class="bold"><%= user_profile_link_for @message.sender %></span> und <span class="bold"><%= user_profile_link_for @message.recipient %></span>
+  </div>
+</div>
+<%= render :partial => "/my_helpedia/messages/full_message", 
+           :collection => @messages, 
+           :as => :message %>
+
+<%- unless @message.system_message? -%>
+<div id="reply_form">
+  <%= render :partial => "/my_helpedia/messages/reply_form" %>           
+</div>
+<%- end -%>

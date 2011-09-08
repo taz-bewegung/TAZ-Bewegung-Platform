@@ -1,0 +1,25 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Presse", admin_press_path) ]%>
+<%- title 'Presse' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:press) -%>
+<%- end -%>  
+
+<%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Pressemeldungen", 
+                                                                   :object => @news,
+                                                                   :path => new_admin_press_instance_path(:spinner => "press-spinner"),
+                                                                   :prefix => "press",
+                                                                   :button => image_tag("buttons/btn-add.png")
+                                                                  } -%>  
+
+<div class="clearfloats edit-profile"> 
+  <div class="list-table">
+    <div id="new_news"></div>
+    <%- for news in @news -%>
+      <%= render :partial => "/admin/press/item", :locals => { :news => news } -%>
+    <%- end -%>                                                          
+  </div>
+  <%= will_paginate @news -%>
+</div>                 
+
+

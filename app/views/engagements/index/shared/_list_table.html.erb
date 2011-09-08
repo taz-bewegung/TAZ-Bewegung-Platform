@@ -1,0 +1,43 @@
+<div class="engagements">
+  <%= render :partial => "/engagements/index/shared/list_header", :locals => { :view => :list,
+                                                                              :list_title => list_title } -%>
+   
+   <div class="list-table">
+   <%- for engagement in engagements -%>
+   
+     <div class="list-table-item<%= " last" if engagements.last == engagement -%>">
+       <div class="clearfloats">
+         <div class="list-image-wrap">           
+           <%= engagement_image_for(engagement, :small, :grey) -%>
+         </div>
+         <div class="item-content-wrap">
+           <div class="item-title">
+             <%= link_to h(engagement.title), engagement_path(engagement), :title => h(engagement.title) -%>   
+           </div>
+           
+           <div class="item-content">
+             <div class="description">
+               <%=h truncate(engagement.description, :length => 300) -%>                       
+             </div>
+             <dl>
+               <dt><%= t(:"engagement.item_views.table.from") -%>:</dt>
+               <dd><%= user_profile_link_for(engagement.user)%></dd>
+               <dt><%= t(:"engagement.item_views.table.to") -%>:</dt>
+               <dd><%= link_to engagement.organisation.name, organisation_path(engagement.organisation) -%></dd>             
+               <dt><%= t(:"engagement.item_views.table.period") -%>:</dt>
+               <dd><%= engagement_period_for(engagement) -%></dd>
+               <dt><%= t(:"engagement.item_views.table.occypation_type") -%>:</dt>
+               <dd><%= engagement.occupation_type.name -%></dd>
+               <dt><%= t(:"engagement.item_views.table.social_categories") -%>:</dt>
+               <dd><%= engagement.social_categories.map(&:title).join(", ") -%></dd>             
+             </dl>
+           </div>          
+         </div>
+       </div>
+     </div>                                                         
+   <%- end -%>
+   
+   </div>
+</div>
+
+

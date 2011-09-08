@@ -1,0 +1,36 @@
+<%= user_sub_menu(:friendships) %>  
+<div id="sub-content">
+  <div class="two-column">
+    <div class="column-one">
+      <% if !@friendships.blank? %>
+        <h2>Mit folgenden AktivistInnen bin ich vernetzt</h2>
+   		  <div class="list-card">
+   				<% for friendship in @friendships -%>
+   					<div class="list-card-item">
+   						<div class="item-inner-wrap">
+   							<div class="item-title not-logged-in">
+   								<%= user_profile_link_for friendship.friend %>
+   							</div>
+   							<div class="item-text">
+   								<div class="item-left">
+   									<div class="item-image-wrap">
+   										<%= image_for(friendship.friend, "90x69c") -%>
+   									</div>
+   								</div>
+   								<div class="description">
+   										<%= link_to friendship.friend.activities.running.count.to_s + " Aktion(en)", user_activities_path(friendship.friend) if friendship.friend.visible_for?(current_user) -%>
+   										<%= link_to friendship.friend.events.running.count.to_s + " Termin(e)", user_events_path(friendship.friend) if friendship.friend.visible_for?(current_user) -%>
+   										<%= link_to friendship.friend.friendships.accepted_with_user.count.to_s + " Bezugsgruppe(n)", user_friendships_path(friendship.friend) if friendship.friend.visible_for?(current_user) -%>
+   										<%= "#{friendship.friend.activity_memberships.active.count} Symphatisierungen" -%> 
+   								</div>
+   							</div>
+   						</div>
+   					</div>
+   				<% end -%>
+   		  </div>
+      <% else %>
+        Du bist nicht mehr vernetzt.
+      <% end %>
+    </div>                         
+   </div>
+</div>

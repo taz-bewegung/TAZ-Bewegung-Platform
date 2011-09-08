@@ -1,0 +1,6 @@
+<span style="display: block;">
+  <%= truncate(secured_rte_text(content.bodytext, :plain => true), :length => 200) %>
+</span>
+<% for image in content.images %>
+  <%= image_tag(image.public_filename(:mini)) %>
+<% end %>

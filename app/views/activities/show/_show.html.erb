@@ -1,0 +1,10 @@
+<%- title h(@activity.title) -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.activities"), activities_path),  
+                 link_to(h(@activity.title), activity_path(@activity))] -%>
+<%- magick_header @activity.title -%>
+
+<%= render :partial => "/activities/show/right_column" -%>      
+<%= render :partial => "/activities/show/head" -%>
+<%= edit_header render_activity_info_box(@activity, :public) -%>
+<%= activity_sub_menu(sub_menu_active) %> 
+<%= render :partial => content_partial %>

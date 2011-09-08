@@ -1,0 +1,33 @@
+<div class="item pagination" data-id="pagination" data-currentPage="<%= params[:page] %>" data-maxPages="<%= collection.total_pages < 1 ? 1 : collection.total_pages %>" >
+  <div class="active-filter">
+    <span>Seite</span>
+    <%= previous_pagination_link collection, image_tag("pagination-filter/pagination-arrow-back.png") %>
+    <span class="hover-span">
+      <%= link_to current_page(collection), "", :class => "stats" %>
+      <%= link_to image_tag("pagination-filter/arrow-bottom.png", :class => "arrow-bottom"), "#", :style => "margin-right: 0px" %>
+      <table class="filter-list" border="0" cellspacing="0" cellpadding="0">
+        <tr class="middle">
+          <td class="middle-left"></td>
+          <td class="middle-content">
+            <div class="container">
+              <%= first_pagination_link collection, image_tag("pagination-filter/arrow-first.png") %>
+              <%= previous_pagination_link collection, image_tag("pagination-filter/arrow-back.png") %>
+              <%= page_selector(collection) %>
+              <span> von <%= collection.total_pages < 1 ? 1 : collection.total_pages %></span>
+              <%= next_pagination_link collection, image_tag("pagination-filter/arrow-next.png"),{:class => "workaround"} %>
+              <%= last_pagination_link collection, image_tag("pagination-filter/arrow-last.png") %>
+            </div>
+          </td>
+          <td class="middle-right"></td>
+        </tr>
+        <tr class="bottom">
+          <td class="bottom-left"></td>
+          <td class="bottom-middle"></td>
+          <td class="bottom-right"></td>
+        </tr>
+      </table>          
+    </span>
+    <%= next_pagination_link collection, image_tag("pagination-filter/pagination-arrow-next.png") %>
+  </div>
+  <%= spinner %>
+</div>

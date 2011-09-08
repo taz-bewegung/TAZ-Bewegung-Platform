@@ -1,0 +1,23 @@
+<tr class="<%=cycle("", "alternate")%>">
+  <td><%= image_for(organisation, :mini) -%></td>
+	<td><%= link_to h(organisation.name), organisation_path(organisation) %></td>
+  <td class="state"><%= formal_organisation_status_for(organisation) -%></td>    
+  <td class="icons">
+    <%= organisation_icons_for(organisation) -%>
+  </td>
+</tr>
+<% if organisation.address.nil? %>
+<tr>
+  <td colspan="8">
+   <span style="color:red">Die Organisation hat keine Adresse und kann deshalb nicht freigeschaltet werden!</span>
+  </td>
+</tr>
+<% end %>
+<tr class="edit-admin-comment">
+  <td colspan="8">
+    <div class="edit-admin-comment" rel="<%= update_comment_admin_organisation_path(organisation) -%>">
+      <%=h organisation.admin_comment -%>
+    </div>
+  </td>
+</tr>
+<%= render :partial => "details", :locals => { :organisation => organisation } -%>

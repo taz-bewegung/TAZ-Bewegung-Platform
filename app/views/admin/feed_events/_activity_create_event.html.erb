@@ -1,0 +1,21 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  Der Nutzer <%= link_to feed_event.operator.full_name, polymorphic_path(feed_event.operator) -%> hat eine neue Aktion 
+  <%= link_to feed_event.trigger.title, activity_path(feed_event.trigger) %> eingestellt.
+</div>
+<div class="feed-event-functions">
+  <ul>
+    <li>
+      <%= link_to "Sperren", suspend_confirmation_admin_activity_path(feed_event.trigger), :class => "remote-link" %>
+    </li>
+    <li>
+      <%= link_to "Löschen", destroy_confirmation_admin_activity_path(feed_event.trigger), :class => "remote-link" %>
+    </li>
+    <li>
+      <%= link_to "Nachricht an Aktiven", polymorphic_path([:new, feed_event.operator, :message], :format => :lightbox), :class => "remote-lightbox" %>
+    </li>
+  </ul>
+</div>
+

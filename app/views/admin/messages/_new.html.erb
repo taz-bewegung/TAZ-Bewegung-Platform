@@ -1,0 +1,23 @@
+<%= admin_user_message_menu(:new) -%>
+
+<h1><%= t :"message.new.topic" %></h1>
+
+<%- form_for(@message, 
+             :url => admin_messages_path, 
+             :builder => EditFormBuilder,
+             :html => { :class => "remote-form", :rel => "spinner" }) do |form| -%>
+
+  <table id="new_message_form" class="reg-form w-230">
+    <%= form.text_field :subject, :labels_from => Message -%>
+    <%= form.text_field :recipient_id, :labels_from => Message, :name => "message[recipient_ids][]" -%>
+    <%= form.check_box :send_to_organisations %>
+    <%= form.check_box :send_to_users %>
+    <%= form.text_area :body, :labels_from => Message, :required => true, :rows => 10 -%>
+    <tr> 
+      <th></th>
+      <td>
+        <%= image_submit_tag "buttons/btn-send.png", :class => "image-submit" -%>
+      </td>
+    </tr>
+  </table>
+<%- end -%>

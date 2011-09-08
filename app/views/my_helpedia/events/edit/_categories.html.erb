@@ -1,0 +1,19 @@
+<div id="categories" class="edit-container">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Kategorien", 
+                                                                 :object => @event,
+                                                                 :path => edit_part_my_helpedia_event_path(@event, :part => "categories"),
+                                                                 :prefix => "categories",
+                                                                 :button => image_tag("buttons/btn-edit.png")
+                                                                } -%>  
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100">
+        <dl>    
+          <dt><%= Event.human_attribute_name("social_categories") -%>:</dt>
+          <dd><%= @event.social_categories.map(&:title).join(", ") || "-" -%></dd>
+      </div>
+    </div>
+  </div>
+</div>

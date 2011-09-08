@@ -1,0 +1,32 @@
+<div id="activity_texts" class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Texte", 
+                                                                     :object => @activity,
+                                                                     :path => edit_part_my_helpedia_activity_path(@activity, :part => "activity_texts"),
+                                                                     :prefix => "activity_texts",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100"
+         <dl>
+            <dt><%= Activity.human_attribute_name("goal") -%>:</dt>
+            <dd><%= v @activity.goal -%></dd>          
+          </dl>
+        <dl>
+          <dt><%= Activity.human_attribute_name("participation") -%>:</dt>
+          <dd><%= v @activity.participation -%></dd>          
+        </dl>   
+        <dl>
+          <dt><%= Activity.human_attribute_name("about") -%>:</dt>
+          <dd><%= truncate(secured_rte_text(@activity.description, :plain => true), :length => 200) || "-" -%></dd>          
+        </dl>
+        <dl>
+          <dt><%= Activity.human_attribute_name("code") -%>:</dt>
+          <dd><%= @activity.code.present? ? secured_video_code(@activity.code) : "-" -%></dd>          
+        </dl>
+      </div>
+    </div>    
+  </div>
+</div>

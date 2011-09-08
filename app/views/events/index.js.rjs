@@ -1,0 +1,12 @@
+if params[:pagination_reload] == "1"
+  params[:pagination_reload] = 0
+  if params[:list_type] != "cal"
+    page[".item.pagination"].replace :partial => "/pagination_filter/pagination", :locals => { :collection => @events }
+  else
+    page[".item.pagination"].replace :partial => "/pagination_filter/calendar", :locals => { :collection => @events }    
+  end
+end
+
+page["sub-content-list"].replace_html :partial => "/events/list", 
+                                      :locals => { :events => @events, :grouped_events => @grouped_events}
+page.insert_html("after","sub-content-list", @map.to_html(:no_load => true, :no_script => true)) unless @map.blank?

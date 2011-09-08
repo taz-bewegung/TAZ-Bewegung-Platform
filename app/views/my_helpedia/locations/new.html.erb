@@ -1,0 +1,65 @@
+<% title "Neuen Ort eintragen" %>
+<% breadcrumb [link_to(t(:"breadcrumb.my_helpedia"), my_helpedia_path), link_to("Neuen Ort eintragen", new_my_helpedia_location_path)] %>
+<% magick_header "Neuen Ort empfehlen" %>
+
+<p>
+  Die mit einem * markierten Felder müssen ausgefüllt werden.
+</p>
+  <%- form_for(@location, 
+               :url => my_helpedia_locations_path, 
+               :builder => EditFormBuilder) do |form| -%>
+    <table border="0" class="reg-form w-230">
+      <%= form.text_field :name, :required => true -%>
+      <%= form.text_field :permalink, 
+                          :required => true, 
+                          :labels_from => Location,
+                          :after_html => '<div class="shortname" style="float:left">' + locations_url + '/<span class="chosen-shortname">'+@location.permalink.to_s+'</span></div>' -%>      
+
+      <% form.fields_for :image_attachment, 
+                      (@location.image_attachment || @location.build_image_attachment), 
+                      :builder => EditFormBuilder do |image_form| %>
+        <%= image_form.image_field :image_id, :id => "image_attachment", 
+                                   :labels_from => Location, 
+                                   :image_object => @location.image_attachment,
+                                   :default_image_from => Location %>                                     
+      <% end %>
+
+
+      <%- form.fields_for :address,
+                          :builder => EditFormBuilder do |address_form| -%>
+      <%= address_form.text_field :street, :required => true, :labels_from => Location -%>
+      <%= address_form.text_field :zip_code, :required => true, :labels_from => Location -%>      
+      <%= address_form.text_field :city, :required => true, :labels_from => Location -%>
+      
+      <%- end -%>
+      <%= form.text_field :phone, :required => false, :labels_from => Location -%>
+      <%= form.text_field :fax, :required => false, :labels_from => Location -%>
+      <%= form.text_field :email, :required => false, :labels_from => Location -%>
+      <%= form.text_field :contact_person, :required => false, :labels_from => Location -%>
+      <%= form.text_field :website, :required => false, :labels_from => Location -%>
+      <%= form.text_area :description, :required => true, :class => "mceEditor" -%>
+      <tr>
+          <th valign="top">
+            <label>
+              Kategorien:
+            </label>
+          </th>
+          <td class="social-categories">
+            <% for category in LocationCategory.find(:all) %>
+            <%- if not params[:location].blank? and not params[:location][:location_category_ids].blank? -%>
+            <%= check_box_tag "location[location_category_ids][]", category.id, params[:location][:location_category_ids].include?(category.id), :class => "checkbox" -%>
+            <%- else -%>
+            <%= check_box_tag "location[location_category_ids][]", category.id, false, :class => "checkbox" -%>      
+            <%- end -%>      
+            <span><%= category.name -%></span>
+            <br/>
+            <% end %>
+        </td>
+      </tr>
+      <tr>
+  	    <td></td>
+  	    <td align="left" style="padding-left: 5px"><%= shadow_form_button("Ort empfehlen", :css_class => 35, :font_size => 14) %> oder <%= link_to "Abbrechen", my_helpedia_path %>
+  	    </td>
+      </tr>		     
+    </table>
+<% end %> 

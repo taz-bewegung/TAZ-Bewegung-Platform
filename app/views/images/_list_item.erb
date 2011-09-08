@@ -1,0 +1,4 @@
+<li class="item <%= "multiple" if params[:multiple] -%>" id="<%= dom_id(image) -%>" rel="<%= image_path(image, :part => params[:part], :multiple => params[:multiple], :name_prefix => params[:name_prefix], :image_size => params[:image_size], :image_input => params[:image_input]) -%>">
+  <%= archive_image(image, :"90x69c") -%>
+  <%= ImageAttachment.count(:conditions => { :image_id => image.id}) %>x verwendet
+</li>

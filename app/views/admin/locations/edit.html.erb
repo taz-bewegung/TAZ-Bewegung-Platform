@@ -1,0 +1,50 @@
+<%- title 'Benutzerliste' -%>
+<% breadcrumb [ link_to("Admin", admin_path), 
+                link_to("Terminliste", admin_locations_path), 
+                link_to(h(@location.title), edit_admin_location_path(@location)) ]%>
+<% magick_header "Termin editieren" %>
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:location_list) -%>
+<%- end -%>
+
+<div class="admin"> 
+  <div class="edit-container">    
+    <div class="edit-part-content">    
+      <%- form_for(@location, 
+                   :url => admin_location_path(@location), 
+                   :builder => EditFormBuilder) do |f| -%>
+  
+      <table width="100%" class="reg-form" rowspan="0" colspan="0">
+        <%= f.text_field :name, :required => false %>
+        <%= f.text_field :permalink, :required => false %>
+        <%= f.text_field :website, :required => false -%>    
+        <tr>
+          <th valign="top">
+            <label><%= Location.human_attribute_name("location_categories") -%>:</label>
+          </th>
+          <td> 
+            <ul>
+              <%- for category in LocationCategory.find(:all) -%>
+              <li id="category-<%= category.id -%>" style="padding: 2px;">
+                <%= check_box_tag("location[location_category_ids][]", category.id, @location.location_categories.include?(category), :class => "checkbox", :id => "cat-#{category.id}") %>              
+                <span>
+                  <%= category.name -%>
+                </span>
+              </li>
+              <%- end -%>
+            </ul>
+          </td>
+        </tr>        
+        <%= f.text_area :description, :required => false, :class => "mceEditor" %>
+      </table>
+    
+       <div class="edit-part-bottom">
+         <div class="buttons">
+           <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+           <%= link_to image_tag("buttons/btn-cancel.png"), admin_locations_path -%>
+         </div>   
+       </div>
+      <%- end -%>
+    </div>
+  </div>  
+</div>

@@ -1,0 +1,14 @@
+<div class="header-box">
+  <div class="clearfloats header-box-header">
+    <div class="header-left big-header">
+      <span id="comment_count"><%= t(:"comments", :count => @commentable_item.comments.visible.count) -%></span>
+    </div>
+    <div class="header-right">
+      <%= link_to "Kommentar schreiben", "#comment_form" -%>
+    </div>
+  </div>        
+
+  <div id="comments" class="header-box-content" name="comments">
+    <%= render :partial => "/comments/comment", :collection => @commentable_item.comments.visible, :as => :comment %>
+  </div>        
+</div>

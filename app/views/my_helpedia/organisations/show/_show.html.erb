@@ -1,0 +1,7 @@
+<%- title t(:"layout.menu.my_helpedia") -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.my_helpedia"), my_helpedia_path)] -%>
+<%- edit_header render_organisation_info_box(@organisation, :private) -%>
+
+<%= render :partial => "/my_helpedia/organisations/show/right_column" -%>      
+<%= render :partial => content_partial %>
+

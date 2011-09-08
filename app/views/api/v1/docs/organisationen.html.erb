@@ -1,0 +1,137 @@
+<%= magick_header 'organisationen' %>
+
+<a href="/api/v1/docs">&laquo; Zurück zur Übersicht</a>
+<br />
+<br />
+
+<p class="summary">
+  Über die API für Organisationen können Organisationen auf bewegung.taz.de in verschiedenen Formaten exportiert werden.
+    
+</p>
+
+
+<h2>Repräsentationen</h2>
+
+
+<a name="json"></a>
+<strong>JSON Repräsentation:</strong> <br /><a href="#" onclick="$('#jsonrep').toggle(); return false;">(Anzeigen/Verstecken)</a><br />
+<div id="jsonrep" style="display: none"><%= CodeRay.encode(Organisation.first.api_hash.to_json, :json, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %></div><br />
+
+
+
+<a name="xml"></a>
+<strong>XML Repräsentation:</strong> <br /><a href="#" onclick="$('#xmlrep').toggle(); return false;">(Anzeigen/Verstecken)</a><br/>
+<div id="xmlrep" style="display: none"><%= CodeRay.encode(Organisation.first.api_hash.to_xml(:root => :organisation), :xml, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %></div>
+
+
+
+
+
+  <div class="method-block">
+
+  <h2>Organisationen auslesen</h2>
+  
+  <p>
+      
+
+  Liefert eine Liste mit Organisationen zurück. Die Liste ist abhängig von den gewählten Parametern und dem gewählten Format.<br />
+
+  </p>
+  <br />
+  <p>
+    <b>URL:</b>
+  </p>
+  <p>
+    <font face="courier new,monospace">
+      <%= application.site_url %>/api/v1/organisationen<i>.format</i>
+    </font>
+  </p>
+  <br />  
+  <p>
+    <b>Formate:</b>
+  </p>
+  <p>
+    xml, json
+  </p>
+  <br />
+  <p>
+    <b>HTTP-Methode:</b>
+  </p>
+  <p>
+    GET
+  </p>
+  <br />
+  <p>
+    <b>Authentifizierung notwendig</b>
+  </p>  
+  <p>
+    Authorisierung erforderlich
+  </p>
+  <br />
+  <p>
+    <b>Parameter:</b>
+  </p>
+  <p>
+    <ul>
+      
+      <li><font face="courier new,monospace">page </font>        
+           Die aktuelle Seite
+          <ul>
+            <li> Optional </li>
+            <li> integer </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">per_page </font>        
+           Wie viele Organisationen sollen pro Seite angezeigt werden
+          <ul>
+            <li> Optional </li>
+            <li> integer </li>            
+          </ul>
+      </li>
+      
+    </ul>
+  </p>
+  <br />
+  
+  
+  
+  
+  <p>
+    <b>Beispiele:</b>
+  </p>
+  <p>
+    
+    <span style="font-family: Courier New;">curl <%= application.site_url %>/api/v1/organisationen.xml?page=1&per_page=20</span>
+    
+  </p>
+  <br />  
+    
+  
+ <p>
+  <b>Return-Wert:</b>
+ </p>
+ <p>
+  Eine Liste mit Organisationen
+  <br /><br />
+  <ul>
+      
+    <li>
+      <strong>Beispiel-XML:</strong> <br /><a href="#" onclick="$(this).next('div').toggle(); return false;">(Anzeigen/Verstecken)</a>
+      <div style="display: none" class="code"><%= CodeRay.encode(render(:partial => "/api/v1/organisations/index.xml.builder", :locals => { :organisations => Organisation.active.paginate(:page => 1, :per_page => 2) }), :xml, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %></div>      
+    </li>
+  
+    
+    <li>
+      <strong>Beispiel-JSON:</strong> <br /><a href="#" onclick="$(this).next('div').toggle(); return false;">(Anzeigen/Verstecken)</a>
+      <div style="display: none" class="code"><%= CodeRay.encode(Organisation.active.paginate(:page => 1, :per_page => 2).to_json, :json, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %>  </div>      
+    </li>    
+  
+  </ul>  
+ </p>
+ 
+  
+</div>
+
+
+<%= render :partial => "sidebar"  %>

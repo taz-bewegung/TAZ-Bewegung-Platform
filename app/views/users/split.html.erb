@@ -1,0 +1,19 @@
+<%- title "Anmelden" -%>
+<%- breadcrumb [ link_to("Anmelden", split_users_path)] -%>
+<%- magick_header "Anmelden als..." -%>
+<div class="category-overview-right"> 
+	<div class="select_one_option">
+	  <div class="left-option">
+		  <%= link_to image_tag("/images/default/organisations/organisation_large.gif"), new_organisation_path %>
+		  <p>
+		    <%= link_to "Vereine, Initiativen, 
+      Kampagnen, Ortsgruppen, 
+      Stiftungen, Genossenschaften", new_organisation_path %>
+		  </p>		  
+		</div>
+	  <div class="right-option">
+		  <%= link_to image_tag("/images/default/users/user_large.gif"), new_user_path %>
+		  <p><%= link_to "Einzelpersonen", new_user_path %></p>
+		</div>
+	</div>
+</div>

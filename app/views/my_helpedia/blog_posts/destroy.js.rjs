@@ -1,0 +1,6 @@
+page["post_#{@blog_post.id}"].replace_html content_tag(:div, 
+                               "#{@blog_post.title} wurde erfolgreich gelöscht.",
+                               :style => "padding: 10px")
+page << "$('#post_#{@blog_post.id}, #separator-post_#{@blog_post.id}').
+            animate({opacity: 1.0}, 4000).
+            fadeOut('slow', function() { $(this).remove(); });"

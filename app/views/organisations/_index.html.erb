@@ -1,0 +1,30 @@
+<% title t(:"layout.menu.organisations") %>
+<% main_menu :organisations %>
+<% breadcrumb [ link_to("Organisation", organisations_path)] %>
+<% magick_header "Organisationen" %>
+
+<%- if params[:i_search].blank? -%>
+  <%- render_or_cache("organisation_index_teaser", { :ignore_roles => [:admin] }, :expires_in => 1.hour ) do -%>
+    <div class="clearfloats landing-page-teaser">
+      <%= render_content_container("organisation_index_text", :cache_fragment => "organisation_index_teaser") %>
+      <%= render_carousel_container("organisation_index_carousel", :cache_fragment => "organisation_index_teaser") %>
+    </div>
+  <% end %>
+<%- end -%>
+
+<div class="full-content">
+  <div class="full-content-left">
+    <%= render :partial => "/organisations/index/shared/pagination_filter" %>
+    <div id="sub-content-list">
+      <%= render :partial => '/organisations/list' -%>
+    </div>
+  </div>    
+  
+  <%- if params[:i_search].blank? -%>
+  <%- cache("organisation_sidebar", :expires_in => 10.minutes ) do -%>    
+  <div class="full-content-right">     
+    <%= render :partial => 'sidebar' -%>
+  </div>
+  <% end %>
+  <% end %>
+</div>    

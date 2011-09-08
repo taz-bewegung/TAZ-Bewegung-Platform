@@ -1,0 +1,22 @@
+<div class="modal-left-content">
+  <h2>Editieren</h2>
+
+  <% form_for(@content, 
+     :url => { :controller => "contents", :action => "save_teaser_text", :id => @content.id, :cache_fragment => params[:cache_fragment] },
+     :builder => EditFormBuilder,
+     :html => { :class => "remote-form", :rel => "request-spinner" }) do |f| %>
+    
+    <table class="reg-form w-140" width="100%" colspan="0" rowspan="0">
+    <%= f.text_field :title, :required => true, :class => "tt-width-140" -%>
+    <%= f.text_area :bodytext, :required => true, :class => "tt-width-140" -%>
+    <tr>
+      <th>
+      </th>
+      <td>
+        <%= shadow_form_button("Speichern", :css_class => 35, :font_size => 14) %> 
+        oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+      </td>
+    </tr>
+    </table>
+  <% end %> 
+</div>

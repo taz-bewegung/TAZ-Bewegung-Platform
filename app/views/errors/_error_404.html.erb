@@ -1,0 +1,23 @@
+<% title "404 - Seite nicht gefunden" %>
+<% breadcrumb [ "404 - Seite nicht gefunden"] %>
+<% magick_header "404 - Seite nicht gefunden" %>
+
+
+<div>
+  <h1 class="error">Die gewünschte Seite konnte<br /> leider nicht gefunden werden (404)!</h1>
+  <br />  
+  <div>
+    <p>Vielleicht hast Du einen alten Link oder ein altes Lesezeichen verwendet?!</p>  
+    <br /><br />  
+    <h2>Wolltest Du vielleicht?</h2>
+    <ul>
+      <li><%= link_to "Aktionen suchen", activities_path %></li>
+      <li><%= link_to "Termine suchen", events_path %></li>
+      <li><%= link_to "Orte suchen", locations_path %></li>
+      <li><%= link_to "Organisationen suchen", organisations_path %></li> </ul>
+    <br /><br />
+    <h2>Oder hilft Dir das weiter?</h2>
+      <li><%= link_to "Kontakt", new_request_path %></li>
+    </ul>  
+  </div>
+</div>

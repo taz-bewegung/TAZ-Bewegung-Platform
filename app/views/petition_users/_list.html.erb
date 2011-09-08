@@ -1,0 +1,11 @@
+<%- @grouped_petition_users.each do |date_group, users| %>
+  <% if session[:petition_date] != date_group %>
+  <%= content_tag :h2, date_group -%>
+  <% session[:petition_date] = date_group %>  
+  <% end %>
+  <table width="100%" cellspacing="0" cellpadding="0">
+  <% users.in_groups_of(2, '&nbsp;') do |group| %>
+  <%= content_tag(:tr, (group.collect! {|x| content_tag(:td, "#{x.to_s}") } ), :class => cycle("", "alternate") ) %>
+  <% end %>
+  </table>
+<%- end -%>

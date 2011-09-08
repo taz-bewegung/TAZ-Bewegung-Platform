@@ -1,0 +1,37 @@
+<%= organisation_sub_menu(:overview) %> 
+<div id="sub-content">
+     
+    <div class="overview-item">
+      <h2>Über uns</h2>
+      <%= truncate secured_rte_text(@organisation.description, :plain => true), :length => 285 %>
+      <%= link_to t(:"shared.links.more"), about_organisation_path(@organisation) %>
+    </div>
+ 
+    <%- unless @organisation.blog.posts.published.blank? -%>
+    <div class="overview-item">
+      <h2><%= t(:"activity.public_profile.sub_content.tabs.overview.content.blog_latest_header") -%></h2>
+      <h4><%= @organisation.blog.posts.published.first.title -%></h4>
+      <% unless @organisation.blog.posts.published.first.blog_post_contents.blank? %> 
+      <%= render :partial => "/my_helpedia/blog_post_contents/teaser/#{@organisation.blog.posts.published.first.blog_post_contents.first.contentable_type.underscore}",
+                 :locals => { :content => @organisation.blog.posts.published.first.blog_post_contents.first.contentable } %>
+      <% end %>      
+      <%= link_to t(:"shared.links.more"), organisation_blog_path(@organisation) %>
+    </div>
+    <%- end -%>
+
+   <%- unless @organisation.activity_memberships.active.blank? -%> 
+   <div class="overview-item">
+     <h2><%= "Sympathisanten" -%></h2>
+     <div class="clearfloats">
+       <%- for membership in @organisation.activity_memberships.latest.active_with_user.limit(15) -%> 
+       <div class="membership-image">
+         <%= link_to image_for(membership.user, :"56x42c"), organisation_activity_memberships_path(@organisation), :title => h(membership.user.full_name) -%>
+       </div>
+       <%- end -%>
+     </div> 
+     <br />
+     <%= link_to "Alle Sympathisanten >>", organisation_activity_memberships_path(@organisation) %>
+   </div>    
+   <%- end -%>
+   
+</div>

@@ -1,0 +1,23 @@
+<tr class="<%= cycle("","alternate") -%>" id="friendship_<%= friendship.id %>" >
+  <td class="image">
+    <%= image_for(friendship.friend, :"90x69c")%>
+  </td>
+  <td class="name-and-date">
+    <span class="name"><%= user_profile_link_for(friendship.friend) -%></span>
+    <span class="date">Seit: <%=l friendship.created_at -%></span>
+  </td> 
+  <td class="subject">
+	  <%# simple_format(h(message.body)) -%>
+  </td>
+  <td>
+    <%- if params[:state]=="requested" -%>
+		<%= link_to image_tag("fam-icons/user_add.png", :border => 0), accept_my_helpedia_friendship_path(friendship), :class => "ajax-link-put", :title => "Annehmen" %>
+    	<%= link_to image_tag("fam-icons/user_delete.png", :border => 0), deny_my_helpedia_friendship_path(friendship), :class => "ajax-link-put", :title => "Ablehnen" %>
+    <%- elsif params[:state]=="pending" -%>
+		<%= link_to image_tag("fam-icons/user_delete.png", :border => 0), my_helpedia_friendship_path(friendship), :class => "ajax-link-delete", :title => "Löschen" %>
+    <%- else -%>
+			<%= link_to image_tag("fam-icons/user_delete.png", :border => 0), my_helpedia_friendship_path(friendship), :class => "ajax-link-delete", :title => "Löschen" %>
+    <%- end -%>    
+  </td>
+</tr>
+<tr id="separator-friendship_<%= friendship.id %>"><td colspan="4" class="seperator">&nbsp;</td></tr>

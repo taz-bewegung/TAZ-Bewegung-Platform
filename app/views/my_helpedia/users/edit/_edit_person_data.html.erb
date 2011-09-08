@@ -1,0 +1,49 @@
+<div id="person_data" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Über mich</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_user_path(@user, :part => "person_data"), 
+                :class => "ajax-link",
+                :rel => "#{@user.object_id}-person-data-spinner"                
+                 -%>
+  </div>
+
+  <div class="edit-part-content">    
+    <%- form_for(@user, 
+                 :url => my_helpedia_user_url(@user, :part => "person_data"), 
+                 :builder => EditFormBuilder,
+                 :html => { :class => "remote-form",
+                            :rel => "#{@user.object_id}-person-data-spinner" }) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+      <% f.fields_for :image_attachment, 
+                       (@user.image_attachment || @user.build_image_attachment), 
+                       :builder => EditFormBuilder do |image_form| %>
+         <%= image_form.image_field :image_id, :id => "image_attachment", :labels_from => User %>      
+       <% end %>      
+    <%= f.text :permalink %>    
+    <%= f.text_field :first_name, :required => false -%>
+    <%= f.text_field :last_name, :required => false -%>
+    <%= f.select :gender, User::GENDERS, { :include_blank => t(:"shared.form.select.blank") }, :required => false %>    
+    <%= f.date_select :birthday, { :order => [:year],
+    									:end_year => Date.today.year-100, :start_year => Date.today.year-10, :include_blank => true },
+    									:required => false -%>
+    </table>
+    
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_user_path(@user, :part => "person_data"), 
+                     :class => "ajax-link",
+                     :rel => "#{@user.object_id}-person-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@user.object_id}-person-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="comment_item clearfloats">
+  <div class="comment_item_number"><%= comment_counter + 1 %></div>
+  <div class="comment_item_content clearfloats">
+    <div class="comment_item_image">
+      <%= image_or_gravatar_for_comment(comment) %>    
+      <div class="meta_info">
+        <%= meta_info_for_comment(comment) %>            
+      </div>
+    </div>
+    <div class="comment_item_text">
+      <div class="from">Kommentar von 
+        <span class="name">
+          <%= name_link_for_comment(comment) %>
+        </span>
+      </div>
+      <div class="time"><%= time_span_or_time(comment.created_at) %></div>
+      <%= simple_format auto_link(h(comment.body)) %>
+    </div>
+  </div>
+</div>

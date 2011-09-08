@@ -1,0 +1,11 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  Der Nutzer <%= link_to feed_event.trigger.full_name, user_path(feed_event.trigger) -%> hat seine Profildaten geändert.
+  <div>
+    Änderungen:
+    <%= render_changes feed_event %>
+  </div>  
+</div>  
+

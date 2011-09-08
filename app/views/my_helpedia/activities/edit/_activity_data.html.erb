@@ -1,0 +1,42 @@
+<div id="activity_data" class="edit-container">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Aktionsdaten", 
+                                                                     :object => @activity,
+                                                                     :path => edit_part_my_helpedia_activity_path(@activity, :part => "activity_data"),
+                                                                     :prefix => "activity_data",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+ 
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("title") -%>:</dt>
+          <dd><%=h @activity.title -%></dd>
+          <dt><%= Activity.human_attribute_name("permalink") -%>:</dt>
+          <dd><%=v @activity.permalink -%></dd>
+          <dt><%= Activity.human_attribute_name("activity_type") -%>:</dt>
+          <dd><%=v @activity.activity_type -%></dd>
+          <dt><%= Activity.human_attribute_name("website") -%>:</dt>
+          <dd><%=v @activity.website -%></dd>
+          <dt><%= Activity.human_attribute_name("ends_at") -%>:</dt>
+          <dd><%=l @activity.ends_at.to_date -%></dd>
+          <dt><%= Activity.human_attribute_name("commentable") -%>:</dt>
+          <dd><%= @activity.commentable_humanized -%></dd>        
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("image") -%>:</dt>
+          <dd><%= image_for(@activity, :mini) %></dd> 
+          <dt>Aktion von:</dt>
+          <%- if @activity.owner.is_a?(User) -%>
+          <dd><%= user_image_for(@activity.owner, :"32x24c") -%> <%=h @activity.owner.full_name -%></dd>
+          <%- else -%>
+          <dd><%= organisation_image_for(@activity.owner, :mini) -%> <%=h @activity.owner.name -%></dd>          
+          <%- end -%>
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

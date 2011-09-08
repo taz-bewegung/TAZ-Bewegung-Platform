@@ -1,0 +1,14 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Terminliste", suspended_admin_events_path) ]%>
+<%- title 'Terminliste' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:suspended_list) -%>
+<%- end -%>
+
+<div class="admin">
+  <h1>Gesperrte Termine</h1>
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'event', :collection => @events %>
+  </table>
+</div>

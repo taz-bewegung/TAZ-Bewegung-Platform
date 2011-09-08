@@ -1,0 +1,19 @@
+<%- content_for :right_column do -%>
+<h2>Nutzer ...</h2>
+<ul class="menu">
+  <%- if not @user == current_user -%>  
+  <li>
+    <%= link_to t("context_menu.public.shared.create_message.type_#{@user.gender.to_i}"), polymorphic_path([:new, @user, :message], {:format => :lightbox}), :class => "remote-lightbox" -%>    
+  </li>
+  <%- end -%>
+  <%- if @user.friendable_for?(current_user) -%>
+  <li>
+    <%= link_to t("context_menu.public.shared.create_friendship.type_#{@user.gender.to_i}"), user_friendships_path(@user), :class => "ajax-link-post" -%>    
+  </li>
+  <%- end -%>  
+  <li class="last">
+    <%= link_to t(:"shared.public_profile.right_content.give_feedback"), new_user_feedback_path(@user, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>
+ 
+</ul>           
+<%- end -%>

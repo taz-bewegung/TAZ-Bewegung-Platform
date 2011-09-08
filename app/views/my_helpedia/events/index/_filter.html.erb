@@ -1,0 +1,18 @@
+<div class="filter-title" style="position: relative; margin-bottom: 8px">
+  <a href="#" ><%= image_tag("filter-more-act.png") -%> </a>  
+  <div style="position: absolute; border: 1px solid #E01E10; border-top: 0px; margin-top: -4px; z-index: 1; padding: 8px 12px; right: 0px; display: none; background-color: #BBBBBB" class="filter-hide-show">
+    <div style="font-weight: bold; margin-bottom: 8px;">Zeige...</div>
+    <div style="overflow: hidden; width: 200px;">                  
+      <div style="width: 184px; float: left;">...nicht freigeschaltete Aktionen:</div>      
+      <%= check_box_tag "waiting", 1, (params[:filter][:waiting] == "1"), :rel => url_for(params.merge(:filter => {}, :list_type => nil)) %>      
+    </div>  
+    <div style="overflow: hidden; width: 200px;">                  
+      <div style="width: 184px; float: left;">...laufende Aktionen:</div>            
+      <%= check_box_tag "running", 1, (params[:filter][:running] == "1"), :rel => url_for(params.merge(:filter => {}, :list_type => nil)) %>
+    </div>  
+    <div style="overflow: hidden; width: 200px;">                  
+      <div style="width: 184px; float: left;">...beendete Aktionen:</div>      
+      <%= check_box_tag "finished", 1, (params[:filter][:finished] == "1"), :rel => url_for(params.merge(:filter => {}, :list_type => nil)) %>
+    </div>  
+  </div>
+</div>

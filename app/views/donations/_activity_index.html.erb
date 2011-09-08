@@ -1,0 +1,27 @@
+<%- title " - Spenden" -%>
+<%- breadcrumb [ "" , link_to( "Spenden", activity_donations_path(@activity))] -%>
+<%= activity_sub_menu(:donations) %>
+
+<div id="sub-content">
+  <table class="donation-table" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th class="first">Name</th>
+      <th>Datum</th>      
+      <th class="euro">Spende</th>
+      <th></th>      
+      <th>Kommentar</th>
+    </tr>
+    <% @activity.donations.successfull.find(:all, :order => "created_at DESC").each do |donation| %>
+    <tr>
+      <td class="first name"><%=h donation.username -%></td>
+      <td class="date"><%=l donation.created_at.to_date -%></td>
+      <td class="euro"><%= number_to_currency(donation.real_amount, :precision => 0) -%></td>
+      <td class="barometer">
+        <%= part_barometer_for(@activity, donation) %>
+      </td>
+      <td class="last message"><%= h donation.message -%></td>
+    </tr>
+    <%- end -%>
+  </table>
+  
+</div>

@@ -1,0 +1,51 @@
+<h1><%= t :"activity.register.step1.header" %></h1>
+<% form_for(@engagement, :url => engagements_path, :html => { :method => :post }) do |f| %>
+
+  <div class="form-item">  
+    <%= label_for f, :title, :required => true %>
+    <%= text_field_for f, :title, :tooltip => true %>
+  </div>
+  <div class="form-item">  
+    <%= label_for f, :permalink, :required => true %>
+    <%= text_field_for f, :permalink, :tooltip => true, :id => 'permalink' %>
+    <p><%= activities_url + "/" + content_tag(:span, @engagement.permalink, :id => 'live-permalink') %></p>            
+  </div>  
+  <div class="form-item">  
+    <%= label_for f, :organisation_id, :required => true %>
+    <%= f.select :organisation_id, Organisation.available.to_select_options, :class => "tooltip" %>
+  </div>
+  <div class="form-item">  
+    <%= label_for f, :suggestor_id, :required => true %>
+    <%= f.select :suggestor_id, Organisation.suggestors.available.to_select_options, :class => "tooltip" %>
+  </div>  
+  <div class="form-item">  
+    <%= label_for f, 'occupation_type_id', :required => true %>
+    <%= f.select :occupation_type_id, OccupationType.available.to_select_options, { :include_blank =>  t(:"shared.form.select.blank") }, :class => "tooltip" %>
+  </div>
+  <div class="form-item">  
+    <%= label_for f, 'description', :required => true %>
+    <%= text_area_for f, :description, :tooltip => true %>
+  </div>
+  <div class="form-item date">  
+    <%= label_for f, :starts_on, :required => true %>
+    <%= f.date_select :starts_on, :order => [:day, :month, :year], :use_month_numbers => true, 
+    									:end_year => Date.today.year-1, :start_year => (Date.today.year-2), :include_blank => true -%>
+  </div> 
+  <div class="form-item date">  
+    <%= label_for f, :ends_on %>
+    <%= f.date_select :ends_on, :order => [:day, :month, :year], :use_month_numbers => true, 
+    									:end_year => Date.today.year+2, :start_year => (Date.today.year), :include_blank => true -%>
+  </div>
+  <div class="form-item"> 
+    <label>Kategorien:</label> 
+    <% for category in SocialCategory.find(:all, :include => :image) %> 
+       <div style="margin-left: 200px">
+         <%= check_box_tag "engagement[social_category_ids][]", category.id, false, :class => "checkbox" -%>
+         <span><%= category.title -%></span><br/>
+      </div>
+    <% end %>
+  </div>
+  
+
+  <%= f.submit t(:"shared.form.save") %>
+<% end %>

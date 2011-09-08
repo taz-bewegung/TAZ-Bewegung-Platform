@@ -1,0 +1,27 @@
+<% title "Coming soon!" %>
+<% breadcrumb [ "Coming soon!"] %>
+
+<%- content_for :left_content do -%>
+<div style="height: 736px">
+  <%= image_tag("error-girl.png") -%>
+</div>        
+<%- end -%>
+
+<div style="padding: 20px">
+  <h1 class="error">Coming soon!</h1>
+  <br />  
+  <div>
+    <p>Die gewünschte Funktion ist momentan noch deaktiviert.<br /><br />
+      Helpedia befindet sich momentan in der Beta-Phase. Die Seite ist noch nicht fertig und soll Ihnen lediglich einen ersten Eindruck vermitteln, was Sie in Zukunft auf helpedia.de finden können.
+      <br /><br />Eingaben auf dieser Seite werden nicht gespeichert. 
+      <br /><br />Wir freuen uns über Feedback unter: <a href="http://feedback.helpedia.de">feedback.helpedia.de</a>.</p>  
+    <br /><br />  
+    <h2>Momentan können Sie:</h2>
+    <ul>
+      <li><%= link_to "Organisationen suchen", organisation_categories_path %></li>
+      <li><%= link_to "Aktionen suchen", activity_categories_path %></li>
+      <li><%= link_to "Jobs suchen", job_categories_path %></li>        
+      <li><%= link_to "Veranstaltungen suchen", event_categories_path %></li>            
+    </ul>
+  </div>
+</div>

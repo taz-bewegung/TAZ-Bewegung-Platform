@@ -1,0 +1,12 @@
+<div class="events">
+  <div class="list-tiny">
+    <%- grouped_events.each do |date_group, events| %>
+      <h2><%= date_group -%></h2>
+      <%- for day_with_event in events -%>
+        <%= render :partial => "/events/index/shared/list_tiny_item", :locals => { :events => events, 
+                                                                                   :event => Event.find(day_with_event.event_id), 
+                                                                                   :day => day_with_event } %>
+      <%- end -%>
+    <% end -%>
+  </div>
+</div>

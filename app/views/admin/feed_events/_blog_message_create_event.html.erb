@@ -1,0 +1,19 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  
+  <%- if feed_event.operator.is_a?(Activity) -%>
+    <%- if feed_event.operator.owner.is_a?(User) -%>  
+    Der Nutzer <%= link_to feed_event.operator.owner.full_name, user_path(feed_event.operator.owner) -%> hat einen neuen Blogeintrag 
+    <%- else -%>  
+    Die Organisation <%= link_to feed_event.operator.owner.name, organisations_path(feed_event.operator.owner) -%> hat einen neuen Blogeintrag 
+    <%- end -%> 
+    <%= link_to feed_event.trigger.title, activity_blog_messages_path(feed_event.operator) %>    
+    zur Aktion <%= link_to feed_event.operator.title, activity_path(feed_event.operator) -%> geschrieben.
+  <%- else -%>
+  Die Organisation <%= link_to feed_event.operator.name, organisation_path(feed_event.operator) -%> hat einen neuen Blogeintrag 
+  <%= link_to feed_event.trigger.title, organisation_blog_messages_path(feed_event.operator) %> geschrieben.
+  <%- end -%>                                                                                            
+</div>  
+

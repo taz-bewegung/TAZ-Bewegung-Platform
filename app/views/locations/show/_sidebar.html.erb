@@ -1,0 +1,16 @@
+<%- unless @location.activity_memberships.active.blank? -%> 
+  <div class="overview-item border-item">
+    <h2><%= "Sympathisanten" -%></h2>
+    <div class="white-box">
+      <div class="clearfloats">
+        <%- for membership in @location.activity_memberships.latest.active_with_user.limit(15) -%> 
+        <div class="membership-image">
+          <%= link_to image_for(membership.user, :"56x42c"), location_activity_memberships_path(@location), :title => h(membership.user.full_name) -%>
+        </div>
+        <%- end -%>
+      </div> 
+      <br />
+      <%= link_to "Alle Sympathisanten >>", location_activity_memberships_path(@location) %>
+    </div>
+  </div>    
+<%- end -%>

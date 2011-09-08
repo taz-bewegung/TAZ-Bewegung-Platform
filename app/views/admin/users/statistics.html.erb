@@ -1,0 +1,86 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Benutzerstatistiken", statistics_admin_users_path) ]%>
+
+<% content_for :left_column do %>	
+  <%= admin_sub_menu(:user_statistics) -%>
+<%- end -%>
+
+
+<table class="admin-table" width="100%" style="font-size: 0.95em;">
+  <tr>
+    <th width="20%"></th>                   
+    <th width="20%">Nutzer gesamt</th>
+    <th width="20%">Männlich</th>
+    <th width="20%">Weiblich</th>       
+    <th width="20%">Ohne Angabe</th>                
+  </tr>
+  <tr>
+    <td>Insgesamt</td>
+    <td><%= User.count -%></td>
+    <td><%= User.count :conditions => { :gender => 'Herr' } -%></td>    
+    <td><%= User.count :conditions => { :gender => 'Frau' } -%></td>
+    <td><%= User.count :conditions => { :gender => nil } -%></td>
+  </tr>
+  <tr>
+    <td>Zwischen 10-20</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 20.years, Date.today - 10.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 20.years, Date.today - 10.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 20.years, Date.today - 10.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 20.years, Date.today - 10.years] -%></td>
+  </tr>  
+  <tr>
+    <td>Zwischen 20-30</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 30.years, Date.today - 20.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 30.years, Date.today - 20.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 30.years, Date.today - 20.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 30.years, Date.today - 20.years] -%></td>
+  </tr>
+  <tr>
+    <td>Zwischen 30-40</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 40.years, Date.today - 30.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 40.years, Date.today - 30.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 40.years, Date.today - 30.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 40.years, Date.today - 30.years] -%></td>
+  </tr>    
+  <tr>
+    <td>Zwischen 40-50</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 50.years, Date.today - 40.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 50.years, Date.today - 40.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 50.years, Date.today - 40.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 50.years, Date.today - 40.years] -%></td>
+  </tr>
+  <tr>
+    <td>Zwischen 50-60</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 60.years, Date.today - 50.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 60.years, Date.today - 50.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 60.years, Date.today - 50.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 60.years, Date.today - 50.years] -%></td>
+  </tr>    
+  <tr>
+    <td>Zwischen 60-70</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 70.years, Date.today - 60.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 70.years, Date.today - 60.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 70.years, Date.today - 60.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 70.years, Date.today - 60.years] -%></td>
+  </tr>
+  <tr>
+    <td>Zwischen 70-80</td>
+    <td><%= User.count :conditions => ["birthday BETWEEN ? AND ?", Date.today - 80.years, Date.today - 70.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday BETWEEN ? AND ?", Date.today - 80.years, Date.today - 70.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday BETWEEN ? AND ?", Date.today - 80.years, Date.today - 70.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday BETWEEN ? AND ?", Date.today - 80.years, Date.today - 70.years] -%></td>
+  </tr>    
+  <tr>
+    <td>Über 80</td>
+    <td><%= User.count :conditions => ["birthday < ?", Date.today - 80.years] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday < ?", Date.today - 80.years] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday < ?", Date.today - 80.years] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday < ?", Date.today - 80.years] -%></td>
+  </tr>
+  <tr>
+    <td>Ohne Geburtsdatum</td>
+    <td><%= User.count :conditions => ["birthday IS NULL"] -%></td>
+    <td><%= User.count :conditions => ["gender = 'Herr' AND birthday IS NULL"] -%></td>    
+    <td><%= User.count :conditions => ["gender = 'Frau' AND birthday IS NULL"] -%></td>
+    <td><%= User.count :conditions => ["gender IS NULL AND birthday IS NULL"] -%></td>
+  </tr>    
+</table>

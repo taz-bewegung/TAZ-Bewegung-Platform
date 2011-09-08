@@ -1,6 +1,6 @@
 class CachingStats < ActiveRecord::Base
   
-  scope :with_key, lambda { |key|
+  named_scope :with_key, lambda { |key|
     { :conditions => ["key = ?", key] }
   }  
   

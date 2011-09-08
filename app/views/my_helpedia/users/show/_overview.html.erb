@@ -1,0 +1,10 @@
+<%= my_helpedia_user_sub_menu(:overview) %> 
+<div id="sub-content"> 
+  
+  <%- unless @user.received_messages.unread.blank? -%>
+  <div class="overview-item">
+    <h2>Neue Nachrichten</h2>
+  </div>  
+  <%- end -%>
+      
+</div>

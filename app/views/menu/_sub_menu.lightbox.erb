@@ -1,0 +1,7 @@
+<ul class="nav-sub">
+  <% menu_items.each do |item| -%>
+      <li <%= nav_sub_is_active?(item, active, menu_items) %> id="<%= item[:id] %>">
+        <%= link_to "<span>#{item[:name]}</span>", item[:link_to], item[:options] %>
+      </li>
+  <% end -%>
+</ul>

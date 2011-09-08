@@ -1,0 +1,42 @@
+<div id="about" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Informationen, Texte und Ideen</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_user_path(@user, :part => "about"), 
+                :class => "ajax-link",
+                :rel => "#{@user.object_id}-person-data-spinner"                
+                 -%>
+  </div>
+
+  <div class="edit-part-content">    
+    <%- form_for(@user, 
+                 :url => my_helpedia_user_url(@user, :part => "about"), 
+                 :builder => EditFormBuilder,
+                 :html => { :class => "remote-form",
+                            :rel => "#{@user.object_id}-person-data-spinner" }) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+      <%= f.text_area :about_me, :required => false, :class => "mceEditor" %>
+      <%= f.text_area :changed_my_life, :required => false, :class => "mceEditor" %>
+      <%= f.text_area :inspires_me, :required => false, :class => "mceEditor" %>
+      <%= f.text_area :my_contribution, :required => false, :class => "mceEditor" %>
+      <%= f.text_area :dislike, :required => false, :class => "mceEditor" %>      
+    </table>
+    
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_user_path(@user, :part => "about"), 
+                     :class => "ajax-link",
+                     :rel => "#{@user.object_id}-person-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@user.object_id}-person-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

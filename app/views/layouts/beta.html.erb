@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+  <head>
+    <title>bewegung.taz.de - Beta Anmeldung</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+    <%= stylesheet_link_tag "beta" %>
+    <%= javascript_include_tag "jquery", "jquery-ui", "jrails", 'jquery.form', "livequery/jquery.livequery",  "beta" %>
+    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+    
+  </head>
+
+  <body id="beta-anmeldung">
+    <%= render :partial => "/shared/google_analytics" %>
+    <div id="wrap">
+      <div id="wrap-contentbox">
+        <div id="wrap-contentbox-inner">
+          <div id="content">
+            <%= image_tag "beta/logo.gif" %>
+            <div style="float: right; margin-top: 40px; margin-right: 20px">
+              <h1>Start 12. Juni</h1>
+            </div>
+
+            <p>Eine neue, offene Plattform für alle, die sich politisch und gesellschaftlich engagieren und Alternativen leben wollen.
+            Für alle, die der Gleichschaltung im Netz entgehen wollen und ihre eigene Meinung haben.
+            Ein Veranstaltungskalender und alternatives Adressbuch, Ideenschmiede und Aktionsportal.
+            <br /> - teilen, engagieren, mitmachen, vernetzen, verändern, bewegen.</p>
+
+             <div id="anmeldung">
+   		         <div id="signup">
+                 <%= render :partial => 'register_form' %>
+                 <%= render :partial => 'code_form' %>
+  			       </div>       
+  		       </div> <!-- /anmeldung -->	
+  		     </div> <!-- /content -->
+  		   </div> <!-- /wrap-content-inner -->
+  		</div> <!-- /wrap-content -->
+    </div> <!-- /wrap -->
+  <%= render :partial => "/shared/piwik" if RAILS_ENV == "production" %>
+	</body>
+</html>
+

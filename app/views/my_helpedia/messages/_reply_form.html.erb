@@ -1,0 +1,29 @@
+<%- form_for(@response, 
+             :url => reply_my_helpedia_message_path(@message), 
+             :builder => EditFormBuilder,
+             :html => { :class => "remote-form", :rel => "spinner" }) do |form| -%>
+
+  <table class="message-table show">
+   <tr class="<%= cycle("","alternate") -%>">
+     <td class="image">
+       <%= image_for(current_user, :"56x42c")%>
+     </td>
+     <td class="name-and-date">
+       <span class="name"><%= user_profile_link_for(current_user) -%></span>
+       <span class="date"><%=l Time.now -%></span>
+     </td> 
+     <td class="subject">
+       <%= form.text_area :body, :render_table => false, :hide_label => true, :rows => 10 -%>
+       <%= custom_form_button "Antworten", :size => "33-beige" %>
+     </td>
+   </tr>
+ </table>
+
+  <%- if current_user == @message.recipient -%>
+    <%= form.hidden_field :recipient_id, :value => @message.sender_id %>
+    <%= form.hidden_field :recipient_type, :value => @message.sender_type %>  
+  <%- else -%>  
+    <%= form.hidden_field :recipient_id, :value => @message.recipient_id %>
+    <%= form.hidden_field :recipient_type, :value => @message.recipient_type %>  
+  <%- end -%>  
+<%- end -%>

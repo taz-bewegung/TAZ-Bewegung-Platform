@@ -1,0 +1,30 @@
+<div id="comment_form" class="header-box">
+  <div class="clearfloats header-box-header">
+    <div class="header-left big-header">Kommentar schreiben:</div>
+  </div>        
+
+  <div class="comment_form header-box-content">
+    <%- form_for(@comment, 
+            :url => polymorphic_path(polymorphic_array + [:comments]), 
+            :builder => EditFormBuilder,
+            :html => { :class => "remote-form" } ) do |f| -%>  
+
+      <table class="reg-form w-210">
+
+      <%- if current_user.blank? -%>
+        <%= f.text_field :name, :required => true -%>
+        <%= f.text_field :email, :required => false -%>
+        <%= f.text_field :website, :required => false -%>
+      <%- end -%>    
+      <%= f.text_area :body, :required => true -%>
+      <%= render :partial => "/shared/captcha" if current_user.blank? %>
+      <tr>
+        <th></th>
+        <td><%= shadow_form_button("Kommentar absenden", :css_class => 35, :font_size => 14) %></td>
+      </tr>
+    <%- end -%>  
+    </table>
+  </div>
+  
+</div>
+

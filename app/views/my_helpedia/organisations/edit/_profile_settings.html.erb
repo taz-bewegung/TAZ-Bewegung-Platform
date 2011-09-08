@@ -1,0 +1,26 @@
+<div id="profile_settings"  class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Einstellungen", 
+                                                       :object => @organisation,
+                                                       :path => edit_part_my_helpedia_organisation_path(@organisation, :part => "profile_settings"),
+                                                       :prefix => "profile_settings",
+                                                       :button => image_tag("buttons/btn-edit.png")
+                                                      } -%>  
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+        <dl class="clearfloats">
+          <dt><%= Organisation.human_attribute_name("contact_email") -%>:</dt>
+          <dd><%=v @organisation.contact_email -%></dd>
+        </dl>
+        <dl class="clearfloats">
+          <dt><%= Organisation.human_attribute_name("password") -%>:</dt>
+          <dd>**********</dd>        
+        </dl>          
+        <dl>
+          <dt><%= Organisation.human_attribute_name("receive_newsletter") -%>:</dt>
+          <dd><%= @organisation.wordify_receive_newsletter -%></dd>
+        </dl>              
+    </div>
+  </div>
+</div>

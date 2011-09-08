@@ -1,0 +1,8 @@
+<%- title " - " + "Meine Bezugsgruppe" -%>
+<%- breadcrumb [ "", link_to("Meine Bezugsgruppe", my_helpedia_friendships_path)] -%>
+<% magick_header "Meine Bezugsgruppe" %>
+
+<%= my_helpedia_user_sub_menu(:friendships) -%>
+<div id="sub-content" class="friendships">
+	<%= render :partial => "/my_helpedia/friendships/friendships" %>
+</div>

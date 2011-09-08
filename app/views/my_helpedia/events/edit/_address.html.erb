@@ -1,0 +1,34 @@
+<div id="address" class="edit-container">
+
+      <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Adresse", 
+                                                                     :object => @event,
+                                                                     :path => edit_part_my_helpedia_event_path(@event, :part => "address"),
+                                                                     :prefix => "adress",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+                                                                    
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= Event.human_attribute_name("nationwide") -%>:</dt>
+          <dd><%=wordify_boolean @event.address.nationwide -%></dd>
+          <dt><%= Event.human_attribute_name("name") -%>:</dt>
+          <dd><%=v @event.address.name -%></dd>          
+          <dt><%= Event.human_attribute_name("street") -%>:</dt>
+          <dd><%=v @event.address.street -%></dd>
+          <dt><%= Event.human_attribute_name("zip_code") -%>:</dt>
+          <dd><%=v @event.address.zip_code -%></dd>
+          <dt><%= Event.human_attribute_name("city") -%>:</dt>
+          <dd><%=v @event.address.city -%></dd>
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("has_geo_information") -%>:</dt>
+          <dd><%= wordify_geo_information(@event.address) -%></dd>
+        </dl>
+      </div>      
+    </div>
+  </div>
+</div>

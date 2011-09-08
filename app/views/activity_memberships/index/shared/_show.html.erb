@@ -1,0 +1,11 @@
+<%- title " - Sympathisanten" -%>
+<%- breadcrumb [ "" , link_to( "Sympathisanten", polymorphic_path([@membershipable, :activity_memberships]))] -%>
+
+<%= self.send "#{@membershipable.class.to_s.downcase}_sub_menu", :activity_memberships if @membershipable.is_a?(Location) or @membershipable.is_a?(Organisation)  %>
+<div id="sub-content"> 
+  <%= render :partial => "/activity_memberships/index/shared/list_header", :locals => { :list_title => "Wir sympathisieren" } %>  
+  <div id="sub-content-list">
+    <%= render :partial => "/activity_memberships/index/shared/list_cards", :locals => { :activity_memberships => @activity_memberships, 
+                                                                            :list_title => "Wir sympathisieren" } %>
+  </div>                                                                      
+</div>

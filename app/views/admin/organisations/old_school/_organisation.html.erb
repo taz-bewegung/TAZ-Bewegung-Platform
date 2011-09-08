@@ -1,0 +1,16 @@
+<tr>
+  <td><%= image_for(organisation, :mini) -%></td>
+	<td><%= link_to h(organisation.name), organisation_path(organisation) %></td>
+  <td class="state"><%= formal_organisation_status_for(organisation) -%></td>    
+  <td class="icons">
+    <%= organisation_icons_for(organisation) -%>
+  </td>
+</tr>
+<tr>
+  <td colspan="8">
+    <div class="edit-admin-comment" rel="<%= update_comment_admin_organisation_path(organisation) -%>">
+      <%=h organisation.admin_comment -%>
+    </div>
+  </td>
+</tr>
+<%= render :partial => "details", :locals => { :organisation => organisation } -%>

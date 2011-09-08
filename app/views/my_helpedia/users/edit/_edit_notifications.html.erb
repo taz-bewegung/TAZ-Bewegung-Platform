@@ -1,0 +1,38 @@
+<div id="notifications"  class="edit-container">
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Benachrichtigungen</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+              cancel_edit_part_my_helpedia_user_path(@user, :part => "notifications"), 
+              :class => "ajax-link" -%>    
+  </div>
+
+  <div class="edit-part-content">
+    <%- form_for(@user, 
+                 :url => my_helpedia_user_url(@user, :part => "notifications"),
+                 :builder => EditFormBuilder, 
+                 :html => {:class => "remote-form",
+                           :rel => "#{@user.object_id}-notifications-spinner"}) do |f| -%>
+     <table width="100%" class="reg-form" rowspan="0" colspan="0">                      
+     <%= f.check_box :subscribed_newsletter %>
+     <%= f.check_box :receive_message_notification %>
+     </table>
+     
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_user_path(@user, :part => "notifications"), 
+                     :class => "ajax-link",
+                     :rel => "#{@user.object_id}-notifications-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@user.object_id}-notifications-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>
+     <%- end -%>
+   </div>
+
+</div>

@@ -1,0 +1,13 @@
+<div class="teaser-text" id="<%= dom_id content.element %>">
+  <% if cookies[:edit_texts] == "1" and logged_in? and current_user.has_role?(:admin) %>
+    <%= link_to "Editieren", { :controller => "contents", :action => "edit_teaser_text", :id => content.element.id, :cache_fragment => options[:cache_fragment] }, :class => "remote-link" %>  
+  <% end %>
+  <% if content.element.title.present? %>
+    <% if params[:controller] == "welcome" %>
+      <h2 class="size-21"><%=h content.element.title %></h2>
+    <% else %>
+      <h2><%=h content.element.title %></h2>    
+    <% end %>
+  <% end %>
+  <%= RedCloth.new(content.element.bodytext).to_html %>
+</div>

@@ -1,0 +1,15 @@
+<%= organisation_sub_menu(:about) %> 
+<div id="sub-content">
+  <div class="full-content blog">
+    <div class="full-content-left blog">
+      <div class="two-column">
+        <div class="column-one">
+          <%= secured_rte_text @organisation.description %>
+        </div>
+       </div>
+    </div>
+    <div class="full-content-right">    
+      <%= render :partial => "/organisations/show/sidebar" -%>    
+    </div>
+  </div>  
+</div>

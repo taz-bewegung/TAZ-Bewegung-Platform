@@ -1,0 +1,39 @@
+<div class="profile-container">
+  <div class="profile-container-top"> </div>
+  <div class="profile-container-middle">
+    <div class="split-bg">
+      <div class="profile-image">
+        <div class="image-wrap">
+          <%= event_image_for(@event, :large) %>
+        </div>
+      </div>
+      <div class="profile-content">
+        <h2><%=h @event.title %></h2>
+        <%= truncate secured_rte_text(@event.description, :plain => true), :length => 350 %>
+        <%= link_to "mehr &raquo;", @event -%>
+      </div><!-- profile-content -->
+      
+      <div class="profile-meta">
+        <div class="meta-info">
+          <h4>Zeitraum:</h4>
+          <%= time_span_for(@event) %> 
+        </div>
+        <div class="meta-info">
+          <h4>Adresse:</h4>
+          <%= address_or_location_for(@event) || "-" %>
+        </div>
+
+        <div class="meta-info">
+          <h4>Eingetragen von:</h4>
+          <%= user_profile_link_for @event.originator -%>
+        </div>
+        
+        <div class="meta-info">
+          <h4>Aktionsform:</h4>
+          <%=v @event.event_type -%>
+        </div>
+
+      </div>
+    </div>
+  </div>  
+</div>

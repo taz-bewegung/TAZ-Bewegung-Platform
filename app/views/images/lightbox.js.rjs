@@ -1,0 +1,8 @@
+page << "$.nyroModalManual(
+  {
+    bgColor: '#000000',
+    content: '#{ escape_javascript(render(:partial => "/images/new")) }',
+    type: 'content',
+    width: 735,
+    height: 500
+  });"

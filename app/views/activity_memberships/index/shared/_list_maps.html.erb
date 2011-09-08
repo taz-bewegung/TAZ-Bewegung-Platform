@@ -1,0 +1,4 @@
+<div class="activity_memberships">
+  <%= @map.div(:width => @map.width, :height => @map.height) %>
+	<%= @map.to_html unless request.xhr? %>
+</div>

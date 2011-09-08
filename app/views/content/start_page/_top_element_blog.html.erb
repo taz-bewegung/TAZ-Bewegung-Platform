@@ -1,0 +1,19 @@
+<% begin %>
+<div class="top-element-left">
+  <%= link_to image_for(content.element.element.blog.bloggable, :"170x130"), content.element.element.blog.bloggable %> 
+  <br /><br />
+  <%=h content.element.title %>:
+  <br />
+  <%= link_to h(content.element.element.blog.bloggable.title), content.element.element.blog.bloggable %>
+</div>
+<div class="top-element-right">
+  <h2><%= link_to h(content.element.element.title), polymorphic_path([content.element.element.blog.bloggable, content.element.element]), :class => "title" %></h2>
+  <%= truncate(secured_rte_text(content.element.element.blog_post_contents.text_element.first.contentable.try(:bodytext), :plain => true), :length => 700) %>
+  <%= link_to "mehr >>", polymorphic_path([content.element.element.blog.bloggable, content.element.element]) %>    
+</div>
+
+<% rescue %>
+
+<p>Fehler bei der Anzeige der Daten.</p>
+
+<% end %>

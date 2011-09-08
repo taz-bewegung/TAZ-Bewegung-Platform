@@ -1,0 +1,14 @@
+<%- title " - Symphatisanten" -%>
+<%- breadcrumb [ "" , link_to( "Symphatisanten", polymorphic_path([:my_helpedia, @membershipable, :activity_memberships]))] -%>
+<%- magick_header "Symphatisanten" -%>
+
+<%= self.send "my_helpedia_#{@membershipable.class.to_s.downcase}_sub_menu", :activity_memberships -%>
+
+<div id="sub-content" class="activity-membership">
+  
+  <%= render :partial => "/my_helpedia/activity_memberships/index/shared/list_header", :locals => { :list_title => "Sympathisanten" } %>
+  <div id="sub-content-list">
+    <%= render :partial => "/my_helpedia/activity_memberships/index/shared/list_cards", :locals => { :activity_memberships => @activity_memberships, 
+                                                                                        :list_title => "Sympathisanten" } %>
+  </div>                                                                      
+</div>

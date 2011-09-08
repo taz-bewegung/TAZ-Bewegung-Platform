@@ -1,0 +1,46 @@
+<div id="<%= @activity_sponsor.object_id %>">
+
+  <div class="edit-part-head">
+    <div class="title">
+      <h2><%= @activity_sponsor.name || "Neues Profil" -%></h2>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_activity_activity_sponsor_path(@activity, @activity_sponsor.temp_id, :part => @activity_sponsor.object_id), 
+                :class => "ajax-link",
+                :rel => "#{@activity_sponsor.object_id}-sponsor-spinner" -%>
+  </div>  
+  
+  <div class="edit-part-content">  
+    <%- form_for(@activity_sponsor,
+                :url => @form_url, 
+                :builder => EditFormBuilder,
+                :html => {:class => "remote-form",
+                          :rel => "#{@activity_sponsor.object_id}-sponsor-spinner" } ) do |f| -%> 
+      
+      <table width="100%" class="reg-form" rowspan="0" colspan="0">          
+      <%= f.image_field :image, :tooltip => false %>              
+      <%= f.text_field :name, :tooltip => false %>      
+      <%= f.text_field :website, :tooltip => false %>            
+      <%= f.text_area :description, :tooltip => false %>            
+      </table>  
+
+      <div class="edit-part-bottom">
+         <div class="buttons">
+            <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+            <%= link_to image_tag("buttons/btn-cancel.png"), 
+                cancel_edit_part_my_helpedia_activity_activity_sponsor_path(@activity, @activity_sponsor.temp_id, :part => @activity_sponsor.object_id), 
+                :class => "ajax-link",
+                :rel => "#{@activity_sponsor.object_id}-sponsor-spinner" -%>
+            <%- unless @activity_sponsor.new_record? -%>  
+            <%= link_to image_tag("buttons/btn-delete.png"), 
+                 my_helpedia_activity_activity_sponsor_path(@activity, @activity_sponsor, :part => @activity_sponsor.object_id), 
+                 :class => "ajax-link-delete",
+                 :rel => "#{@activity_sponsor.object_id}-sponsor-spinner" -%>                 
+            <%- end -%>                
+         </div>
+           <div class="edit-form-spinner">
+              <%= image_tag "ajax-spinner.gif", :id => "#{@activity_sponsor.object_id}-sponsor-spinner", :style => "display: none" -%>
+            </div>         
+       </div>      
+    <%- end -%>
+</div>

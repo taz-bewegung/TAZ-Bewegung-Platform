@@ -1,0 +1,74 @@
+<%= donation_sub_menu(:preview) %>
+<div id="sub-content">
+
+  <div class="clearfloats edit-profile">  
+    <h2>Deine Unterstützung</h2>
+    <div class="two-column" style="margin-bottom: 1em; width: 90%;">  
+      <div class="column-50">
+        <dl>
+          <dt><%= Donation.human_attribute_name("username") -%>:</dt>
+          <dd><%=h @presenter.username -%></dd> 
+          <dt><%= Donation.human_attribute_name("real_amount") -%>:</dt>
+          <dd><span style="font-size: 1.3em; font-weight: bold;"><%= number_to_currency(@presenter.real_amount, :precision => 0) -%></span></dd>                              
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Donation.human_attribute_name("message") -%>:</dt>
+          <dd><%=v @presenter.message -%></dd>        
+          <dt><%= Donation.human_attribute_name("created_at") -%>:</dt>
+          <dd><%=l Date.today -%></dd>
+        </dl>          
+      </div>
+    </div>
+    
+    <h2>Deine Kontodaten</h2>    
+    <div class="two-column" style="margin-bottom: 1em;">  
+      <div class="column-50">
+        <dl>
+          <dt><%= Donation.human_attribute_name("donation_account_owner") -%>:</dt>
+          <dd><%=v @presenter.donation_account_owner -%></dd> 
+          <dt><%= Donation.human_attribute_name("donation_account_number") -%>:</dt>
+          <dd><%=v @presenter.donation_account_number -%></dd>                              
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Donation.human_attribute_name("donation_bank_number") -%>:</dt>
+          <dd><%=v @presenter.donation_bank_number -%></dd>        
+          <dt><%= Donation.human_attribute_name("donation_bank") -%>:</dt>
+          <dd><%=v @presenter.donation_bank -%></dd>
+        </dl>          
+      </div>             
+    </div>
+ 
+  <%- form_for(@presenter, 
+             :url => @path,
+             :builder => EditFormBuilder,
+             :html => { :method => :post }) do |form| -%>
+  
+  <div style="line-height: 24px; margin-bottom: 10px">
+    <%= form.check_box :agb, :fancy_table => false, :hide_label => true, :labels_from => Donation %>
+    <%= t(:"activerecord.attributes.donation.agb_text", :agb => link_to("AGB", '/pages/agb', :target => "_blank"), 
+                                                        :datenschutzbestimmungen => link_to("Datenschutzbestimmungen", '/pages/datenschutzerklaerung', :target => "_blank")) -%>
+  </div>
+  <div class="form-footer">
+    <table border="0" class="reg-form w-230">
+      <tr>
+        <th>
+          <%- unless @activity.blank? -%>
+          <%= link_to image_tag("buttons/btn-back.png"), activity_donations_path(@activity, :step => @presenter.step_back), :method => :post %>            
+          <%- else -%>
+          <%= link_to image_tag("buttons/btn-back.png"), organisation_donations_path(@organisation, :step => @presenter.step_back), :method => :post %>                      
+          <%- end -%>
+        </th>
+        <td>
+          <%= image_submit_tag "buttons/btn-finish-donation.png", :class => "image-submit" -%>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <%= hidden_field_tag "current_step", "#{@presenter.current_step}"%>
+  <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,34 @@
+<%- unless @organisation.blog.posts.published.blank? -%>
+  <% post = @organisation.blog.posts.published.recent.limit(1).first %>
+  <div class="overview-item border-item">  
+    <h2><%= t(:"activity.public_profile.sub_content.tabs.overview.content.blog_latest_header") -%></h2>  
+    <div class="white-box">
+      <h4><%= post.title -%></h4>
+      <% unless post.blog_post_contents.blank? %> 
+      <%= render :partial => "/my_helpedia/blog_post_contents/teaser/#{post.blog_post_contents.first.contentable_type.underscore}",
+                 :locals => { :content => post.blog_post_contents.first.contentable } %>
+      <% end %>
+      <br /><br />
+      <%= link_to t(:"shared.links.more"), organisation_blog_path(@organisation) %>
+    </div>
+  </div>
+<%- end -%>
+
+
+<%- unless @organisation.activity_memberships.active.blank? -%> 
+  <div class="overview-item border-item">
+    <h2><%= "Sympathisanten" -%></h2>
+    <div class="white-box">
+      <div class="clearfloats">
+        <%- for membership in @organisation.activity_memberships.latest.active_with_user.limit(15) -%> 
+        <div class="membership-image">
+          <%= link_to image_for(membership.user, :"56x42c"), organisation_activity_memberships_path(@organisation), :title => h(membership.user.full_name) -%>
+        </div>
+        <%- end -%>
+      </div> 
+      <br />
+      <%= link_to "Alle Sympathisanten >>", organisation_activity_memberships_path(@organisation) %>
+    </div>
+  </div>    
+<%- end -%>
+

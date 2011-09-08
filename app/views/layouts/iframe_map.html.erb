@@ -1,0 +1,26 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
+<head>
+  <title>bewegung.taz - <%= yield :title %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="bewegung taz termine aktionen orte" />
+  <meta name="keywords" content="bewegung taz termine aktionen orte" />
+  <%= include_stylesheets :application %>
+  <style type="text/css" media="screen">
+    .info-window {
+      font-size:12px;
+      text-align: left;
+    }
+  </style>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" %>
+  <%= javascript_include_tag "jquery.clippy.js" %>
+  <%= yield :googlemaps -%>
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

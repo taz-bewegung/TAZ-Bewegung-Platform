@@ -1,0 +1,19 @@
+<div id="<%= activity_event_membership.object_id %>">
+  <div class="two-column">
+    <div class="column-100">
+      <dl>
+        <dt>Termin:</dt>
+        <dd>
+          <div style="width: 350px" class="item-content"><%= image_for(activity_event_membership.event, :"32x24c") %><%=h activity_event_membership.event.title -%></div>
+          <div class="edit">
+            <%= link_to image_tag("buttons/btn-small-delete.png"), 
+                        my_helpedia_activity_activity_event_membership_path(@activity, activity_event_membership,
+                        :part => activity_event_membership.object_id, :spinner => "membership-spinner"),
+                        :class => "ajax-link-delete",
+                        :rel => "membership-spinner" -%>
+          </div>        
+        </dd>
+      </dl>
+    </div>          
+  </div>
+</div>

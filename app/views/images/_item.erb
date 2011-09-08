@@ -1,0 +1,2 @@
+<% @image.find_or_create_thumbnail(params[:image_size]) if params[:image_size].present? %>
+<%= image_tag @image.public_filename((params[:image_size] || :mini)) -%>

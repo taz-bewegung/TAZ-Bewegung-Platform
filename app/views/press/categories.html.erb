@@ -1,0 +1,12 @@
+<%- breadcrumb [ link_to("Presse", news_path) ] -%>
+<%- title "News" -%>
+
+<%- content_for :left_column do -%>	
+  <%= news_sub_menu(@category.permalink.to_sym) -%>
+<%- end -%>
+
+<h1><%=h @category.title -%></h1>
+
+<%- for news in @news -%>
+  <%= render :partial => 'news', :locals => { :news => news }  -%>
+<%- end -%>

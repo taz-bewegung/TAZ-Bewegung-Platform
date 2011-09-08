@@ -1,0 +1,8 @@
+<% title " - Was läuft gerade" %>
+<% breadcrumb ["", link_to("Was läuft gerade", my_helpedia_feed_events_path)]%>
+<% magick_header "Was läuft gerade"%>
+
+<%= self.send "my_helpedia_#{current_user.class.to_s.downcase}_sub_menu", :feed_events %>
+<div id="sub-content">
+  <%= render :partial => "index_list" %>
+</div>

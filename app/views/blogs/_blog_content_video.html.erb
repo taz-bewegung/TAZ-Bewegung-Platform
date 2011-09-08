@@ -1,0 +1,6 @@
+<% begin %>
+<%= display_video(content) %>
+<% rescue %>
+Fehler beim Laden des Videos.
+<% end %>
+<%= link_to 'mehr &raquo;', polymorphic_path([@bloggable, content.blog_post_content.blog_post]) %>

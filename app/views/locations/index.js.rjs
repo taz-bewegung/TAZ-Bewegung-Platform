@@ -1,0 +1,14 @@
+#cache_fragment "activities", :key_parts => [params[:list_type], params[:order], params[:activity_category], params[:page]] do
+  page["sub-content-list"].replace_html :partial => "/locations/list", 
+                                        :locals => { :locations => @locations }   
+  page.insert_html("after","sub-content-list", @map.to_html(:no_load => true, :no_script => true)) unless @map.blank?  
+  
+  if params[:pagination_reload] == "1"
+     params[:pagination_reload] = 0    
+     page[".item.pagination"].replace :partial => "/pagination_filter/pagination", 
+                                     :locals => { :collection => @locations } 
+  end
+     
+  
+                                                   
+#end

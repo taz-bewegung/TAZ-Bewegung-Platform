@@ -1,0 +1,12 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  <%- if feed_event.operator.is_a?(User) -%>
+  Der Nutzer <%= link_to feed_event.operator.full_name, user_path(feed_event.operator) -%> hat ein Bild hochgeladen:
+  <%- else -%>  
+  Die Organisation <%= link_to feed_event.operator.name, organisation_path(feed_event.operator) -%> hat ein Bild hochgeladen:
+  <%- end -%>
+  <br />
+  <%= image_tag feed_event.trigger.public_filename(:small) -%>  
+</div>  

@@ -1,0 +1,16 @@
+<%- title " - Blog" -%>
+<%- breadcrumb [ "" , link_to( "Blog", polymorphic_path([@bloggable, :blog]))] -%>
+<%- auto_discovery_link :rss, polymorphic_url([@bloggable, :blog], { :format => :rss }), :title => "#{@bloggable.title} als RSS-Feed"-%>
+
+
+<%= organisation_sub_menu(:blog) if @bloggable.is_a?(Organisation) %> 
+<div id="sub-content">
+  <div class="full-content blog">
+    <div class="full-content-left blog">
+      <%= render :partial => "post", :collection => @posts %>
+    </div>
+    <div class="full-content-right">    
+      <%= render :partial => "sidebar" -%>    
+    </div>
+  </div>
+</div>

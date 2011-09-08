@@ -1,0 +1,34 @@
+<div id="person_data" class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Über mich", 
+                                                                     :object => @user,
+                                                                     :path => edit_part_my_helpedia_user_path(@user, :part => "person_data"),
+                                                                     :prefix => "person_data",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+  
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= User.human_attribute_name("permalink") -%>:</dt>
+          <dd><%=v @user.permalink -%></dd>          
+          <dt><%= User.human_attribute_name("first_name") -%>:</dt>
+          <dd><%=v @user.first_name -%></dd>
+          <dt><%= User.human_attribute_name("last_name") -%>:</dt>
+          <dd><%=v @user.last_name -%></dd>
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= User.human_attribute_name("image") -%>:</dt>
+          <dd><%= user_image_for(@user, "32x24c") %></dd>            
+          <dt><%= User.human_attribute_name("birthday") -%>:</dt>
+          <dd><%= unless @user.birthday.blank? then l(@user.birthday, :format => "%Y") else "-" end -%></dd>
+          <dt><%= User.human_attribute_name("gender") -%>:</dt>
+          <dd><%= @user.wordify_gender || "-" -%></dd>                  
+        </dl>          
+      </div>
+    </div>
+  </div>
+</div>

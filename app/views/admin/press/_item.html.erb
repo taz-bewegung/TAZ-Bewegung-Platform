@@ -1,0 +1,42 @@
+<div class="list-table-item<%= " last" if @news.is_a?(Array) and @news.last == news -%>" id="<%= news.object_id %>" >
+  <div class="two-column">
+    <div class="column-100">
+      <dl>
+        <dt>Titel:</dt>
+        <dd>
+          <div class="item-content"><b><%= news.title -%></b></div>
+          <div class="edit">
+            <%=  link_to image_tag("buttons/btn-small-edit.png"), 
+                         edit_admin_press_instance_path(news,
+                                                       :part => news.object_id,
+                                                       :spinner => "press-spinner"),
+                                                       :class => "ajax-link",
+                                                       :rel => "press-spinner" -%>
+          </div>        
+        </dd>
+        <%- unless news.image.blank? -%>        
+        <dt>Bild:</dt>
+        <dd><%= image_for(news, :mini) -%></dd>
+        <%- end -%>
+        <%- unless news.document.blank? -%>        
+        <dt>Angehängte Datei:</dt>
+        <dd><%=v "" -%></dd>
+        <%- end -%>        
+        <dt>Erstellt am:</dt>
+        <dd><%=l news.created_at -%></dd>        
+        <dt>Veröffentlicht am:</dt>
+        <dd><%= date_time_for news.published_on -%></dd>        
+        <dt>Erstellt von:</dt>
+        <dd><%=h news.author.full_name -%></dd>
+        <dt>Kategorien:</dt>
+        <dd><%= news.news_categories.map{ |c| c.title }.join(", ") -%></dd>        
+        <%- unless news.url.blank? -%>
+        <dt>Link zu externer URL:</dt>
+        <dd><%= news.url -%></dd>        
+        <%- end -%>        
+        <dt>Nachricht:</dt>
+        <dd><%= truncate(news.message, :length => 200) -%></dd>            
+      </dl>
+    </div>          
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="profile-container">
+  <div class="profile-container-top"> </div>
+  <div class="profile-container-middle">
+    <div style="overflow: hidden">
+      <div class="profile-image">
+        <div class="image-wrap">
+          <%= image_for(@activity, :large, :grey) %> 
+        </div>
+      </div>
+      <div class="profile-content">
+        <h1><%=h @activity.title %></h1>
+      
+        <dl class="from">
+          <dt class="label"><%= t(:"activity.public_profile.head_content.from")%></dt>
+          <%- if @activity.owner.is_a?(User) -%>
+          <dt class="image"><%= user_image_for(@activity.owner, :medium) %></dt>
+          <dt class="name"><%=h @activity.owner.full_name %></dt>
+          <%- else -%>
+          <dt class="image"><%= organisation_image_for(@activity.owner, :medium) %></dt>
+          <dt class="name"><%=h @activity.owner.name %></dt>          
+          <%- end -%>
+        </dl>
+      
+        <%= image_tag("profile-arrow-left.gif", :class => 'arrow') %>
+      
+        <dl class="to">
+          <dt class="label"><%= t(:"activity.public_profile.head_content.to") -%></dt>
+          <dt class="image"><%= organisation_image_for(@activity.organisation, :medium) %></dt>
+          <dt class="name"><%=h truncate(@activity.organisation.name, :length => 30) -%></dt>
+        </dl>            
+      </div>
+    </div>
+  </div>  
+  <div class="profile-container-bottom"> </div>  
+</div>

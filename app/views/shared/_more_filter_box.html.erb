@@ -1,0 +1,23 @@
+<div class="more-filter">
+  <a href="#" class="no" ><%= image_tag("layout/icons-pagination/box-more/hover-box-btn-no.png") -%></a>
+  <a href="#" class="ro" style="display: none;" ><%= image_tag("layout/icons-pagination/box-more/hover-box-btn-ro.png") -%></a>
+  <table class="filter-hide-show"> 
+    <tr>
+      <td class="ol"></td>
+      <td class="om"></td>
+      <td class="or"></td>
+    </tr>
+    <tr>
+      <td class="ml"><%= image_tag "blank.gif", :width => "4px" -%></td>
+      <td class="mm">
+        <%= content %>
+      </td>
+      <td class="mr"><%= image_tag "blank.gif", :width => "4px" -%></td>
+    </tr>
+    <tr>
+      <td class="ul"></td>
+      <td class="um"></td>
+      <td class="ur"></td>
+    </tr>
+  </table>
+</div>

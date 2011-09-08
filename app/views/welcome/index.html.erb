@@ -1,0 +1,63 @@
+<% welcome_header "Die Plattform für Veränderung", "... mit dabei: #{User.active.count} Aktive <br /> und #{Organisation.active.count} Organisationen" %>
+  
+<% render_or_cache("welcome_index", { :ignore_roles => [:admin] }, :expires_in => 30.minutes ) do -%>
+
+  <div class="two-columns">
+  	<div class="first-col">
+      <%= render_top_container("welcome_top_blog") %>
+    </div>
+    <div class="second-col">
+      <%= render_carousel_container("home_index_carousel", :cache_fragment => "home_index_carousel", :image_size => "278x205c") %>	  
+  	</div>
+  </div>
+
+  <div class="two-columns">
+  	<div class="first-col">
+      <div class="start-teaser">
+      	<div class="start-teaser-content">
+          <h2 class="size-21">Was passiert gerade?</h2>
+          <%= render :partial => "/feed_events/full/feed_event", :collection => FeedEvent.public_visible.latest.limit(3)  %>
+          <%= link_to "Weitere Einträge >", feed_events_path %>
+          <br />
+      	</div>
+      	<div class="start-teaser-content last">
+          <%= render_start_carousel_container("welcome_index_carousel", :cache_fragment => "welcome_index_carousel") %>
+      	</div>    	
+    	</div>
+      <br style="clear: both" /><br />
+      <div id="home-tab-container">
+        <div id="sub-content">
+          <%= render_home_content_container("home_video", :cache_fragment => "welcome_index") %>    
+        </div>
+      </div>
+    </div>	
+    <div class="second-col">
+  	  <h2 class="size-21">Blogs - die neuesten Beiträge</h2>
+  	  <ul class="rss-list">
+        <%- for post in BlogPost.published.with_active_organisation.recent.limit(9) -%>
+          <% if post.blog.present? %>
+  	      <li>
+            <%= h(post.blog.bloggable.title) %>: <br />	        
+    	      <%= link_to(h(post.title), polymorphic_path([post.blog.bloggable, post])) %>
+  	      </li>  	   
+    	    <%- end -%>	         
+    	  <%- end -%>
+      </ul>	  
+  	  <br />
+	   <h2 class="size-21">taz.de - Schlagzeilen</h2>
+      <span id="taz-rss">
+
+        Lade Schlagzeilen von taz.de...
+        <script type="text/javascript">
+          $(document).ready(function() { 
+            $.ajax({ method: "get", 
+                     url: "/taz_rss",
+                     dataType: "script"
+             });
+          });
+        </script>
+      </span> 
+  	</div>
+  </div>
+
+<% end %>

@@ -1,0 +1,52 @@
+<%= organisation_register_sub_menu(:login) %>
+<div id="sub-content">
+
+  <% form_for(@presenter, 
+              :url => organisations_path, 
+              :builder => EditFormBuilder,                
+              :html => { :method => :post }) do |f| %>
+    <table border="0" cellpadding="8" width="100%" class="reg-form w-230">  	
+      <tr>
+        <th valign="top"> </th>
+        <td>
+          <span class="grey">* Pflichtfeld</span>
+        </td>
+      </tr>      
+      <%= f.text_field :name, :labels_from => Organisation, :required => true -%>
+      <%= f.text_field :permalink,
+                       :labels_from => Organisation,
+                       :required => true,
+                       :after_html => '<div class="shortname" style="float:left">' + organisations_url + '/<span class="chosen-shortname">'+@presenter.permalink.to_s+'</span></div>' -%>    
+      <%= f.text_field :contact_email, :labels_from => Organisation, :required => true -%>                             
+      <%= f.text_field :contact_email_confirmation, 
+                       :required => true,
+                       :hide_label => false, 
+                       :labels_from => Organisation,
+                       :style => 'width: 185px',
+                       :class => "make-me-short",
+                       :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Password wiederholen" />' -%>      
+      <%= f.password_field :password, :required => true, :labels_from => Organisation -%>
+      <%= f.password_field :password_confirmation, 
+                             :required => true,
+                             :hide_label => false, 
+                             :labels_from => Organisation,
+                             :style => 'width: 185px',
+                             :class => "make-me-short",
+                             :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Password wiederholen" />' -%>    
+    </table> 
+    <br />  
+    <div class="form-footer">
+      <table border="0" class="reg-form w-230">
+        <tr>
+          <th>
+          </th>
+          <td>
+            <%= shadow_form_button("Weiter >>", :css_class => 35, :font_size => 14) %> oder <%= link_to "Abbrechen", root_path %>
+          </td>
+      </table>
+    </div>  
+
+  <% end %>   
+  
+</div>
+            

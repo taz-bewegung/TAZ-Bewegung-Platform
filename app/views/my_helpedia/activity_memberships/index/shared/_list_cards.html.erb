@@ -1,0 +1,27 @@
+<%- if(activity_memberships.blank?)%>
+  Es gibt noch keine Sympathisanten für diese Aktion.
+<%- else -%>
+  <div class="memberships">
+    <div class="list-card">
+    <% for membership in activity_memberships -%> 
+      <div class="list-card-item" id="<%= dom_id(membership) -%>">
+        <div class="item-inner-wrap">
+          <div class="item-title">
+          <%= user_profile_link_for membership.user -%>
+          </div>
+          <div class="item-text">
+            <div class="item-left">
+              <div class="item-image-wrap">
+              <%= image_for(membership.user, :"90x69c", :context_menu => my_helpedia_activity_activity_membership_context_menu(membership)) -%>
+              </div>
+            </div>
+            <div class="description">
+              <%=h truncate(membership.message, :length => 170) -%>
+            </div>
+          </div>
+        </div>
+      </div>                                                             
+    <%- end -%>
+    </div>  
+  </div>
+<% end -%>

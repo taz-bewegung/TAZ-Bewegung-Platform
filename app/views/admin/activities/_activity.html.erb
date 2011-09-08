@@ -1,0 +1,15 @@
+<tr id="<%= dom_id(activity) %>">
+  <td><%= image_for(activity, :mini) -%></td>
+	<td><%= link_to h(activity.title), activity_path(activity) %></td>
+  <td class="icons">
+    <%= activity_icons_for(activity) -%>
+  </td>
+</tr>
+<tr>
+  <td colspan="8">
+    <div class="edit-admin-comment" rel="<%= update_comment_admin_activity_path(activity) -%>">
+      <%=h activity.admin_comment -%>
+    </div>
+  </td>
+</tr>
+<%= render :partial => "details", :locals => { :activity => activity } -%>

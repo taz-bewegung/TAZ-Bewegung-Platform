@@ -1,0 +1,28 @@
+<%- title " - Unterzeichner" -%>
+<%- breadcrumb [ "" , link_to('Unterzeichner', activity_petition_users_path(@activity))] -%>
+
+<div id="sub-content">
+  <style>
+    #feed_event_results td {
+      padding: 8px;
+      width: 50%;
+    }
+    #feed_event_results .alternate td {
+      background-color: #FAF9F4
+    }
+    #feed_event_results h2 {
+      margin-top: 12px;
+    }
+    .list-tiny {
+      width: auto !important;
+      /* margin-top: -12px; */
+    }
+  </style> 
+   <div id="feed_event_results" class="list-tiny">
+     <%= render :partial => "/petition_users/list" %>
+   </div>
+   <%= will_paginate(@petition_users) %>
+   <%= pageless(@petition_users.total_pages, :url => activity_petition_users_path(@activity), 
+                                          :message => " ...lade weitere Einträge", 
+                                          :element => "#feed_event_results") %>
+</div>

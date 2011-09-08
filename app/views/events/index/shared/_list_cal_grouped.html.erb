@@ -1,0 +1,13 @@
+<div class="events">
+  <%= calendar_for(params[:date].to_date.year, params[:date].to_date.month, :first_day_of_week => 1,
+                                                      :hide_month_name => true,
+                                                      :current_month => t(:'date.formats.calendar_header', :default => "%B %Y"),
+                                                      :next_month => lambda { |date| link_to(image_tag("layout/icons-pagination/icons/vor-no.gif"), url_for(params.merge(:date => date.to_s)), :rel => "table-spinner", :class => "remote-link" ) },
+                                                      :previous_month => lambda { |date| link_to(image_tag("layout/icons-pagination/icons/zuruck-no.gif"), url_for(params.merge(:date => date.to_s)), :rel => "table-spinner", :class => "remote-link" ) }) do |day|
+    events_for_day(@events, day)
+  end %>
+  
+  <div id="day-events">
+    Bitte wähle einen Tag aus, um die Termine an diesem Tag anzusehen.
+  </div>
+</div> 

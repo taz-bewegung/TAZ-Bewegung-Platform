@@ -1,0 +1,13 @@
+<% cache("termine/index/list/#{@cache_key}", :expires_in => 30.minutes ) do %>
+  <%- if params[:order].blank? or params[:order] == "starts_at" -%>
+    <%= render :partial => "/events/index/shared/list_#{params[:list_type]}_grouped", 
+               :locals => { :events => @events, :grouped_events => @grouped_events } -%>
+  <%- else -%>
+    <%= render :partial => "/events/index/shared/list_#{params[:list_type]}", 
+               :locals => { :events => @events } -%>
+  <%- end -%>
+  
+  <% if @events.total_pages.nil? or @events.total_pages < 1 %>
+    Keine Termine gefunden ...<p></p>
+  <% end -%>
+<% end -%>

@@ -1,0 +1,43 @@
+<%- title " - Aktionsblog" -%>
+<%- breadcrumb [ "" , link_to( "Aktionsblog", my_helpedia_activity_blog_path(@activity))] -%>
+
+<%= my_helpedia_activity_sub_menu(:blog) -%>
+<div id="sub-content">
+  <div class="edit-container">
+    <table class="edit-part-header">
+      <tr>
+        <td class="title"><h1>Meine Blog-Nachrichten</h1></td>
+        <td class="line"><div class="line-div">&nbsp;</div></td>        
+        <td class="link">
+          <%= link_to image_tag("buttons/btn-add.png"), new_my_helpedia_activity_blog_post_path(@activity)  -%>
+         </td>
+      </tr>
+    </table>  
+  
+    <div class="clearfloats edit-profile"> 
+      <div id="posts_content">
+     	<table border="0" cellspacing="5" cellpadding="5" width="100%">
+     		<tr>
+				<th>Titel</th>
+				<th>Erstellzeit</th>
+				<th>Änderungszeit</th>
+				<th>Status</th> 
+				<th>Kommentare</th>
+			</tr>
+     		<%- for post in @posts -%>
+		    <tr>
+				<td><%= post.title %></td>
+				<td><%= l post.created_at %></td>
+				<td><%= l post.updated_at %></td>                             
+				<td><%= post.state %></td>                             				
+				<td><%= BlogPost::COMMENTABLE[post.commentable.to_i - 1].first %></td>
+			</tr>
+		    <%- end -%>	
+     	</table>
+       
+      </div>
+                                                                
+    </div>                 
+  </div>
+</div>
+

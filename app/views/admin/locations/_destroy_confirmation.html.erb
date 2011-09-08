@@ -1,0 +1,21 @@
+<h2>Ort wirklich löschen?</h2>
+
+<p>ACHTUNG: Es gehen alle zugehörigen Daten verloren!</p>
+
+<% form_for @message, :url => admin_location_path(@location), 
+                      :method => :delete,
+                      :builder => EditFormBuilder,
+                      :html => { :class => "remote-form" } do |f| %>
+  <table class="reg-form w-140">
+    <%= f.text_field :subject %>
+    <%= f.text_area :body %>
+    <%= f.check_box :do_not_send %>
+    <%= hidden_field_tag :_method, :delete %>
+    <tr>
+      <th></th>
+      <td><%= shadow_form_button("Ort löschen", :css_class => 35, :font_size => 14) %> 
+      oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %></td>
+    </tr>
+  </table>                      
+
+<% end %>

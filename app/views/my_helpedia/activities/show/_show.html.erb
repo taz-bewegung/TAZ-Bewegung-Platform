@@ -1,0 +1,7 @@
+<%- title h(@activity.title) -%>
+<%- breadcrumb [ link_to("Meine Seite", my_helpedia_path),   
+                 link_to(h(@activity.title), my_helpedia_activity_path(@activity))] -%>
+<%= render :partial => "/my_helpedia/activities/show/right_column" -%>      
+<% edit_header render_activity_info_box(@activity, :private) -%>
+
+<%= render :partial => content_partial %>

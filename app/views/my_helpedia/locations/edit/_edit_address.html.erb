@@ -1,0 +1,43 @@
+<div id="address">
+
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Adresse</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+              cancel_edit_part_my_helpedia_location_path(@location, :part => "address"), 
+              :class => "ajax-link",
+              :rel => "#{@location.object_id}-address-spinner" -%>              
+  </div>
+  
+  <div class="edit-part-content">  
+    <%- form_for(@location, 
+                :url => my_helpedia_location_path(@location, :part => "address"), 
+                :builder => EditFormBuilder,                                 
+                :html => { :class => "remote-form",
+                           :rel => "#{@location.object_id}-address-spinner" }) do |f| -%>
+    <%- @address = @location.address -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+    <%- fields_for @location.address, :builder => EditFormBuilder do |form| -%>
+      <%= form.text_field :street, :required => false, :labels_from => Event -%>
+      <%= form.text_field :zip_code, :required => false, :labels_from => Event -%>      
+      <%= form.text_field :city, :required => false, :labels_from => Event -%>      
+    <%- end -%>
+    </table>                                                                  
+    
+    <div class="edit-part-bottom">
+      <div class="buttons">
+        <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+        <%= link_to image_tag("buttons/btn-cancel.png"), 
+                    cancel_edit_part_my_helpedia_location_path(@location, :part => "address"), 
+                    :class => "ajax-link",
+                    :rel => "#{@location.object_id}-address-spinner" -%>
+      </div>
+      <div class="edit-form-spinner">
+        <%= image_tag "ajax-spinner.gif", :id => "#{@location.object_id}-address-spinner", :style => "display: none" -%>
+      </div>                            
+    </div>     
+
+    <%- end -%>
+  </div>
+</div>

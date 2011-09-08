@@ -1,0 +1,6 @@
+<div class="feed-event-content">
+  <%= image_for feed_event.operator, "32x24c" %>
+  <div class="teaser">  
+    <%= user_profile_link_for feed_event.operator %> hat einen neuen Blogeintrag <%=link_to h(feed_event.trigger.title), polymorphic_path([feed_event.concerned, feed_event.trigger]) %> verfasst.
+  </div>
+</div>  

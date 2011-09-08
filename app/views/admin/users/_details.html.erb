@@ -1,0 +1,90 @@
+<tr style="display: none" id="detail-<%= user.object_id -%>">
+  <td colspan="8"> 
+    
+    <div class="flora">
+      <ul class="admin-tabs">
+        <li><a href="#tab-details-<%= user.object_id -%>">Details</a></li>
+        <%- unless user.activities.blank? -%>
+        <li><a href="#tab-activities-<%= user.object_id -%>">Aktionen</a></li>
+        <%- end -%>
+        <%- unless user.events.blank? -%> 
+        <li><a href="#tab-events-<%= user.object_id -%>">Events</a></li>
+        <%- end -%>
+      </ul>
+      
+      <div id="tab-details-<%= user.object_id -%>">        
+    
+        <table>
+          <tr>
+            <td>Name:</td>
+            <td><%=h user.full_name -%></td>
+          </tr>
+          <tr>
+            <td>interne ID:</td>
+            <td><%= user.id -%></td>
+          </tr>
+          <tr>
+            <td>Permalink:</td>
+            <td><%=h user.permalink -%></td>
+          </tr>                    
+          <tr>
+            <td>Registriert:</td>
+            <td><%=l user.created_at -%></td>
+          </tr>
+          <tr>
+            <td>Letztes Update:</td>
+            <td><%=l user.updated_at -%></td>
+          </tr>
+          <tr>
+            <td>Letztes Login:</td>
+            <td><%= date_time_for(user.logged_in_at) -%></td>
+          </tr>              
+          <tr>
+            <td>Telefon:</td>
+            <td><%=h user.phone -%></td>
+          </tr>
+          <tr>
+            <td>Geburtstag:</td>
+            <td><%= date_time_for(user.birthday) -%></td>
+          </tr>
+        </table>
+      
+      </div>
+      
+      <%- unless user.activities.blank? -%>
+      <div id="tab-activities-<%= user.object_id -%>">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Titel</th>
+            <th>Spendenstand</th>                
+            <th>Status</th>
+          </tr>
+          <% for activity in user.activities -%>
+          <tr>
+            <td><%= link_to(activity.title, activity_path(activity)) -%></td>
+          </tr>
+        <% end -%>
+        </table>
+      </div> 
+      <%- end -%>
+
+      <%- unless user.events.blank? -%>          
+      <div id="tab-events-<%= user.object_id -%>"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Titel</th>
+            <th>Status</th>
+          </tr>
+          <% for event in user.events -%>
+          <tr>
+            <td><%= link_to(event.title, event_path(event)) -%></td>
+          </tr>
+        <% end -%>
+        </table>            
+      </div>
+      <%- end -%>
+      
+    </div>
+    
+  </td>
+</tr>

@@ -1,0 +1,8 @@
+<div class="locations">
+  <div class="list-table">
+     <%= render :collection => locations, 
+                :partial => "/locations/index/shared/list_rows_item", 
+                :as => :location, 
+                :locals => { :locations => locations } %>       
+  </div>
+</div>

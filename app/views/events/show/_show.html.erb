@@ -1,0 +1,12 @@
+<%- title h(@event.title) -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.events"), event_path(@event)),
+                 link_to(h(@event.title), event_path(@event))] -%>
+<%= edit_header render_event_info_box(@event, :public) -%>
+<% magick_header h(@event.title) %>
+
+
+<%= render :partial => "/events/show/right_column" -%>
+<%= render :partial => "/events/show/head" -%>
+<div id="sub-content-wrap">
+  <%= render :partial => content_partial %>
+</div>

@@ -1,0 +1,32 @@
+<%- title "Downloads" -%>
+<% breadcrumb [ link_to("Downloads", url_for(:controller => 'pages', :action => "downloads"))] %>  
+<% magick_header "Downloads" %>
+
+<h2>Trommelt mit - für die Bewegungsplattform!</h2>
+<p>
+  Wir bieten hier Webbanner in verschiedenen Formaten an, die ihr auf eurer Webseite einbinden könnt. Wenn ihr ein spezielles Format benötigt, dann schreibt doch bitte eine Email an: <%= mail_to "bewegung@taz.de" %> und wir schicken euch dann ein entsprechendes Banner zu.
+</p>
+
+<div>
+  <%= image_tag "/downloads/banneranime3.gif" %>
+</div>
+<br />
+<div>
+  <%= image_tag "/downloads/banner_bewegung_248x80.jpg" %>
+</div>
+<br />
+<div>
+  <%= image_tag "/downloads/banner_bewegung_268x60.jpg" %>
+</div>
+<br />
+<div>
+  <%= image_tag "/downloads/banner_bewegung_300x250.jpg" %>
+</div>
+
+
+
+
+
+<% content_for :right_column do %>
+  <%= render :partial => "/flyer_orders/right_column" %>
+<% end %>

@@ -1,0 +1,17 @@
+<table class="edit-part-header">
+  <tr>
+    <td class="title"><h2><%= header -%></h2></td>
+    <td class="line"><div class="line-div">&nbsp;</div></td>        
+     <td>
+         <%= image_tag "ajax-spinner.gif", 
+                       :id => "#{prefix}-spinner", 
+                       :class => "spinner" -%>
+    </td>
+    <td class="link">
+      <%= link_to button, 
+                  path, 
+                  :class => "ajax-link",
+                  :rel => "#{prefix}-spinner" -%>
+     </td>
+  </tr>
+</table>  

@@ -1,0 +1,3 @@
+<div class="feed-event-item <%= cycle "", "alternate" %> admin" id="<%= dom_id(feed_event.trigger) -%>">
+  <%= render :partial => feed_event_partial_name(feed_event, :path => "/admin/feed_events/"), :locals => { :feed_event => feed_event } -%>
+</div>

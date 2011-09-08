@@ -1,0 +1,26 @@
+<tr class="<%= cycle("","alternate") -%>" id="post_<%= post.id %>">
+  <td valign="top" class="name-and-date">
+    <span class="name"><%=link_to h(post.title), polymorphic_path([:edit, :my_helpedia, @bloggable, post]), :class => "remote-link" %></span>
+    <span class="date"><%=l post.created_at %></span>
+    <span class="date">Status: <%= post.published? ? "Öffentlich" : "Versteckt" %> </span>
+    <span class="date">Kommentare: <%= BlogPost::COMMENTABLE[post.commentable.to_i - 1].first %></span>
+  </td>
+  <td class="subject">
+    <span class="message">
+      <% unless post.blog_post_contents.blank? %> 
+      <%= render :partial => "/my_helpedia/blog_post_contents/#{post.blog_post_contents.first.contentable_type.underscore}",
+                 :locals => { :content => post.blog_post_contents.first.contentable } %>
+      <% end %>
+    </span>
+  </td>
+  <td style="width: 90px">
+  <%= link_to image_tag("icons/edit.png"), polymorphic_path([:edit, :my_helpedia, @bloggable, post]), :class => "remote-link edit-icon", :title => "Editieren" %>
+  <% if post.unpublished? %>
+  <%= link_to image_tag("icons/show.png"), polymorphic_path([:publish, :my_helpedia, @bloggable, post]), :class => "ajax-link-put show-icon", :title => "Veröffentlichen" %>
+  <% else %>
+  <%= link_to image_tag("icons/hide.png"), polymorphic_path([:unpublish, :my_helpedia, @bloggable, post]), :class => "ajax-link-put hide-icon", :title => "Verstecken" %>
+  <% end %>    
+  <%= link_to image_tag("icons/delete.png"), polymorphic_path([:my_helpedia, @bloggable, post]), :class => "ajax-link-delete delete-icon", :title => "Löschen" %>
+  <td>
+</tr>
+<tr id="separator-post_<%= post.id %>"><td colspan="8" class="seperator">&nbsp;</td></tr>

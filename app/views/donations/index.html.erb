@@ -1,0 +1,51 @@
+<%- title "Spenden" -%>
+<%- breadcrumb [ link_to("Spenden", donations_path)] -%>
+<%= render :partial => "/donations/right_column" -%>
+
+
+
+
+<div class="category-overview">
+  <div class="category-overview-left">
+    <div id="videoTutorial">
+      <%= image_tag("testimonials-fallback.png", :width => 150) -%>
+    </div>
+    <script type="text/javascript">
+				var flashvars = {
+				pathxmlpath: "/flash/path.xml",
+				landingid: "spende"
+				};
+   
+				var parameters = {
+				wmode: 'transparent'
+				}
+
+		// Embedd flash object
+		swfobject.embedSWF("/flash/landing-spende.swf", "videoTutorial", "150", "400", "9.0.0", "/flash/expressInstall.swf", flashvars, parameters);
+	</script>
+  </div>
+  <div class="category-overview-right"> 
+   <h1>Spenden - ganz einfach!</h1>
+
+
+		<div class="quotebox-flex">
+			<p class="quote">
+				Spenden über Helpedia ist sicher und einfach. Alle wesentlichen Informationen findest Du in der rechten Menüführung. Du kannst direkt für eine Aktion oder auch für eine Organisation spenden.
+			</p>
+			<div class="quotebox-footer"><div class="quotebox-footer-inner"></div></div>	
+		</div>
+		<br /><br />
+		<h2>Finde jetzt eine ...</h2>
+		
+		
+		<div class="select_one_option">
+			<%= link_to image_tag("/images/default/organisations/organisation_large.jpg"), organisations_path %>
+			<%= link_to image_tag("/images/default/activities/activity_large.jpg"), activities_path %>
+		</div>
+
+
+
+  </div>
+</div>
+
+

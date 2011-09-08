@@ -1,0 +1,4 @@
+<h3><%=content.title%></h3>
+<% images = thumbnail_urls(content) %>
+<%= images.map { |i| image_tag i }.to_s %>
+<%= link_to 'mehr &raquo;', activity_blog_post_path(@activity, content.blog_post_content.blog_post) %>

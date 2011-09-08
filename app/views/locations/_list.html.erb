@@ -1,0 +1,6 @@
+<% cache("orte/index/list-#{@cache_key}", :expires_in => 10.minutes, :format => :xml) do %>
+  <%= render :partial => "/locations/index/shared/list_#{params[:list_type]}", :locals => { :locations => @locations } -%>
+  <% if @locations.total_pages < 1 %>
+  Keine Orte gefunden ...
+  <% end -%>
+<% end -%>

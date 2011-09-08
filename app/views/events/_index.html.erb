@@ -1,0 +1,21 @@
+<% title t(:"layout.menu.events") %>
+<% small_finder("events") -%>
+<% main_menu :events %>
+<% breadcrumb [ link_to("Termine", events_path)] %>
+<% magick_header "Termine" %>
+<% right_column render(:partial => "right_column") %>
+<% rss_feed(events_path(:format => :xml), "bewegung.taz.de - Aktuelle Termine") %>
+<%- if params[:i_search].blank? -%>
+  <%- render_or_cache("termine/index/carousel-#{@cache_key}", { :ignore_roles => [:admin] }, :expires_in => 1.hour ) do -%>
+    <div class="clearfloats landing-page-teaser">
+      <%= render_content_container("event_index_text", :cache_fragment => "event_index_teaser") %>
+      <%= render_carousel_container("event_index_carousel", :cache_fragment => "event_index_teaser") %>
+    </div>  
+  <%- end -%>
+  <% render_or_cache("termine/index/pagination-#{@cache_key}", :expires_in => 30.minutes) do %>
+  <%= render :partial => "/events/index/shared/pagination_filter" %>
+  <% end %>
+<% end -%>
+<div id="sub-content-list">
+  <%= render :partial => '/events/list' -%>
+</div>

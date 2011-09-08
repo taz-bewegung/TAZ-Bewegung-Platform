@@ -1,0 +1,107 @@
+<tr style="display: none" id="detail-<%= organisation.object_id -%>">
+  <td colspan="8"> 
+   
+    <div class="flora">
+      <ul class="admin-tabs">
+        <li><a href="#tab-details-<%= organisation.object_id -%>">Details</a></li>
+
+        <%- unless organisation.activities.blank? -%>
+        <li><a href="#tab-activities-<%= organisation.object_id -%>">Aktionen</a></li>
+        <%- end -%>
+
+        <%- unless organisation.events.blank? -%> 
+        <li><a href="#tab-events-<%= organisation.object_id -%>">Events</a></li>
+        <%- end -%>
+      </ul>
+      
+      <div id="tab-details-<%= organisation.object_id -%>">        
+    
+        <table>
+          <tr>
+            <td>Name:</td>
+            <td><%=h organisation.name -%></td>
+          </tr>
+          <tr>
+            <td>interne ID:</td>
+            <td><%=h organisation.id -%></td>
+          </tr>
+          <tr>
+            <td>Permalink:</td>
+            <td><%=h organisation.permalink -%></td>
+          </tr>                    
+          <tr>
+            <td>Adresse:</td>
+            <td><%= h organisation.address.to_long if organisation.address.present? -%>
+            <%= '<span style="color:red">Adresse fehlt!</span>' if organisation.address.blank? %>
+            </td>
+          </tr>
+          <tr>
+            <td>Ansprechpartner (Name):</td>
+            <td><%=h organisation.contact_name -%></td>
+          </tr>
+          <tr>
+            <td>Ansprechpartner (E-Mail):</td>
+            <td><%= mail_to organisation.contact_email -%></td>
+          </tr>
+          <tr>
+            <td>Ansprechpartner (Telefon):</td>
+            <td><%=h organisation.contact_phone -%></td>
+          </tr>          
+          <tr>
+            <td>Registriert:</td>
+            <td><%=l organisation.created_at -%></td>
+          </tr>
+          <tr>
+            <td>Letztes Update:</td>
+            <td><%=l organisation.updated_at -%></td>
+          </tr>
+          <tr>
+            <td>Kategorien:</td>
+            <td><%=h organisation.social_categories.map(&:title).join(", ") -%></td>
+          </tr>          
+          <tr>
+            <td>Letztes Login:</td>
+            <td><%= date_time_for(organisation.logged_in_at) -%></td>
+          </tr>              
+        </table>
+      
+      </div>
+      
+      <%- unless organisation.activities.blank? -%>
+      <div id="tab-activities-<%= organisation.object_id -%>">
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Titel</th>
+            <th>Status</th>
+          </tr>
+          <% for activity in organisation.activities.ordered("ends_at DESC") -%>
+          <tr>
+            <td><%= link_to(activity.title, activity_path(activity)) -%></td>
+            <td><%# activity_status_for(activity) -%></td>
+          </tr>
+        <% end -%>
+        </table>
+      </div> 
+      <%- end -%>
+
+      <%- unless organisation.events.blank? -%>          
+      <div id="tab-events-<%= organisation.object_id -%>"> 
+        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <th>Titel</th>
+            <th>Status</th>
+          </tr>
+          <% for event in organisation.events -%>
+          <tr>
+            <td><%= link_to(event.title, event_path(event)) -%></td>
+            <td><%= event_status_for(event) -%></td>
+          </tr>
+        <% end -%>
+        </table>            
+      </div>
+      <%- end -%>
+      
+    </div>
+    
+  </td>
+</tr>

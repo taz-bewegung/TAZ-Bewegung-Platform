@@ -1,0 +1,12 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  <%- if feed_event.operator.is_a?(User) -%>
+  Der Nutzer <%= link_to feed_event.operator.full_name, user_path(feed_event.operator) -%>    
+  <%- else -%>
+  Die Organisation <%= link_to feed_event.operator.name, organisation_path(feed_event.operator) -%>  
+  <%- end -%>
+   hat eine neue Veranstaltung <%= link_to feed_event.trigger.title, event_path(feed_event.trigger) %> eingestellt.
+</div>  
+

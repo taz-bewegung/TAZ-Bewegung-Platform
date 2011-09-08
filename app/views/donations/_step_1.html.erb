@@ -1,0 +1,94 @@
+<%- unless params[:step].blank? -%>
+<%= donation_sub_menu(:donate) %>
+<%- else -%>
+<ul class="nav-sub"><li></li></ul>
+<%- end -%>
+<div id="sub-content" class="donation">
+  
+  <h2>Deine Spende zählt</h2>
+  <%- form_for(@presenter, 
+               :url => @path,
+               :builder => EditFormBuilder,
+               :html => { :method => :post }) do |form| -%>
+  <div class="donate-now-form">
+    <div class="username">
+      <%= form.text_field :username, :required => true, 
+                                  :render_table => false,
+                                  :hide_label => true,
+                                  :class => "toggle no-refill donation-username",
+                                  :title => "Dein Name", 
+                                  :tooltip_class => "tooltip-bottom",
+                                  :labels_from => Donation,
+                                  :style => "width: 150px" -%>
+    </div>
+    <div class="amount">
+      <div class="euro">&euro;</div>
+      <%- if @presenter.amount != 0 %>
+      <span id="donation-amount">                                                                      
+         <%= form.select :amount, [10, 20, 50, 100, 200, 500, 1000, ["Freie Eingabe", 0]], {},
+                              :render_table => false,
+                              :hide_label => true,
+                              :tooltip_class => "tooltip-top",                              
+                              :labels_from => Donation,
+                              :class => "donation-id" -%>
+      </span>                           
+      <%- end -%>
+      <span id="donation-custom-amount" <%= 'style="display: none"' if @presenter.amount != 0 %>>                                                                      
+        <%= form.text_field :custom_amount, :required => true, 
+                                 :render_table => false,
+                                 :hide_label => true,
+                                 :class => "donation-custom_amount",
+                                 :tooltip_class => "tooltip-bottom",                                 
+                                 :labels_from => Donation,
+                                 :style => "width: 90px" -%>
+      </span>                               
+    </div> 
+    <div class="message">
+      <%= form.text_field :message, :required => true, 
+                                 :render_table => false,
+                                 :hide_label => true,
+                                 :labels_from => Donation, 
+                                 :tooltip_class => "tooltip-bottom",                                 
+                                 :class => "toggle no-refill donation-message tt-width-220",
+                                 :title => "Deine Nachricht",
+                                 :style => "width: 327px;" -%>                 
+    </div>
+    <div class="donation-button">
+      <%= image_submit_tag "buttons/btn-donate.png", :class => "image-submit" -%>
+    </div>    
+  </div>
+  <%= hidden_field_tag "current_step", "#{@presenter.current_step}"%>
+  <%- end -%>
+  <br />
+  
+  <%- unless @activity.blank? -%>
+  
+  <%- if @activity.donations.successfull.count > 0 -%>
+  <h2>Die letzten Spender</h2>  
+  <table class="donation-table" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+      <th class="first">Name</th>
+      <th>Datum</th>      
+      <th class="euro">Spende</th>
+      <th></th>      
+      <th>Kommentar</th>
+    </tr>
+    <% @activity.donations.successfull.find(:all, :limit => 5, :order => "created_at DESC").each do |donation| %>
+    <tr>
+      <td class="first name"><%=h donation.username -%></td>
+      <td class="date"><%=l donation.created_at.to_date -%></td>
+      <td class="euro"><%= number_to_currency(donation.real_amount, :precision => 0) -%></td>
+      <td class="barometer">
+        <%= part_barometer_for(@activity, donation) %>
+      </td>
+      <td class="last message"><%= h donation.message -%></td>
+    </tr>
+    <%- end -%>
+  </table>
+  <%- else -%>    
+  <h2>Sei der Erste der spendet!</h2>
+  <%- end -%>  
+  
+  <%- end -%>
+  
+</div>  

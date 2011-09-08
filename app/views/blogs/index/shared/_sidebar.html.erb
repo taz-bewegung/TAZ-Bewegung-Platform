@@ -1,0 +1,24 @@
+<div class="blogsidebar border-left">
+  <div style="margin-top: -50px">
+  <h2>Blogarchiv...</h2>
+  <ul class="menu">
+  <%- for month in @activity.blog.posts.published.months_count -%>
+   <li><%= link_to "... #{t("date.month_names")[month.month.to_i]} #{month.year} (#{month.cnt})", ""
+                   #by_month_and_year_user_activity_blog_messages_path(@activity.owner, @activity, :month => month.month, :year => month.year)
+                   -%>
+   </li>
+  <%- end -%>
+  </ul>
+  <br />
+  <h2>Tags:</h2>
+  <div>
+    <%- unless @activity.blog.posts.published.blank? -%>
+    <%- tag_cloud @activity.blog.posts.tag_counts_on(:blog_tags), %w(css1, css2, css3) do |tag, css_class| -%>
+      <%= link_to tag.name, activity_blog_url(@activity, :tag => tag.name), :class => css_class %>
+    <%- end -%>
+    <%- end -%>
+  </div>
+  <br />
+  <%= link_to image_tag("rss2.0.png"), activity_blog_url(@activity, :format => :rss) -%>  
+  </div>
+</div>

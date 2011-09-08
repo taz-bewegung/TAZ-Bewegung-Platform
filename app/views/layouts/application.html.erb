@@ -1,14 +1,92 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
-  <title>Bewegung</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <title>bewegung.taz - <%= yield :title %></title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="description" content="bewegung taz termine aktionen orte" />
+  <meta name="keywords" content="bewegung taz termine aktionen orte" />
+  <script type="text/javascript" charset="utf-8">
+    
+    function pi(imageFile){
+      var image = new Image();
+      image.src = imageFile;
+    }
+    
+  </script>
+  
+  <%= include_stylesheets :application %>
+  <%= include_javascripts :default, :application %>
+  
+<!--[if IE 7]>
+<%= stylesheet_link_tag 'ie7' %>
+<![endif]-->
+
+<!--[if lt IE 7]>
+<%= stylesheet_link_tag 'ie6' %>  
+<script src="/javascripts/DD_belatedPNG_0.0.6a-min.js"></script>
+<script>
+DD_belatedPNG.fix('#nav-main ul li, #hc-home,  #sticker, #bd, #hc-content, #ft, #logo-link');
+</script>
+<![endif]-->
+
+  <%= yield :googlemaps -%>
+  <%= yield :auto_discovery_link -%>
+  <%= yield :rss_feed -%>
+  <%= include_tiny_mce_if_needed %>  
+  <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  
 </head>
-<body>
-
-<%= yield %>
-
+<body id="<%= @current_main_menu_id -%>">
+  <%= render :partial => "/shared/noscript" %>  
+  <%= render :partial => "/shared/google_analytics" %>
+ 	<div id="background-wrapper">
+    <div id="custom-doc" class="yui-t4">
+      <div id="hd">
+         <a href="/" id="logo-link" class="<%= logo_class_for(@current_main_menu_id) -%>"></a>
+        <%= render :partial => "/menu/top_menu" -%>
+        <div style="clear: both;"> </div>
+      </div><!-- hd -->
+      <%= yield(:finder) || render(:partial => "/menu/bewegungs_finder") -%>
+      <div id="hc-home">
+        <%= render :partial => "/users/user_bar_home" %>
+        
+      </div><!-- hc-home -->
+      <%= render :partial => "/menu/breadcrumb" %>
+      
+      <div id="bd">         
+        <div class="yui-g">
+          <%= yield :edit_header %> 
+          <div class="fancy-header">
+            <%= yield(:magick_header) || log_error("Magick Header ist nicht gesetzt") %>
+          </div><!-- fancy-header -->
+          <div class="content">
+            <div class="two-columns-application">
+              <div class="first-col">
+                <%= yield %>
+              </div><!-- first-col -->
+              <div class="second-col">
+                <%= yield :right_column%>
+              </div><!-- second-col -->
+                <br style="clear: both" />
+              </div><!-- two-columns-application -->    
+            </div><!-- content -->
+          </div><!-- yui-g -->
+        </div>
+      <div id="ft">
+        <%#- render_or_cache("footer", { :ignore_roles => [:admin] }, :expires_in => 2.hours ) do -%>
+        <%= render :partial => "/shared/footer" %>
+        <%#- end -%>
+      </div>
+    
+    </div><!-- custom-doc -->
+  </div><!-- background-wrapper -->
+    
+  <%# render :partial => "/activities/wikileaks" if session[:wikileaked].blank? and cookies[:wikileaked].blank? %>  
+  <%# render :partial => "/activities/iran" if session[:iranized].blank? and cookies[:iranized].blank?%>
+  <%= render :partial => "/shared/piwik" if RAILS_ENV == "production" %>
 </body>
 </html>

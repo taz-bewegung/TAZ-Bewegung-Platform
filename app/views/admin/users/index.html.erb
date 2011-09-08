@@ -1,0 +1,13 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Benutzerliste", admin_users_path) ]%>
+<%- title 'Benutzerliste' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:user_list) -%>
+<%- end -%>                      
+
+<div class="admin">
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'user', :collection => @users %>    
+  </table>
+</div>

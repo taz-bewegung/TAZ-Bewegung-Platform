@@ -1,0 +1,55 @@
+<div class="clearfloats">
+  
+  <%- if content.image_alignment == BlogContentText::IMAGE_ALIGNMENT_TOP -%>
+  <div class="images-top">
+    <div class="images">
+      <% content.image_attachments.each do |attachment| %>
+        <% attachment.image.find_or_create_thumbnail(attachment.size) if attachment.size.present? and attachment.image.present? %>
+        <%= image_tag attachment.image.public_filename(attachment.size || :large) if attachment.image.present? -%>
+      <% end %>
+    </div>
+    <div class="body">
+      <%= secured_rte_text content.bodytext %>
+    </div>
+  </div>
+  <%- end -%>
+
+  <%- if content.image_alignment == BlogContentText::IMAGE_ALIGNMENT_BOTTOM -%>
+  <div class="images-bottom">
+    <div class="body">
+      <%= secured_rte_text content.bodytext %>
+    </div>
+    <div class="images">
+      <% content.image_attachments.each do |attachment| %>
+        <% attachment.image.find_or_create_thumbnail(attachment.size) if attachment.size.present? and attachment.image.present? %>
+        <%= image_tag attachment.image.public_filename(attachment.size || :large) if attachment.image.present? -%>
+      <% end %>
+    </div>
+  </div>
+  <%- end -%>
+
+  <%- if content.image_alignment == BlogContentText::IMAGE_ALIGNMENT_IN_TEXT_LEFT -%>
+  <div class="body images-float-left">
+    <div class="images">
+      <% content.image_attachments.each do |attachment| %>
+        <% attachment.image.find_or_create_thumbnail(attachment.size) if attachment.size.present? and attachment.image.present? %>
+        <%= image_tag attachment.image.public_filename(attachment.size || :large) if attachment.image.present? -%>
+      <% end %>
+    </div>  
+    <%= secured_rte_text content.bodytext %>
+  </div>
+  <%- end -%>
+
+  <%- if content.image_alignment == BlogContentText::IMAGE_ALIGNMENT_IN_TEXT_RIGHT -%>
+  <div class="body images-float-right">
+    <div class="images">
+      <% content.image_attachments.each do |attachment| %>
+        <% attachment.image.find_or_create_thumbnail(attachment.size) if attachment.size.present? and attachment.image.present? %>
+        <%= image_tag attachment.image.public_filename(attachment.size || :large) if attachment.image.present? -%>
+      <% end %>
+    </div>  
+    <%= secured_rte_text content.bodytext %>
+  </div>
+  <%- end -%>
+
+</div>

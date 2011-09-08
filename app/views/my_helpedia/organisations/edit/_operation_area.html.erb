@@ -1,0 +1,22 @@
+<div id="operation_area">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Kategorien", 
+                                                         :object => @organisation,
+                                                         :path => edit_part_my_helpedia_organisation_path(@organisation, :part => "operation_area"), 
+                                                         :prefix => "operation_area",
+                                                         :button => image_tag("buttons/btn-edit.png")
+                                                        } -%>                           
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="two-column">
+        <div class="column-100">
+          <dl> 
+            <dt><%= Organisation.human_attribute_name("social_categories") -%>:</dt>
+            <dd><%= @organisation.social_categories.map(&:title).join(", ") || "-" -%></dd>            
+          </dl>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

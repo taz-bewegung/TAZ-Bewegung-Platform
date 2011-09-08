@@ -1,0 +1,14 @@
+<% unless @items.empty? %>
+  <ul class="rss-list">
+  <%- for item in @items[0..5] -%>   
+    <li>
+      <span style="color: grey"><%= item[:title] %>:</span><br />
+      <%= item[:description] %>
+    </li> 
+  <%- end -%>
+  </ul>
+<% end %>
+<br />
+Ältere News auf <a target="_blank" href="http://www.castorticker.de">Castorticker.de</a>
+<br /><br />
+

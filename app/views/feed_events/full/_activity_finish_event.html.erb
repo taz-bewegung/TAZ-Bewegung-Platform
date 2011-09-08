@@ -1,0 +1,6 @@
+<div class="feed-event-content">
+  <%= image_for feed_event.trigger, "32x24c" %>
+  <div class="teaser">
+    Die Aktion <%= link_to feed_event.trigger.title, activity_path(feed_event.trigger) %> von <%= user_profile_link_for feed_event.actor %> erfolgreich beendet.
+  </div>
+</div>

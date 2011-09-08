@@ -1,0 +1,11 @@
+<div class="activities">
+  <div class="list-card">
+    <%- grouped_activities.each do |date_group, activities| %>
+      <h2><%= date_group -%></h2>
+       <%= render :collection => activities, 
+                  :partial => "/activities/index/shared/list_cards_item", 
+                  :as => :activity, 
+                  :locals => { :activities => activities } %>      
+      <% end -%>
+  </div>  
+</div>

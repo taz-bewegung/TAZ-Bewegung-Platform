@@ -1,0 +1,1 @@
+page["finder-search-info"].replace_html render_result_info @result, params[:i_search][:search_type].to_sym

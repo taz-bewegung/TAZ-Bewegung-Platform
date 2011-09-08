@@ -1,0 +1,36 @@
+<% breadcrumb [ link_to("Presse", press_path), link_to(@news.title, press_instance_path(@news)) ]%>
+<%- title @news.title -%>
+
+<%- content_for :left_column do -%>	
+  <%= news_sub_menu(:single_news) -%>
+<%- end -%>
+
+<div class="news-item last">
+
+  <div class="news-header"><%=l @news.created_at.to_date -%> - <%=h @news.title %></div>
+
+  <div class="quotebox">
+  	<div class="quote"> 
+
+      <div class="news-teaser"><%= @news.subtitle -%></div>
+      
+       <%= RedCloth.new(@news.message).to_html -%>
+       
+       <div class="quoteauthor-inner clearfloats">
+         <%= image_tag(@news.image.public_filename(:small)) unless @news.image.blank? -%>
+         <%=h @news.publisher -%><%= " am #{l(@news.published_on)}" unless @news.published_on.blank? -%><br />
+         <%- unless @news.url.blank? -%>
+         <%= link_to "Zum Artikel >", @news.url -%><br />
+         <%- end -%>
+         <%- unless @news.document.blank? -%>
+         <%= link_to "Artikel herunterladen >", news.url -%>            
+         <%- end -%>
+       </div>
+     	 
+  	</div>
+  	<div class="quotebox-footer"></div>	
+  </div>
+
+</div>
+
+<%= link_to "< zurück", :back %>

@@ -1,0 +1,18 @@
+<%= my_helpedia_blog_sub_menu("#{params[:state]}_posts".to_sym) -%> 
+
+<div class="pagination-filter">
+  <%= pagination_filter(@posts) %>
+</div>
+<br style="clear: both" />
+
+<% if not @posts.blank? %>
+<div id="posts_content">
+  <table class="message-table" border="0" cellspacing="5" cellpadding="5" width="100%">
+    <%= render :partial => "/my_helpedia/blog_posts/post", :collection => @posts, :as => :blog_post %>
+  </table>
+</div>
+<% else -%>
+<div id="posts_content"> 
+  Es existieren noch keine Einträge.
+</div>
+<% end -%>

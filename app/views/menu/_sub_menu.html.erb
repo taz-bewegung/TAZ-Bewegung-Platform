@@ -1,0 +1,17 @@
+<ul class="nav-sub">         
+  <% menu_items.each do |item| -%>
+      <li <%= nav_sub_is_active?(item, active, menu_items) %> id="<%= item[:id] %>">
+        <%- unless item[:link_to].blank? -%>
+        <%= link_to "<span>#{item[:name]}</span>", item[:link_to], item[:options] %>
+        <%- else -%>        
+        <%= content_tag :div, "<span>#{item[:name]}</span>", item[:options] %>        
+        <%- end -%>        
+        
+        <%- unless item[:icon].blank? or item[:icon] == 0 -%>
+          <span class="tab-icon">
+            <%= item[:icon].to_s -%>
+          </span>
+        <%- end -%>
+      </li>
+  <% end -%>
+</ul>

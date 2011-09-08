@@ -1,0 +1,13 @@
+<%= my_helpedia_user_bookmark_menu(@active) -%>  
+
+<%= render :partial => "/my_helpedia/bookmarks/list_header", :locals => { :view => params[:list_type],
+                                                                          :list_title => t("bookmarks.list_header.#{params[:type].to_s.singularize}") } -%>
+<% if current_user.send("#{params[:type].to_s.singularize}_bookmarks").count > 0 then %>
+  <div id="sub-content-list">
+  <%= render :partial => "/#{params[:type]}/index/shared/list_#{params[:list_type]}", :locals => { params[:type].to_sym => current_user.send("#{params[:type].to_s.singularize}_bookmarks"),
+                                                                                    :list_title => "Meine Veranstaltungen" } %>
+  </div>  
+
+<%- else -%>
+<%= t("bookmarks.no_records_found")%>
+<% end -%>

@@ -1,0 +1,27 @@
+<div class="engagements">
+  <%= render :partial => "/engagements/index/shared/list_header", :locals => { :view => :card,
+                                                                               :list_title => list_title } -%>
+  
+  <div class="list-card">
+  <%- for engagement in engagements -%> 
+    <div class="list-card-item">
+      <%= bookmark_icon_link_for(engagement, :grey) %>
+      <div class="item-inner-wrap">
+        <div class="item-title <%= "not-logged-in" if not logged_in? or current_user.is_a?(Organisation) -%>">
+          <%= link_to h(truncate(engagement.title, :length => 52)), engagement_path(engagement), :title => h(engagement.title) -%>   
+        </div>
+        <div class="item-text">
+          <div class="item-image-wrap">
+            <%= engagement_image_for(engagement, :small) -%>
+          </div>
+          <div class="description">
+            <%=h truncate(engagement.description, :length => 160) -%>          
+          </div>
+        </div>
+      </div>
+    </div>                                                             
+  <%- end -%>
+  </div>
+  
+</div>
+

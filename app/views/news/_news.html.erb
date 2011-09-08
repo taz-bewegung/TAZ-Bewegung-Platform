@@ -1,0 +1,23 @@
+<div class="news-item <%= if @news.last == news then "last" end -%>">
+
+  <div class="news-header"><%=l news.created_at.to_date -%> - <%=h news.title %></div>
+  
+  <%- unless news.image.blank? -%>
+  <div class="clearfloats">
+    <div class="news-image">
+      <%= image_tag(news.image.public_filename(:small)) unless news.image.blank? -%>
+    </div>
+
+    <div class="news-text-with-image">
+      <span><%= truncate(news.message, :length => 300) -%></span>
+      <%= link_to "mehr >", news_instance_path(news.permalink) %>
+    </div>
+  </div>
+  <%- else -%>
+  <div>
+    <span><%= truncate(news.message, :length => 300) -%></span>
+    <%= link_to "mehr >", news_instance_path(news.permalink) %>
+  </div>
+  <%- end -%>
+  
+</div>

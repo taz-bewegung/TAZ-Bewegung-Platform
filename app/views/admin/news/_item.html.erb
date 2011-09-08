@@ -1,0 +1,36 @@
+<div class="list-table-item<%= " last" if @news.is_a?(Array) and @news.last == news -%>" id="<%= news.object_id %>" >
+  <div class="two-column">
+    <div class="column-100">
+      <dl>
+        <dt>Titel:</dt>
+        <dd>
+          <div class="item-content"><b><%= news.title -%></b></div>
+          <div class="edit">
+            <%=  link_to image_tag("buttons/btn-small-edit.png"), 
+                         edit_admin_news_instance_path(news,
+                                                       :part => news.object_id),
+                                                       :class => "ajax-link" -%>
+          </div>        
+        </dd>
+        <%- unless news.image.blank? -%>        
+        <dt>Bild:</dt>
+        <dd><%= image_for(news, :mini) -%></dd>
+        <%- end -%>
+        <%- unless news.document.blank? -%>        
+        <dt>Angehängte Datei:</dt>
+        <dd><%=v "" -%></dd>
+        <%- end -%>
+        <dt>Erstellt am:</dt>
+        <dd><%=l news.created_at -%></dd>            
+        <dt>Erstellt von:</dt>
+        <dd><%=h news.author.full_name -%></dd>
+        <%- unless news.url.blank? -%>
+        <dt>Link zu externer URL:</dt>
+        <dd><%= news.url -%></dd>        
+        <%- end -%>        
+        <dt>Nachricht:</dt>
+        <dd><%= truncate(news.message, :length => 200) -%></dd>            
+      </dl>
+    </div>          
+  </div>
+</div>

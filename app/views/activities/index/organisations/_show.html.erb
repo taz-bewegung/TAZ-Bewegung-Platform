@@ -1,0 +1,22 @@
+<%- title " - " + "Aktionen" -%>
+<%- breadcrumb [ "", link_to("Aktionen", organisation_activities_path(@organisation))] -%>
+
+<%= organisation_sub_menu(:activities) -%>
+<div id="sub-content">
+  <div class="full-content blog">
+    <div class="full-content-left blog">
+      <div class="two-column">
+        <div class="column-one">
+          <%= render :partial => "/activities/index/shared/list_header", :locals => { :list_title => "Unsere Aktionen" } %>  
+          <div id="sub-content-list">
+            <%= render :partial => "/activities/index/shared/list_cards", :locals => { :activities => @activities, 
+                                                                                      :list_title => "Unsere Aktionen" } %>
+          </div>
+        </div>
+       </div>
+    </div>
+    <div class="full-content-right">    
+      <%= render :partial => "/organisations/show/sidebar" -%>    
+    </div>
+  </div>  
+</div>

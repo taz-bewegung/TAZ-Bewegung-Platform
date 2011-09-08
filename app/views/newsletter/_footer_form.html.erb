@@ -1,0 +1,11 @@
+<%#= content_tag :span, "taz - Newsletter", :class => 'subscribe', :style => "font-size: 0.9em; padding-top: 2px;" %>
+<h2>NEWSLETTER</h2>
+
+
+<% form_for NewsletterSubscriber.new, :url => subscribe_newsletter_path do |f| %>   
+  <div class="mini-form newsletter">
+    <%= f.text_field :email, :class => "text-input toggle", :title => "Deine E-Mail-Adresse" %>
+    <%= image_submit_tag "input-subscribe-btn.gif", :class => 'search-btn' %>      
+  </div>
+<% end %>
+<%= link_to "Newsletter abmelden", unsubscribe_newsletter_path, :class => 'unsubscribe', :style => "float:left" %>      

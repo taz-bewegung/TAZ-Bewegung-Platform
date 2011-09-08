@@ -1,0 +1,4 @@
+<%- @grouped_events.each do |date_group, events| %>
+  <%= content_tag :h2, date_group if events.size == 1 or not @continued -%>
+  <%= render :partial => "/feed_events/full/feed_event", :collection => events %>
+<%- end -%>

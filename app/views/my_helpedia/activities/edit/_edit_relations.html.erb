@@ -1,0 +1,42 @@
+<div id="relations" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Verknüpfungen</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+              cancel_edit_part_my_helpedia_activity_path(@activity, :part => "relations"), 
+              :class => "ajax-link",
+              :rel => "#{@activity.object_id}-relations-spinner" -%>              
+  </div>
+  
+  <div class="edit-part-content">  
+    <%- form_for(@activity, 
+                :url => my_helpedia_activity_path(@activity, :part => "relations"), 
+                :builder => EditFormBuilder,                                 
+                :html => { :class => "remote-form",
+                           :rel => "#{@activity.object_id}-relations-spinner" }) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+      <tr>
+        <th><label><%= Activity.human_attribute_name('owner_id') -%></label></th>
+        <td><%=h @activity.owner.name -%></td>
+      </tr>
+      <%= f.text_field :event_id, :value => @activity.event_title, :required => false, :id => "event_id_autocomplete", :class => "event_id_autocomplete" -%>
+    </table>
+    <%= f.hidden_field :event_id -%>
+
+    <div class="edit-part-bottom">
+      <div class="buttons">
+        <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+        <%= link_to image_tag("buttons/btn-cancel.png"), 
+                    cancel_edit_part_my_helpedia_activity_path(@activity, :part => "relations"), 
+                    :class => "ajax-link",
+                    :rel => "#{@activity.object_id}-relations-spinner" -%>
+      </div>
+      <div class="edit-form-spinner">
+        <%= image_tag "ajax-spinner.gif", :id => "#{@activity.object_id}-relations-spinner", :style => "display: none" -%>
+      </div>                            
+    </div>     
+    <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+page[:"feed-events"].replace_html :partial => '/admin/feed_events/feed_event', :collection => @feed_events

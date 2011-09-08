@@ -1,0 +1,18 @@
+<% title "500 - Fehler" %>
+<% breadcrumb [ "500 - Fehler"] %>
+<% magick_header "500 - Fehler" %>
+<div>
+  <h3 class="error">Leider ist ein Fehler aufgetreten (500)!</h3>
+  <div>
+    <p>Wir wurden über den Fehler informiert und werden uns darum kümmern!</p>  
+    <br /><br />                                  
+    <p>Willst Du stattdessen:<p>
+    <ul>
+      <li style="margin-bottom: 1em"><%= link_to "zurück", :back %></li>
+      <li><%= link_to "Termine suchen", events_path %></li>            
+      <li><%= link_to "Aktion suchen", activities_path %></li>
+      <li><%= link_to "Ort suchen", locations_path %></li>
+      <li><%= link_to "Organisation suchen", organisations_path %></li>
+    </ul>
+  </div>
+</div>

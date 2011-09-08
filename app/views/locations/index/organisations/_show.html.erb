@@ -1,0 +1,11 @@
+<%- title " - " + "Orte" -%>
+<%- breadcrumb [ "", link_to("Orte", organisation_locations_path(@organisation))] -%>
+
+<%= organisation_sub_menu(:locations) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/locations/index/shared/list_header", :locals => { :list_title => "Eingetragene Orte" } %>  
+  <div id="sub-content-list">
+    <%= render :partial => "/locations/index/shared/list_#{params[:list_type]}", :locals => { :locations => @locations } %>
+  </div>  
+
+</div>

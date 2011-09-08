@@ -1,0 +1,30 @@
+<% show_lightbox_onload do %>
+  <div class="modal-left-content">  
+    <span style="color: #000"> 
+      <h2>Herzlich Willkommen!</h2>
+
+      Liebe Aktive, 
+      <br />
+      <br />
+        zum guten Start auf der Bewegungsplattform hier vorab ein paar Tipps:
+      <br />
+      <br />
+      <ol>
+        <li>Zur Zeit ist eure Seite unsichtbar geschaltet. Dies könnt ihr unter "Meine Seite" ändern - wenn ihr wollt, dass euch andere Aktive finden und euer Engagement und eure Seite einsehen können.</li>
+        <li>Apropos "Meine Seite" - hier könnt ihr euch und euer Engagement für eine bessere Welt vorstellen, gute Seiten im Netz empfehlen und ein Bild dazu hochladen.</li>
+        <li>Du willst wissen, was in Deiner Nähe passiert? Dann gib Deinen Wohnort an, und Du wirst auf dem Laufenden gehalten, z.B. darüber, welche Termine in Deiner Stadt angekündigt werden.</li>
+        <li>Dich interessieren bestimmte Aktionen und Organisationen besonders? Dann sympathisiere mit ihnen und Du wirst über Neuigkeiten informiert.</li>
+        <li>Wenn Du Dich mit anderen Aktiven vernetzt, dann kannst du mit ihnen Nachrichten austauschen, und du wirst über deren Aktivitäten auf dem Laufenden gehalten.</li>
+      </ol>
+      <br />
+        eine detaillierte Anleitung findet ihr <%= link_to "hier >", "/downloads/anleitung.pdf", :target => "_blank" %>
+      <br />
+      <br />  
+        Viel Spass und Bewegung!
+      <br />
+      <br /> 
+      <br />     
+      <%= custom_link_button "Fenster schließen", "#", { :size => "33-beige" }, :onclick => "$.nyroModalRemove(); return false;"  %>
+    </span>      
+  </div>
+<% end %>

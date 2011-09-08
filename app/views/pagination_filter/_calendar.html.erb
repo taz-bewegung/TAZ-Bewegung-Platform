@@ -1,0 +1,17 @@
+<div class="item pagination calendar-pagination" data-id="calendar-pagination" data-date="<%= params[:date] %>">
+  <div class="active-filter">
+    <span>Monat</span>
+    <%= link_to image_tag("pagination-filter/pagination-arrow-back.png"), 
+                url_for(params.merge(:date => params[:date].to_date-1.month)),
+                :class => "previous-month" %>
+    <span class="hover-span">
+      <%= link_to l(params[:date].to_date, :format => "%b %Y") , url_for(params.merge(:date => params[:date].to_date+1.month)), :class => "month" %>
+      <%= link_to image_tag("pagination-filter/arrow-bottom.png", :class => "arrow-bottom"), url_for(params.merge(:date => params[:date].to_date+1.month)), 
+                  :style => "margin-right: 0px" %>
+    </span>
+    <%= link_to image_tag("pagination-filter/pagination-arrow-next.png"), 
+                url_for(params.merge(:date => params[:date].to_date+1.month)),
+                :class => "next-month" %>    
+  </div>
+  <%= spinner %>   
+</div>

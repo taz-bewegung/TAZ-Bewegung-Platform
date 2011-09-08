@@ -1,0 +1,64 @@
+<div id="address">
+
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Adresse</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+              cancel_edit_part_my_helpedia_event_path(@event, :part => "address"), 
+              :class => "ajax-link",
+              :rel => "#{@event.object_id}-address-spinner" -%>              
+  </div>
+  
+  <div class="edit-part-content">  
+    <%- form_for(@event, 
+                :url => my_helpedia_event_path(@event, :part => "address"), 
+                :builder => EditFormBuilder,                                 
+                :html => { :class => "remote-form",
+                           :rel => "#{@event.object_id}-address-spinner" }) do |f| -%>
+    <%- @address = @event.address -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0" id="location_autocomplete_table" style="display: <%= @event.location.blank?? "none": "block" %>">
+    <%- fields_for @event, :builder => EditFormBuilder do |location_form| -%>
+      <%= location_form.text_field :location_id, 
+                                    :value => @event.location_name, 
+                                    :required => false, 
+                                    :id => "location_id_autocomplete", 
+                                    :class => "location_id_autocomplete", 
+                                    :after_html => content_tag(:a, "Eigene Adresse eingeben", :onclick => 'var old_location =  $("#location_id_autocomplete").val(); $("#event-address").toggle(); $("#event_location_id, #location_id_autocomplete").val("").hide(); $("tr#event_location_id_wrap").hide();return false', :href => "#{}") -%>
+      <%= location_form.hidden_field :location_id -%>
+    <%- end -%>
+    </table>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0" id="event-address" style="display: <%= @event.location.blank? ? "block" : "none"  %>">  
+    <%- fields_for @event.address, :builder => EditFormBuilder do |form| -%>
+      <%= form.check_box :nationwide, :required => false, :labels_from => Event, :id => "address_nationwide" %>    
+      <%= form.text_field :name, :required => false, :labels_from => Event, :id => "address_name" -%>
+      <%= form.text_field :street, :required => false, :labels_from => Event, :id => "address_street" -%>
+      <%= form.text_field :zip_code, :required => false, :labels_from => Event, :id => "address_zip_code" -%>
+      <%= form.text_field :city, :required => false, :labels_from => Event, :id => "address_city", :after_html =>          
+                      content_tag(:a, 
+                      "Einen bereits empfohlenen Ort auswählen", 
+                      :id => "address_location",                      
+                      :onclick => '$("#location_id_autocomplete").val(old_location); 
+                                   $("#event-address").hide();
+                                   $("#location_id_autocomplete,#event_location_id_wrap,#location_autocomplete_table").show();
+                                   return false;', 
+                      :href => "#") -%>  
+    <%- end -%>
+    </table>                                                                  
+    
+    <div class="edit-part-bottom">
+      <div class="buttons">
+        <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+        <%= link_to image_tag("buttons/btn-cancel.png"), 
+                    cancel_edit_part_my_helpedia_event_path(@event, :part => "address"), 
+                    :class => "ajax-link",
+                    :rel => "#{@event.object_id}-address-spinner" -%>
+      </div>
+      <div class="edit-form-spinner">
+        <%= image_tag "ajax-spinner.gif", :id => "#{@event.object_id}-address-spinner", :style => "display: none" -%>
+      </div>                            
+    </div>     
+
+    <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+<%= my_helpedia_user_activity_membership_menu(@active) -%>  
+<%= render :partial => "/my_helpedia/activity_memberships/index/users/list_header", :locals => { :list_title => "Ich sympathisiere mit" } %>  
+<div id="sub-content-list">
+  <%= render :partial => "/my_helpedia/activity_memberships/index/users/list_cards", :locals => { :activity_memberships => @activity_memberships, 
+                                                                                                  :list_title => "Ich sympathisiere mit" } %>
+</div>

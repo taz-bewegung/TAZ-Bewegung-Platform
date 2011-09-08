@@ -1,0 +1,11 @@
+<%= content_tag(:div, my_helpedia_user_message_menu(:system), :class => "messages-menu-wrapper") -%>
+<%= spinner -%>
+<div class="edit-container">
+  <div class="clearfloats edit-profile"> 
+    <%= will_paginate %>
+    <table class="message-table" with="100%">
+      <%= render :partial => "/my_helpedia/messages/teaser_message", :collection => @messages, :as => :message %>
+    </table>
+    <%= will_paginate %>
+  </div>
+</div>

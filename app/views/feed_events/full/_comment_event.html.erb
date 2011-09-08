@@ -1,0 +1,30 @@
+<% if feed_event.trigger.commentable.is_a? BlogPost %>
+
+<div class="feed-event-content">
+  <%- if feed_event.operator.present? -%>  
+  <%= image_for feed_event.operator, "32x24c" %>      
+  <div class="teaser">  
+  <%= user_profile_link_for feed_event.operator %>
+  <% else %>
+  <%= image_for feed_event.concerned, "32x24c" %>      
+  <%= h(feed_event.trigger.name) %>
+  <div class="teaser">  
+  <%- end -%>  
+    hat den Blogeintrag <%= link_to h(feed_event.trigger.commentable.title), polymorphic_path([feed_event.concerned, feed_event.trigger.commentable]) %> kommentiert.
+  </div>
+</div>  
+<% else %>
+<div class="feed-event-content">
+  <%- if feed_event.operator.present? -%>  
+  <%= image_for feed_event.operator, "32x24c" %>      
+  <div class="teaser">
+  <%= user_profile_link_for feed_event.operator %>
+  <% else %>
+  <%= image_for feed_event.concerned, "32x24c" %>      
+  <%= h(feed_event.trigger.name) %>
+  <div class="teaser">
+  <%- end -%>  
+    hat <%= I18n.t("#{feed_event.concerned.class.to_s.underscore}.akkusativ") %> <%= link_to h(feed_event.concerned.title), polymorphic_path([feed_event.concerned]) %> kommentiert.
+  </div>
+</div>
+<% end %>

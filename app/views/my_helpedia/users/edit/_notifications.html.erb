@@ -1,0 +1,24 @@
+<div id="notifications"  class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Benachrichtigungen", 
+                                                                     :object => @user,
+                                                                     :path => edit_part_my_helpedia_user_path(@user, :part => "notifications"),
+                                                                     :prefix => "notifications",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+  
+
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100">
+        <dl>
+          <dt>Newsletter:</dt>
+          <dd><%= @user.wordify_receive_newsletter -%></dd>
+          <dt>Nachrichten:</dt>
+          <dd><%= @user.wordify_receive_message_notification -%> </dd>        
+        </dl>          
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<h2>Neue Nachricht schreiben</h2>
+
+<%- form_for(@message,
+             :url => polymorphic_path([@user, :messages]),
+             :builder => EditFormBuilder,
+			       :html => { :class => "remote-form", :rel => "spinner", :id => "new_message_form" }) do |form| -%>
+<table width="100%">
+  <%= form.text_field :subject, :labels_from => Message -%>
+  <%= form.text_field :recipient_id, :labels_from => Message, :name => "message[recipient_ids][]", :value => @message.recipients_as_json, :disabled => :disabled -%>
+  <%= form.text_area :body, :labels_from => Message, :required => true, :rows => 10 -%>
+  <% restrict_to "admin" do %>
+  <%= form.check_box :system_message %>
+  <% end %> 
+  <tr>
+    <th></th>
+    <td style="padding-left: 5px"><%= shadow_form_button("Senden", :css_class => 35, :font_size => 14) %> 
+    oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %></td>
+  </tr>   
+</table>
+<%- end -%>

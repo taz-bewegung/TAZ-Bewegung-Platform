@@ -1,0 +1,66 @@
+<% title "Neue Aktion starten" %>
+<% breadcrumb [link_to(t(:"breadcrumb.my_helpedia"), my_helpedia_path), link_to("Neue Aktion starten", new_my_helpedia_activity_path)] %>
+<% magick_header "Neue Aktion starten" %>
+
+<p>Aktionen gehen über einen längeren Zeitraum. Hier geht es um Ideen, Aktionen und Kampagnen die gerade laufen oder neu entwickelt und umgesetzt werden wollen. Aus Aktionen können Termine hervorgehen - diese können mit der Aktion verknüpft werden.</p>
+
+<%- form_for(@activity, 
+             :url => my_helpedia_activities_path, 
+             :builder => EditFormBuilder) do |form| -%>
+<table border="0"  class="reg-form w-210">
+  <tr>
+    <th valign="top"> </th>
+    <td>
+      <span class="grey">* Pflichtfeld</span>
+    </td>
+  </tr>  
+  <%= form.text_field :title, :required => true -%>		
+  <% form.fields_for :image_attachment, 
+                  (@activity.image_attachment || @activity.build_image_attachment), 
+                  :builder => EditFormBuilder do |image_form| %>
+    <%= image_form.image_field :image_id, :id => "image_attachment", 
+                               :labels_from => Activity, 
+                               :image_object => @activity.image_attachment,
+                               :default_image_from => Activity %>                                     
+  <% end %>
+  <%= form.text_field :permalink, 
+                      :required => true, 
+                      :labels_from => Activity,
+                      :after_html => '<div class="shortname" style="float:left">' + activities_url.to_s + '/<span class="chosen-shortname">' + @activity.permalink.to_s+'</span></div>' -%>
+  <%= form.text_field :activity_type, :required => false -%>
+  
+  <tr id="activity_ends_at_wrap">
+    <th><%= content_tag :label, Activity.human_attribute_name("end_date") %>:</th>
+    <td class="input-area">
+      <%= form.text_field :end_date, :required => true, :render_table => false, :hide_label => true, :float_table => true, :class => "tooltip-top" -%>
+    </td>
+  </tr>
+  <%= form.text_area :goal, :required => true, :maxlength => 140, :style => "height: 80px",
+                               :after_html => '<div class="chars-remaining">a</div>'-%>
+                               
+  <%= form.text_area :participation, :required => true, :maxlength => 140, :style => "height: 80px",
+                            :after_html => '<div class="chars-remaining">a</div>'-%>
+  <%= form.text_field :website, :required => false -%>		                                                           
+  <%= form.text_area :description, :required => true, :class => "mceEditor" -%>  
+  <tr>
+    <th valign="top">
+      <label>
+        Kategorien:
+      </label>
+    </th>
+    <td>
+      <% for category in SocialCategory.find(:all) %>
+      <%= check_box_tag "activity[social_category_ids][]", category.id, @activity.social_category_ids.include?(category.id), :class => "checkbox" -%>     
+      <span class="<%= "checkbox-label-active" unless @activity.social_category_ids.include?(category.id) == false  -%>"><%= category.title -%></span>
+      <br/>
+      <% end %>
+    </td>
+  </tr>  
+  <tr class="form-submit">
+  	<td></td>
+  	<td align="left">
+      <%= shadow_form_button("Aktion anlegen", :css_class => 35, :font_size => 14) %> oder <%= link_to "Abbrechen", my_helpedia_path %>
+  	</td>
+  </tr>
+</table>
+<% end %>

@@ -1,0 +1,30 @@
+<div class="press-item">
+
+  <div class="news-header"><%= date_time_for news.published_on -%> - <%=h news.title %></div>
+
+  <div class="quotebox">
+  	<div class="quote"> 
+
+      <div class="news-teaser"><%=h news.subtitle -%></div>
+      
+      <div>
+        <span><%= truncate(news.message, :length => 300) -%></span>
+        <%= link_to "mehr >", press_instance_path(news.permalink) %>
+      </div>
+      
+      <div class="quoteauthor-inner clearfloats">
+        <%= image_tag(news.image.public_filename(:small)) unless news.image.blank? -%>
+        <%=h news.publisher -%><%= " am #{l(news.published_on)}" unless news.published_on.blank? -%><br />
+        <%- unless news.url.blank? -%>
+        <%= link_to "Zum Artikel >", news.url -%><br />
+        <%- end -%>
+        <%- unless news.document.blank? -%>
+        <%= link_to "Artikel herunterladen >", news.url -%>            
+        <%- end -%>
+      </div>
+     
+  	</div>
+  	<div class="quotebox-footer"></div>	
+  </div>
+
+</div>

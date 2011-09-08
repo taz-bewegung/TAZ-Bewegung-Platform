@@ -1,0 +1,16 @@
+<div class="profile-container organisation-donation">
+  <div class="profile-container-top"> </div>
+  <div class="profile-container-middle">
+    <div style="overflow: hidden">
+      <div class="profile-image" style="height: 100px; width: 132px;">
+        <div class="image-wrap">
+          <%= organisation_image_for(@organisation, :medium, :grey) %> 
+        </div>
+      </div>
+      <div class="profile-content">
+        <h1><%=h @organisation.name %></h1>
+      </div>                    
+    </div>
+  </div>  
+  <div class="profile-container-bottom"> </div>  
+</div>

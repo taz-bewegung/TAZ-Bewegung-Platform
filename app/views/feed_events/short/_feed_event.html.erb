@@ -1,0 +1,12 @@
+<% begin %>
+<div class="feed-event-item">
+  <% cache "#{dom_id(feed_event)}_short", :expires_in => PublicFeedEvent::EXPIRE_DURATION do %>      
+    <%= render :partial => feed_event_partial_name(feed_event, :path => "feed_events/short/"), :locals => { :feed_event => feed_event } -%>
+  <% end %>
+  <div class="feed-event-date">
+    vor <%= distance_of_time_in_words_to_now feed_event.created_at -%>
+  </div>  
+</div>
+<% rescue %>
+<p>Es ist leider ein Fehler aufgetreten. Wir werden uns schnellstmöglich darum kümmern.</p>
+<% end %>

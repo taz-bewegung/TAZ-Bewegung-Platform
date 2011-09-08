@@ -1,0 +1,33 @@
+<% form_for(@flyer_order, 
+   :url => flyer_orders_path,
+   :builder => EditFormBuilder,
+   :html => { :class => "remote-form", :rel => "request-spinner"} ) do |f| %>
+
+  <div class="flyer-container">
+    <div class="flyer-item">
+      <h3>Flyer</h3>
+      <a href="/downloads/flyer_bewegung_09.pdf"><img src="/downloads/bewegungsflyer.jpg" alt="flyer" style="width: 200px" /></a>
+    </div>
+    <div class="flyer-item">    
+      <h3>Poster</h3>  
+      <a href="/downloads/taz_bewegung_A3.pdf"><img src="/downloads/taz_bewegung_A3.jpg" alt="poster" style="width: 100px" /></a>
+    </div>
+  </div>
+  
+  <table border="0"  class="reg-form w-230">
+    <%= f.text_field :flyer_amount, :style => "width: 50px" %>
+    <%= f.text_field :poster_amount, :style => "width: 50px" %>    
+    <%= f.text_field :name, :required => true %>
+    <%= f.text_field :street, :required => true %>
+    <%= f.text_field :zip, :required => true %>
+    <%= f.text_field :city, :required => true %>
+    <%= f.text_field :email, :required => true %>    
+    <tr class="form-submit ">
+      <th>
+      </th>
+      <td style="padding-left:5px">
+        <%= shadow_form_button("Bestellen", :css_class => 35, :font_size => 14) %>
+      </td>
+    </tr>
+    </table>
+<%- end -%>

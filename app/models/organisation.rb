@@ -1,29 +1,12 @@
-# -*- coding: utf-8 -*-
-=begin
-  This file is part of bewegung.
-
-  Bewegung is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  Foobar is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-
-  You should have received a copy of the GNU General Public License
-  along with bewegung.  If not, see <http://www.gnu.org/licenses/>.
-=end
 class Organisation < ActiveRecord::Base
   
   # Plugins
   acts_as_paranoid
   
-  #include Authentication
-  #include Authentication::ByPassword
-  #include Authentication::ByCookieToken
-  #include Authorization::StatefulRoles
+  include Authentication
+  include Authentication::ByPassword
+  include Authentication::ByCookieToken
+  include Authorization::StatefulRoles
   
   ##
   # Virtual attributes
@@ -75,13 +58,13 @@ class Organisation < ActiveRecord::Base
   validates_presence_of     :permalink
   validates_length_of       :permalink,    :within => 3..40
   validates_uniqueness_of   :permalink
-  #validates_format_of       :permalink,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
-  #validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
+  validates_format_of       :permalink,    :with => Authentication.login_regex, :message => Authentication.bad_login_message
+  validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => true
   validates_length_of       :name,     :maximum => 100
   validates_presence_of     :name
   validates_presence_of     :corporate_form
   validates_length_of       :corporate_form_id, :minimum => 10
-  #validates_overall_uniqueness_of :contact_email, :if => :contact_email_changed?  
+  validates_overall_uniqueness_of :contact_email, :if => :contact_email_changed?  
 #  validates_presence_of     :email
 #  validates_length_of       :email,    :within => 6..100 #r@a.wk
 #  validates_format_of       :email,    :with => Authentication.email_regex
@@ -92,7 +75,7 @@ class Organisation < ActiveRecord::Base
   validates_presence_of     :contact_email
   validates_confirmation_of :contact_email
   validates_uniqueness_of   :contact_email  
-  validates_format_of :contact_email, :with => /^([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})$/i
+  validates_format_of       :contact_email,    :with => Authentication.email_regex
   validates_presence_of     :main_category_id, :if => :main_category_id_changed?, :only => :create
   validates_acceptance_of   :terms_of_use,  :only => :create
 #  validates_presence_of     :password, :if => :password_required?
@@ -105,17 +88,17 @@ class Organisation < ActiveRecord::Base
   
   ##
   # Finders
-  scope :active, { :conditions => "organisations.state = 'active'" }  
-  scope :suspended, { :conditions => "organisations.state = 'suspended'" }
-  scope :recent, { :order => "created_at ASC" }
-  scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }  
-  scope :ordered, lambda { |*order|
+  named_scope :active, { :conditions => "organisations.state = 'active'" }  
+  named_scope :suspended, { :conditions => "organisations.state = 'suspended'" }
+  named_scope :recent, { :order => "created_at ASC" }
+  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }  
+  named_scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'organisations.created_at DESC' }
   }  
-  scope :limit, lambda { |*num|
+  named_scope :limit, lambda { |*num|
     { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
   }    
-  scope :latest, { :order => "organisations.created_at DESC" }
+  named_scope :latest, { :order => "organisations.created_at DESC" }
   
   def self.find_latest_for_teaser_elements(offset)
     self.active.with_image.latest.find(:all, :limit => "#{offset},1")[0]
@@ -123,16 +106,16 @@ class Organisation < ActiveRecord::Base
 
   ##
   # Acts as ferret
-  #acts_as_ferret(
-  #  :fields => {
-  #    :name => { :boost => 5 },
-  #    :description => { :boost => 3 }
-  #  },
-  #  :additional_fields => [:index_address],
-  #  :store_class_name => true,
-  #  :remote => true,
-  #  :if => Proc.new { |organisation| organisation.active? }
-  #) 
+  acts_as_ferret(
+    :fields => {
+      :name => { :boost => 5 },
+      :description => { :boost => 3 }
+    },
+    :additional_fields => [:index_address],
+    :store_class_name => true,
+    :remote => true,
+    :if => Proc.new { |organisation| organisation.active? }
+  ) 
 
   def index_address
     address.to_short

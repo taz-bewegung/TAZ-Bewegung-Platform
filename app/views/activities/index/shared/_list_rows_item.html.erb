@@ -1,0 +1,30 @@
+<div class="list-table-item<%= " last" if activities.last == activity -%>">
+  <div class="item-left">
+    <div class="list-image-wrap">
+       <%= image_for(activity, :"90x69c", :context_menu => activity_context_menu(activity), :link_to => activity_path(activity)) -%>
+    </div>
+  </div>         
+  <div class="item-content-wrap">
+    <div class="item-title">
+      <%= link_to h(activity.title), activity_path(activity), :title => h(activity.title) -%>
+    </div>
+    
+    <div class="item-content">
+      <div class="description">
+        <%= truncate(secured_rte_text(activity.description, :plain => true), :length => 300) || "-" -%>
+      </div>
+      <dl>
+        <dt>Aktionstyp:</dt>
+        <dd><%=h activity.activity_type -%></dd>        
+        <dt><%= t(:"activity.item_views.table.from") -%>:</dt>
+        <dd><%= user_profile_link_for activity.owner -%></dd>
+        <dt><%= "Adresse" -%>:</dt>
+        <% unless activity.location.blank? -%>
+        <dd><%= link_to h(activity.location.name), location_path(activity.location) -%></dd>
+        <% else -%>
+        <dd><%=v activity.address.to_short -%></dd>
+        <% end -%>
+      </dl>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<%- title " - Sympathisierungen" -%>
+<%- breadcrumb [ "" , link_to( "Sympathisierungen", user_activity_memberships_path(@user))] -%>
+<%- magick_header "Sympathisierungen" -%>
+
+<%= user_sub_menu(:memberships) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/activity_memberships/index/users/index" %>
+</div>

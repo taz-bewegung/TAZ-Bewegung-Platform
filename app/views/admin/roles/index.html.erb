@@ -1,0 +1,16 @@
+<%- breadcrumb [ link_to("Admin", admin_path), link_to("Benutzerrechte", admin_roles_path) ] -%>
+<%- title 'Admin - Rollen' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:user_roles) -%>
+<%- end -%>
+
+
+<%- for role in @roles -%>
+  <h2><%=h role.name %></h2>
+  <ul>
+  <%- for user in role.users -%>
+  <li><%= user.full_name -%></li>
+  <%- end -%>
+  </ul>
+<%- end -%>

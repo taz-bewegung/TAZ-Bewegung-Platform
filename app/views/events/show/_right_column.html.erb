@@ -1,0 +1,41 @@
+<%- content_for :right_column do -%>
+<h2>Termin ...</h2>
+<ul class="menu">
+  <li>
+    <%= link_to t(:"context_menu.public.event.recommend"), new_event_commendation_path(@event, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>
+  <%- if @event.bookmarkable_for?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @event.id %>">
+    <%= link_to t(:"context_menu.public.shared.bookmark.create"), event_bookmarks_path(@event), :class => "ajax-link-post" -%>
+  </li>  
+  <%- end -%>
+  <%- if @event.bookmarked_by?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @event.id %>">
+    <%= link_to t(:"context_menu.public.shared.bookmark.destroy"), event_bookmark_path(@event, @event.bookmarks.find_by_user_id(current_user.id)), :class => "ajax-link-delete-without-confirm" -%>
+  </li>  
+  <%- end -%>  
+  <li>
+    <%= link_to t(:"context_menu.public.shared.ical.download"), event_path(@event, :format => :ics) %>
+  </li>  
+  <%- if not @event.originator == current_user -%>  
+  <li>
+    <%= link_to t("context_menu.public.shared.create_message.type_#{@event.originator.gender.to_i}"), polymorphic_path([:new, @event.originator, :message], {:format => :lightbox}), :class => "remote-lightbox" -%>    
+  </li>
+  <%- end -%>
+  <%- if @event.originator.friendable_for?(current_user) -%>
+  <li>
+    <%= link_to t("context_menu.public.shared.create_friendship.type_#{@event.originator.gender.to_i}"), user_friendships_path(@event.originator), :class => "ajax-link-post" -%>    
+  </li>
+  <%- end -%>            
+  <li class="last">
+    <%= link_to t(:"context_menu.public.shared.feedback.create"), new_event_feedback_path(@event, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>  
+</ul>
+
+  <% render_or_cache "share_#{@event.uuid}" do %>
+  <div class="share-icons">
+    <%= twitter_link event_url(@event)  %>
+  </div>
+  <% end %>
+
+<%- end -%>

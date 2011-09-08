@@ -1,0 +1,20 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  Ein neuer Nutzer <%= link_to feed_event.trigger.full_name, user_path(feed_event.trigger) -%> hat sich registriert.
+</div>  
+<div class="feed-event-functions">
+  <ul>
+    <li>
+      <%= link_to "Nutzer sperren", suspend_confirmation_admin_user_path(feed_event.trigger), :class => "remote-link" %>
+    </li>
+    <li>
+      <%= link_to "Nutzer löschen", destroy_confirmation_admin_user_path(feed_event.trigger), :class => "remote-link" %>
+    </li>
+    <li>
+      <%= link_to "Nachricht an Nutzer", polymorphic_path([:new, feed_event.operator, :message], :format => :lightbox), :class => "remote-lightbox" %>
+    </li>
+  </ul>
+</div>
+

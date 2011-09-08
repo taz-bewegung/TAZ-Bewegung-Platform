@@ -1,0 +1,5 @@
+<h2>Deine Freundesanfrage</h2>
+<p>
+  <%=h @friendship.friend.full_name %> wurde Deine Freundesanfrage übermittelt. 
+</p>
+<%= custom_link_button "Fenster schließen", "#", { :size => "33-beige" }, :onclick => '$.nyroModalRemove();$("li.friendable").hide(); return false;'  %>

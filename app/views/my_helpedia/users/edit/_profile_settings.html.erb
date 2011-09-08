@@ -1,0 +1,31 @@
+<div id="profile_settings"  class="edit-container">
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Einstellungen", 
+                                                                     :object => @user,
+                                                                     :path => edit_part_my_helpedia_user_path(@user, :part => "profile_settings"),
+                                                                     :prefix => "profile_settings",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= User.human_attribute_name("email") -%>:</dt>  
+          <dd><%=v @user.email -%></dd>
+          <dt><%= User.human_attribute_name("password") -%>:</dt>  
+          <dd>**********</dd>
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= User.human_attribute_name("visibility") -%>:</dt>  
+          <% if @user.visibility == "1" %>
+          <dd><b class="red"><%= @user.wordify_visibility -%></b></dd>          
+          <% else %>
+          <dd><%= @user.wordify_visibility -%></dd>
+          <% end %>
+        </dl>          
+      </div>        
+    </div>
+  </div>
+</div>

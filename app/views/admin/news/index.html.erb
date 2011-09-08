@@ -1,0 +1,35 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("News", admin_news_path) ]%>
+<%- title 'News' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:news) -%>
+<%- end -%>  
+  
+<table class="edit-part-header">
+  <tr>
+    <td class="title"><h1>Nachrichten</h1></td>
+    <td class="line"><hr /></td>
+    <td>
+      <%= image_tag "ajax-spinner.gif", 
+                     :id => "table-spinner", 
+                     :class => "table-spinner" -%>      
+    </td>
+    <td class="link">
+       <%= link_to image_tag("buttons/btn-add.png"), 
+                   new_admin_news_instance_path,
+                   :class => "ajax-link" -%>
+     </td>      
+  </tr>
+</table>
+
+<div class="clearfloats edit-profile"> 
+  <div class="list-table">
+    <div id="new_news"></div>
+    <%- for news in @news -%>
+      <%= render :partial => "/admin/news/item", :locals => { :news => news } -%>
+    <%- end -%>                                                          
+  </div>
+  <%= will_paginate @news -%>
+</div>                 
+
+

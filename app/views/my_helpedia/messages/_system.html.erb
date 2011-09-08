@@ -1,0 +1,21 @@
+<%= content_tag(:div, my_helpedia_user_message_menu(:system), :class => "messages-menu-wrapper") -%>
+<div class="edit-container">
+  <div class="clearfloats edit-profile"> 
+    
+    <%- unless @messages.blank? -%>
+    
+    <%= will_paginate %>
+    <table class="message-table" with="100%">
+      <%= render :partial => "/my_helpedia/messages/teaser_message", :collection => @messages, :as => :message %>
+      <tr><td colspan="4" class="seperator">&nbsp;</td></tr>      
+    </table>
+    <%= will_paginate %>
+    
+    <%- else -%>
+    
+    <p>Es sind keine Nachrichten vorhanden</p>
+    
+    <% end -%>
+    
+  </div>
+</div>

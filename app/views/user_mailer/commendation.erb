@@ -1,0 +1,17 @@
+Hallo,
+
+<%= @tip.sender_name %> möchte Dich auf "<%= @object.title -%>" bei bewegung.taz.de aufmerksam machen.
+
+Seine Nachricht an Dich lautet:
+
+<%= @tip.message %>
+
+<%= I18n.t("commendation.type.#{@object.class.to_s.downcase}") -%> ist unter folgender URL erreichbar:
+
+  <%= @url %>
+
+Bitte beachte, dass bewegung.taz.de die Identität des Absenders nicht überprüft.
+Solltest Du Fragen haben, beantworten wir sie Dir gern unter info@bewegung.taz.de.
+
+Viele Grüße
+das Team von bewegung.taz.de

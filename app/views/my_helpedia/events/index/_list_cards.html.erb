@@ -1,0 +1,25 @@
+<div class="events">
+  <div class="list-card">
+  <%- for event in events -%> 
+    <div class="list-card-item">
+      <div class="item-inner-wrap">
+        <div class="item-title">
+          <%= link_to h(truncate(event.title, :length => 52)), my_helpedia_event_path(event), :title => h(event.title) -%>   
+        </div>
+        <div class="item-text">
+          <div class="item-left">
+            <div class="item-image-wrap">
+             <%= image_for(event, :"90x69c", :context_menu => my_helpedia_event_context_menu(event)) -%>
+            </div>
+          </div>
+          <div class="description">
+            <%= truncate(secured_rte_text(event.description, :plain => true), :length => 140) || "-" -%>                           
+          </div>
+        </div>
+      </div>
+    </div>                                                             
+  <%- end -%>
+  </div>  
+</div>
+
+

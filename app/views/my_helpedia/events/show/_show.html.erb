@@ -1,0 +1,8 @@
+<%- title h(@event.title) -%>
+<%- breadcrumb [ link_to("Meine Seite", my_helpedia_path),
+                 link_to("Termine", my_helpedia_events_path),
+                 link_to(h(@event.title), my_helpedia_event_path(@event))] -%>
+<%= render :partial => "/my_helpedia/events/show/right_column" -%>      
+<%= edit_header render_event_info_box(@event, :private) -%>
+
+<%= render :partial => content_partial %>

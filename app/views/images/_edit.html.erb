@@ -1,0 +1,92 @@
+<div id="image-content">
+	<%= image_sub_menu(:new) -%>
+  <div id="sub-content-modal">
+  	<div id="sub-content-inner-modal" style="height: 390px">
+  	  <br /><br />
+      <div>
+        <%= shadow_link_button("Weiter", cancel_crop_image_path(@image, :part => params[:part], 
+    		                                                             :image_input => params[:image_input],
+    				                                                         :image_size => params[:image_size]),
+                                      { :css_class => 35, :font_size => 14, :class => "remote-link" }) %>
+        ohne das Bild anzupassen
+      </div>  	  
+  	  <br /><br />
+  	  
+		  <h2><%= I18n.t :"image.crop.header" %></h2>
+	    <%= RedCloth.new(I18n.t(:"image.crop.text")).to_html %>
+			<div id="image-sub-content" class="cropper">
+
+        <script type="text/javascript" charset="utf-8">
+        $(function() {
+          $('#cropbox').Jcrop({
+              onChange: update_crop,
+              onSelect: update_crop,
+              setSelect: [0, 0, 236, 182],
+              aspectRatio: 1.29
+            });
+        });
+
+        function update_crop(coords) {
+        	var rx = 130/coords.w;
+        	var ry = 100/coords.h;
+        	$('#preview').css({
+        		width: Math.round(rx * <%= @image.size_for_thumbnail(:large).width %>) + 'px',
+        		height: Math.round(ry * <%= @image.size_for_thumbnail(:large).height %>) + 'px',
+        		marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        		marginTop: '-' + Math.round(ry * coords.y) + 'px'
+        	});
+          var ratio = <%= @image.width %> / <%= @image.size_for_thumbnail(:large).width %>;
+          $("#crop_x").val(Math.round(coords.x * ratio));
+          $("#crop_y").val(Math.round(coords.y * ratio));
+          $("#crop_w").val(Math.round(coords.w * ratio));
+          $("#crop_h").val(Math.round(coords.h * ratio));
+        }
+        </script>
+        
+        <style>
+          .cropper .image {
+            float: left; 
+            width: 280px;            
+          }
+          .cropper .preview {
+            float: left; 
+            width: 130px
+          }
+          .cropper .preview .preview-image {
+            width:130px; 
+            height:100px; 
+            overflow:hidden
+          }
+        </style>
+        
+        <div class="image">
+          <h4>Bildausschnitt wählen:</h4>          
+          <%= image_tag @image.public_filename(:large), :id => "cropbox" %>
+        </div>
+        <div class="preview">
+          <h4>Vorschau:</h4>
+          <div class="preview-image">
+            <%= image_tag @image.public_filename(:large), :id => "preview" %>
+          </div>
+        </div>
+        <div style="clear: both;"></div>
+        <% form_for @image, :url => crop_image_path(@image), :html => { :class => "remote-form",
+				                                                                :onsubmit => "$('#image-spinner').show(); $('#image-submit').hide();"} do |f| %>
+          <% for attribute in [:crop_x, :crop_y, :crop_w, :crop_h] %>
+            <%= f.hidden_field attribute, :id => attribute %>
+            <%= hidden_field_tag :part, params[:part] %> 
+            <%= hidden_field_tag :image_input, params[:image_input] %>             
+            <%= hidden_field_tag :image_size, params[:image_size] %>                         
+          <% end %>
+
+          <div>
+            <span id="image-submit">
+              <%= shadow_form_button("Anpassen", :css_class => 35, :font_size => 14, :id => "upload-button") %> 
+            </span>
+            <%= spinner "image-spinner" %>    
+         </div>
+        <% end %>              
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,55 @@
+<div id="categories" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Kategorien</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_location_path(@location, :part => "categories"), 
+                :class => "ajax-link",
+                :rel => "#{@location.object_id}-categories-spinner"                
+                 -%>
+  </div>
+
+  <div class="edit-part-content">    
+    <%- form_for(@location, 
+                 :url => my_helpedia_location_path(@location, :part => "categories"), 
+                 :builder => EditFormBuilder,
+                 :html => { :class => "remote-form",
+                            :rel => "#{@location.object_id}-categories-spinner" }) do |f| -%>
+                            
+      <table width="100%" class="reg-form" rowspan="0" colspan="0">
+        <tr>
+          <th valign="top">
+            <label><%= Location.human_attribute_name("location_categories") -%>:</label>
+          </th>
+          <td> 
+            <ul>
+              <%- for category in LocationCategory.find(:all) -%>
+              <li id="category-<%= category.id -%>" style="padding: 2px;">
+                <%= check_box_tag("location[location_category_ids][]", category.id, @location.location_categories.include?(category), :class => "checkbox", :id => "cat-#{category.id}") %>              
+                <span>
+                  <%= category.name -%>
+                </span>
+              </li>
+              <%- end -%>
+            </ul>
+          </td>
+        </tr>
+      </table>
+
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_location_path(@location, :part => "categories"), 
+                     :class => "ajax-link",
+                     :rel => "#{@location.object_id}-categories-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@location.object_id}-categories-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

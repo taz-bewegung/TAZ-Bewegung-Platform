@@ -1,0 +1,32 @@
+<div class="profile-container">
+  <div class="profile-container-top"> </div>
+  <div class="profile-container-middle">
+    <div class="split-bg">   
+      <div class="profile-image">
+        <div class="image-wrap">
+          <%= user_image_for(@user, :"236x182c") %> 
+        </div>
+      </div>
+      <div class="profile-content">
+        <h1><%=h @user.full_name %></h1>
+        <%= truncate secured_rte_text(@user.about_me, :plain => true), :length => 350 %>
+        </div>
+        <div class="profile-meta">
+        <div class="meta-info">
+          <h4>Eingetragene Termine:</h4>
+         <%= @user.events.active.count.to_i %>
+        </div>
+        <div class="meta-info">
+          <h4>Eingetragene Aktionen:</h4>
+          <%= @user.activities.active.count.to_i %>
+        </div>
+
+        <div class="meta-info">
+          <h4>Eingetrage Orte:</h4>
+         <%= @user.locations.active.count.to_i %>
+        </div>
+      </div>
+  </div>
+  </div><!--profil-container-middle-->  
+  <div class="profile-container-bottom"> </div><!--profil-container-bottom-->
+</div><!--profil-container-->

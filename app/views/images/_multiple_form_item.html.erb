@@ -1,0 +1,31 @@
+<% index = "new_image_uniq" %>
+<% index = nil if no_index %> 
+
+<div class="clearfloats fields block">
+  <% form.fields_for :image_attachments, 
+                     object,
+                     :builder => nil,
+                     :child_index => index do |attachment_form| %>
+
+    <%= attachment_form.hidden_field :image_id, :id => "#{(index || object.object_id)}_field" %>
+    <div id="<%= "#{ (index || object.object_id) }" %>" class="image-item">
+      <% if object.image.present? %>
+        <%= image_tag object.image.public_filename(:small) %>
+      <% else %>
+        <%= link_to "Bild auswählen", lightbox_images_path(:part => (index || object.object_id), 
+                                                           :image_size => "small",
+                                                           :image_input => "#{(index || object.object_id)}_field",
+                                                           :multiple => true), :class => "remote-link chose-image", :style => "display: block; padding-top: 21px;" %>      
+      <% end %>
+    </div>    
+    <div class="width-height">  
+      <%= attachment_form.text_field :width, :style => "width: 50px", :hide_label => false, :render_table => false %>
+    </div>
+    <div class="comment">  
+      max 600px
+    </div>
+    <div class="delete">  
+      <%= remove_child_link image_tag("icons/delete.png"), attachment_form %>
+    </div>
+  <% end %>
+</div>

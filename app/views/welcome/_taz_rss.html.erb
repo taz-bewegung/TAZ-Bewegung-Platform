@@ -1,0 +1,11 @@
+<% unless @items.empty? %>
+  <ul class="rss-list">
+  <%- for item in @items[0..2] -%>   
+  <%- title = item[:title].split(":") -%>
+    <li>
+      <%= title[0] %>:<br />
+      <%= link_to title[1], item[:link], :target => "_blank" %>
+    </li> 
+  <%- end -%>
+  </ul>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="friendships">
+  <div class="list-card">
+  <%- for friendship in friendships -%> 
+    <div class="list-card-item" id="friendship_<%= friendship.id %>">
+      <div class="item-inner-wrap">
+        <div class="item-title">
+          <%= user_profile_link_for(friendship.friend) -%>
+        </div>
+        <div class="item-text">
+          <div class="item-left">
+            <div class="item-image-wrap">
+             <%= image_for(friendship.friend, :"90x69c", :context_menu => my_helpedia_friendship_context_menu(friendship)) -%>
+            </div>
+          </div>
+          <div class="description">
+            <%# truncate(secured_rte_text(activity.description, :plain => true), :length => 140) || "-" -%>
+          </div>
+        </div>
+      </div>
+    </div>                                                             
+  <%- end -%>
+  </div>
+</div>

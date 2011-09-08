@@ -1,0 +1,20 @@
+<div id="relations" class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Termin-Verknüpfungen", 
+                                                                      :object => @activity,
+                                                                      :path => new_my_helpedia_activity_activity_event_membership_path(@activity, 
+                                                                               :spinner => "membership-spinner"),
+                                                                      :prefix => "membership",
+                                                                      :button => image_tag("buttons/btn-add.png")
+                                                                     } -%>
+
+  <div class="clearfloats edit-profile">
+
+    <div id="create_membership"></div>
+      <% for activity_event_membership in @activity.activity_event_memberships %>
+        <%= render :partial => "/my_helpedia/activity_event_memberships/item", 
+                   :locals => { :activity_event_membership => activity_event_membership } -%>
+      <% end -%>
+
+  </div>
+</div>

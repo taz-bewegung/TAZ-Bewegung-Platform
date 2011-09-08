@@ -1,0 +1,38 @@
+<% breadcrumb [ link_to("Wir über uns", url_for(:controller => 'pages', :action => "ueber_uns"))] %>    
+
+	<h1>Wir über uns</h1>
+
+	<p>
+	Helpedia ist das Internetportal für gesellschaftliches Engagement in Deutschland. Ein breites Netzwerk von gemeinnützigen Organisationen und engagierten Menschen erweitert täglich die Plattform mit aktuellen Inhalten und spannenden Geschichten. Sie sind die Protagonisten von Helpedia. Im Hintergrund arbeiten Sebastian Schwiecker, Thomas Stolze, Achim Ritzmann und Simon Stettner beständig an der Pflege und Weiterentwicklung der Website. Selbst aus dem gemeinnützigen Sektor stammend bilden sie das Kernteam der Helpedia GmbH.
+	</p>
+	
+	<img src="/images/static_pages_images/13-Helpedia-Elargio-Trauringe.jpg" />
+	
+	
+	<p>
+	Die Geschichte des jungen Helpedia-Portals entstand aus ursprünglich zwei Initiativen. Sebastian Schwiecker begann zunächst in Berlin mit einigen Mitstreitern eine Vorläuferversion von Helpedia zu entwickeln, bei der ein Organisationsverzeichnis und eine ehrenamtliche Job- und Engagementbörse im Vordergrund standen. Zeitgleich bauten Achim Ritzmann und Thomas Stolze aus Frankfurt die Charity-Plattform elargio.de auf, eine Spendenplattform bei der erstmalig in Deutschland Aktionsspenden abgebildet werden konnten. Durch den Zusammenschluss dieser beiden Portale unter einem gemeinsamen Namen bietet Helpedia heute den umfassendsten Online-Service für gemeinnützige Organisationen.
+	</p>
+
+	<img src="/images/static_pages_images/3-Team-klein.jpg" />
+
+	<br />
+	<p>
+	ACHIM RITZMANN (im Bild rechts), wurde 1972 geboren. Er hat sein Studium in Freiburg und Edinburgh mit einem M.A. in Ethnologie, Politikwissenschaften und öffentlichem Recht abgeschlossen und war lange Jahre in der Öffentlichkeitsarbeit im sozialen Sektor und als Projektmanager in Afrika tätig, u.a. für Caritas International und die Arbeitsgemeinschaft für Entwicklungshilfe (AGEH). <%= link_to 'Mehr Informationen' , 'https://www.xing.com/profile/Achim_Ritzmann', {:target => '_blank'} %> 
+	</p>
+	
+	<p>
+	THOMAS STOLZE (im Bild 2. v. r.). wurde 1971 geboren. Er hat ein Diplom in „International Relations“ der Universität Keele, Großbritannien. Er sammelte Erfahrungen bei verschiedenen großen deutschen Entwicklungszusammenarbeitsorganisationen, u.a.  Caritas International , Ärzte ohne Grenzen und Jesuiten Flüchtlingswerk. Zuletzt konzeptionisierte und organisierte er für die medizinische Hilfsorganisation „Ärzte für die Dritte Welt e.V.“ bundesweite Spendertreffen. Berufsbegleitend absolvierte er eine Ausbildung zum Mediator.<%= link_to 'Mehr Informationen' , 'https://www.xing.com/profile/Thomas_Stolze2', {:target => '_blank'} %>
+	</p>
+
+	<p>
+	BASTI SCHWIECKER (im Bild 2. v. l.) wurde 1979 geboren. Er hat sein Studium der Volkswirtschaftslehre in Berlin, Tübingen und Long Beach (USA) absolviert. Nach diversen Praktika, u.a. bei der der Grameen Bank in Bangladesch, war er bei der KfW-Entwicklungsbank und der IPC-GmbH, tätig. In diesem Rahmen führten ihn diverse Projekte auch nach Bangladesch, China und Bosnien.<%= link_to 'Mehr Informationen' , 'https://www.xing.com/profile/Sebastian_Schwiecker', {:target => '_blank'} %>
+	</p>
+
+	<p>
+	SIMON STETTNER (im Bild links) wurde 1978 geboren. Er studierte Geographie in Berlin und Cadiz (Spanien) und arbeitete für die Bundeszentrale für Politische Bildung (bpb) und die Gesellschaft für technische Zusammenarbeit (GTZ).<%= link_to 'Mehr Informationen' , 'https://www.xing.com/profile/Simon_Stettner', {:target => '_blank'} %>
+	</p>
+	
+	
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:ueber_uns) -%>
+<%- end -%>

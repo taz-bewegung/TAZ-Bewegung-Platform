@@ -1,0 +1,12 @@
+<%- title h(@organisation.name) -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.organisations"), organisations_path), 
+                 link_to(h(@organisation.name), organisation_path(@organisation))] -%>
+<%- magick_header @organisation.name -%>                 
+<%- edit_header render_organisation_info_box(@organisation, :public) -%>
+
+<%= render :partial => "/organisations/show/right_column" -%>      
+
+<%= render :partial => "/organisations/show/head" -%>
+<div id="sub-content-wrap">
+  <%= render :partial => content_partial %>
+</div>

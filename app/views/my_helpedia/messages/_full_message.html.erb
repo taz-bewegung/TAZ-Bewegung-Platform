@@ -1,0 +1,13 @@
+<tr class="<%= cycle("","alternate") -%>" id="message_<%= message.id %>" >
+  <td class="image">
+    <%= image_for(message.sender, :"56x42c")%>
+  </td>
+  <td class="name-and-date">
+    <span class="name"><%= user_profile_link_for(message.sender) -%></span>
+    <span class="date"><%=l message.created_at -%></span>
+  </td> 
+  <td class="subject">
+	  <%= simple_format(h(message.body)) -%>
+  </td>
+</tr>
+<tr id="separator-message_<%= message.id %>"><td colspan="4" class="seperator">&nbsp;</td></tr>

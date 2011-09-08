@@ -1,0 +1,32 @@
+<%= location_sub_menu(:description) %> 
+<div id="sub-content">
+  <div class="full-content blog">
+    <div class="full-content-left blog">
+      <div class="two-column">
+        <div class="column-75">
+          <%= secured_rte_text(@location.description) %>
+        </div>
+        <div class="column-25">      
+          <div class="meta-info">
+            <h4>Kategorien:</h4>
+            <%=v @location.location_categories.map(&:name).join(", ") || "-" -%>
+          </div>
+
+          <%- unless @location.website.blank? -%>
+          <div class="meta-info">
+            <h4>Website:</h4>
+            <%= website_link(@location.website) -%>
+          </div>
+          <%- end -%>
+
+        </div>
+      </div>  
+      <div class="comments">
+        <%= render :partial => "/comments/index", :locals => { :commentable => @location } %>
+      </div>
+    </div>
+    <div class="full-content-right">    
+      <%= render :partial => "/locations/show/sidebar" -%>    
+    </div>
+  </div>  
+</div>

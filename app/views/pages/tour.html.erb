@@ -1,0 +1,13 @@
+<%- title "Tour" -%>
+<% breadcrumb [ link_to("Tour", url_for(:controller => 'pages', :action => "tour"))] %>  
+
+<h1>Tour</h1>
+<p>
+	Willkommen auf Helpedia, Deiner Plattform für soziales Engagement. Helpedia verbindet engagierte Menschen mit gemeinnützigen Organisationen. Hier erklären wir Dir wie.
+</p>
+	
+	###VIDEO### ???
+
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:tour) -%>
+<%- end -%>

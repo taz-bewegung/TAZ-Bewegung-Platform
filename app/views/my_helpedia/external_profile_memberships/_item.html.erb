@@ -1,0 +1,22 @@
+<div id="<%= external_profile_membership.object_id %>">
+  <div class="two-column">
+    <div class="column-100">
+      <dl>
+        <dt>Website:</dt>
+        <dd>
+          <div class="item-content">
+            <%= link_to get_uri_host(external_profile_membership.url), external_profile_membership.url, :target => "_blank", :title => external_profile_membership.url, :alt => external_profile_membership.url %>            
+          </div>
+          <div class="edit">
+            <%=  link_to image_tag("buttons/btn-small-edit.png"), 
+                             edit_my_helpedia_user_external_profile_membership_path(@user, external_profile_membership, 
+                                                                                    :part => external_profile_membership.object_id,
+                                                                                    :spinner => "membership-spinner"),
+                             :class => "ajax-link",
+                             :rel => "membership-spinner" -%>
+          </div>        
+        </dd>
+      </dl>
+    </div>          
+  </div>
+</div>

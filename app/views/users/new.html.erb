@@ -1,0 +1,46 @@
+<%- title "Anmelden als Aktiver" -%>
+<%- breadcrumb [ link_to("Anmelden als Aktiver", new_user_path)] -%>
+<%- magick_header "Einfach neu anmelden"-%>
+
+<p>
+  Bitte verrate uns einige Angaben zu Deiner Person.
+</p> 
+
+<%- form_for(@user, 
+             :url => users_path, 
+             :builder => EditFormBuilder) do |form| -%>
+
+<table border="0"  class="reg-form w-230">
+  <tr>
+    <th valign="top"> </th>
+    <td>
+      <span class="grey">* Pflichtfeld</span>
+    </td>
+  </tr>  
+  <%= form.text_field :permalink, :required => true, :labels_from => User -%>  
+  <%= form.text_field :first_name, :required => true, :labels_from => User -%>
+  <%= form.text_field :last_name, :required => true, :labels_from => User -%>
+  <%= form.text_field :email, :required => true, :labels_from => User -%>
+  <%= form.text_field :email_confirmation, 
+                      :required => true, 
+                      :hide_label => false,
+                      :style => "width: 196px",
+                      :class => "make-me-short",
+                      :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Password wiederholen" />' -%>  
+  <%= form.password_field :password, :required => true, :labels_from => User -%>
+  <%= form.password_field :password_confirmation, 
+                        :required => true, 
+                        :hide_label => false,
+                        :style => "width: 196px",                        
+                        :class => "make-me-short",
+                        :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Password wiederholen" />' -%>	
+  <tr class="form-submit ">
+    <th>
+    </th>
+    <td style="padding-left:5px">
+      <%= shadow_form_button("Anmelden", :css_class => 35, :font_size => 14) %> oder <%= link_to "Abbrechen", root_path %>
+    </td>
+  </tr>
+</table>
+<% end %>
+

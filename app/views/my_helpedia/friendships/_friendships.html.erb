@@ -1,0 +1,13 @@
+<%= my_helpedia_user_friendship_menu(@active) -%>
+<%= render :partial => "/my_helpedia/friendships/list_header", :locals => { :view => params[:list_type],
+                                                                            :list_title => "AktivistInnen" } -%>
+<%- unless @friendships.blank? -%>
+
+
+  <div id="sub-content-list">
+    <%= render :partial => "/my_helpedia/friendships/list_#{params[:list_type]}", :locals => { :friendships => @friendships } %>
+  </div>  
+
+<%- else -%>
+<p>Keine Datensätze gefunden.</p>
+<%- end -%>

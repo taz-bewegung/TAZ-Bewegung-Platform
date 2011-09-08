@@ -1,0 +1,16 @@
+<% breadcrumb [ link_to("News", news_path), link_to(@news.title, news_instance_path(:id => @news.permalink)) ]%>
+<%- title @news.title -%>
+
+<%- content_for :left_column do -%>	
+  <%= news_sub_menu(:single_news) -%>
+<%- end -%>
+
+<%=l @news.created_at.to_date %>
+<h1><%=h @news.title -%></h1>
+<%- unless @news.image.blank? -%>
+<%= image_tag(@news.image.public_filename(:large)) -%>
+<br /><br />
+<%- end -%>
+<%= RedCloth.new(@news.message).to_html -%>
+
+<%= link_to "< zurück", :back %>

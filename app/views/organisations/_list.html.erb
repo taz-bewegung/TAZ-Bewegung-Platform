@@ -1,0 +1,10 @@
+<% cache("organisationen/index/list-#{@cache_key}", :expires_in => 10.minutes, :format => :xml) do %>
+  <% if (@organisations.total_pages > 0) then %>
+
+  <%= render :partial => "/organisations/index/shared/list_#{params[:list_type]}", :locals => { :organisations => @organisations } -%>
+
+  <%- else -%>
+  Keine Organisationen gefunden ...
+  <% end %>
+
+<% end -%>

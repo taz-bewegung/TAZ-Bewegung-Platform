@@ -1,0 +1,75 @@
+<%= render :partial => "/donations/head" -%>
+
+<h1>Sicheres Spenden bei Helpedia</h1> 
+<%= donation_sub_menu(:finished) %>
+<div id="sub-content" style="position: relative;">
+  <div id="skip-post-donation-form" style="position: absolute; right: 20px">
+    <%- unless @activity.blank? -%>
+    <%= link_to "Überspringen", activity_donations_path(@activity) -%>
+    <%- else -%>
+    <%= link_to "Überspringen", organisation_donations_path(@organisation) -%>    
+    <%- end -%>
+  </div>
+  <h2>Vielen Dank für Deine Spende</h2>
+  <p>Hier kannst Du noch eine Spendenquittung beantragen und weitere Informationen anfordern.</p>
+  <br />
+  <%- form_for(@donation, 
+               :url => @path,
+               :builder => EditFormBuilder,
+               :html => { :method => :put }) do |form| -%>
+    <div id="donation-chech-boxes">           
+      <div>
+       <%= form.check_box :quittance, :hide_label => true, :tooltip => false, :fancy_table => false, :id => "donation_quittance" %>
+       Ich benötige eine Spendenquittung
+      </div>
+      <div>
+        <%= form.check_box :newsletter, :fancy_table => false, :hide_label => true, :tooltip => false, :id => "donation_newsletter" %>
+        Ich möchte den Helpedia-Newsletter abbonieren
+      </div>
+      <div>
+        <%= form.check_box :information_requested, :fancy_table => false, :hide_label => true, :tooltip => false, :id => "donation_information_requested" %>
+        Ich wünsche weitere Informationen von: <%= @organisation.name -%>
+      </div>
+      <%- if current_user.blank? -%>
+      <div>
+      <%- else -%>
+      <div style="display: none">         
+      <%- end -%>
+        <%= form.check_box :register, :fancy_table => false, :hide_label => true, :tooltip => false, :id => "donation_register" %>
+        Ich möchte mich direkt bei Helpedia registrieren
+      </div>                             
+
+    </div>
+    <br />
+    <div id="post-donation-form" style="display: none">
+      <table border="0" class="reg-form w-230">             
+      <%= form.text_field :first_name, :required => true, :labels_from => Donation -%>    
+      <%= form.text_field :last_name, :required => true, :labels_from => Donation -%>        
+      <%= form.text_field :street, :required => true, :labels_from => Donation -%>    
+      <%= form.text_field :zip, :required => true, :labels_from => Donation -%>
+      <%= form.text_field :city, :required => true, :labels_from => Donation -%>   
+      <%= form.text_field :email, :required => true, :labels_from => Donation -%> 
+      <%= form.password_field :password, :required => true, :labels_from => User -%> 
+      <%= form.password_field :password_confirmation, 
+                            :required => true, 
+                            :hide_label => true,
+                            :labels_from => User,
+                            :style => "width: 185px",                        
+                            :class => "make-me-short",
+                            :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Password wiederholen" />' -%>
+      </table>
+    
+      <div class="form-footer">
+        <table border="0" class="reg-form w-230">
+          <tr>
+            <th>
+
+            </th>
+            <td>
+              <%= image_submit_tag "buttons/btn-finish.png", :class => "image-submit" -%>
+            </td>
+        </table>
+      </div>
+    <%- end -%>
+  </div>
+</div>  

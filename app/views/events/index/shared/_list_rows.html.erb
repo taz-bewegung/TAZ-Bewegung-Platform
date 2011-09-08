@@ -1,0 +1,5 @@
+<div class="events">
+  <div class="list-table">
+    <%= render :collection => events, :partial => "/events/index/shared/list_rows_item", :as => :event, :locals => { :events => events } %>
+  </div>
+</div>

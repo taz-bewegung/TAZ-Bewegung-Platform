@@ -1,0 +1,23 @@
+<div id="register_form" class="header-box register-form">
+  <div class="header-box-header">
+    <%= image_tag ("beta/dot-register.gif") %><div class="header-left big-header">Neues Einladungs-Passwort anfordern</div>
+  </div>
+  <div class="header-box-content">
+    <p>
+      Wir starten mit einer Test und Aufbauphase. Wir möchten Ideen und Wünsche einsammeln, denn diese Plattform soll Eure Plattform sein. Und natürlich müssen die Seiten auch mit Inhalt gefüllt werden, damit wir im Juni richtig groß starten können.      
+    </p>
+    <% form_for(@beta_signup, :builder => EditFormBuilder, :html => { :class => "remote-form" }) do |f| %>
+    <table>
+        <%= f.text_field :name, :title => "Namen eintragen", :class => "toggle" %>
+        <%= f.text_field :email, :title => "E-Mail eintragen", :class => "toggle" %>
+        <%= f.text_area :comment, :title => "Wir freuen uns, wenn ihr ganz kurz was über Euch schreibt", :class => "toggle" %>
+        <tr>
+          <th></th>
+          <td>
+            <%= shadow_form_button("Jetzt anfordern", :css_class => 35, :font_size => 14) %>
+          </td>
+        </tr>        
+    </table>
+    <% end %>                              
+  </div>
+</div>                                                                        

@@ -1,0 +1,30 @@
+<div class="pagination-filter">
+  
+  <% filter_select "view-filter", "Ansicht" do %>
+  <%= layout_icons(params[:list_type].to_sym, :rows => url_for(params.merge(:list_type => "rows")),
+                                            :cards => url_for(params.merge(:list_type => "cards")),
+                                            :maps => url_for(params.merge(:list_type => "maps"))) %>
+  
+  <% end %>
+    
+  <% filter_select "sort-filter", "Sortieren" do %>
+    <ul>
+      <li class="act"><%= link_to "Zufällig", url_for(params.merge(:order => "random")), :"data-value" => "random" %></li>
+      <li><%= link_to "Eintragung", url_for(params.merge(:order => "newest")), :"data-value" => "newest" %></li>
+      <li><%= link_to "Titel", url_for(params.merge(:order => "title")), :"data-value" => "title" %></li>
+      <li><%= link_to "Aktivität", url_for(params.merge(:order => "last_update")), :"data-value" => "last_update" %></li>
+    </ul>
+  <% end %>
+  <% filter_select "category-filter", "Organisationsform" do %>
+    <ul>
+         <li <%= 'class="act"' if params[:category].blank? %> ><%= link_to "Alle", url_for(params.merge(:category => "")), :"data-value" => "" %></li>
+         <% for category in CorporateForm.all %>
+         <% css_class = params[:category] == category.id ? "act" : "" %> 
+         <li class="<%= css_class %>"><%= link_to category.name, url_for(params.merge(:category => category.id)), :"data-value" => category.id %></li>
+         <% end %>
+       </ul>
+    
+  <% end %>
+  <%= pagination_filter(@organisations) %>
+</div>
+<br style="clear: both" />

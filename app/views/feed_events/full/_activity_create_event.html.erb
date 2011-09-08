@@ -1,0 +1,7 @@
+<div class="feed-event-content">
+  <%= image_for feed_event.operator, "32x24c" %>
+  <div class="teaser">
+    <%= link_to feed_event.operator.full_name, user_path(feed_event.operator) -%> hat eine neue Aktion 
+    <%= link_to feed_event.trigger.title, activity_path(feed_event.trigger) %> eingetragen.
+  </div>
+</div>

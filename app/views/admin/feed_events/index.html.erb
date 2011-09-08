@@ -1,0 +1,69 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Was läuft gerade", admin_feed_events_path) ]%>
+<%- title 'Was läuft gerade' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:feed_events) -%>
+<%- end -%>
+
+<div class="admin">
+  
+  
+  <h1>Was läuft gerade</h1>
+  
+  <div id="timer"></div>
+  
+  <% form_tag admin_feed_events_path, :id => "event-form" do %>
+  
+  <table>
+    <tr>
+      <td><%= check_box_tag "feed_events[user_register_event]",
+                            1,
+                            params[:feed_events].include?(:user_register_event) %> 
+          Aktiver registiert</td>
+      <td><%= check_box_tag "feed_events[organisation_register_event]",
+                            1,
+                            params[:feed_events].include?(:organisation_register_event) %> 
+          Organisation registiert</td>          
+      <td><%= check_box_tag "feed_events[activity_create_event]",
+                            1,
+                            params[:feed_events].include?(:activity_create_event) %> 
+          Aktion erstellt</td>          
+      <td><%= check_box_tag "feed_events[event_create_event]",
+                            1,
+                            params[:feed_events].include?(:event_create_event) %> 
+          Termin erstellt</td>          
+    </tr>
+    <tr>
+      <td><%= check_box_tag "feed_events[location_create_event]",
+                            1,
+                            params[:feed_events].include?(:location_create_event) %> 
+          Ort erstellt</td>            
+      <td><%= check_box_tag "feed_events[login_create_event]",
+                            1,
+                            params[:feed_events].include?(:login_create_event) %> 
+          Neuer Login</td>
+      <td><%= check_box_tag "feed_events[image_upload_event]",
+                            1,
+                            params[:feed_events].include?(:image_upload_event) %> 
+          Bild hochgeladen</td>
+      <td><%= check_box_tag "feed_events[comment_create_event]",
+                            1,
+                            params[:feed_events].include?(:comment_create_event) %> 
+          Blogkommentar erstellt</td>          
+    </tr>
+    <tr>
+      <td><%= check_box_tag "feed_events[blog_post_create_event]",
+                            1,
+                            params[:feed_events].include?(:blog_post_create_event) %> 
+          Blogeintrag erstellt</td>      
+    </tr>
+  </table> 
+  
+  <%= link_to_function "automatische Updates deaktivieren", "clearTimeout(PeriodicalTimer)" %>
+
+  <% end %>
+  
+  <div id="feed-events">
+    <%= render :partial => '/admin/feed_events/feed_event', :collection => @feed_events -%>
+  </div>  
+</div>

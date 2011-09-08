@@ -1,6 +1,8 @@
-class Request
-   include ActiveModel::Validations
-   attr_accessor :name, :email, :message
+class Request < ActiveRecord::BaseWithoutTable
+   
+   column :name, :string
+   column :email, :string
+   column :message, :text
 
    validates_presence_of :name
    validates_presence_of :email

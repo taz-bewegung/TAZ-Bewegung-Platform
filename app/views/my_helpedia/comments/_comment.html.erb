@@ -1,0 +1,31 @@
+<tr class="<%= cycle("","alternate") -%>" id="comment_<%= comment.id %>">
+  <td class="image">
+    <%= image_or_gravatar_for_comment(comment, 56) %>
+  </td>
+  <td class="name-and-date">
+    <span class="name"><%= name_link_for_comment comment -%></span>
+    <span class="date"><%=l comment.created_at -%></span>
+    <% if comment.commentable_type == "BlogPost" %>
+    <span class="date">Eintrag: <%= link_to h(comment.commentable.title), polymorphic_path([:edit, :my_helpedia, @bloggable, comment.commentable]), :class => "remote-link" -%></span>
+    <% end %>
+    <span class="date">Status: <%= comment.visible? ? "Öffentlich" : "Versteckt" %> </span>
+  </td>
+  <td class="subject">
+    <span class="message">
+      <%= secured_rte_text(comment.body, :plain => true) -%>
+    </span>
+  </td>
+  <td style="width: 55px">
+    <%= link_to(image_tag("icons/show.png"), 
+                url_for([:unhide, :my_helpedia, @bloggable, comment]), 
+                :class => "remote-link-put show-icon") if comment.hidden? %>
+                
+    <%= link_to(image_tag("icons/hide.png"), 
+                url_for([:hide, :my_helpedia, @bloggable, comment]), 
+                :class => "remote-link-put hide-icon") if comment.visible? %>
+    <%= link_to(image_tag("icons/delete.png"), 
+                url_for([:my_helpedia, @bloggable, comment]), 
+                :class => "remote-link-delete delete-icon") %>
+  </td>
+</tr>
+<tr id="separator-comment_<%= comment.id %>"><td colspan="4" class="seperator">&nbsp;</td></tr>

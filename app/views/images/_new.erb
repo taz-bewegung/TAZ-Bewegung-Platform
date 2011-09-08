@@ -1,0 +1,40 @@
+<div class="modal-left-content"> 
+  <div id="image-content">
+  	<%= image_sub_menu(:new) -%>
+    <div id="sub-content-modal">
+    	<div id="sub-content-inner-modal">
+  		  <h2><%= I18n.t :"image.new.header" %></h2>
+  	    <%= RedCloth.new(I18n.t(:"image.new.text")).to_html %>    	  
+  			<div id="image-sub-content">
+  			  <%- unless @image.errors.blank? -%>
+  			  <div style="color: red">
+  			    <%= @image.errors.full_messages.join(", ") %>
+  			  </div>
+  			  <br />
+  			  <%- end -%>
+  				<iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+          <div id="image-upload">
+  				  <% form_for(@image, :url => images_path(:part => params[:part], 
+  				                                          :image_input => params[:image_input],
+  				                                          :image_size => params[:image_size]),
+  				                    :html => { :multipart => true, :target => 'upload_frame', :id => "upload",
+  				                    :onsubmit => "$('#image-spinner').show(); $('#image-submit').hide();"}) do |f| %>
+              <label>Bild auswählen:</label>
+    				  <%= f.file_field :uploaded_data, :class => "input-file", :id => "file" %>
+    				  <br />
+    				  <br />
+    				  <% form_footer do %>
+                <span id="image-submit">
+                  <%= shadow_form_button("Hochladen", :css_class => 35, :font_size => 14, :id => "upload-button") %> 
+                </span>
+                <%= spinner "image-spinner" %>
+                oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+    					<% end -%>              
+
+  					<% end -%>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+  </div>
+</div>

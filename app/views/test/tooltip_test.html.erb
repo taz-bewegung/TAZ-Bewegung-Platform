@@ -1,0 +1,27 @@
+<div id="test-id">
+</div>
+
+
+<%- form_for(User.new, 
+             :url => users_path, 
+             :builder => EditFormBuilder) do |form| -%>
+
+<table border="0"  class="reg-form">
+<%= form.text_field :first_name, :required => true, :labels_from => User -%>
+<%= form.text_field :last_name, :required => true, :labels_from => User -%>
+<%= form.text_field :email, :required => true, :labels_from => User -%>
+<%= form.password_field :password, :required => true, :labels_from => User -%>
+<%= form.password_field :password_confirmation, 
+                        :required => true, 
+                        :labels_from => User,
+                        :class => "make-me-short",
+                        :before_html => '<img align="left" style="padding:0;margin-left:2px;display:inline" src="/images/overlay1/password-arrow.png" border="0" alt="Password wiederholen" />' -%>	
+                        <tr>
+                          <td>
+                          </td>
+                          <td align="left" valign="top">
+                            <%= submit_tag t(:"user.register.submit") %>
+                          </td>
+                        </tr>
+                        </table>
+<% end %>

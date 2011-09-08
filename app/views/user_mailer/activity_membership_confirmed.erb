@@ -1,0 +1,5 @@
+<%=h I18n.t(:"activity_membership.confirmed.email.message", :activity_title => @activity_membership.activity.title,
+                                                            :activity_user_name => @activity_membership.activity.owner.full_name,
+                                                            :membership_user_name => @activity_membership.user.full_name,
+                                                            :membership_message => @activity_membership.message
+                                                          ) %>

@@ -1,0 +1,44 @@
+<%- if params[:list_type] != "maps" %>
+<script type="text/javascript" charset="utf-8">
+    
+    showFinder = true;
+    $("#nav-main li").removeAttr("class");
+    $("#nav-main li#"+$("#i_search_type").val()).addClass("act");
+    $("#logo-link").attr("class","logo-" + $("#i_search_type").val());
+    
+</script> 
+  <% if @result[params[:i_search][:search_type].to_sym].total_pages > 1 %>
+  <table border="0" width="100%" class="pagination-table" cellpadding="0" cellspacing="0">
+  	<tr>
+  		<td valign="middle" align="left" nowrap="nowrap"></td>
+  		<td align="right" nowrap="nowrap" valign="middle">
+  			<%= pagination_for (@result[params[:i_search][:search_type].to_sym], 
+                             :previous_label => 'Vorige Seite',
+                             :page_links => 'none',
+                             :previous_links => true,
+                             :next_links => false,
+                             :first_label => 'Anfang')%>
+                             <select size="1" onchange="window.location.href = this.value" class="pages">
+  			<%= pagination_for (@result[params[:i_search][:search_type].to_sym],
+                             :page_links => 'option_links',
+                             :previous_links => false,
+                             :next_links => false)%>
+                            </select> von <%= @result[params[:i_search][:search_type].to_sym].total_pages %>
+  			<%= pagination_for (@result[params[:i_search][:search_type].to_sym], 
+                             :next_label => 'Nächste Seite',
+                             :page_links => 'none',
+                             :previous_links => false,
+                             :next_links => true,
+                             :last_label => 'Ende')%>
+  
+  			</td>
+  	</tr>	
+  </table>			
+  <%- end %>
+<%- end-%>
+<% if @result[params[:i_search][:search_type].to_s.downcase.to_sym].size > 0 then%>
+  <%= render :partial => "/#{params[:i_search][:search_type].to_s.downcase}/index/shared/list_#{params[:list_type]}", 
+            :locals => { params[:i_search][:search_type].to_s.downcase.to_sym => @result[params[:i_search][:search_type].to_s.downcase.to_sym] } -%>
+<%- else -%>
+  <p>Leider wurden keine Ergebnisse für deine Suche gefunden.</p>
+<% end -%>

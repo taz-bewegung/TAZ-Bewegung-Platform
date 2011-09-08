@@ -1,0 +1,11 @@
+#cache_fragment "organisations", :key_parts => [params[:list_type], params[:order], params[:social_category], params[:page]] do
+  if params[:pagination_reload] == "1"
+   params[:pagination_reload] = 0    
+   page[".item.pagination"].replace :partial => "/pagination_filter/pagination", 
+                                    :locals => { :collection => @organisations } 
+  end
+
+  page["sub-content-list"].replace_html :partial => "/organisations/list", 
+                                        :locals => { :organisations => @organisations }
+  page.insert_html("after","sub-content-list", @map.to_html(:no_load => true, :no_script => true)) unless @map.blank?
+#end

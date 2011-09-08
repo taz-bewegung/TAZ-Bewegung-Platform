@@ -1,0 +1,30 @@
+<div class="activities">
+   <div class="list-table">
+   <%- for friendship in friendships -%>   
+     <div class="list-table-item<%= " last" if friendships.last == friendship -%>" id="friendship_<%= friendship.id %>">
+       <div class="clearfloats">
+         <div class="item-left">
+           <div class="list-image-wrap">
+             <%= image_for(friendship.friend, :"90x69c", :context_menu => my_helpedia_friendship_context_menu(friendship)) -%>
+           </div>
+         </div>         
+         <div class="item-content-wrap">
+           <div class="item-title">
+             <%= user_profile_link_for(friendship.friend) -%>
+           </div>
+           
+           <div class="item-content">
+             <div class="description">
+               <%# truncate(secured_rte_text(activity.description, :plain => true), :length => 300) || "-" -%>               
+             </div>
+             <dl>
+               <dt>Seit:</dt>
+               <dd><%=l friendship.created_at -%></dd>
+             </dl>
+           </div>
+         </div>
+       </div>
+     </div>
+   <%- end -%>
+   </div>
+</div>

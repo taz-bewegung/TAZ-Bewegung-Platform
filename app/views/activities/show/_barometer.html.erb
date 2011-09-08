@@ -1,0 +1,12 @@
+<div class="meter-container">
+  <div class="meter-left"></div>
+  <div class="meter">
+    <div class="bar-left"></div>          
+    <div class="bar" style="width: <%= barometer_percent_for(activity, amount) -%>%"></div>
+  </div>
+  <div class="meter-right">
+    <% if barometer_percent_for(activity, amount) == 100 %>
+    <div class="bar-right"></div>                    
+    <% end %> 
+  </div>
+</div>

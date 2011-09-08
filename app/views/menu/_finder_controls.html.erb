@@ -1,0 +1,23 @@
+<div id="finder-controls">
+  <div id="finder-arrow-two"> </div>
+  <div class="finder-content">
+    <div id="finder-search-button">
+      <%# if !@current_main_menu_id or @current_main_menu_id.to_s == "start" then %>
+        <%#= shadow_form_button("Aktionen anzeigen", :css_class => "39-block activities", :font_size => 18) -%>
+        <%#= shadow_form_button("Termine anzeigen", :css_class => "39-block events", :font_size => 18) -%>
+        <%#= shadow_form_button("Orte anzeigen", :css_class => "39-block locations", :font_size => 18) -%>
+        <%#= shadow_form_button("Organisationen anzeigen", :css_class => "39-block organisations", :font_size => 18) -%>
+      <%# else -%>
+        <%= shadow_form_button("Termine anzeigen", :css_class => "39-grey-block events", :font_size => 18) -%>
+        <%= shadow_form_button("Aktionen anzeigen", :css_class => "39-grey-block activities", :font_size => 18) -%>
+        <%= shadow_form_button("Organisationen anzeigen", :css_class => "39-grey-block organisations", :font_size => 18) -%>
+        <%= shadow_form_button("Orte anzeigen", :css_class => "39-grey-block locations", :font_size => 18) -%>
+      <%# end -%>
+    </div>
+    <div id="finder-search-info">      
+      <%- if not params[:i_search].blank? and not params[:i_search][:search_type].blank? and not @result.blank? -%> 
+        <%= render_result_info @result, params[:i_search][:search_type].to_sym %>
+      <%- end -%>
+    </div>
+  </div>
+</div><!-- end #finder-ccustomontrols -->

@@ -1,0 +1,26 @@
+<div id="additional_data" class="edit-container">
+  
+        <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Erweiterte Angaben", 
+                                                                     :object => @event,
+                                                                     :path => edit_part_my_helpedia_event_path(@event, :part => "additional_data"), 
+                                                                     :prefix => "addiotional_date",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+  
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-10">
+        <dl>
+          <dt>Verknüpfte Aktion:</dt> 
+          <% if @event.activity.present? %>
+          <dd><%= image_for(@event.activity, :"32x24c") -%> <%=h @event.activity.title -%></dd>
+          <% else %>
+          <dd>-</dd>
+          <% end %>
+          <dt><%= Event.human_attribute_name("description") -%>:</dt>
+          <dd><%= truncate(secured_rte_text(@event.description, :plain => true), :length => 100) || "-" -%></dd>
+        </dl>          
+      </div>
+    </div>
+  </div>
+</div>

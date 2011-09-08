@@ -1,0 +1,12 @@
+<%- title " - Aktionsblog" -%>
+<%- breadcrumb [ "" , link_to( "Aktionsblog", activity_blog_path(@activity))] -%>
+
+<%= activity_sub_menu(:blog) -%>
+<div id="sub-content">
+  <div style="width: 900px">
+    <div style="float: left; width: 622px; margin-top: 30px">
+      <%= render :partial => "/blogs/index/shared/post", :collection => @posts %>
+    </div>
+    <%= render :partial => "/blogs/index/shared/sidebar" -%>    
+  </div>
+</div>

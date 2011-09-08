@@ -1,0 +1,8 @@
+<%- title "Organisationen" -%>
+<% breadcrumb [ link_to("Organisationen", url_for(:controller => 'pages', :action => "organisationen"))] %>  
+
+
+
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:organisationen) -%>
+<%- end -%>

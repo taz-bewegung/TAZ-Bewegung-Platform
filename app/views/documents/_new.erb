@@ -1,0 +1,32 @@
+<div id="document-content">
+	<%= document_sub_menu(:new) -%>
+	<div id="sub-content">
+		<div id="sub-content-inner">
+		  <h2>Neues Dokument hochladen</h2>
+		  <p>
+		   Hier kannst Du ein Dokument hochladen. Das Dokument für muss im Format .doc, .pdf, .rtf, .jpg, .png oder .gif vorliegen und darf maximal 4MB groß sein.<br />
+		   Hast Du bereits das Dokument hochgeladen, welche Du verwenden willst? Dann wähle es im "Meine Dokumente"-Bereich aus.
+		  </p>		  
+			<div id="document-sub-content">
+			  <%- unless @document.errors.blank? -%>
+			  <div style="color: red">
+			    <%= @document.errors.full_messages.join(", ") %>
+			  </div>
+			  <br />
+			  <%- end -%>
+				<iframe id='upload_frame' name="upload_frame" style="width:1px;height:1px;border:0px" src="about:blank"></iframe>
+				<div id="document-upload">
+				  <% form_for(@document, :url => documents_path(:part => params[:part]),
+				                    :html => { :multipart => true, :target => 'upload_frame', :id => "upload",
+				                    :onsubmit => "$('#document-spinner').show();$('#document-upload').hide();"}) do |f| %>
+          <label>Dokument auswählen:</label>
+				  <%= f.file_field :uploaded_data, :class => "input-file", :id => "file" %>
+				  <br /><br />
+				  <%= image_submit_tag "buttons/btn-small-upload.png", :class => "image-submit" -%>
+					<% end -%>
+				</div>
+        <div id="document-spinner" style="display: none;"><%= image_tag "ajax-spinner.gif" -%></div>
+			</div>
+		</div>
+	</div>
+</div>

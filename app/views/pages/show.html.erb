@@ -1,0 +1,8 @@
+<% title @page.name %>
+<% breadcrumb [ link_to("Aktionen", activities_path), link_to(@page.name, "/#{@page.permalink}") ] %>
+
+<%=h @page.content %>
+
+<% content_for :column_left do %>
+  <%=h @page.border_content %>
+<% end %>

@@ -1,0 +1,37 @@
+<%- title "Banner, Links, Bookmarking, Widgets" -%>
+<% breadcrumb [ link_to("Banner, Links, Bookmarking, Widgets", url_for(:controller => 'pages', :action => "banner_links_bookmarking_widgets"))] %>  
+
+	<h2>Weitersagen…</h2>
+	<p>
+		Empfehle Helpedia in Deinem persönlichen Umfeld oder informiere Dir bekannte Organisationen von den neuen Möglichkeiten.
+	</p>
+	<h2>Bookmarking</h2>
+	<p>
+		Füge Helpedia als ein persönliches Lesezeichen einer der folgenden Bookmarkingdienste und erhöhe damit die Sicht.
+	</p>
+	###BOOKMARKINGDIENSTE###
+	
+	<h2>Links</h2>
+	<p>
+		Die Verlinkung ist das beste Mittel, um andere Menschen auf Helpedia aufmerksam zu machen. Jeder Link verbessert die Sichtbarkeit von Helpedia im Netz. Neben Textlinks stehen Dir weiter unten noch optisch attraktive Möglichkeiten zur Verfügung.
+	</p>
+	###LINKS###
+	
+	
+	<h2>Banner</h2>
+	<p>
+		Falls Du eine eigene Website oder Blog besitzt bieten wir Dir optisch attraktive Banner an, mit denen Du Deine Unterstützung für Helpedia ansprechend gestalten kannst. Hier findet Du eine kleine Auswahl verschiedener Banner, die Du auf Deinem Webauftritt einbinden kannst. Einfach den jeweiligen Quellcode kopieren und ihn an die von Dir gewünschte Position Deiner Homepage setzten. Fertig. Bei Fragen helfen wir Dir gerne weiter.
+	</p>
+	###BANNERCODES###
+	
+	
+	<h2>Widgets</h2>
+	<p>
+		Du bist ein Fan ein bestimmter Aktion oder Organisation und möchtest speziell diese über Deinen Internetauftritt bekannt machen. Dann sind die von uns entwickelten interaktiven Banner genau das richtige. Anstatt einer Werbefläche, werden hier alle Veränderungen und Informationen zu einer Aktion oder sonstiges optisch attraktiv auf Deine Seite gespiegelt. Auf diese Weise hast Du Deine Lieblingsaktion immer Blick, ohne extra unsere Seite besuchen zu müssen. Auch hier einfach den betreffenden Quellcode an die von Dir gewünschte Stelle auf Deiner Website setzen und das Resultat bestaunen. Es hat nicht geklappt? Dann kontaktiere uns hier…
+	</p>
+	###WIDGETS###
+	
+
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:banner_links_bookmarking_widgets) -%>
+<%- end -%>

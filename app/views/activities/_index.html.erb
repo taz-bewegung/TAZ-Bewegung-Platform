@@ -1,0 +1,33 @@
+<% title t(:"layout.menu.activities") %>
+<% main_menu :activities %>
+<% breadcrumb [ link_to("Aktionen", activities_path)] %>
+<% magick_header "Aktionen" %>
+<% right_column render(:partial => "right_column") %>
+
+<%- if params[:i_search].blank? -%>
+  <%- render_or_cache("activity_index_teaser", { :ignore_roles => [:admin] }, :expires_in => 2.hours ) do -%>
+    <div class="clearfloats landing-page-teaser">
+      <%= render_content_container("activity_index_text", :cache_fragment => "activity_index_teaser") %>
+      <%= render_carousel_container("activity_index_carousel", :cache_fragment => "activity_index_teaser") %>
+    </div>
+  <% end %>
+<%- end -%>
+
+<div class="full-content">
+  <div class="full-content-left">
+    <% cache("aktionen/index/pagination-#{@cache_key}", :expires_in => 30.minutes) do %>
+      <%= render :partial => "/activities/index/shared/pagination_filter" %>
+    <% end -%>
+    <div id="sub-content-list">
+        <%= render :partial => '/activities/list' -%>
+    </div>
+  </div>
+  
+  <%- if params[:i_search].blank? -%>
+  <%- cache("activity_sidebar", :expires_in => 10.minutes ) do -%>  
+  <div class="full-content-right">     
+    <%= render :partial => 'sidebar' -%>
+  </div>
+  <% end %>
+  <% end %>
+</div>

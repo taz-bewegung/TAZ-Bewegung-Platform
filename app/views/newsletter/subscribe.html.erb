@@ -1,0 +1,25 @@
+<% title t(:"newsletter_subscriber.subscribe.header") %>
+<% breadcrumb [ link_to(t(:"newsletter_subscriber.subscribe.header"), subscribe_newsletter_path) ] %>
+<% magick_header t(:"newsletter_subscriber.subscribe.header") %>
+<p>
+  Hier findest Du unseren aktuellen Newsletter, der dich über die neuesten Entwicklungen der bewegung.taz-Plattform am Laufenden hält. 
+  Wenn Du den bewegung.taz-Newsletter abbonieren möchtest, dann kannst Du dies hier tun.<br />
+</p>
+<p>
+    Dazu brauchen wir lediglich Deine eMail-Adresse, die wir für keine anderen Zwecke weiterverwenden werden. Du kannst jederzeit den Newsletter wieder abbestellen  
+</p>
+  <% form_for(@newsletter_subscriber, 
+              :url => subscribe_newsletter_path,
+              :builder => EditFormBuilder, 
+              :html => { :method => :post }) do |f| %>
+    <table class="reg-form w-230" width="100%" colspan="0" rowspan="0">
+    <%= f.text_field :email, :required => true -%>
+    <tr>
+    	<td></td>
+    	<td style="padding-left:5px">
+        <%= shadow_form_button("Absenden", :css_class => 35, :font_size => 14) %>
+      </td>
+    </tr>    
+    </table>
+
+<% end %>

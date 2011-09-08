@@ -1,0 +1,16 @@
+<table class="edit-part-header">
+  <tr>
+    <td class="title"><h1><%= list_title -%></h1></td>
+    <td class="line"><div class="line-div">&nbsp;</div></td>
+    <td>
+      <%= image_tag "ajax-spinner.gif", 
+                     :id => "table-spinner", 
+                     :class => "table-spinner" -%>      
+    </td>
+    <td class="link">
+      <%= layout_switch_icons(params[:list_type].to_sym, :list => url_for(params.merge(:list_type => "table", :filter => params[:filter])),
+                                                         :card => url_for(params.merge(:list_type => "card",  :filter => params[:filter])),
+                                                         :maps => url_for(params.merge(:list_type => "maps",  :filter => params[:filter]))) %>      
+    </td>
+  </tr>
+</table>

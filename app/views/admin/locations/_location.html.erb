@@ -1,0 +1,15 @@
+<tr id="<%= dom_id(location) %>">
+  <td><%= image_for(location, :mini) -%></td>
+	<td><%= link_to h(location.title), location %></td>
+  <td class="icons">
+    <%= location_icons_for(location) -%>
+  </td>
+</tr>
+<tr>
+  <td colspan="8">
+    <div class="edit-admin-comment" rel="<%= update_comment_admin_location_path(location) -%>">
+      <%=h location.admin_comment -%>
+    </div>
+  </td>
+</tr>
+<%= render :partial => "details", :locals => { :location => location } -%>

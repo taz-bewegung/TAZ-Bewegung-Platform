@@ -1,0 +1,20 @@
+<% content_for :right_column do  -%>
+  <h2>Organisation</h2>
+  <%- if current_user.active? -%>
+  <ul class="menu">    
+    <li><%= link_to "... neue Aktion anlegen", new_my_helpedia_activity_path -%></li>
+    <li><%= link_to "... neuen Ort vorschlagen", new_my_helpedia_location_path -%></li>
+    <li><%= link_to "... neuen Termin eintragen", new_my_helpedia_event_path -%></li>
+  </ul>
+  <%- else -%>
+  <div class="white-box">
+    Aktionen, Orte und Termine können erst angelegt werden, wenn die Organisation freigeschaltet ist.
+  </div>
+  <%- end -%>
+  <br />
+  <br />
+  <br />
+  <ul class="menu">
+    <li><%= link_to "... Organisation löschen", destroy_confirmation_my_helpedia_organisation_path(current_user), :class => "remote-link" -%></li>    
+  </ul>
+<%- end -%>

@@ -1,0 +1,17 @@
+<tr>
+  <td><%= image_for(user, :mini) -%></td>
+  <td><%=h user.permalink -%></td> 
+  <td><%=h user.last_name -%></td>
+  <td><%=h user.first_name -%></td>
+  <td><%= mail_to user.email, truncate(user.email, :length => 20) -%></td>    
+  <td><%= user_status_for(user) -%></td>    
+  <td><%= user_icons_for user %></td>
+</tr>
+<tr>
+  <td colspan="8">
+    <div class="edit-admin-comment" rel="<%= update_comment_admin_user_path(user) -%>">
+      <%=h user.admin_comment -%>
+    </div>
+  </td>
+</tr>
+<%= render :partial => "details", :locals => { :user => user } -%>

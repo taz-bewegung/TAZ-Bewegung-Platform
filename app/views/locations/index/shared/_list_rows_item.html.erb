@@ -1,0 +1,24 @@
+<div class="list-table-item<%= " last" if locations.last == location -%>">
+  <div class="clearfloats">
+    <div class="item-left">
+      <div class="list-image-wrap">
+         <%= image_for(location, :"90x69c", :context_menu => location_context_menu(location), :link_to => location_path(location)) -%>
+      </div>
+    </div>         
+    <div class="item-content-wrap">
+      <div class="item-title">
+        <%= link_to h(location.name), location_path(location), :title => h(location.name) -%>   
+      </div>
+      
+      <div class="item-content">
+        <div class="description">
+          <%= truncate(secured_rte_text(location.description, :plain => true), :length => 300) -%>          
+        </div>
+        <dl>
+          <dt>Adresse</dt>
+          <dd><%= location.address.to_long -%></dd>
+        </dl>
+      </div>          
+    </div>
+  </div>
+</div>

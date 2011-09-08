@@ -1,0 +1,31 @@
+<% title "Einloggen" %>
+<% breadcrumb [ link_to("Einloggen", login_path) ] %>
+<%- magick_header "Einloggen" -%>
+<% main_menu :my_helpedia %>
+<%= render_flash -%>
+
+<p>
+  Bitte gib Deine E-Mail-Adresse und Dein Passwort ein.<br />
+  Wenn Du noch kein Nutzerkonto bei bewegung.taz.de hast, dann melde Dich <%= link_to "hier", split_users_path -%> an.
+</p>
+
+<%- form_for(@session, 
+             :url => session_path, 
+             :builder => EditFormBuilder) do |form| -%>
+<table border="0" class="reg-form w-230">  
+  <%= form.text_field :email, :required => true, :labels_from => Session -%>
+  <%= form.password_field :password, :required => true, :labels_from => Session -%>
+  <%= form.check_box :remember_me, :labels_from => Session %>  
+</table>
+ <div>
+    <table border="0" class="reg-form w-230">
+      <tr>
+        <th></th>
+        <td style="padding-left:5px">
+          <%= shadow_form_button("Einloggen", :css_class => 35, :font_size => 14) %>
+        </td>
+    </table>
+  </div>
+<%- end -%>
+<br />
+<%= link_to "Passwort vergessen?", forgot_password_path %>

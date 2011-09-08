@@ -1,0 +1,14 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Ortliste", admin_locations_path) ]%>
+<%- title 'Ortliste' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:location_list) -%>
+<%- end -%>
+
+<div class="admin">
+  <h1>Ortliste</h1>
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'location', :collection => @locations %>
+  </table>
+</div>

@@ -1,0 +1,20 @@
+<%- title "Spenden" -%>
+<% breadcrumb [ link_to("Spenden", url_for(:controller => 'pages', :action => "spenden"))] %>  
+
+<h1>Spenden</h1>
+
+<p>
+	Auf Helpedia kannst Du per Lastschriftverfahren auf die Aktion Deiner Wahl oder direkt an die Organisation Deiner Wahl spenden. In beiden Fällen wird die Spende sofort zu 100% an die entsprechende Organisation geleitet. Helpedia selbst nimmt für diesen Service keine Gebühren.
+</p>
+<p>
+	Die Spende geht an die ausgewählte Organisation und wird auch so auf Deinem Kontoauszug ausgewiesen. 
+</p>
+<p>
+	Die Organisation zieht Deine Lastschrift von Deiner Bank zu Ihren Gunsten ein.
+Im Falle eines Lastschriftwiderrufes wende Dich bitte direkt an Deine Bank. Helpedia kann keine Auskünfte zum Lastschriftverfahren geben und auch keinen Widerruf bearbeiten, da Helpedia nicht der Empfänger der Spende ist.
+</p>
+
+
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:spenden) -%>
+<%- end -%>

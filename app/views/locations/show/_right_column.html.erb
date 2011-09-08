@@ -1,0 +1,39 @@
+<%- content_for :right_column do -%>
+<h2>Ort ...</h2>
+<ul class="menu">
+  <li>
+    <%= link_to t(:"context_menu.public.location.recommend"), new_location_commendation_path(@location, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>
+  <%- if @location.bookmarkable_for?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @location.id %>">
+    <%= link_to t(:"context_menu.public.shared.bookmark.create"), location_bookmarks_path(@location), :class => "ajax-link-post" -%>
+  </li>  
+  <%- end -%>
+  <%- if @location.bookmarked_by?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @location.id %>">
+    <%= link_to t(:"context_menu.public.shared.bookmark.destroy"), location_bookmark_path(@location, @location.bookmarks.find_by_user_id(current_user.id)), :class => "ajax-link-delete-without-confirm" -%>
+  </li>  
+  <%- end -%>    
+  <%- if not @location.owner == current_user -%>  
+  <li>
+    <%= link_to t("context_menu.public.shared.create_message.type_#{@location.owner.gender.to_i}"), polymorphic_path([:new, @location.owner, :message], {:format => :lightbox}), :class => "remote-lightbox" -%>    
+  </li>
+  <%- end -%>
+  <%- if @location.owner.friendable_for?(current_user) -%>
+  <li>
+    <%= link_to t("context_menu.public.shared.create_friendship.type_#{@location.owner.gender.to_i}"), user_friendships_path(@location.owner), :class => "ajax-link-post" -%>    
+  </li>
+  <%- end -%>            
+  <li class="last">
+    <%= link_to t(:"context_menu.public.shared.feedback.create"), new_location_feedback_path(@location, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>  
+</ul>
+
+  <% render_or_cache "share_#{@location.uuid}" do %>
+  <div class="share-icons">
+    <%= twitter_link location_url(@location)  %>
+  </div>
+  <% end %>
+
+
+<%- end -%>

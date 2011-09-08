@@ -1,0 +1,9 @@
+<%- title " - Blog" -%>
+<%- breadcrumb [ "" , link_to("Blog", polymorphic_path([:my_helpedia, @bloggable, :blog]))] -%>
+<% magick_header "Blog" %>
+<%= self.send "my_helpedia_#{@bloggable.class.to_s.downcase}_sub_menu", :blog -%>
+
+<div id="sub-content">
+  <%= render :partial => @sub_partial %>   
+</div>
+

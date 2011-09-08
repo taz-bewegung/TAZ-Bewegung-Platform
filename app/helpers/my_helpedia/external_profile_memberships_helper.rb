@@ -1,0 +1,2 @@
+module MyHelpedia::ExternalProfileMembershipsHelper
+end

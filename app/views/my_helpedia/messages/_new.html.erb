@@ -1,0 +1,21 @@
+<%= my_helpedia_user_message_menu(:new) -%>
+
+<h2>Neue Nachricht schreiben</h2>
+
+<%- form_for(@message, 
+             :url => my_helpedia_messages_path, 
+             :builder => EditFormBuilder,
+             :html => { :class => "remote-form", :rel => "spinner" }) do |form| -%>
+
+  <table id="new_message_form" class="reg-form w-230">
+    <%= form.text_field :subject, :labels_from => Message -%>
+    <%= form.text_field :recipient_id, :labels_from => Message, :name => "message[recipient_ids][]", :value => @message.recipients_as_json -%>
+    <%= form.text_area :body, :labels_from => Message, :required => true, :rows => 10, :style => "width: 300px; height: 150px" -%>
+    <tr> 
+      <th></th>
+      <td>
+       <%= custom_form_button "Absenden", :size => "33-beige" %>
+      </td>
+    </tr>
+  </table>
+<%- end -%>

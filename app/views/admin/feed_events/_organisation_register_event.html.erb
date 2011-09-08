@@ -1,0 +1,7 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  Eine neue Organisation <%= link_to feed_event.trigger.name, organisation_path(feed_event.trigger) -%> hat sich registriert.
+</div>  
+

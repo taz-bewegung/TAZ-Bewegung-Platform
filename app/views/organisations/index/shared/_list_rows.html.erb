@@ -1,0 +1,31 @@
+<div class="organisations">
+   <div class="list-table">
+   <%- for organisation in organisations -%>
+     <div class="list-table-item<%= " last" if organisations.last == organisation -%>">
+       <div class="clearfloats">
+         <div class="item-left">
+           <div class="list-image-wrap">
+             <%= image_for(organisation, :small, :context_menu => organisation_context_menu(organisation), :link_to => organisation) -%>
+           </div>
+         </div>         
+         <div class="item-content-wrap">
+           <div class="item-title">
+             <%= link_to h(organisation.name), organisation_path(organisation), :title => h(organisation.name) -%>   
+           </div>
+           <div class="item-content">
+             <div class="description">
+               <%=truncate(secured_rte_text(organisation.description, :plain => true), :length => 300) -%>                       
+             </div>
+             <dl>
+               <dt>Form:</dt>
+               <dd><%=h organisation.corporate_form.name -%></dd>               
+               <dt><%= t("organisation.item_views.table.location") -%>:</dt>
+               <dd><%= organisation.address.to_html_long -%></dd>
+             </dl>
+           </div>          
+         </div>
+       </div>
+     </div>                                                         
+   <%- end -%>
+   </div>
+</div>

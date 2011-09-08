@@ -1,0 +1,4 @@
+page["sub-content-list"].replace_html :partial => "list", 
+                                      :locals => { params[:i_search][:search_type].to_sym => @result[params[:i_search][:search_type].to_sym],
+                                                   :list_title => "taB" }   
+page.insert_html("after","sub-content-list", @map.to_html(:no_load => true, :no_script => true)) unless @map.blank?

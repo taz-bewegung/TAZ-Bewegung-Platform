@@ -1,0 +1,23 @@
+<div class="memberships">
+  <div class="list-card">
+  <% for membership in @activity_memberships -%> 
+    <div class="list-card-item">
+      <div class="item-inner-wrap">
+        <div class="item-title">
+        <%= user_profile_link_for membership.user -%>
+        </div>
+        <div class="item-text">
+          <div class="item-left">
+            <div class="item-image-wrap">
+             <%= image_for(membership.user, :"90x69c", :context_menu => user_context_menu(membership.user)) -%>
+            </div>
+          </div>
+          <div class="description">
+            <%=h membership.message -%>          
+          </div>
+        </div>
+      </div>
+    </div>                                                             
+  <%- end -%>
+  </div>  
+</div>

@@ -1,0 +1,23 @@
+<div class="activities">
+  <div class="list-card">
+  <%- for activity in activities -%> 
+    <div class="list-card-item">
+      <div class="item-inner-wrap">
+        <div class="item-title">
+          <%= link_to h(truncate(activity.title, :length => 52)), my_helpedia_activity_path(activity), :title => h(activity.title) -%>   
+        </div>
+        <div class="item-text">
+          <div class="item-left">
+            <div class="item-image-wrap">
+             <%= image_for(activity, :"90x69c", :context_menu => my_helpedia_activity_context_menu(activity)) -%>
+            </div>
+          </div>
+          <div class="description">
+            <%= truncate(secured_rte_text(activity.description, :plain => true), :length => 140) || "-" -%>
+          </div>
+        </div>
+      </div>
+    </div>                                                             
+  <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="feed-event-content">
+  <%= link_to feed_event.operator.full_name, user_path(feed_event.operator) %> hat einen neuen Ort 
+  <%= link_to feed_event.trigger.title, location_path(feed_event.trigger) %> eingetragen.
+</div>

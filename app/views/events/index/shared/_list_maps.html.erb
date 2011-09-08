@@ -1,0 +1,19 @@
+<div class="events">
+  <%= @map.div(:width => @map.width, :height => @map.height) %>
+	<%= @map.to_html unless request.xhr? %>
+	<% if @activity.present? %>
+  <br />
+  <h2>Hier kannst du die Karte in deiner Seite einbauen</h2>
+  <p>
+    Kopiere den HTML-Schnipsel in die Zwischenablage und füge es in deine Website ein.
+  </p>
+  <p>
+    <b>Tip:</b> Du kann die Größe der Karte wie gewünscht zuschneiden indem du die Attribute <i>width</i> und <i>height</i> entsprechend anpasst.
+  </p>
+  <% iframe = '<iframe width="460" height="580" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="' + iframe_map_activity_events_url.to_s + '"> </iframe>' %>
+  <%=text_area_tag :map, iframe, :class => "embed_code", :style => "width: 300px; height: 75px;"%>
+  <script type="text/javascript" charset="utf-8">
+    $("#map").clippy('<%=iframe%>', "#ffffff");
+  </script>
+  <% end %>
+</div>

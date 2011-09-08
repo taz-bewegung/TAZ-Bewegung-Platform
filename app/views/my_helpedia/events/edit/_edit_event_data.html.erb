@@ -1,0 +1,60 @@
+<div id="event_data" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Terminprofil</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_event_path(@event, :part => "event_data"), 
+                :class => "ajax-link",
+                :rel => "#{@event.object_id}-event-data-spinner"                
+                 -%>
+  </div>
+
+  <div class="edit-part-content">    
+    <%- form_for(@event, 
+                 :url => my_helpedia_event_path(@event, :part => "event_data"), 
+                 :builder => EditFormBuilder,
+                 :html => { :class => "remote-form",
+                            :rel => "#{@event.object_id}-event-data-spinner" }) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+   <% f.fields_for :image_attachment, 
+                    (@event.image_attachment || @event.build_image_attachment), 
+                    :builder => EditFormBuilder do |image_form| %>
+      <%= image_form.image_field :image_id, :id => "image_attachment", :labels_from => Event, :image_object => @event %>      
+    <% end %>
+    <%= f.text_field :title, :required => true -%>
+    <%= f.text :permalink -%>    
+    <%= f.text_field :website, :required => false -%>
+    <%= f.text_field :event_type, :required => false -%>        
+    <tr id="event_starts_at_wrap">
+      <th><%= content_tag :label, "#{Event.human_attribute_name("start_date")}:" %></th>
+      <td class="input-area">
+        <%= f.text_field :start_date, :required => true, :render_table => false, :hide_label => true, :float_table => true -%>
+        <%= f.text_field :start_time, :required => false, :hide_label => true, :render_table => false, :class => "time toggle no-refill", :title => "Bsp: 12:00" -%>
+      </td>
+    </tr>
+    <tr id="event_ends_at_wrap">
+      <th><%= content_tag :label, "#{Event.human_attribute_name("end_date")}:" %></th>
+      <td class="input-area">
+        <%= f.text_field :end_date, :required => true, :render_table => false, :hide_label => true, :float_table => true -%>
+        <%= f.text_field :end_time, :required => false, :hide_label => true, :render_table => false, :class => "time toggle no-refill", :title => "Bsp: 12:00" -%>
+      </td>
+    </tr>
+    </table> 
+    
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_event_path(@event, :part => "event_data"), 
+                     :class => "ajax-link",
+                     :rel => "#{@event.object_id}-event-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@event.object_id}-event-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

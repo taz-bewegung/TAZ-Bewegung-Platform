@@ -1,0 +1,35 @@
+<div class="modal-left-content">
+  <h2>Bedenklichen Inhalt melden</h2>
+
+  <p>
+    Auf der Seite <b><%= session[:return_to] %></b> befindet sich ein bedenklicher Inhalt.
+  </p>
+  <br />
+
+  <%- form_for(@feedback, 
+               :url => url_for(only_route_params.merge(:action => :create)),
+               :builder => EditFormBuilder,
+                :html => { :class => "remote-form" ,
+                            :rel => "request-spinner" }) do |form| -%>
+
+  <table border="0" class="reg-form w-140">
+    <tr>
+      <th valign="top"> </th>
+      <td>
+        <span class="grey">* Pflichtfeld</span>
+      </td>
+    </tr>  
+    <%= form.text_field :name, :required => false, :class => "tt-width-140" -%>
+    <%= form.text_field :email, :required => false, :class => "tt-width-140" -%>
+    <%= form.text_area :message, :required => true, :class => "tt-width-140" -%>  
+    <tr>
+       <th>
+       </th>
+       <td>
+         <%= shadow_form_button("Absenden", :css_class => 35, :font_size => 14) %> 
+         oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+       </td>
+     </tr>    
+  </table>                        
+  <%- end -%>
+</div>

@@ -1,0 +1,5 @@
+<div class="feed-event-content">
+  <%= link_to feed_event.actor.name, organisation_path(feed_event.actor) -%> hat einen neuen Job 
+  <%= link_to feed_event.trigger.title, job_path(feed_event.trigger) %> eingestellt.
+</div>  
+

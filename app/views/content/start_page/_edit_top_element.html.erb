@@ -1,0 +1,30 @@
+<div class="modal-left-content">
+  <h2>Editieren</h2>
+
+  <% form_for(@content, 
+     :url => { :controller => "contents", :action => "save_top_element", :id => @content.id },
+     :builder => EditFormBuilder,
+     :html => { :class => "remote-form", :rel => "request-spinner" }) do |f| %>
+    
+    <table class="reg-form w-140" width="100%" colspan="0" rowspan="0">
+    <%= f.text_field :title, :required => true, :class => "tt-width-140" -%>
+    <%= f.select :element_type, Content::TopElement::ELEMENT_TYPES, { }, :required => true, 
+                 :"data-update" => "#select_element_id", 
+                 :"data-href" => "/contents/get_data",
+                 :class => "get-data" -%>
+    <%= f.select :element_id, 
+                  @content.element_type.to_class.active.latest.limit(50).map{ |item| [item.title, item.id] }, 
+                  { :include_blank => "Kein Element ausgewählt" },
+                  :id => "select_element_id",
+                  :required => true -%>
+    <tr>
+      <th>
+      </th>
+      <td>
+        <%= shadow_form_button("Speichern", :css_class => 35, :font_size => 14) %> 
+        oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+      </td>
+    </tr>
+    </table>
+  <% end %> 
+</div>

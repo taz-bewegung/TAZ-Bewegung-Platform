@@ -1,0 +1,7 @@
+<%- title h(@location.name) -%>
+<%- breadcrumb [ link_to(t(:"breadcrumb.my_helpedia"), my_helpedia_path),   
+                 link_to(h(@location.name), my_helpedia_location_path(@location))] -%>
+<%= edit_header render_location_info_box(@location, :private) %>
+
+<%= render :partial => "/my_helpedia/locations/shared/right_column" -%>
+<%= render :partial => content_partial %>

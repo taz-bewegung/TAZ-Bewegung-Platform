@@ -1,0 +1,51 @@
+<%= magick_header 'bewegung.taz.de - API' %>
+
+<p>
+  Die API basiert auf den Prinzipien von REST. Es stehen also URL-Endpunkte (Resourcen) für die Nutzung der API zur Verfügung.
+  Mit den verschiedenen HTTP-Verben (GET, POST, PUT, DELETE) lassen diese Resourcen auslesen, anlegen und verändern.<br />
+  Was genau und wie mit einer Resource gemacht werden kann, ist jeweils detailliert beschrieben.
+</p>
+
+<h2>Authentifizierung</h2>
+
+<p>
+  Für die Nutzung der API ist eine Authentifizierung erforderlich. Nur Nutzer/Organisationen mit der Berechtigung zum Zugriff auf die API,
+  dürfen diese nutzen. Es stehen momentan zwei mögliche Authentifizierungsmechanismen bereit:
+</p>
+
+<h3>HTTP-Basic-Authentifizierung</h3>
+<p>
+  Bei der HTTP-Basic-Authentifizierung werden die Login-Informationen bei bewegung.taz.de genutzt, um sich über die API anzumelden.<br />
+  Ein Nutzer muss für die Nutzung freigeschaltet sein, sonst wird die Authorisierung fehlschlagen.<br />
+  Da die Nutzerdaten lesbar über das Netz übertragen werden, ist diese Art der Authentifizierung nicht die sicherste.<br /><br />
+  Beispiel:
+</p>
+<p>
+  <font face="courier new,monospace">
+    http://login:password@bewegung.taz.de/api/v1/organisationen.xml
+  </font> 
+</p>
+
+<h3>API-Key</h3>
+<p>
+  Ein für die Nutzung der API freigeschalteter Nutzer kann sich auch mit einem generierten Token authentifizieren.
+  Dieses Token muss lediglich als Parameter in der URL mit übertragen werden.
+  <br /><br />
+  Beispiel:   
+</p>
+<p>
+  <font face="courier new,monospace">
+    http://bewegung.taz.de/api/v1/organisationen.xml?api_key=xxx
+  </font> 
+</p>
+<br />
+<h2>Die Ressourcen</h2>
+<ul>
+
+  <li><h3>Ressource:  <a href="/api/v1/docs/termine">/termine</a></h3></li>
+
+  <li><h3>Ressource:  <a href="/api/v1/docs/organisationen">/organisationen</a></h3></li>
+
+  <li><h3>Ressource:  <a href="/api/v1/docs/themen_kategorien">/themen_kategorien</a></h3></li>
+
+</ul>

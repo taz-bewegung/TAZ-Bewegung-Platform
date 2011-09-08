@@ -1,0 +1,57 @@
+<%- form_for(@blog_post, 
+               :url => polymorphic_path([:my_helpedia, @bloggable, @blog_post], { :part => @blog_post.object_id }),
+               :builder => EditFormBuilder,
+               :html => { :class => "remote-form" }) do |form| -%>
+
+<div class="edit-part-content">      
+    <table border="0"  class="reg-form w-230">
+      <%= form.text_field :title, :required => true -%>
+      <%= form.text_field :temp_tag_list, :required => false -%>
+   	  <%= form.select :commentable, BlogPost::COMMENTABLE, :required => true %>
+    </table>
+    <br />
+</div>
+ 
+  <% for content in @blog_post.blog_post_contents %>
+    <%= render :partial => content.contentable_type.underscore, :locals => { :form => form, :object => content, :no_index => true } %>      
+  <%- end -%> 
+  
+  <div id="new-record">
+  </div>
+  
+  <div class="new-content">
+    Bitte auswählen:
+    <%= add_child_link "Neuer Text (mit Bild)", form, :object => @blog_post.blog_post_contents.build, 
+                                                      :partial => "blog_content_text", 
+                                                      :index => "uniq_text",
+                                                      :tiny_mce => true,
+                                                      :tiny_mce_selector => "tinyMCE_new_uniq_text",
+                                                      :where => "#new-record" %>
+    -                                      
+    <%= add_child_link "Neues Video (mit URL)", form, :object => @blog_post.blog_post_contents.build, 
+                                                      :partial => "blog_content_video",
+                                                      :index => "uniq_video",
+                                                      :where => "#new-record" %>
+                                            
+    -                                      
+    <%= add_child_link "Neuer iframe/html code", form, :object => @blog_post.blog_post_contents.build, 
+                                                      :partial => "blog_content_video_with_code",
+                                                      :index => "uniq_video_code",
+                                                      :where => "#new-record" %>
+               
+  </div> 
+  
+<div class="edit-part-bottom">
+   <div class="buttons">
+     <input type="hidden" id="state" name="state" />
+     <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input", :onclick => "$('#state').val('unpublished')" %>
+     <%- if @blog_post.new_record? or @blog_post.unpublished? -%>
+     <%= image_submit_tag "buttons/btn-veroffentlichen.gif", :class => "submit-input", :onclick => "$('#state').val('published')" %>
+     <%- end -%>
+     <%= link_to image_tag("buttons/btn-cancel.png"), 
+                 url_for([:my_helpedia, @bloggable, :blog].compact), 
+                 :class => "ajax-link" -%>     
+   </div>
+</div>
+  
+<% end -%>

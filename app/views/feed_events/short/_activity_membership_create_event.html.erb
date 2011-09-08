@@ -1,0 +1,4 @@
+<div class="feed-event-content">
+  <%= user_profile_link_for feed_event.operator %>       
+  sympathisiert jetzt mit <%= I18n.t("#{feed_event.concerned.class.to_s.underscore}.dativ") %>: <%= link_to feed_event.concerned.title, polymorphic_path([feed_event.concerned]) %>.
+</div>

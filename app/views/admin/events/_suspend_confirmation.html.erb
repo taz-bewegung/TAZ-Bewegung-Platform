@@ -1,0 +1,21 @@
+<h2>Termin wirklich sperren?</h2>
+
+<p>Der Termin ist nur noch für den Nutzer sichtbar!</p>
+
+<% form_for @message, :url => suspend_admin_event_path(@event), 
+                      :method => :put,
+                      :builder => EditFormBuilder,
+                      :html => { :class => "remote-form" } do |f| %>
+  <table class="reg-form w-140">
+    <%= f.text_field :subject %>
+    <%= f.text_area :body %>
+    <%= f.check_box :do_not_send %>
+    <%= hidden_field_tag :_method, :put %>
+    <tr>
+      <th></th>
+      <td><%= shadow_form_button("Termin sperren", :css_class => 35, :font_size => 14) %> 
+      oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %></td>
+    </tr>
+  </table> 
+
+<% end %>

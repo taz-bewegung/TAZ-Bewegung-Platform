@@ -1,0 +1,52 @@
+<div id="location_data" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Terminprofil</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_location_path(@location, :part => "location_data"), 
+                :class => "ajax-link",
+                :rel => "#{@location.object_id}-location-data-spinner"                
+                 -%>
+  </div>
+
+  <div class="edit-part-content">    
+    <%- form_for(@location, 
+                 :url => my_helpedia_location_path(@location, :part => "location_data"), 
+                 :builder => EditFormBuilder,
+                 :html => { :class => "remote-form",
+                            :rel => "#{@location.object_id}-location-data-spinner" }) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+
+    <% f.fields_for :image_attachment, 
+                    (@location.image_attachment || @location.build_image_attachment), 
+                    :builder => EditFormBuilder do |image_form| %>
+      <%= image_form.image_field :image_id, :id => "image_attachment", :labels_from => Location, :image_object => @location %>      
+    <% end %>
+
+    <%= f.text_field :name, :required => true -%>
+    <%= f.text :permalink -%>    
+    <%= f.text_field :website, :required => false -%>
+    <%= f.text_field :phone, :required => false -%>    
+    <%= f.text_field :fax, :required => false -%>    
+    <%= f.text_field :contact_person, :required => false -%>   
+    <%= f.text_field :email, :required => false -%>  
+ 	  <%= f.select :commentable, Location::COMMENTABLE, :required => true %>      
+    </table> 
+    
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_location_path(@location, :part => "location_data"), 
+                     :class => "ajax-link",
+                     :rel => "#{@location.object_id}-location-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@location.object_id}-location-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

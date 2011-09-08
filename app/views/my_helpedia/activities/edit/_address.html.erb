@@ -1,0 +1,44 @@
+<div id="address" class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Adresse", 
+                                                                     :object => @activity,
+                                                                     :path => edit_part_my_helpedia_activity_path(@activity, :part => "address"),
+                                                                     :prefix => "address",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("nationwide") -%>:</dt>
+          <dd><%=wordify_boolean @activity.address.nationwide -%></dd>
+          <dt><%= Activity.human_attribute_name("name") -%>:</dt>
+          <dd><%=v @activity.address.name -%></dd>          
+          <%- unless @activity.location.blank? -%>
+            <dt>Veranstaltungsort:</dt>
+            <dd><%= @activity.location.short_address -%></dd>
+          <%- else -%>
+            <dt><%= Activity.human_attribute_name("street") -%>:</dt>
+            <dd><%=v @activity.address.street -%></dd>
+            <dt><%= Activity.human_attribute_name("zip_code") -%>:</dt>
+            <dd><%=v @activity.address.zip_code -%></dd>
+            <dt><%= Activity.human_attribute_name("city") -%>:</dt>
+            <dd><%=v @activity.address.city -%></dd>
+          <%- end -%>
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("has_geo_information") -%>:</dt>
+          
+          <%- unless @activity.location.blank? -%>
+            <dd><%= wordify_geo_information(@activity.location.address) -%></dd>
+          <%- else -%>
+            <dd><%= wordify_geo_information(@activity.address) -%></dd>
+          <%- end -%>          
+        </dl>
+      </div>      
+    </div>
+  </div>
+</div>

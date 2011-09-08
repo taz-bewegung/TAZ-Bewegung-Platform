@@ -1,0 +1,28 @@
+<% title "401 - Seite nicht verfügbar" %>
+<% breadcrumb [ link_to "401 - Seite nicht verfügbar", url_for(params)] %>
+
+<%- content_for :left_content do -%>
+<div style="height: 736px">
+  <%= image_tag("error-girl.png") -%>
+</div>        
+<%- end -%>
+
+<div>
+  <h1 class="error">Die gewünschte Seite ist momentan nicht sichtbar (401)!</h1>
+  <br />  
+  <div>
+    <p>Die Seite ist entweder noch nicht freigeschaltet oder Du besitzt nicht die notwendigen Rechte, um die Seite anzusehen.</p>  
+    <br /><br />
+    <h2>Möchtest Du stattdessen?</h2>
+    <ul>
+      <li><%= link_to "zurück", :back %></li>      
+      <li><%= link_to "Aktionen suchen", activities_path %></li>
+      <li><%= link_to "Termine suchen", events_path %></li>
+      <li><%= link_to "Orte suchen", locations_path %></li>
+      <li><%= link_to "Organisationen suchen", organisations_path %></li> </ul>
+    <br /><br />
+    <h2>Oder können wir Dir weiter helfen?</h2>
+      <li><%= link_to "Kontakt", new_request_path %></li>
+    </ul>  
+  </div>
+</div>

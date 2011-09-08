@@ -1,0 +1,33 @@
+<% index = "new_uniq_video" %>
+<% index = nil if no_index %>
+
+<% form.fields_for :blog_post_contents, 
+                   object, 
+                   :child_index => index,
+                   :builder => EditFormBuilder do |content_form| %>
+
+<div class="edit-container fields">
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Video</h1>
+    </div>
+    <%= remove_child_link image_tag("buttons/btn-close.png"), content_form %> 
+  </div>
+  <div class="edit-part-content" style="margin-top: 0px">
+
+    <table border="0"  class="reg-form w-230"> 
+      <% content_form.fields_for :contentable, 
+                                 (object.contentable || object.build_contentable({"contentable_type" => "BlogContentVideo"})), 
+                                 :builder => EditFormBuilder do |element_form| %>
+
+        <%= element_form.text_field :video_url %>
+        <%= element_form.hidden_field :contentable_type, :value => "BlogContentVideo" %>
+
+      <% end %>                    
+    </table>
+
+  <br />
+ </div>
+</div>
+
+<% end %>

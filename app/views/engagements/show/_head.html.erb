@@ -1,0 +1,32 @@
+<div class="profile-container">
+  <div class="profile-container-top"> </div>
+  <div class="profile-container-middle">
+    <div style="overflow: hidden">
+      <div class="profile-image">
+        <div class="image-wrap">
+          <%= engagement_image_for(@engagement, :large, :grey) %>         
+        </div>
+      </div>
+      <div class="profile-content">
+        <h1><%=h @engagement.title %></h1>
+        <dl class="text-list">
+          <dt class="group"><%= t(:"engagement.public_profile.head_content.user") -%>:</dt>
+          <dd class="group"><%= user_profile_link_for(@engagement.user) -%></dd>          
+          <dt class="group bottom"><%= t(:"engagement.public_profile.head_content.organisation") -%>:</dt>
+          <dd class="group bottom"><%= link_to h(@engagement.organisation.name), organisation_path(@engagement.organisation) %></dd>          
+          
+          <dt class="group"><%= t(:"engagement.public_profile.head_content.starts_on") -%>:</dt>
+          <dd class="group"><%= l @engagement.starts_on %> bis <%= l @engagement.ends_on -%></dd>
+          <dt class="group bottom"><%= t(:"engagement.public_profile.head_content.location") -%>:</dt>
+          <dd class="group bottom"><%= @engagement.address.to_short -%></dd>          
+          
+          <dt class="group"><%= t(:"engagement.public_profile.head_content.occupation_type") -%>:</dt>
+          <dd class="group"><%=h @engagement.occupation_type.name -%></dd>          
+          <dt class="group"><%= t(:"engagement.public_profile.head_content.social_categories") -%>:</dt>
+          <dd class="group"><%= @engagement.social_categories.map(&:title).join(", ") -%></dd>          
+        </dl>              
+      </div>
+    </div>
+     </div>  
+  <div class="profile-container-bottom"> </div>  
+</div>

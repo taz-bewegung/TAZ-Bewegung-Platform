@@ -1,0 +1,49 @@
+<div id="organisation_data" class="edit-container">  
+
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Organisationsdaten</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_organisation_path(@organisation, :part => "organisation_data"), 
+                :class => "ajax-link",
+                :rel => "#{@organisation.object_id}-organisation-data-spinner"                
+                 -%>
+  </div>
+  <div class="edit-part-content">    
+    
+    <%- form_for(@organisation, 
+                :url => my_helpedia_organisation_url(@organisation, :part => "organisation_data"), 
+                :builder => EditFormBuilder,                
+                :html => { :class => "remote-form",
+                           :rel => "#{@organisation.object_id}-organisation-data-spinner" } ) do |f| -%>
+                           
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+
+      <% f.fields_for :image_attachment, 
+                      (@organisation.image_attachment || @organisation.build_image_attachment), 
+                      :builder => EditFormBuilder do |image_form| %>
+        <%= image_form.image_field :image_id, :id => "image_attachment", :labels_from => Organisation %>      
+      <% end %>
+
+    <%= f.text_field :name, :required => true -%>
+    <%= f.text_field :email, :required => false -%>        
+    <%= f.text_field :website, :required => false -%>        
+    <%= f.select :corporate_form_id, CorporateForm.to_select_options, { :include_blank => t(:"shared.form.select.blank") }, :required => false %>    
+    </table>
+    
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_organisation_path(@organisation, :part => "organisation_data"),
+                     :class => "ajax-link",
+                     :rel => "#{@organisation.object_id}-organisation-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@organisation.object_id}-organisation-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>    

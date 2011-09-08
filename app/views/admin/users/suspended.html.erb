@@ -1,0 +1,14 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Gesperrte Benutzer", admin_users_path) ]%>
+<%- title 'Benutzerliste' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:suspended_users) -%>
+<%- end -%>                      
+
+<div class="admin">
+  <h1>Gesperrte Benutzer</h1>
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'user', :collection => @users %>    
+  </table>
+</div>

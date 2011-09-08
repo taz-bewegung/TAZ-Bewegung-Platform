@@ -1,0 +1,14 @@
+<%- title " - " + "Termine" -%>
+<%- breadcrumb [ "", link_to("Termine", my_helpedia_events_path)] -%>
+<% magick_header t("event.my_helpedia.#{current_user.class.to_s.downcase.pluralize}.title") %>
+
+<%= self.send "my_helpedia_#{current_user.class.to_s.downcase}_sub_menu", :events -%>
+<div id="sub-content"> 
+  <%= render :partial => "/my_helpedia/events/index/list_header", :locals => { :view => params[:list_type],
+                                                                              :list_title => "Eingetragene Termine" } -%>
+
+  <div id="sub-content-list">
+  <%= render :partial => "/my_helpedia/events/index/list_cards", :locals => { :events => @events,
+                                                                              :list_title => "Eingetragene Termine" } %>
+  </div>                                                                                       
+</div>

@@ -1,0 +1,22 @@
+<div class="user-bar">
+  <%- if logged_in? -%>
+    <div class="user-image"><%= image_for(current_user, "32x24c")%></div>
+    <%= link_to "Hallo, #{h(current_user.full_name)}", my_helpedia_path, :title => current_user.name, :style => "margin-right: 30px" %>  
+    <%- if admin_user? -%>
+    <%= link_to "SIM Abbr.", reset_simulation_path, :style => 'color: red; font-weight: bold' %>
+    <%- else -%>
+    <%= link_to "Abmelden", logout_path %>
+    <%- end -%>
+    
+    <%- if current_user.is_a?(User) and not current_user.roles.blank? -%> 
+      <label for="edit_texts" style="margin-left: 20px; margin-right: 5px;">Editiermodus:</label>
+      <%= check_box_tag :edit_texts, "1", cookies[:edit_texts] == "1", 
+                        :"data-url" => url_for({ :controller => "contents", :action => "edit_texts" }) %>
+    <% end %>
+    
+  <%- else -%>
+    <%= shadow_link_button("Neu anmelden", split_users_path, :css_class => 35, :font_size => 14) %>
+    <%= link_to "Einloggen",  login_path,  { :title => "Einloggen" } %>
+  <%- end -%>
+  <a href="#" id="search-area-activate">&nbsp;</a>
+</div>

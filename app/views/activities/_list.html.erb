@@ -1,0 +1,7 @@
+<% cache("aktion/index/list-#{@cache_key}", :expires_in => 30.minutes) do %>
+  <%= render :partial => "/activities/index/shared/list_#{params[:list_type]}", 
+             :locals => { :activities => @activities } -%>
+<% end -%>
+<% if @activities.total_pages < 1 %>
+  Keine Aktionen gefunden ...
+<% end -%>

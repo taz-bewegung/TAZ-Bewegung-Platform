@@ -1,0 +1,18 @@
+<%= my_helpedia_user_feed_event_menu :feeds  %>
+
+<h2><%= t("feed_event.stream.header.#{current_user.class.to_s.downcase}") %></h2>
+<br />
+
+<% if @feed_events.present? %>
+  <div id="feed_event_results" class="list-tiny">
+    <%= render :partial => "/feed_events/list" %>
+  </div>
+
+  <%= will_paginate(@feed_events) %>
+  <%= pageless(@feed_events.total_pages, :url => feed_events_path, 
+                                         :message => " ...lade weitere Einträge", 
+                                         :element => "#feed_event_results") %>
+
+<% else %>
+  <p>Sympathisiere mit Aktionen, Terminen, Organisationen und Orten, füge sie als Favoriten hinzu und erweitere deine Bezugsgruppe, damit du hier siehst, was gerade passiert.</p>
+<% end %>                                         

@@ -1,0 +1,59 @@
+<div class="modal-left-content">
+  <h2>Editieren</h2>
+  <p>Einzelne Tabs werden individuell gespeichert.</p>
+  <div id="lightbox-tab-container">
+    
+    <%
+      items = []
+      @container.content_elements.each do |content|
+        items << { :name => content.element.name, 
+                   :link_to => "javascript:void(0);",
+                   :id => dom_id(content.element)  }
+      end
+    %>
+
+    <%= render :partial => "/menu/sub_menu", :locals => { :menu_items => items, :active => dom_id(@container.content_elements[0].element) }  %>
+    <div id="sub-content-lightbox" class="">
+	    <div id="sub-content-inner">     
+      <% for content in @container.content_elements %> 
+      
+      <div class="<%= dom_id(content.element) %> container">
+        <br /><br />
+        <% form_for(content.element, 
+           :url => { :controller => "contents", :action => "save_landing_tab", :id => content.element.id, :cache_fragment => params[:cache_fragment] },
+           :builder => EditFormBuilder,
+           :html => { :class => "remote-form", :rel => "request-spinner" }) do |f| %>
+
+          <table class="reg-form w-140" width="100%" colspan="0" rowspan="0">
+            <%= f.select :element_type, Content::LandingPageTab::ELEMENT_TYPES, { }, :required => true, 
+                         :"data-update" => "##{dom_id(content.element, "element_id")}", 
+                         :"data-href" => "/contents/get_data",
+                         :class => "get-data",
+                         :id => dom_id(content.element, "element_type") -%>
+                         
+            <%= f.select :element_id, 
+                          content.element.element_type.to_class.with_image.latest.map{ |item| [item.title, item.id] }, 
+                          { :include_blank => "Kein Element ausgewählt" },
+                          :id => dom_id(content.element, "element_id"),
+                          :required => true -%>
+                          
+            <%= f.text_field :hide_date, :required => false, :class => "with_datepicker", :id => dom_id(content.element, "hide_date") -%>
+            <%= f.check_box :latest, :required => false, :id => dom_id(content.element, "latest") -%>
+          <tr>
+            <th>
+            </th>
+            <td>
+              <%= shadow_form_button("Speichern", :css_class => 35, :font_size => 14) %> 
+              oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+            </td>
+          </tr>
+          </table>
+        <% end %>
+
+      </div>
+          
+      <% end %>
+      </div>    
+    </div>
+  </div>
+</div>

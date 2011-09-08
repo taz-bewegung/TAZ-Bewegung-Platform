@@ -1,0 +1,19 @@
+<% if feed_event.trigger.is_a? BlogPost %>
+<div class="feed-event-content">
+  <%- if feed_event.operator.present? -%>  
+  <%= user_profile_link_for feed_event.operator %>
+  <% else %>
+  <%= feed_event.trigger.name -%>  
+  <%- end -%>  
+  hat den Blogeintrag <%=link_to h(feed_event.trigger.post.title), polymorphic_path([feed_event.concerned, feed_event.trigger.post]) %> kommentiert.
+</div>  
+<% else %>
+<div class="feed-event-content">
+  <%- if feed_event.operator.present? -%>  
+  <%= user_profile_link_for feed_event.operator %>
+  <% else %>
+  <%= feed_event.trigger.name -%>  
+  <%- end -%>  
+  hat <%= I18n.t("#{feed_event.concerned.class.to_s.underscore}.akkusativ") %> <%= link_to h(feed_event.concerned.title), polymorphic_path([feed_event.concerned]) %> kommentiert.
+</div>
+<% end %>

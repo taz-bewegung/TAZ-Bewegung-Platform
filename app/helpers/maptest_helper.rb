@@ -1,0 +1,2 @@
+module MaptestHelper
+end

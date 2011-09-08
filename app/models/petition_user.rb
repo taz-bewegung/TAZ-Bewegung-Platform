@@ -1,10 +1,10 @@
 class PetitionUser < ActiveRecord::Base
 
-  #establish_connection "petition_#{Rails.env}"
-  #set_table_name "users"
+  establish_connection "petition_#{RAILS_ENV}"
+  set_table_name "users"
 
-  scope :activated, { :conditions => "users.activated_at IS NOT NULL" }
-  scope :latest,    { :order      => "users.activated_at DESC" }
+  named_scope :activated, { :conditions => "users.activated_at IS NOT NULL" }
+  named_scope :latest,    { :order      => "users.activated_at DESC" }
 
   def to_s
     name

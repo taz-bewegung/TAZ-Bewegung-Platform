@@ -1,0 +1,10 @@
+<div class="feed-event-date">
+  <%=l feed_event.created_at -%>
+</div>
+<div class="feed-event-content">
+  <%- if feed_event.trigger.is_a?(User) -%>
+  Der Nutzer <%= link_to feed_event.trigger.full_name, user_path(feed_event.trigger) -%> hat sich eingeloggt.
+  <%- else -%>  
+  Die Organisation <%= link_to feed_event.trigger.name, organisation_path(feed_event.trigger) -%> hat sich eingeloggt.  
+  <%- end -%>
+</div>  

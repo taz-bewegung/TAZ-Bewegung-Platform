@@ -1,0 +1,45 @@
+<div id="address">
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Adresse</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+              cancel_edit_part_my_helpedia_organisation_path(@organisation, :part => "address"), 
+              :class => "ajax-link",
+              :rel => "#{@organisation.object_id}-address-spinner" -%>              
+  </div>
+  
+  <div class="edit-part-content">  
+    <%- form_for(@organisation, 
+                 :url => my_helpedia_organisation_url(@organisation, :part => "address"), 
+                 :builder => EditFormBuilder,                                                          
+                 :html => { :class => "remote-form",
+                            :rel => "#{@organisation.object_id}-address-spinner" }) do |f| -%>                 
+                            
+    <%- @address = @organisation.address -%>
+    <%- fields_for @organisation.address, :builder => EditFormBuilder do |form| -%>
+
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+    <%= form.text_field :street, :required => false, :labels_from => Organisation -%>
+    <%= form.text_field :zip_code, :required => false, :labels_from => Organisation -%>      
+    <%= form.text_field :city, :required => false, :labels_from => Organisation -%>      
+    <%- end -%>              
+    </table>   
+
+    <div class="edit-part-bottom">
+      <div class="buttons">
+        <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+        <%= link_to image_tag("buttons/btn-cancel.png"), 
+                    cancel_edit_part_my_helpedia_organisation_path(@organisation, :part => "address"),
+                    :class => "ajax-link",
+                    :rel => "#{@organisation.object_id}-address-spinner" -%>
+      </div>
+      <div class="edit-form-spinner">
+        <%= image_tag "ajax-spinner.gif", :id => "#{@organisation.object_id}-address-spinner", :style => "display: none" -%>
+      </div>                            
+    </div>  
+
+    <%- end -%>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="events">
+   <div class="list-table">
+   <%- for event in events -%>
+   
+     <div class="list-table-item<%= " last" if events.last == event -%>">
+       <div class="clearfloats">
+         <div class="item-left">
+           <div class="list-image-wrap">
+             <%= image_for(event, :"90x69c", :context_menu => my_helpedia_event_context_menu(event)) -%>
+           </div>
+         </div>         
+         <div class="item-content-wrap">
+           <div class="item-title">
+             <%= link_to h(event.title), my_helpedia_event_path(event), :title => h(event.title) -%>   
+           </div>
+           
+           <div class="item-content">
+             <div class="description">
+               <%= truncate(secured_rte_text(event.description, :plain => true), :length => 300) || "-" -%>               
+             </div>
+             <dl>
+               <dt><%= t(:"event.item_views.table.from") -%>:</dt>
+        		   <dd><%= user_profile_link_for event.originator -%></dd>               
+               <dt><%= t(:"event.item_views.table.location") -%>:</dt>
+               <% unless event.location.blank? -%>
+               <dd><%= link_to h(event.location.name), location_path(event.location) -%></dd>
+               <% else -%>
+               <dd><%=v event.address.to_short -%></dd>
+               <% end -%>
+               <dt><%= t(:"event.item_views.table.starts_at") -%>:</dt>
+               <dd><%= date_time_for(event.starts_at) -%></dd>
+               <dt><%= t(:"event.item_views.table.ends_at") -%>:</dt>
+               <dd><%= date_time_for(event.ends_at) -%></dd>
+             </dl>
+           </div>          
+         </div>
+       </div>
+     </div>                                                         
+   <%- end -%>
+   
+   </div>
+</div>
+

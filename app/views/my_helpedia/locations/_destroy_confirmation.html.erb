@@ -1,0 +1,9 @@
+<h2>Ort wirklich löschen?</h2>
+<p>
+  Willst Du den Ort wirklich löschen?<br />
+  Bedenke, dass alle zugehörigen Daten ebenfalls gelöscht werden.
+</p>
+<p>Das Löschen des Ortes kann nicht mehr rückgängig gemacht werden.</p>
+<br />
+<%= shadow_link_button("Ort löschen", my_helpedia_location_path(@location), :class => "ajax-link-delete-without-confirm", :css_class => 35, :font_size => 14) %> 
+oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>

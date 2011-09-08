@@ -1,0 +1,6 @@
+<div class="feed-event-content">
+  <%= image_for feed_event.trigger, "32x24c" %>
+  <div class="teaser">
+    Die Organisation <%= link_to feed_event.trigger.name, organisation_path(feed_event.trigger) -%> hat sich registriert.
+  </div>
+</div>

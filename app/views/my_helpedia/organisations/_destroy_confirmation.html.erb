@@ -1,0 +1,9 @@
+<h2>Deine Organisation wirklich löschen?</h2>
+<p>
+  Willst du deine Organisation wirklich löschen?<br />
+  Bedenke, dass alle zugehörigen Daten, wie Blogeinträge, etc. ebenfalls gelöscht werden.
+</p>
+<p>Das Löschen deiner Organisation kann nicht mehr rückgängig gemacht werden.</p>
+<br />
+<%= shadow_link_button("Organisation löschen", my_helpedia_organisation_path(current_user), :class => "ajax-link-delete-without-confirm", :css_class => 35, :font_size => 14) %> 
+oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>

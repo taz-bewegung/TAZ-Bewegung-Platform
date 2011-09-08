@@ -1,0 +1,11 @@
+<div class="modal-left-content">
+  <h2>Nur für angemeldete Nutzer möglich!</h2> 
+  <p>Für diese Funktion musst Du bei bewegung.taz.de angemeldet sein.</p>
+  <h3>Bereits einen Account?</h3>
+  <%= shadow_link_button("Hier einfach einloggen", login_path, :css_class => 35, :font_size => 14) %>  
+  <br />  <br />  
+  <h3>Noch keinen Account auf bewegung.taz.de?</h3> 
+  <%= shadow_link_button("Hier schnell und einfach anmelden", split_users_path, :css_class => 35, :font_size => 14) %>      
+  <br /><br /><br />
+  <%= link_to "Fenster schließen", "#", :onclick => "$.nyroModalRemove(); return false;"  %>
+</div>

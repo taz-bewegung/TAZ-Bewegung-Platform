@@ -1,0 +1,29 @@
+<div class="modal-left-content">
+  <h2>Sympathisieren</h2>
+  <p>
+    Trage hier Deine Message ein, wie Du dies tust und warum.
+  </p>
+  <br />
+  
+  <% form_for(@activity_membership, 
+     :url => [@membershipable, @activity_membership],
+     :builder => EditFormBuilder,
+     :html => { :class => "remote-form", :rel => "request-spinner" }) do |f| %>
+    
+    <table class="reg-form w-140" width="100%" colspan="0" rowspan="0">
+    <%= f.text_area :message, :required => true, :class => "tt-width-140", :maxlength => 140, :style => "height: 100px !important",
+                              :after_html => '<div class="chars-remaining">a</div>'-%>
+      <%= hidden_captcha_field :activity_membership %>                              
+    <tr>
+      <th>
+      </th>
+      <td>
+        <br />
+        <%= shadow_form_button("Absenden", :css_class => 35, :font_size => 14) %> 
+        oder <%= link_to "Abbrechen", "#", :onclick => "$.nyroModalRemove(); return false;" %>
+      </td>
+    </tr>
+    </table>
+   
+  <% end %> 
+</div>

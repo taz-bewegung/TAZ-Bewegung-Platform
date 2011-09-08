@@ -1,0 +1,9 @@
+<%- title "- Nachrichten" %>
+<%- breadcrumb ["", link_to("Nachrichten", my_helpedia_messages_path)] %>
+<%= magick_header "Nachrichten", :width => 600 %>
+
+<%= self.send "my_helpedia_#{current_user.class.to_s.downcase}_sub_menu", :messages -%>
+<div id="sub-content">
+  <%= render :partial => @sub_partial, :layout => false %> 
+</div>
+

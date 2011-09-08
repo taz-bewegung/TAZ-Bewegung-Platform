@@ -1,0 +1,11 @@
+<%= magick_header t(:"breadcrumb.my_helpedia"), :width => 600 %>
+
+<%= my_helpedia_user_sub_menu(:profile) %> 
+<div id="sub-content">
+  <%= render :partial => "/my_helpedia/users/edit/person_data" -%>
+  <%= render :partial => "/my_helpedia/users/edit/address" %>  
+  <%= render :partial => "/my_helpedia/users/edit/about" -%>    
+  <%= render :partial => "/my_helpedia/users/edit/profile_data" -%>    
+  <%= render :partial => "/my_helpedia/users/edit/profile_settings" -%>
+  <%= render :partial => "/my_helpedia/users/edit/notifications" -%>    
+</div>

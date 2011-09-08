@@ -1,0 +1,38 @@
+<%= organisation_register_sub_menu(:organisation_profile) %>
+<div id="sub-content">
+
+  <% form_for(@presenter, 
+              :url => organisations_path, 
+              :builder => EditFormBuilder,
+              :html => { :method => :post }) do |f| %>
+              
+    <table border="0" cellpadding="8" width="100%" class="reg-form w-230">  	
+      <tr>
+        <th valign="top"> </th>
+        <td>
+          <span class="grey">* Pflichtfeld</span>
+        </td>
+      </tr>
+      <%= f.text_area :description, :required => true, :labels_from => Organisation, :class => "mceEditor" %>
+      <%= f.check_box :subscribed_newsletter, :required => false, :labels_from => Organisation %>
+    </table> 
+    <br />
+    <%= f.check_box :agb, :fancy_table => true, :hide_label => true, :labels_from => Organisation %>
+    <%= t(:"activerecord.attributes.donation.agb_text", :agb => link_to("AGB", '/pages/agb', :target => "_blank"), 
+                                                        :datenschutzbestimmungen => link_to("Datenschutzbestimmungen", '/pages/datenschutzerklaerung', :target => "_blank")) -%>    
+    <br />
+    <br />    
+    <div class="form-footer">
+      <table border="0" class="reg-form w-230">
+        <tr>
+          <th>
+            <%= link_to "Zurück", organisations_path(:step => @presenter.step_back), :method => :post %>                          
+          </th>
+          <td>
+            <%= shadow_form_button("Anmeldung abschließen", :css_class => 35, :font_size => 14) %>
+          </td>
+      </table>
+    </div>
+  <% end %>   
+
+</div>

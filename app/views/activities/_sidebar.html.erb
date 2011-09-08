@@ -1,0 +1,17 @@
+<div class="contentsidebar">
+  <h2>Aktionsblogs</h2>
+  <ul class="menu teaser">
+    <% for post in BlogPost.published.for("Activity").recent.limit(16) %>
+    <% unless post.blog.nil? %>
+      <li>
+        <% link_to polymorphic_path([post.blog.bloggable, post]) do %> 
+          <span>   
+            <%=h post.blog.bloggable.title  %>
+          </span>        
+          <%= h(truncate(post.title, :length => 100)) %>
+        <% end %>
+      </li>
+      <% end %>
+      <% end %>
+  </ul>
+</div>

@@ -1,0 +1,17 @@
+<h1><%= t :"organisation.register.step6.header" %></h1>
+<%= render :partial => "/my_helpedia/organisations/register_nav" -%>
+<% form_for(@presenter, :url => organisations_path, :html => { :method => :post }) do |f| %>
+<%= error_title_for :presenter %>
+  
+  <div class="form-item">  
+    <%= label_for f, :description, :required => true, :class => Organisation %>
+    <%= text_area_for f, :description, :tooltip => true, :class => Organisation %>
+  </div>
+  <div class="form-item">  
+    <%= f.label :terms_of_use %>
+    <%= f.check_box :terms_of_use %>
+  </div>
+  
+  <%= link_to t(:"shared.form.back"), organisations_path(:step => @presenter.step_back), :method => :post %>            
+  <%= f.submit t(:"shared.form.register") %>
+<% end %>

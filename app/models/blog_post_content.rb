@@ -23,7 +23,7 @@ class BlogPostContent < ActiveRecord::Base
   ##
   # Scopes
   
-  scope :text_element, 
+  named_scope :text_element, 
               :joins => 'INNER JOIN blog_content_texts ON blog_post_contents.contentable_id = blog_content_texts.uuid',
               :conditions => ["contentable_type = ? AND blog_content_texts.bodytext != ''", "BlogContentText"]
   

@@ -1,0 +1,43 @@
+<%= user_sub_menu(:about) %>  
+<div id="sub-content">
+  <div class="two-column">
+    <div class="column-one">
+      <div class="clearfloats">
+        <h2>Über mich</h2>      
+        <%= secured_rte_text(@user.about_me) %>
+        <br/>
+        <br/>
+      </div>
+      <% if @user.my_contribution.present? %>
+      <div class="clearfloats">
+        <h2>Beitrag zur Weltverbesserung</h2>      
+        <%= secured_rte_text(@user.my_contribution) %>
+        <br/>
+        <br/>
+      </div>
+      <% end %>
+      <% if @user.changed_my_life.present? %>
+      <div class="clearfloats">     
+        <h2>Das hat mein Leben verändert</h2>      
+        <%= secured_rte_text(@user.changed_my_life) %>
+        <br/>
+        <br/>
+      </div>
+      <% end %>
+      <% if @user.inspires_me.present? %>
+      <div class="clearfloats">
+        <h2>Das inspiriert mich</h2>      
+        <%= secured_rte_text(@user.inspires_me) %>
+        <br/>
+        <br/>
+      </div>
+      <% end %>
+      <% if @user.dislike.present? %>
+      <div class="clearfloats">
+        <h2>Das lehne ich ab</h2>      
+        <%= secured_rte_text(@user.dislike) %>
+      </div>
+      <% end %>
+    </div>                         
+   </div>
+</div>

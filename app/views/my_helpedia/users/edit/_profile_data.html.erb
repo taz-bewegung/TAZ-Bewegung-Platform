@@ -1,0 +1,18 @@
+<div id="profile_data" class="edit-container">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Gute Seiten im Netz", 
+                                                                     :object => @user,
+                                                                     :path => new_my_helpedia_user_external_profile_membership_path(@user, 
+                                                                              :spinner => "membership-spinner"),
+                                                                     :prefix => "membership",
+                                                                     :button => image_tag("buttons/btn-add.png")
+                                                                    } -%>  
+      
+  <div class="clearfloats edit-profile">
+    <div id="create_membership"></div>
+    <% for external_profile_membership in @user.external_profile_memberships %>
+      <%= render :partial => "/my_helpedia/external_profile_memberships/item", 
+                 :locals => { :external_profile_membership => external_profile_membership } -%>
+    <% end -%>
+  </div>
+</div>

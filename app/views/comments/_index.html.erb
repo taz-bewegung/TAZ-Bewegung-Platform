@@ -1,0 +1,2 @@
+<%= render :partial => "/comments/comments" unless commentable.comments.visible.blank? %>        
+<%= comment_form_for_post(commentable) %>

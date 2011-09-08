@@ -1,0 +1,66 @@
+<div class="profile-container">
+  <div class="profile-container-middle">    
+    <div class="profile-image">
+      <div class="image-wrap">
+        <%= image_for(@activity, :large) %>
+      </div><!-- image-wrap -->
+      
+      <% if @activity.wikileaked? %>
+        <div class="profile-symphatize-button">
+          <%= shadow_link_button("Unterzeichnen".upcase, 'javascript:void(0);', :css_class => "60-block wikileak", :font_size => 22)%>
+        </div>
+      <% elsif @activity.iranized? && @activity.active_petition? %>
+        <div class="profile-symphatize-button">
+          <%= shadow_link_button("Unterzeichnen".upcase, 'javascript:void(0);', :css_class => "60-block iran", :font_size => 22)%>
+        </div>
+      <% else %>
+        <%- if not (@activity.participants + [@activity.owner]).include?(current_user) %>
+          <div class="profile-symphatize-button">
+            <%= shadow_link_button("Sympathisieren".upcase, new_activity_activity_membership_path(@activity, :format => :lightbox), :css_class => "60-block remote-lightbox", :font_size => 22)%>
+          </div>
+        <%- end -%>
+      
+      <% end %>
+      
+      <p></p>
+    </div><!-- profile-image -->
+        
+    
+    <div class="profile-content full">
+      
+      <div class="meta-info">
+        <h4>Eingetragen von:</h4>
+        <div>
+          <%= image_for @activity.owner, "32x24c" %>
+          <%= user_profile_link_for @activity.owner -%>
+        </div>
+      </div>      
+      
+        <div class="meta-info">
+          <h4>Aktionsform:</h4>
+          <div><%=v @activity.activity_type %></div>
+        </div>
+        
+        <%- unless @activity.website.blank? -%>
+        <div class="meta-info">
+          <h4>Website:</h4>
+          <%= website_link(@activity.website, URI.parse(@activity.website.strip).host) -%>
+        </div>
+        <%- end -%>        
+        
+        <div class="meta-info">
+          <h4>Ziel:</h4>
+          <div><%=v @activity.goal -%></div>
+        </div>
+        
+        <div class="meta-info">
+          <h4>Mitmachen:</h4>
+          <div><%=v @activity.participation -%></div>
+        </div>
+
+                    
+      
+    </div>
+
+  </div><!-- profile-container-middle -->
+</div><!-- profile-container -->

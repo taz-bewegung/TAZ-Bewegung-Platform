@@ -1,0 +1,22 @@
+<div class="modal-left-content">
+  
+  <% if @commendable.present? %>
+  
+  <h2>Weiterempfehlen</h2>
+  <p class="bodytext">
+    Vielen Dank für die Empfehlung!<br /><br />
+    Eine E-Mail mit einem Link zu dieser Seite wurde an <%= @commendation.receiver_email -%> gesendet.
+  <br /><br />
+  
+  <% else %>
+
+  <h2>Freunde einladen</h2>
+  <p class="bodytext">
+    Vielen Dank. dass Du Freunde zu bewegung.taz.de eingeladen hast!<br /><br />
+    Eine E-Mail mit einem Link wurde an <%= @commendation.receiver_email -%> gesendet.
+  <br /><br />
+  
+  <% end %>  
+  <%= link_to_function "Fenster schließen", "$.nyroModalRemove();" %>  
+  </p>
+</div>

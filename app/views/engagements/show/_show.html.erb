@@ -1,0 +1,6 @@
+<%- title h(@engagement.title) -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.activities"), engagements_path)] -%>
+<%= render :partial => "/engagements/show/right_column" -%>      
+
+<%= render :partial => "/engagements/show/head" -%>
+<%= render :partial => content_partial %>

@@ -1,0 +1,28 @@
+<div id="about" class="edit-container">
+
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Informationen, Texte und Ideen", 
+                                                                     :object => @user,
+                                                                     :path => edit_part_my_helpedia_user_path(@user, :part => "about"),
+                                                                     :prefix => "about",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+  
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100" style="clear: both;">
+        <dl>
+          <dt style="width: 170px;"><%= User.human_attribute_name("about_me") -%>:</dt>
+          <dd><%= text_empty(truncate(secured_rte_text(@user.about_me, :plain => true), :length => 300))-%></dd>
+          <dt style="width: 170px;"><%= User.human_attribute_name("changed_my_life") -%>:</dt>
+          <dd><%= text_empty(truncate(secured_rte_text(@user.changed_my_life, :plain => true), :length => 300)) -%></dd>
+          <dt style="width: 170px;"><%= User.human_attribute_name("inspires_me") -%>:</dt>
+          <dd><%= text_empty(truncate(secured_rte_text(@user.inspires_me, :plain => true), :length => 300))-%></dd>
+          <dt style="width: 170px;"><%= User.human_attribute_name("my_contribution") -%>:</dt>
+          <dd><%= text_empty(truncate(secured_rte_text(@user.my_contribution, :plain => true), :length => 300))-%></dd>
+          <dt style="width: 170px;"><%= User.human_attribute_name("dislike") -%>:</dt>
+          <dd><%= text_empty(truncate(secured_rte_text(@user.dislike, :plain => true), :length => 300))-%></dd>
+        </dl>          
+      </div>
+    </div>
+  </div>
+</div>

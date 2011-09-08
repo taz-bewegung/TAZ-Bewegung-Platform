@@ -1,0 +1,7 @@
+<%- title " - " + "Favoriten" -%>
+<%- breadcrumb [ "", link_to("Favoriten", my_helpedia_bookmarks_path)] -%>
+<% magick_header "Favoriten" %>
+<%= my_helpedia_user_sub_menu(:bookmarks) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/my_helpedia/bookmarks/bookmarks" %>
+</div>

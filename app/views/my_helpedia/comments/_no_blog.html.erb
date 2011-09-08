@@ -1,0 +1,12 @@
+<% magick_header "Kommentare" %>
+<%= self.send "my_helpedia_#{@bloggable.class.to_s.underscore}_sub_menu", :comments %> 
+
+<div id="sub-content">
+  <% if not @comments.blank? then %>
+  <table class="message-table" border="0" cellspacing="5" cellpadding="5" width="100%">
+    <%= render :partial => "/my_helpedia/comments/comment", :collection => @comments %>
+  </table>
+  <% else -%>
+  Es existieren noch keine Kommentare.
+  <% end -%>
+</div>

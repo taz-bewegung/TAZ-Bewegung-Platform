@@ -1,0 +1,8 @@
+<%- if params[:state]=="requested" -%>
+	<%= link_to "Annehmen", accept_my_helpedia_friendship_path(friendship), :method => :put %>
+	<%= link_to "Ablehnen", deny_my_helpedia_friendship_path(friendship), :method => :put %>
+<%- elsif params[:state]=="pending" -%>
+	<%= link_to "Entfernen", my_helpedia_friendship_path(friendship), :method => :delete %>
+<%- else -%>
+		<%= link_to "Entfernen", my_helpedia_friendship_path(friendship), :method => :delete %>
+<%- end -%>

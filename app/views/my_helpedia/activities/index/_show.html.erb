@@ -1,0 +1,14 @@
+<%- title " - " + "Aktionen" -%>
+<%- breadcrumb [ "", link_to("Aktionen", my_helpedia_activities_path)] -%>
+<% magick_header "Aktionen" %>
+
+<%= self.send "my_helpedia_#{current_user.class.to_s.downcase}_sub_menu", :activities -%>
+<div id="sub-content"> 
+  <%= render :partial => "/my_helpedia/activities/index/list_header", :locals => { :view => params[:list_type],
+                                                                                   :list_title => t(:"user.public_profile.sub_content.tabs.activities.content.list_title") } -%>
+
+  <div id="sub-content-list">
+  <%= render :partial => "/my_helpedia/activities/index/list_cards", :locals => { :activities => @activities,
+                                                                                  :list_title => t(:"user.public_profile.sub_content.tabs.activities.content.list_title") } %>
+  </div>                                                                                       
+</div>

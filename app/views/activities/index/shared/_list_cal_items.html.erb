@@ -1,0 +1,28 @@
+<div class="cal_slide_holder">
+   <div class='cal_slide_holder_inner'>
+     <div class='cal_row_of_slides'> 
+       <% 0.upto activities.size-1 do |i| %>
+       <div class='list-table cal_slide <%= "cal_slide_#{i+1}" %>'> 
+        
+         <%= render :partial => "/activities/index/shared/list_rows_item", :locals => { :activity => activities[i], :activities => activities }%>
+        
+       </div>
+       <%- end -%>
+     </div> 
+   </div>
+   <div class='cal_carousel_controls'>
+     <div class="label">Termine am <%= l(params[:day].to_date) %></div>
+     <div class="next-prev">     
+       <div class="cal_carousel_split"></div>
+       <div class='cal_hover_prev_button prev_button hover_button'></div>
+       <div class="carousel_split"></div>
+       <div class='cal_hover_next_button next_button hover_button'></div>
+       <div class="cal_carousel_split"></div>
+     </div>
+     <ul class='cal_slide_buttons'>        
+       <% 0.upto activities.size-1 do |i| %>   
+       <li class='<%= "cal_slide_#{i+1}" %>'></li>
+       <% end %>
+     </ul>     
+   </div>
+ </div>

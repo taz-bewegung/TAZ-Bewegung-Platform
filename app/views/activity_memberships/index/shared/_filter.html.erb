@@ -1,0 +1,10 @@
+<div id="sub-content-filter">
+  <div class="filter-item">
+    <%= check_box_tag "running", 1, (params[:filter][:running] == "1"), :rel => url_for(params.merge(:list_type => params[:list_type], :filter => {})) %>
+    laufend
+  </div>  
+  <div class="filter-item">
+    <%= check_box_tag "finished", 1, (params[:filter][:finished] == "1"), :rel => url_for(params.merge(:list_type => params[:list_type], :filter => {})) %>
+    abgelaufen
+  </div>  
+</div>

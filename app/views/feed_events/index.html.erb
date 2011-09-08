@@ -1,0 +1,12 @@
+<% title "Was läuft gerade" %>
+<% breadcrumb [link_to("Start", root_path), link_to("Was läuft gerade", feed_events_path)]%>
+<% magick_header "Was läuft gerade"%>
+
+<div id="feed_event_results" class="list-tiny">
+  <%= render :partial => "list" %>
+</div>
+
+<%= will_paginate(@feed_events) %>
+<%= pageless(@feed_events.total_pages, :url => feed_events_path, 
+                                       :message => " ...lade weitere Einträge", 
+                                       :element => "#feed_event_results") %>

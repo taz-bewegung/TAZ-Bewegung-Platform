@@ -1,0 +1,9 @@
+<%- title " - Beschreibung" -%>
+<%- breadcrumb [ "" , link_to( "Über das Engagement", engagement_path(@engagement))] -%>
+
+<%= engagement_sub_menu(:description) %>
+<div id="sub-content">
+  <div class="description">
+    <%= simple_format auto_link(@engagement.description) %>
+  </div>
+</div>

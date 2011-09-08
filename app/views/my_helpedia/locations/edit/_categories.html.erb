@@ -1,0 +1,19 @@
+<div id="categories" class="edit-container">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Kategorien", 
+                                                                 :object => @location,
+                                                                 :path => edit_part_my_helpedia_location_path(@location, :part => "categories"),
+                                                                 :prefix => "categories",
+                                                                 :button => image_tag("buttons/btn-edit.png")
+                                                                } -%>  
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100">
+        <dl>    
+          <dt><%= Location.human_attribute_name("location_categories") -%>:</dt>
+          <dd><%= @location.location_categories.map(&:name).join(", ") || "-" -%></dd>
+      </div>
+    </div>
+  </div>
+</div>

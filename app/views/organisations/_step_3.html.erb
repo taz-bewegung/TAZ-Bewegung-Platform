@@ -1,0 +1,40 @@
+<%= organisation_register_sub_menu(:organisation_data) %>
+<div id="sub-content">
+
+  <% form_for(@presenter, 
+              :url => organisations_path, 
+              :builder => EditFormBuilder,
+              :html => { :method => :post }) do |f| %>
+    <table border="0" cellpadding="8" width="100%" class="reg-form w-230">
+      <tr>
+        <th valign="top"> </th>
+        <td>
+          <span class="grey">* Pflichtfeld</span>
+        </td>
+      </tr>
+      <%= f.select :corporate_form_id, CorporateForm.to_select_options, { :include_blank => t(:"shared.form.select.blank") }, 
+                                       :required => true,
+                                       :labels_from => Organisation %> 
+      <%= f.text_field :street, :required => true, :labels_from => Organisation-%>
+      <%= f.text_field :zip_code, :required => true, :labels_from => Organisation -%>
+      <%= f.text_field :city, :required => true, :labels_from => Organisation -%>
+      <%= f.text_field :email, :required => false, :labels_from => Organisation -%>
+      <%= f.text_field :website, :required => false, :labels_from => Organisation -%>
+      <%= f.text_field :phone_number, :required => false, :labels_from => Organisation -%>
+      <%= f.text_field :fax_number, :required => false, :labels_from => Organisation -%>
+    </table> 
+    <br />
+    <div class="form-footer">
+      <table border="0" class="reg-form w-230">
+        <tr>
+          <th>
+            <%= link_to "Zurück", organisations_path(:step => @presenter.step_back), :method => :post %>                          
+          </th>
+          <td>
+            <%= shadow_form_button("Weiter >>", :css_class => 35, :font_size => 14) %>
+          </td>
+      </table>
+    </div>
+  <% end %>   
+
+</div>

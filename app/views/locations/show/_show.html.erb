@@ -1,0 +1,10 @@
+<%- title h(@location.title) -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.locations"), locations_path),  
+                 link_to(h(@location.name), location_path(@location))] -%>
+<%- magick_header @location.name -%>
+<%= edit_header render_location_info_box(@location, :public) -%>
+<%= render :partial => "/locations/show/right_column" -%>      
+
+
+<%= render :partial => "/locations/show/head" -%>
+<%= render :partial => content_partial %>

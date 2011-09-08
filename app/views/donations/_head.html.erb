@@ -1,0 +1,18 @@
+<%- unless @activity.blank? -%>
+<%- title h(@activity.title) + " - Spenden" -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.activities"), activity_categories_path),   
+                 link_to(h(@activity.title), activity_path(@activity)),
+                 link_to("Spenden", new_activity_donation_path(@activity))               
+               ] -%>
+<%= render :partial => "/donations/activity_head" -%>
+
+<%- else -%>
+
+<%- title h(@organisation.name) + " - Spenden" -%>
+<%- breadcrumb [ link_to(t(:"layout.menu.organisations"), organisation_categories_path),   
+                 link_to(h(@organisation.name), organisation_path(@organisation)),
+                 link_to("Spenden", new_organisation_donation_path(@organisation))               
+               ] -%>
+<%= render :partial => "/donations/organisation_head" -%>
+
+<%- end -%>

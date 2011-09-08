@@ -1,0 +1,56 @@
+<div id="operation_area"  class="edit-container">
+
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Tätigkeitsbereiche</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_organisation_path(@organisation, :part => "operation_area"), 
+                :class => "ajax-link",
+                :rel => "#{@organisation.object_id}-operation_area-spinner"                
+                 -%>
+  </div>
+  
+  <div class="edit-part-content">
+
+      <%- form_for(@organisation, 
+                  :url => my_helpedia_organisation_url(@organisation, :part => "operation_area"), 
+                  :builder => EditFormBuilder,                
+                  :html => { :class => "remote-form",
+                             :rel => "#{@organisation.object_id}-operation_area-spinner" } ) do |f| -%>    
+
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+    <tr>
+      <th valign="top">
+        <label><%= Organisation.human_attribute_name("social_categories") -%>:</label>
+      </th>
+      <td> 
+        <ul>
+        <%- for category in SocialCategory.find(:all) -%>
+          <li id="category-<%= category.id -%>" style="padding: 2px;">
+            <%= check_box_tag("organisation[social_category_ids][]", category.id, @organisation.social_category_ids.include?(category.id), :class => "checkbox", :id => "cat-#{category.id}") %>              
+            <span>
+              <%= category.title -%>
+            </span>
+          </li>
+        <%- end -%>
+        </ul>
+      </td>
+     </tr>
+   </table>
+    
+    <div class="edit-part-bottom">
+      <div class="buttons">
+        <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+        <%= link_to image_tag("buttons/btn-cancel.png"), 
+                    cancel_edit_part_my_helpedia_organisation_path(@organisation, :part => "operation_area"),
+                    :class => "ajax-link",
+                    :rel => "#{@organisation.object_id}-operation_area-spinner" -%>
+      </div>
+      <div class="edit-form-spinner">
+        <%= image_tag "ajax-spinner.gif", :id => "#{@organisation.object_id}-operation_area-spinner", :style => "display: none" -%>
+      </div>                            
+    </div>     
+   <%- end -%>
+ </div>
+</div>

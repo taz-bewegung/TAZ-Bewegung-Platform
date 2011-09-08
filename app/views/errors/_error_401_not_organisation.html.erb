@@ -1,0 +1,18 @@
+<% title "401 - Keinen Zugriff" %>
+<% breadcrumb [ "401 - Keinen Zugriff"] %>
+
+<div>
+  <h3 class="error">Die gewünschte Funktion ist nur für angemeldete Organisationen zugänglich (401)!</h3>
+  <div>
+    <p>Als angemeldeter Benutzer kannst Du diese leider nicht ausführen.</p>  
+    <br /><br />                                  
+    <p>Willst Du stattdessen:<p>
+    <ul>
+      <li style="margin-bottom: 1em"><%= link_to "zurück", :back %></li>
+      <li><%= link_to "Termine suchen", events_path %></li>            
+      <li><%= link_to "Aktion suchen", activities_path %></li>
+      <li><%= link_to "Ort suchen", locations_path %></li>
+      <li><%= link_to "Organisation suchen", organisations_path %></li>
+    </ul>
+  </div>
+</div>

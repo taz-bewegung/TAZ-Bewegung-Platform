@@ -1,0 +1,8 @@
+<div class="engagements">
+  <%= render :partial => "/engagements/index/shared/filter" -%>
+  <%= layout_switch_icons(:maps, :list => url_for(params.merge(:list_type => "table", :filter => params[:filter])),
+                                 :card => url_for(params.merge(:list_type => "card", :filter => params[:filter])),
+                                 :maps => url_for(params.merge(:list_type => "maps", :filter => params[:filter]))) %>
+  
+
+</div>

@@ -1,0 +1,33 @@
+<tr><td colspan="4" class="seperator">&nbsp;</td></tr>
+<tr class="<%= class_for_message(message) -%> <%= cycle("","alternate") -%>" id="message_<%= message.id %>" >
+  
+  <%- if params[:action] == "sent" -%>
+  <td class="image">
+    <%= image_for(message.recipient, :"56x42")%>
+  </td>
+  <td class="name-and-date">
+    <span class="name">An: <%= user_profile_link_for(message.recipient) -%></span>
+    <span class="date"><%=l message.created_at -%></span>
+  </td>
+  <%- else -%>
+  <td class="image">
+    <%= image_for(message.sender, :"56x42")%>
+  </td>
+  <td class="name-and-date">
+    <span class="name"><%= user_profile_link_for(message.sender) -%></span>
+    <span class="date"><%=l message.created_at -%></span>
+  </td>  
+  <%- end -%>
+  
+  <td class="subject">
+    <span class="subject">
+		  <%= link_to message.subject, my_helpedia_message_path(message, :anchor => "message_#{message.id}"), :class => "remote-link", :rel => "spinner" -%>   	
+	  </span>
+    <span class="message">
+      <%=h truncate(message.body, :length => 80) -%>
+    </span>
+  </td>
+  <td>
+    <%= link_to image_tag("layout/messages/umschlag_normal.png", :class => "message_delete"), my_helpedia_message_path(message), :class => "ajax-link-delete" %>
+  </td>
+</tr>

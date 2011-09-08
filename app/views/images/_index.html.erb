@@ -1,0 +1,12 @@
+<%= image_sub_menu(:index) -%>
+<div id="sub-content-modal">
+	<div id="sub-content-inner-modal"  style="height: 380px">
+	  <h2><%= I18n.t :"image.archive.header" %></h2>
+    <%= RedCloth.new(I18n.t(:"image.archive.text")).to_html %>
+	  <ul id="image-selectable">
+    <%- for image in @images -%>
+      <%= render :partial => "list_item", :locals => { :image => image } -%>
+    <%- end -%>
+    </ul>
+	</div>
+</div>

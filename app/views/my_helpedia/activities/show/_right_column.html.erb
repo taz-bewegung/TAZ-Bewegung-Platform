@@ -1,0 +1,12 @@
+<%- content_for :right_column do -%> 
+<h2>Aktion...</h2>
+<ul class="menu">
+  <li><%= link_to "... zurück zu meiner Seite", my_helpedia_path -%></li>  
+  <li><%= link_to "... weitere Aktion starten", new_my_helpedia_activity_path -%></li>
+</ul>
+<br />
+<br />
+<ul class="menu">
+  <li><%= link_to "... Aktion löschen", destroy_confirmation_my_helpedia_activity_path(@activity), :class => "remote-link" -%></li>  
+</ul>
+<%- end -%>

@@ -1,0 +1,20 @@
+<div class="blogsidebar">
+  <h2>Blogarchiv...</h2>
+  <ul class="menu">
+  <%- for month in @bloggable.blog.posts.published.months_count -%>
+   <li><%= link_to "... #{t("date.month_names")[month.month.to_i]} #{month.year} (#{month.cnt})", 
+                    polymorphic_path([@bloggable, :blog], { :month => month.month, :year => month.year })
+                   -%>
+   </li>
+  <%- end -%>
+  </ul>
+  <div class="white-box tag-cloud">
+    <div class="bold tag-header">Tags:</div>
+    <%- unless @bloggable.blog.posts.published.with_tags.blank? -%>
+      <%- tag_cloud @bloggable.blog.posts.tag_counts_on(:blog_tags), %w(normal, big, bigger) do |tag, css_class| -%>
+        <%= link_to tag.name, polymorphic_path([@bloggable, :blog], {:tag => tag.name}), :class => css_class %>
+        <%- end -%>
+    <%- end -%>
+  </div>
+  <%= link_to image_tag("btn-rss.gif"), polymorphic_path([@bloggable, :blog], { :format => :rss} ) -%>
+</div>

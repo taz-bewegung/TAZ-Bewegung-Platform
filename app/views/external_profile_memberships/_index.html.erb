@@ -1,0 +1,20 @@
+<%= user_sub_menu(:links) %>  
+<div id="sub-content">
+  <div class="two-column">
+    <div class="column-one links">
+      <h2>Gute Seiten im Netz</h2>      
+        
+        <% if !@user.external_profile_memberships.blank? %>
+          <% for link in @user.external_profile_memberships %>
+            <%= link_to content_tag(:h3, get_uri_host(link.url) ), link.url, :target => "_blank", :title => link.url, :alt => link.url %>
+            <%if !link.description.blank? -%>
+              <p><%=link.description -%></p>
+            <% end -%>
+          <% end %>
+        <% else %>
+          Keine Links gefunden.
+        <% end %>
+        
+    </div>                         
+   </div>
+</div>

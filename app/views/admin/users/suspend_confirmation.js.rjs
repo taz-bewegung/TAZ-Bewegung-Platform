@@ -1,0 +1,8 @@
+page << "$.nyroModalManual(
+{
+	bgColor: '#000000',
+	content: '#{ escape_javascript(render(:partial => "suspend_confirmation")) }',
+	type: 'content',
+	width: 520,
+	height: 350
+});"

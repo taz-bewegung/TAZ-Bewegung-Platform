@@ -1,0 +1,45 @@
+<div id="profile_settings"  class="edit-container">
+
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Einstellungen</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+              cancel_edit_part_my_helpedia_user_path(@user, :part => "profile_settings"), 
+              :class => "ajax-link",
+              :rel => "#{@user.object_id}-settings-spinner" -%>               
+  </div>
+
+  <div class="edit-part-content">
+    <%- form_for(@user, 
+                         :url => my_helpedia_user_url(@user, :part => "profile_settings"), 
+                         :builder => EditFormBuilder,
+                         :html => { :class => "remote-form",
+                                    :rel => "#{@user.object_id}-settings-spinner" } ) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">                                    
+    <%= f.text_field :email %>
+    <%= f.select :visibility, User::VISIBILITY, :required => false %>    
+    <tr>
+      <th></th>
+      <td style="padding: 10px 0 10px 4px; font-style: italic;">Passwort nur eingeben, wenn es geändert werden soll</td>
+    </tr>
+    <%= f.password_field :password, :required => true %>                
+    <%= f.password_field :password_confirmation, :required => true %>                
+    </table>
+
+    <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_user_path(@user, :part => "profile_settings"), 
+                     :class => "ajax-link",
+                     :rel => "#{@user.object_id}-settings-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@user.object_id}-settings-spinner", :style => "display: none" -%>
+       </div>       
+     </div>
+    <%- end -%>
+  </div>
+
+</div>

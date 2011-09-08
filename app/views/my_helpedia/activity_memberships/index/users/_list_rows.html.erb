@@ -1,0 +1,33 @@
+<% if activity_memberships.present? then %>
+<div class="activity_memberships">
+   <div class="list-table">
+    <% for activity_membership in activity_memberships -%>
+     <div class="list-table-item<%= " last" if activity_memberships.last == activity_membership -%>" id="membership_<%= activity_membership.id -%>">
+       <div class="clearfloats">
+         <div class="item-left">
+           <div class="list-image-wrap">
+             <%= image_for(activity_membership.activity, :"90x69c", :context_menu => my_helpedia_user_activity_membership_context_menu(activity_membership)) -%>
+           </div>
+         </div>         
+         <div class="item-content-wrap">
+           <div class="item-title">
+             <%= link_to h(activity_membership.activity.title), activity_membership.activity -%>
+           </div>
+           <div class="item-content">
+             <div class="description">
+               <%=h activity_membership.message -%>
+             </div>
+             <dl>
+               <dt>seit:</dt>
+               <dd><%=l activity_membership.updated_at.to_date -%></dd>
+             </dl>
+           </div>          
+         </div>
+       </div>
+     </div>                                                         
+   <%- end -%>
+   </div>
+</div>
+<% else %>
+<p>Keine Sympathisierungen gefunden.</p>
+<% end -%>

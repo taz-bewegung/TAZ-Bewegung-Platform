@@ -1,0 +1,12 @@
+<div class="top-element-left">
+  <%= link_to image_for(content.element.element, :"170x130c"), content.element.element %> 
+  <br /><br />
+  <%=h content.element.title %>:
+  <br />
+  <%= link_to h(content.element.element.owner.name), content.element.element.owner %>
+</div>
+<div class="top-element-right">
+  <h2><%= link_to h(content.element.element.title), content.element.element, :class => "title" %></h2>
+  <%= truncate(secured_rte_text(content.element.element.description, :plain => true), :length => 700) %>
+  <%= link_to "mehr >>", content.element.element %>    
+</div>

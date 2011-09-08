@@ -1,0 +1,36 @@
+<div id="event_data" class="edit-container">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Termindaten", 
+                                                                   :object => @event,
+                                                                   :path => edit_part_my_helpedia_event_path(@event, :part => "event_data"),
+                                                                   :prefix => "event_data",
+                                                                   :button => image_tag("buttons/btn-edit.png")
+                                                                  } -%>                                
+  
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-50">
+        <dl>    
+          <dt><%= Event.human_attribute_name("title") -%>:</dt>
+          <dd><%=v @event.title -%></dd>
+          <dt><%= Event.human_attribute_name("permalink") -%>:</dt>
+          <dd><%=v @event.permalink -%></dd>
+          <dt><%= Event.human_attribute_name("event_type") -%>:</dt>
+          <dd><%=v @event.event_type -%></dd>
+          <dt><%= Event.human_attribute_name("website") -%>:</dt>
+          <dd><%=v @event.website -%></dd>
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Event.human_attribute_name("image") -%>:</dt>
+          <dd><%= event_image_for(@event, "32x24c") -%></dd>
+          <dt><%= Event.human_attribute_name("starts_at") -%>:</dt>
+          <dd><%= date_time_for(@event.starts_at) -%></dd>
+          <dt><%= Event.human_attribute_name("ends_at") -%>:</dt>
+          <dd><%= date_time_for(@event.ends_at) -%></dd> 
+        </dl>
+      </div>
+    </div>
+  </div>
+</div>

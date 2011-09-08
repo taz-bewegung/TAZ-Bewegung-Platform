@@ -1,0 +1,47 @@
+<div id="slide_holder">
+   <div id='slide_holder_inner'>
+     <div id='row_of_slides'>
+       <div class='slide' id='slide_1'> 
+         <% e = Event.with_image.first %>
+         <%= link_to image_for(e, "393x197c"), e %>
+         <div class="title"><%= h(e.title) %></div>
+       </div>
+       <div class='slide' id='slide_2'>
+         <%= link_to image_tag("dummy/teaser.jpg"), "#" %>
+       </div>
+       <div class='slide' id='slide_3'>
+         <%= link_to image_tag("dummy/teaser.jpg"), "#" %>
+       </div>
+       <div class='slide' id='slide_4'>
+         <%= link_to image_tag("dummy/teaser.jpg"), "#" %>
+       </div>
+     </div> 
+   </div>
+   <div id='carousel_controls'>
+     <div class="carousel_split"></div>
+     <div id='hover_prev_button' class='prev_button hover_button'></div>
+     <div class="carousel_split"></div>
+     <div id='hover_next_button' class='next_button hover_button'></div>
+     <div class="carousel_split"></div>
+     <ul id='slide_buttons'>        
+       <li class='slide_1'></li>
+       <li class='slide_2'></li>
+       <li class='slide_3'></li>
+       <li class='slide_4'></li>
+     </ul>
+   </div>
+ </div>
+ <script type="text/javascript">
+
+ $('#slide_holder').agile_carousel({
+   disable_on_first_last: "yes",
+   next_prev_buttons: "yes",
+   number_slides_visible: "1",
+   slide_buttons: "yes",
+   slide_captions: "Agile Carousel: View Examples With Varied Settings|Agile Carousel: View Examples With Varied Settings|Agile Carousel: View Examples With Varied Settings|Agile Carousel: Project Hosted on Code.Google.com | Agile Carousel: Project Hosted on Code.Google.com | Agile Carousel: Project Hosted on Code.Google.com | Agile Carousel: Powered by PHP, JQuery & JQuery UI | Agile Carousel: Powered by PHP, JQuery & JQuery UI | Agile Carousel: Powered by PHP, JQuery & JQuery UI",
+   timer_on: "no",
+   transition_duration: 1500,
+   transition_easing: "easeOutQuint"
+ });
+
+ </script>

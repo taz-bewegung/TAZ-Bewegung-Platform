@@ -1,0 +1,14 @@
+<div class="activities">
+  <div class="list-card list-table">
+    <%- for category in @categories %>
+      <h2>
+        <span><%= link_to "Alle Aktion der Kategorie", url_for(params.merge(:i_search => { :category_id => category.id}))%></span>        
+        <%=h category.title -%>
+      </h2>
+      <% for activity in category.activities.active.running.limit(4) %>
+       <%= render :partial => "/activities/index/shared/list_#{params[:list_type]}_item",
+                  :locals => { :activity => activity, :activities => category.activities } %>
+       <% end %>
+      <% end -%>
+  </div>
+</div>

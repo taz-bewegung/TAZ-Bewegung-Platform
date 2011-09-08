@@ -1,0 +1,33 @@
+<%= organisation_register_sub_menu(:profile) %>
+<div id="sub-content">
+
+  <% form_for(@presenter, 
+              :url => organisations_path, 
+              :builder => EditFormBuilder,
+              :html => { :method => :post }) do |f| %>
+    <table border="0" cellpadding="8" width="100%" class="reg-form w-230">
+      <tr>
+        <th valign="top"> </th>
+        <td>
+          <span class="grey">* Pflichtfeld</span>
+        </td>
+      </tr>
+      <%= f.text_field :contact_name, :required => true, :labels_from => Organisation-%>
+      <%= f.text_field :contact_phone, :required => true, :labels_from => Organisation -%>
+      <%= f.text :contact_email, :labels_from => Organisation -%>                                                     
+    </table> 
+    <br />
+    <div class="form-footer">
+      <table border="0" class="reg-form w-230">
+        <tr>
+          <th>
+            <%= link_to "Zurück", organisations_path(:step => @presenter.step_back), :method => :post %>                          
+          </th>
+          <td>
+            <%= shadow_form_button("Weiter >>", :css_class => 35, :font_size => 14) %>
+          </td>
+      </table>
+    </div>
+  <% end %>   
+
+</div>

@@ -1,0 +1,17 @@
+<div class="post_teaser header-box"> 
+  <div class="post_top clearfloats header-box-header">
+    <div class="header-left">
+      <%= time_span_or_time(post.created_at) -%>    
+    </div>
+    <div class="header-right">
+      <%= link_to "#{I18n.t(:"comments", :count => post.comments.visible.count)} &raquo;", polymorphic_path([@bloggable, post], { :anchor => "comments" }) -%>
+    </div>
+  </div>
+  <div class="post_content header-box-content">
+    <h2><%= link_to h(post.title), polymorphic_path([@bloggable, post]) %></h2>
+    <%= render_teaser_for(post) %>
+  </div>
+  <div class="post_tags">
+    <strong>Tags:</strong> <%= post.blog_tags.map { |t| link_to(t.name, polymorphic_path([@bloggable, :blog], { :tag => t.name })) }.join(" ") %>
+  </div>
+</div>

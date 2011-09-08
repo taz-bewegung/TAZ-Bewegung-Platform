@@ -1,0 +1,27 @@
+<% if activity_memberships.present? then %>
+<div class="memberships">
+  <div class="list-card">
+  <% for membership in activity_memberships -%> 
+    <div class="list-card-item">
+      <div class="item-inner-wrap">
+        <div class="item-title">
+        <%= link_to h(membership.activity.title), membership.activity -%>
+        </div>
+        <div class="item-text">
+          <div class="item-left">
+            <div class="item-image-wrap">
+            <%= image_for(membership.activity, :"90x69c") -%>
+            </div>
+          </div>
+          <div class="description">
+            <%=h truncate(membership.message, :length => 170) -%>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%- end -%>
+  </div>  
+</div>
+<% else %>
+<p>Keine Sympathisierungen gefunden.</p>
+<% end -%>

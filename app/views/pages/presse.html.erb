@@ -1,0 +1,28 @@
+<%- title "Presse" -%>
+<% breadcrumb [ link_to("Presse", url_for(:controller => 'pages', :action => "presse"))] %>  
+
+<h1>Presse</h1>
+
+<p>
+Willkommen im Pressebereich von Helpedia. Hier finden Sie die aktuelle Berichterstattung über Helpedia und einige Materialen, die für Ihre Berichterstattung nützlich sein werden. Bei offen gebliebenen Fragen stehen wir Ihnen auch jederzeit persönlich zur Verfügung. Bitte wenden Sie sich dazu an den untenstehenden Presse-Kontakt.
+</p>
+
+<p><img src="/images/static_pages_images/6-Simon-klein.jpg" width="120"/></p>
+	
+<p>
+Simon Stettner<br />
+Presse- und Öffentlichkeitsarbeit<br />
+Helpedia GmbH<br />
+</p>
+
+<p>
+Tel.:      +49 (0)30 7050 9528<br />
+Fax.:     +49 (0)30 3640 8989<br />
+E-Mail:  <%= mail_to 's.stettner@helpedia.de', 's.stettner@helpedia.de' %><br />
+</p>
+
+
+
+<% content_for :left_column do %>	
+  <%= static_sub_menu(:presse) -%>
+<%- end -%>

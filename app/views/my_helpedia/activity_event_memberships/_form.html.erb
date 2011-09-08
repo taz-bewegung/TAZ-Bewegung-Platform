@@ -1,0 +1,38 @@
+<div id="<%= @activity_event_membership.object_id %>"> 
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h2><%= @activity_event_membership.try(:activity_event).try(:title) || "Neue Termin-Verknüpfung" -%></h2>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_activity_activity_event_membership_path(@activity, @activity_event_membership.temp_id, :part => @activity_event_membership.object_id), 
+                :class => "ajax-link",
+                :rel => "#{@activity_event_membership.object_id}-memberhsip-spinner" -%>
+  </div>  
+
+  <div class="edit-part-content">  
+    <%- form_for(@activity_event_membership, 
+                :url => @form_url, 
+                :builder => EditFormBuilder,
+                :html => {:class => "remote-form",
+                          :rel => "#{@activity_event_membership.object_id}-memberhsip-spinner" } ) do |f| -%> 
+      
+      <table width="100%" class="reg-form" rowspan="0" colspan="0">
+        <%= f.text_field :event_id_autocomplete, :class => "text-input", :id => "event_id_autocomplete", :"data-href" => event_list_my_helpedia_activity_activity_event_memberships_path(@activity) %>
+        <%= f.hidden_field :event_id, :id => "event_id" %>
+      </table>
+      
+      <div class="edit-part-bottom">
+         <div class="buttons">
+            <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+            <%= link_to image_tag("buttons/btn-cancel.png"), 
+                cancel_edit_part_my_helpedia_activity_activity_event_membership_path(@activity, @activity_event_membership.temp_id, :part => @activity_event_membership.object_id), 
+                :class => "ajax-link",
+                :rel => "#{@activity_event_membership.object_id}-memberhsip-spinner" -%>
+         </div>
+           <div class="edit-form-spinner">
+              <%= image_tag "ajax-spinner.gif", :id => "#{@activity_event_membership.object_id}-memberhsip-spinner", :style => "display: none" -%>
+            </div>         
+       </div>      
+    <%- end -%>
+</div>

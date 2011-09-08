@@ -1,0 +1,12 @@
+<%= document_sub_menu(:index) -%>
+<div id="sub-content">
+	<div id="sub-content-inner">
+    <h2>Meine hochgeladenen Dokumente</h2>
+    <p>
+	    Hier finden sich alle bisher hochgeladenen Dokumente. Falls Du ein Dokument erneut verwenden willst, dann kannst Du es hier auswählen.
+	  </p>
+    <%- for document in @documents -%>
+      <%= render :partial => "list_item", :locals => { :document => document } -%>
+    <%- end -%>
+	</div>
+</div>

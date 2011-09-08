@@ -1,0 +1,237 @@
+<%= magick_header 'termine' %>
+
+<a href="/api/v1/docs">&laquo; Zurück zur Übersicht</a>
+<br />
+<br />
+
+<p class="summary">
+  Über die API für Termine können neue Termine auf bewegung.taz.de angelegt werden. Zum Erstellen muss die unten angegebene URL mit einem HTTP-POST 
+  aufgerufen werden. Die Parameter sind dabei als normale POST-Parameter zu übergeben.
+    
+</p>
+
+
+<h2>Repräsentationen</h2>
+
+
+<a name="json"></a>
+<strong>JSON Repräsentation:</strong> <br /><a href="#" onclick="$('#jsonrep').toggle(); return false;">(Anzeigen/Verstecken)</a><br />
+<div id="jsonrep" style="display: none"><%= CodeRay.encode(Event.first.api_hash.to_json, :json, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %></div><br />
+
+
+
+<a name="xml"></a>
+<strong>XML Repräsentation:</strong> <br /><a href="#" onclick="$('#xmlrep').toggle(); return false;">(Anzeigen/Verstecken)</a><br/>
+<div id="xmlrep" style="display: none"><%= CodeRay.encode(Event.first.api_hash.to_xml(:root => :event), :xml, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %></div>
+
+
+
+
+
+  <div class="method-block">
+
+  <h2>Termine erstellen</h2>
+  
+  <p>
+      
+  
+
+  Durch einen HTTP-Post auf die URL lassen sich Termine erstellen.
+
+  </p>
+  <br />
+  <p>
+    <b>URL:</b>
+  </p>
+  <p>
+    <font face="courier new,monospace">
+      <%= application.site_url %>/api/v1/termine<i>.format</i>
+    </font>
+  </p>
+  <br />  
+  <p>
+    <b>Formate:</b>
+  </p>
+  <p>
+    xml, json
+  </p>
+  <br />
+  <p>
+    <b>HTTP-Methode:</b>
+  </p>
+  <p>
+    POST
+  </p>
+  <br />
+  <p>
+    <b>Authentifizierung notwendig</b>
+  </p>  
+  <p>
+    Authorisierung erforderlich
+  </p>
+  <br />
+  <p>
+    <b>Parameter:</b>
+  </p>
+  <p>
+    <ul>
+      
+      <li><font face="courier new,monospace">event[title] </font>        
+           Der Titel des Termins
+          <ul>
+            <li> <b>Benötigt</b></li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[description] </font>        
+           Der Beschreibungstext des Termins
+          <ul>
+            <li> <b>Benötigt</b> </li>
+            <li> text </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[event_type] </font>        
+           Der Typ des Termins als Freitextfeld
+          <ul>
+            <li> <b>Benötigt</b> </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[starts_at] </font>        
+           Der Startzeitpunkt des Termins (MEZ)
+          <ul>
+            <li> Benötigt </li>
+            <li> datetime </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[ends_at] </font>        
+           Der Endzeitpunkt des Termins (MEZ)
+          <ul>
+            <li> Optional </li>
+            <li> datetime </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[website] </font>        
+           Eine Website-URL des Termins
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[permalink] </font>        
+           Das URL-Kürzel, unter welchem der Termin bei bewegung.taz.de zu erreichen ist
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[organisation_id] </font>        
+           UUID der zugeghörigen Organisation (die Organisationen können <a href="/api/v1/docs/organisationen">hier</a> abgefragt werden)
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[organisation_name] </font>        
+           Falls keine Organisation zugewiesen werden kann, der Organisationsname  
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[address_attributes][street] </font>        
+           Straße + PLZ der Adresse des Termins
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[address_attributes][zip_code] </font>        
+           PLZ der Adresse des Termins
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[address_attributes][city] </font>        
+           Stadt des Termins
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[address_attributes][nationwide] </font>        
+           Bundesweiter Termin  
+          <ul>
+            <li> Optional </li>
+            <li> boolean </li>            
+          </ul>
+      </li>
+      
+      <li><font face="courier new,monospace">event[social_category_ids][] </font>        
+           UUIDs einer Kategorie (mehrere möglich)
+          <ul>
+            <li> Optional </li>
+            <li> string </li>            
+          </ul>
+      </li>
+      
+    </ul>
+  </p>
+  <br />
+  
+  
+  <p>
+    <b>Anmerkungen:</b>
+  </p>
+  <p>
+    <ul>
+      
+      <li>Termine werden automatisch dem angemeldeten Benutzer zugewiesen.</li>
+      
+    </ul>
+  </p>
+  <br />  
+  
+  
+  
+  <p>
+    <b>Beispiele:</b>
+  </p>
+  <p>
+    
+    <span style="font-family: Courier New;">curl -X POST -d "event[title]=Testtermin&event[description]=Kleiner Test&event[starts_at]=2009-04-24T10:00:00+02:00&event[address_attributes][city]=Darmstadt" <%= application.site_url %>/api/v1/termine.xml</span>
+    
+  </p>
+  <br />  
+    
+  
+ <p>
+  <b>Return-Wert:</b>
+ </p>
+ <p>
+  Eine Antwort ob das Anlegen erfolgreich war oder eine Fehlermeldung
+  <br /><br />
+  <ul>
+  
+  
+  </ul>  
+ </p>
+ 
+  
+</div>
+
+
+<%= render :partial => "sidebar"  %>

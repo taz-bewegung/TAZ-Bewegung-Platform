@@ -1,0 +1,20 @@
+<%- breadcrumb [ link_to("Admin", admin_path)] -%>
+<%- title 'Admin' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:texts) -%>
+<%- end -%>
+
+<h1>Texte editieren</h1>
+<ul>
+  <li><%= link_to "Aktionen", edit_admin_text_path(:id => :activity) -%></li>
+  <li><%= link_to "Benutzer", edit_admin_text_path(:id => :user) -%></li> 
+  <li><%= link_to "Organisationen", edit_admin_text_path(:id => :organisation) -%></li>     
+  <li><%= link_to "Jobs & Ehrenämter", edit_admin_text_path(:id => :job) -%></li>       
+  <li><%= link_to "Veranstaltungen", edit_admin_text_path(:id => :event) -%></li>
+  <li><%= link_to "Spenden", edit_admin_text_path(:id => :donation) -%></li>                                            
+  <li><%= link_to "Feedback", edit_admin_text_path(:id => :feedback) -%></li>
+  <li><%= link_to "Aktion - mitmachen", edit_admin_text_path(:id => :external_profile_membership) -%></li>         
+  <li><%= link_to "Layout", edit_admin_text_path(:id => :layout) -%></li>         
+</ul>
+

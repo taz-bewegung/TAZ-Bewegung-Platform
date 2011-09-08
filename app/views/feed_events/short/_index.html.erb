@@ -1,0 +1,9 @@
+<%= self.send "#{@association.class.to_s.downcase}_sub_menu".to_sym, :feed_events %>
+
+<div id="sub-content">
+  <%- for feed_event in @feed_events -%>
+    <% cache "#{dom_id(feed_event)}_short", :expires_in => PublicFeedEvent::EXPIRE_DURATION do %>
+      <%= render :partial => "/feed_events/short/feed_event", :locals => { :feed_event => feed_event } %>     
+    <%- end -%>
+  <%- end -%>
+</div>

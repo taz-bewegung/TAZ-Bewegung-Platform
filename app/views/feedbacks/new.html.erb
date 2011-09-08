@@ -1,0 +1,35 @@
+<% title "Feedback" %>
+<% breadcrumb [ link_to("Feedback", url_for(params)) ] %>
+
+<h1>Bedenklichen Inhalt melden</h1>
+
+<p class="bodytext" style="padding: 0 10px">Sie möchten diesen Eintrag auf Helpedia.de melden? Bitte geben Sie in untenstehendem Formular den Grund für die Meldung, 
+  sowie wenn möglich Ihren Namen und Ihre E-Mail-Adresse an, damit wir Sie gegebenfalls für Rückfragen kontaktieren können.</p>
+
+<%- form_for(@feedback, 
+             :url => url_for(only_route_params.merge(:action => :create)),
+             :builder => EditFormBuilder) do |form| -%>
+
+<table border="0"  class="reg-form w-230">
+  <tr>
+    <th valign="top"> </th>
+    <td>
+      <span class="grey">* Pflichtfeld</span>
+    </td>
+  </tr>  
+  <%= form.text_field :name, :required => false, :tooltip => false -%>
+  <%= form.text_field :email, :required => false, :toolitp => false -%>
+  <%= form.text_area :message, :required => true, :tooltip => false -%>  
+</table>                        
+<br />    
+<div class="form-footer">
+  <table border="0" class="reg-form w-230">
+    <tr>
+      <th>
+      </th>
+      <td>
+        <%= image_submit_tag "buttons/btn-send.png", :class => "image-submit" -%>
+      </td>
+  </table>
+</div>
+<%- end -%>

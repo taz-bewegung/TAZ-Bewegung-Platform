@@ -1,0 +1,4 @@
+<div class="feed-event-content">
+  <%= user_profile_link_for feed_event.actor %> hat einen neuen Blogeintrag <%=link_to h(feed_event.trigger.title), polymorphic_path([feed_event.concerned, feed_event.trigger]) %> verfasst.
+</div>  
+

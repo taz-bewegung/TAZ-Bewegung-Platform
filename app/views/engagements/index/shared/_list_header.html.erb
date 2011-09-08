@@ -1,0 +1,7 @@
+<div class="clearfloats">
+  <%= layout_switch_icons(view, :list => url_for(params.merge(:list_type => "table", :filter => params[:filter])),
+                                :card => url_for(params.merge(:list_type => "card",  :filter => params[:filter])),
+                                :maps => url_for(params.merge(:list_type => "maps",  :filter => params[:filter]))) %> 
+  <h1 class="list-title"><%= list_title -%></h1>    
+</div>
+<%= render :partial => "/jobs/index/shared/filter" -%>

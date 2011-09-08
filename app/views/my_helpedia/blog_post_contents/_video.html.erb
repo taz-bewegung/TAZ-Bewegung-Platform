@@ -1,0 +1,14 @@
+<div id="<%= "content-#{@blog_content_video.id}" -%>" style="padding: 4px; margin: 4px 0; text-align: center">
+  <%- fields_for @blog_content_video, :builder => EditFormBuilder do |f| -%>
+  <table border="0"  class="reg-form w-230">  
+  <%= f.text_field :video_url, :tooltip => true,
+                   :name => "contents[#{@blog_post_content.id}][video_url]" %>
+  <%- end -%>
+  </table>
+</div>
+
+<div id="new-content" style="width: 98%; border: 1px dashed grey; padding: 4px; margin: 4px 0; text-align: center">
+  <%= link_to "Inhalte einfügen", chose_my_helpedia_activity_blog_post_contents_path(@activity, 
+                                                                                    :position => @blog_content_video.blog_post_content.position+1, 
+                                                                                    :part => "new-content", :blog_post_id => @blog_post.id), :class => "remote-link" -%>
+</div>

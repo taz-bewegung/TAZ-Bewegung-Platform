@@ -1,0 +1,15 @@
+<div class="context-menu">
+  <%= image_tag("icons/context-menu.gif", :class => "context-menu-icon", :style => "display: none") %>
+  <div class="context-menu-items" style="display: none">
+    <ul>
+      <li class="first"><img src="/images/blank.gif" height="1" alt="" /> </li>
+      <% menu_items.each do |item| -%>
+      <li class="item" id="<%= item[:id] -%>">
+        <%= link_to "#{item[:name]}", item[:link_to], item[:options] %>
+      </li>
+      <%= '<li class="split" id="' + item[:id] + '-split"></li>' unless menu_items.last == item %>      
+      <% end -%>
+    </ul>      
+    <div class="context-menu-bottom"> </div>
+  </div>
+</div>

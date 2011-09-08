@@ -1,0 +1,21 @@
+<% breadcrumb [ link_to("Admin", admin_path), link_to("Organisationen", admin_organisations_path) ]%>
+<%- title 'Liste aller Organisationen' -%>
+
+<%- content_for :left_column do -%>	
+  <%= admin_sub_menu(:organisation_list) -%>
+<%- end -%>
+
+<div class="admin">
+  <h1>Liste aller Organisationen</h1> 
+  <% if @organisations.size > 0 %> 
+  <%= render :partial => 'pagination' -%>
+  <table class="admin-table" width="100%" style="font-size: 0.95em;">
+    <%= render :partial => 'organisation', :collection => @organisations %>
+  </table>
+  
+  <%else%>
+    
+    <p>Keine Organisationen gefunden ...</p>
+  <% end -%>
+  
+</div>

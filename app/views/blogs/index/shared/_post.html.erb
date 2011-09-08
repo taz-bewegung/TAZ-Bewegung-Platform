@@ -1,0 +1,17 @@
+<div class="post_teaser"> 
+  <div class="post_top clearfloats">
+    <div class="post_date">
+      <%= time_span_or_time(post.created_at) -%>    
+    </div>
+    <div class="post_comments">
+      <%= link_to "Kommentare (#{post.comments.visible.count}) &raquo;", activity_blog_post_path(@activity, :id => post.permalink, :anchor => "comments") -%>
+    </div>
+  </div>
+  <div class="post_content">
+    <h2><%=h post.title %></h2>    
+    <%= render_teaser_for(post) %>
+  </div>
+  <div class="post_tags">
+    <strong>Tags:</strong> <%= post.blog_tags.map { |t| link_to(t.name, activity_blog_url(@activity, :tag => t.name)) }.join(" ") %>
+  </div>
+</div>

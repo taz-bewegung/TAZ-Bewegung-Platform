@@ -1,0 +1,14 @@
+<%- content_for :right_column do -%>
+<ul class="menu">
+    <%= bookmark_link_for(@engagement, :grey) %>
+  <li>
+    <%= link_to "... Nachricht an #{@engagement.user.full_name_cropped(20)}" %>    
+  </li>
+  <li>
+    <%= link_to "... auf Helpedia-Karte anzeigen" %>     
+  </li>
+  <li style="margin-top: 1em">
+    <%= link_to "... bedenklichen Inhalt melden" %>    
+  </li>  
+</ul>           
+<%- end -%>

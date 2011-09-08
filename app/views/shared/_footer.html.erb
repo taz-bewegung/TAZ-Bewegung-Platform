@@ -1,0 +1,37 @@
+<div id="hide-ft">
+  <div id="footer-logo">
+    
+  </div>
+</div>
+<div id="ft-content">
+  
+  <div class="column first">
+    
+    <h2>KONTAKT</h2>
+    <%= link_to "Kontaktformular", new_request_path %>
+    <%= render :partial => "/newsletter/footer_form" -%>
+    <br style="clear: both" /><br />
+    <%= link_to image_tag("twitterbutton.png"), "http://www.twitter.com/bewegungsteam" %>    
+  </div>
+  <div class="column">
+    <h2>ENGAGIEREN</h2>
+    <%= link_to "Downloads", "/pages/downloads" %>    
+    <%= link_to "Flyer bestellen", new_flyer_order_path %>        
+    <%= link_to "Freunde einladen", new_commendation_path(:format => :lightbox), :class => "remote-lightbox" %>
+    <%- if current_user.is_a?(User) and not current_user.roles.blank? -%>
+    <br /><br />
+    <%= link_to "Admin", admin_path %>
+    <%- end -%>                                       
+  </div>
+                     
+  <div class="column">
+    <h2>bewegung.taz.de</h2>
+    <%= link_to "Anleitung (PDF)", "/downloads/anleitung.pdf", :target => "_blank" %>
+    <%= link_to "Aktionsrichtlinien", "/pages/aktionsrichtlinien" %>
+    <%= link_to "Datenschutz", "/pages/datenschutzerklaerung" %>
+    <%= link_to "Impressum", "/pages/impressum" %>
+    <%= link_to "AGB", "/pages/agb" %>
+        
+    <div id="copyright"><%= link_to "Powered by Helpedia", "http://www.helpedia.de",  :title => "Powered by Helpedia", :target => "_blank" -%></div>
+  </div>
+</div>

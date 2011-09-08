@@ -1,0 +1,5 @@
+<h2>Favorit hinzugefügt</h2>
+<p>
+  <%=h @bookmarkable.title %> wurde zu Deinen Favoriten hinzugefügt. 
+</p>
+<%= custom_link_button "Fenster schließen", "#", { :size => "33-beige" }, :onclick => "$.nyroModalRemove(); return false;"  %>

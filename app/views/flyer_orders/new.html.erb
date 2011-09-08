@@ -1,0 +1,17 @@
+<%- title "Flyer bestellen" -%>
+<% breadcrumb [ link_to("Flyer bestellen", new_flyer_order_path)] %>  
+<% magick_header "Flyer bestellen" %>
+
+<p>Liebe Aktive,
+  <br />
+  <br />
+  die Bewegungsplattform lebt von eurem Engagement. Wenn ihr mithelfen wollt, die Plattform noch bekannter zu machen, dann schicken wir euch gerne (kostenlos) Flyer und Poster zu.
+</p>
+
+<div id="flyer-form">
+  <%= render :partial => 'form' %>
+</div>
+
+<% content_for :right_column do %>
+  <%= render :partial => "right_column" %>
+<% end %>

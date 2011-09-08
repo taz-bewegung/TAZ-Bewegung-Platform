@@ -1,0 +1,21 @@
+<h1><%= t :"organisation.register.step5.header" %></h1>
+<%= render :partial => "/my_helpedia/organisations/register_nav" -%>
+<% form_for(@presenter, :url => organisations_path, :html => { :method => :post }) do |f| %>
+<%= error_title_for :presenter %>
+
+<div style="width: 500px; height: 300px; overflow: auto; border: 1px solid red;">  
+<% for category in SocialCategory.find(:all, :include => :image) %> 
+   <div>
+     <span><%= image_tag category.image.public_filename -%></span>                  
+     <label><%= category.title -%></label> 
+     <%= check_box_tag "organisation_registration_presenter[secondary_category_ids][]", category.id, 
+         @presenter.secondary_category_ids.include?(category.id) -%><br/>
+     <%= radio_button_tag "organisation_registration_presenter[main_category_ids]", category.id, 
+         @presenter.main_category_ids.include?(category.id)-%>
+  </div>
+<% end %>
+</div>
+
+  <%= link_to t(:"shared.form.back"), organisations_path(:step => @presenter.step_back), :method => :post %>            
+  <%= f.submit t(:"shared.form.next") %>
+<% end %>

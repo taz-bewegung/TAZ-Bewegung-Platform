@@ -1,0 +1,34 @@
+<div id="address">
+  
+  <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Adresse", 
+                                                   :object => @organisation,
+                                                   :path => edit_part_my_helpedia_organisation_path(@organisation, :part => "address"), 
+                                                   :prefix => "address",
+                                                   :button => image_tag("buttons/btn-edit.png")
+                                                  } -%>    
+
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100">
+       <%= "<span style='color:red'>Ohne Adresse kann die Organisation nicht freigeschaltet werden!</span>" if @organisation.address.blank? %>
+       <br /><br />
+       </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Organisation.human_attribute_name("street") -%>:</dt>
+          <dd><%=v @organisation.address.street unless @organisation.address.nil?-%></dd>
+          <dt><%= Organisation.human_attribute_name("zip_code") -%>:</dt>
+          <dd><%=v @organisation.address.zip_code unless @organisation.address.nil? -%></dd>
+          <dt><%= Organisation.human_attribute_name("city") -%>:</dt>
+          <dd><%=v @organisation.address.city unless @organisation.address.nil?-%></dd>
+        </dl>          
+      </div>
+      <div class="column-50">
+        <dl>
+          <dt><%= Activity.human_attribute_name("has_geo_information") -%>:</dt>
+          <dd><%= wordify_geo_information(@organisation.address) unless @organisation.address.nil? -%></dd>          
+        </dl>
+      </div>      
+    </div>
+  </div>
+</div>

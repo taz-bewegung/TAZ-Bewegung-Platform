@@ -1,0 +1,94 @@
+<% title "Neuen Termin ankündigen" %>
+<% breadcrumb [link_to("Meine Seite", my_helpedia_path), link_to("Neuen Termin ankündigen", new_my_helpedia_event_path)] %>
+<% magick_header "Neuen Termin ankündigen" %>
+
+<%- form_for(@event, 
+             :url => my_helpedia_events_path, 
+             :builder => EditFormBuilder) do |form| -%>
+<table border="0" colspan="0" rowspan="0" class="reg-form w-165">
+  <%= form.text_field :title, :required => true -%>
+
+  <% form.fields_for :image_attachment, 
+                  (@event.image_attachment || @event.build_image_attachment), 
+                  :builder => EditFormBuilder do |image_form| %>
+    <%= image_form.image_field :image_id, :id => "image_attachment", 
+                               :labels_from => Event, 
+                               :image_object => @event.image_attachment,
+                               :default_image_from => Event %>                                     
+  <% end %>
+
+
+  <%= form.text_field :event_type, :required => false -%>
+  <%= form.text_field :website, :required => false -%>  
+ 
+  <tr id="event_starts_at_wrap">
+    <th><%= content_tag :label, Event.human_attribute_name("start_date") %>*:</th>
+    <td class="input-area">
+      <%= form.text_field :start_date, :required => true, :render_table => false, :hide_label => true, :float_table => true -%>
+      <%= form.text_field :start_time, :required => false, :hide_label => true, :render_table => false, :class => "time toggle no-refill", :title => "Bsp: 12:00" -%>
+    </td>
+  </tr>
+  <tr id="event_ends_at_wrap">
+    <th><%= content_tag :label, Event.human_attribute_name("end_date") %>:</th>
+    <td class="input-area">
+      <%= form.text_field :end_date, :required => true, :render_table => false, :hide_label => true, :float_table => true -%>
+      <%= form.text_field :end_time, :required => false, :hide_label => true, :render_table => false, :class => "time toggle no-refill", :title => "Bsp: 12:00" -%>
+    </td>
+  </tr>
+  <%= form.text_area :description, :required => true, :class => "mceEditor" -%>
+  <tr>
+    <th valign="top">
+      <label>
+        Kategorien:
+      </label>
+    </th>
+    <td class="social-categories">
+      <% for category in SocialCategory.find(:all) %>
+      <%= check_box_tag "event[social_category_ids][]", category.id, @event.social_category_ids.include?(category.id), :class => "checkbox" -%>     
+      <span class="<%= "checkbox-label-active" unless @event.social_category_ids.include?(category.id) == false  -%>"><%= category.title -%></span>
+      <br/>
+      <% end %>
+    </td>
+  </tr>
+  </table>
+  <h3>Adresse des Termins</h3>           
+  <table width="100%" class="reg-form w-165" rowspan="0" colspan="0" id="location_autocomplete_table" style="display: <%= @event.location.blank?? "none": "block" %>">
+  
+    <%= form.text_field :location_id, 
+                        :value => @event.location_name,
+                        :required => false, 
+                        :id => "location_id_autocomplete", 
+                        :class => "location_id_autocomplete", 
+                        :after_html => content_tag(:a, "Eigene Adresse eingeben", :onclick => 'var old_location =  $("#location_id_autocomplete").val();
+                                                                                               $("#event-address").toggle();
+                                                                                               $("#event_location_id, #location_id_autocomplete").val("").hide();
+                                                                                               $("tr#event_location_id_wrap").hide(); return false', :href => "#{}") -%>
+    <%= form.hidden_field :location_id -%>
+    </table>
+    <% @event.build_address unless @event.address %>
+    <table width="100%" class="reg-form w-165" rowspan="0" colspan="0" id="event-address" style="display: <%= @event.location.blank? ? "block" : "none"  %>">  
+    <%- form.fields_for :address, :builder => EditFormBuilder do |address_form| -%>
+      <%= address_form.check_box :nationwide, :required => false, :labels_from => Event, :id => "address_nationwide"%>    
+      <%= address_form.text_field :name, :required => false, :labels_from => Event, :id => "address_name" -%>
+      <%= address_form.text_field :street, :required => false, :labels_from => Event, :id => "address_street" -%>
+      <%= address_form.text_field :zip_code, :required => false, :labels_from => Event, :id => "address_zip_code" -%>
+      <%= address_form.text_field :city, :required => true, :labels_from => Event, :id => "address_city", :after_html => 
+                      content_tag(:a, 
+                      "Einen bereits empfohlenen Ort auswählen", 
+                      :id => "address_location",
+                      :onclick => '$("#location_id_autocomplete").val(old_location); 
+                                   $("#event-address").hide();
+                                   $("#location_id_autocomplete,#event_location_id_wrap,#location_autocomplete_table").show();
+                                   return false;', 
+                      :href => "#") -%>  
+      <%- end -%>
+  </table>
+<table border="0" colspan="0" rowspan="0" class="reg-form w-165">
+    <tr class="form-submit">
+    	<th></th>
+    	<td align="left">
+        <%= shadow_form_button("Termin anlegen", :css_class => 35, :font_size => 14) %> oder <%= link_to "Abbrechen", my_helpedia_path %>
+    	</td>
+    </tr>   
+</table>
+<%- end -%>

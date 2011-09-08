@@ -1,0 +1,60 @@
+<tr style="display: none" id="detail-<%= event.object_id -%>">
+  <td colspan="8"> 
+   
+    <div class="flora">
+      <ul class="admin-tabs">
+        <li><a href="#tab-details-<%= event.object_id -%>">Details</a></li>
+      </ul>
+      
+      <div id="tab-details-<%= event.object_id -%>">
+    
+        <table>
+          <tr>
+            <td>Titel:</td>
+            <td><%=h event.title -%></td>
+          </tr>
+          <tr>
+            <td>interne ID:</td>
+            <td><%=h event.id -%></td>
+          </tr>
+          <tr>
+            <td>Permalink:</td>
+            <td><%=h event.permalink -%></td>
+          </tr>
+          <tr>
+            <td>Startet:</td>
+            <td><%=date_time_for event.starts_at -%></td>
+          </tr>
+          <tr>
+            <td>Endet:</td>
+            <td><%=date_time_for event.ends_at -%></td>
+          </tr>                                        
+          <tr>
+            <td>Adresse:</td>
+            <td><%=h event.address.to_long -%></td>
+          </tr>
+          <tr>
+            <td>Aktiver (Name):</td>
+            <td><%=h event.owner.notify_name -%></td>
+          </tr>
+          <tr>
+            <td>Aktiver (E-Mail):</td>
+            <td><%= mail_to event.owner.notify_email -%></td>
+          </tr>
+          <tr>
+            <td>Aktiver (Telefon):</td>
+            <td><%=h event.owner.notify_phone -%></td>
+          </tr>          
+          <tr>
+            <td>Erstellt:</td>
+            <td><%=l event.created_at -%></td>
+          </tr>
+          <tr>
+            <td>Letztes Update:</td>
+            <td><%=l event.updated_at -%></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </td>
+</tr>

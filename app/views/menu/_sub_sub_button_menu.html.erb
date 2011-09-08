@@ -1,0 +1,19 @@
+<ul class="sub-content-menu-button">         
+  <% menu_items.each do |item| -%>
+      <li <%= nav_sub_is_active?(item, active, menu_items) %> id="<%= item[:id] %>">
+        
+        <%- unless item[:link_to].blank? -%>
+        <%= custom_link_button "#{item[:name]}", item[:link_to], { :size => item[:options][:class] }, item[:options] %>
+        <%- else -%>        
+        <%= content_tag :div, "#{item[:name]}", item[:options] %>
+        <%- end -%>
+
+        <%- unless item[:icon].blank? or item[:icon] == 0 -%>
+          <span class="tab-icon <%= item[:icon_class] %> ">
+            <%= item[:icon].to_s -%>
+          </span>          
+        <%- end -%>
+        
+      </li>
+  <% end -%>
+</ul>

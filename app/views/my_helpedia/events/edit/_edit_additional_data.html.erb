@@ -1,0 +1,43 @@
+<div id="additional_data" class="edit-container">  
+  
+  <div class="edit-part-head">
+    <div class="title">
+      <h1>Erweiterte Angaben</h1>
+    </div>
+    <%= link_to image_tag("buttons/btn-close.png"), 
+                cancel_edit_part_my_helpedia_event_path(@event, :part => "additional_data"), 
+                :class => "ajax-link",
+                :rel => "#{@event.object_id}-additional-data-spinner"                
+                 -%>
+  </div>
+
+  <div class="edit-part-content">    
+    <%- form_for(@event, 
+                 :url => my_helpedia_event_path(@event, :part => "additional_data"), 
+                 :builder => EditFormBuilder,
+                 :html => { :class => "remote-form",
+                            :rel => "#{@event.object_id}-additional-data-spinner" }) do |f| -%>
+    <table width="100%" class="reg-form" rowspan="0" colspan="0">
+      <% @event.activity_event_membership = ActivityEventMembership.new if @event.activity_event_membership.blank? %>
+      <% f.fields_for :activity_event_membership do |form| %>
+        <%= form.text_field :activity_id_autocomplete, :value => @event.activity.try(:title), :required => false, :id => "activity_id_autocomplete", :class => "activity_id_autocomplete", :"data-href" => activity_list_my_helpedia_event_activity_event_memberships_path(@event) -%>
+        <%= form.hidden_field :activity_id, :id => "activity_id" -%>
+      <% end %>
+      <%= f.text_area :description, :required => true, :class => "mceEditor" -%>
+    </table> 
+
+     <div class="edit-part-bottom">
+       <div class="buttons">
+         <%= image_submit_tag "buttons/btn-save.png", :class => "submit-input" %>
+         <%= link_to image_tag("buttons/btn-cancel.png"), 
+                     cancel_edit_part_my_helpedia_event_path(@event, :part => "additional_data"), 
+                     :class => "ajax-link",
+                     :rel => "#{@event.object_id}-additional-data-spinner" -%>
+       </div>
+       <div class="edit-form-spinner">
+         <%= image_tag "ajax-spinner.gif", :id => "#{@event.object_id}-additional-data-spinner", :style => "display: none" -%>
+       </div>                            
+     </div>     
+    <%- end -%>
+  </div>
+</div>

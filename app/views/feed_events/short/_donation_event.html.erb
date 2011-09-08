@@ -1,0 +1,12 @@
+<% cache "#{dom_id(feed_event)}_short", :expires_in => PublicFeedEvent::EXPIRE_DURATION do %>
+  <div class="feed-event-content">
+    <%= feed_event.trigger.username -%>  
+    hat <%= number_to_currency(feed_event.trigger.real_amount, :precision => 0) -%> für
+    <%- unless feed_event.trigger.activity.blank? -%>                                            
+    die Aktion <%= link_to h(feed_event.trigger.activity.title), activity_path(feed_event.trigger.activity) %>
+    <%- else-%>
+    die Organisation <%= link_to h(feed_event.trigger.organisation.name), organisation_path(feed_event.trigger.organisation) %>
+    <%- end -%>
+    gespendet.
+  </div>  
+<% end %>

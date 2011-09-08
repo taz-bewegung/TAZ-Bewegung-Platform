@@ -1,0 +1,52 @@
+<%- content_for :right_column do -%>
+<h2>Aktion ...</h2>
+<ul class="menu">
+  <li>
+    <%= link_to t(:"context_menu.public.activity.recommend"), new_activity_commendation_path(@activity, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>
+  <%- if @activity.bookmarkable_for?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @activity.id %>">
+    <%= link_to t(:"context_menu.public.shared.bookmark.create"), activity_bookmarks_path(@activity), :class => "ajax-link-post" -%>
+  </li>  
+  <%- end -%>
+  <%- if @activity.bookmarked_by?(current_user) -%>  
+  <li id="bookmark_right_column_<%= @activity.id %>">
+    <%= link_to t(:"context_menu.public.shared.bookmark.destroy"), activity_bookmark_path(@activity, @activity.bookmarks.find_by_user_id(current_user.id)), :class => "ajax-link-delete-without-confirm" -%>
+  </li>  
+  <%- end -%>  
+  <%- if not @activity.owner == current_user -%>  
+  <li>
+    <%= link_to t("context_menu.public.shared.create_message.type_#{@activity.owner.gender.to_i}"), polymorphic_path([:new, @activity.owner, :message], {:format => :lightbox}), :class => "remote-lightbox" -%>    
+  </li>
+  <%- end -%>
+  <%- if @activity.owner.friendable_for?(current_user) -%>
+  <li class="friendable">
+    <%= link_to t("context_menu.public.shared.create_friendship.type_#{@activity.owner.gender.to_i}"), user_friendships_path(@activity.owner), :class => "ajax-link-post" -%>    
+  </li>
+  <%- end -%>            
+  <li class="last">
+    <%= link_to t(:"context_menu.public.shared.feedback.create"), new_activity_feedback_path(@activity, :format => :lightbox), :class => "remote-lightbox" -%>    
+  </li>  
+</ul>
+<% render_or_cache "share_#{@activity.uuid}" do %>
+<div class="share-icons">
+  <%= twitter_link activity_url(@activity)  %>
+</div>
+<% end %>
+<% if @activity.events.present? && controller.controller_name == "events" %>
+  <br /><%=controller.action_name%>
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <br />
+  <h2>Karte mit Terminen</h2>
+  <ul class="menu">
+    <li><%=link_to "... anzeigen  #{image_tag('map_teaser.png', :align => :middle)}", activity_events_path(@activity, :list_type => "maps", :anchor => "events") %>
+  </ul>
+  <br />
+<% end %>
+  
+  
+<%- end -%>

@@ -1,0 +1,10 @@
+<%- title " - " + "Termine" -%>
+<%- breadcrumb [ "", link_to("Termine", location_events_path(@location))] -%>
+
+<%= location_sub_menu(:events) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/events/index/shared/list_header", :locals => { :list_title => "Eingetragene Termine" } %>  
+  <div id="sub-content-list">
+    <%= render :partial => "/events/index/shared/list_#{params[:list_type]}", :locals => { :events => @events } %>
+  </div>                                                                      
+</div>

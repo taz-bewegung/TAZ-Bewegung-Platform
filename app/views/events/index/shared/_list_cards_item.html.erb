@@ -1,0 +1,17 @@
+<div class="list-card-item" id="event_<%= event.id -%>">
+  <div class="item-inner-wrap">
+    <div class="item-title not-logged-in">
+      <%= link_to h(truncate(event.title, :length => 52)), event_path(event), :title => h(event.title) -%>   
+    </div>
+    <div class="item-text">
+      <div class="item-left">
+        <div class="item-image-wrap">
+          <%= image_for(event, :"90x69c", :context_menu => event_context_menu(event), :link_to => event_path(event)) -%>
+        </div>
+      </div>
+      <div class="description">
+       <%= truncate(secured_rte_text(event.description, :plain => true), :length => 150) -%>
+      </div>
+    </div>
+  </div>
+</div>

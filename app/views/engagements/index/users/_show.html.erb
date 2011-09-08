@@ -1,0 +1,7 @@
+<%- title " - " + "Engagements" -%>
+<%- breadcrumb [ "", link_to("Engagements", user_engagements_path(@user))] -%>
+
+<%= user_sub_menu(:engagements) -%>
+<div id="sub-content"> 
+  <%= render :partial => "/engagements/index/shared/list_card", :locals => { :engagements => @engagements } %>
+</div>

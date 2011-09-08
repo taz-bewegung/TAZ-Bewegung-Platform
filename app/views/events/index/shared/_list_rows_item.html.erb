@@ -1,0 +1,31 @@
+<%- day = event if day.blank? -%>
+<div class="list-table-item<%= " last" if events.last == day -%>" id="event_<%= event.id -%>">
+ <div class="item-left">
+   <div class="list-image-wrap">
+      <%= image_for(event, :"90x69c", :context_menu => event_context_menu(event), :link_to => event_path(event)) -%>
+   </div>
+ </div>         
+ <div class="item-content-wrap">
+   <div class="item-title">
+     <%= link_to h(event.title), event_path(event), :title => h(event.title) -%>   
+   </div>
+
+   <div class="item-content">
+     <div class="description">
+       <%= truncate(secured_rte_text(event.description, :plain => true), :length => 300) -%>                       
+     </div>
+     <dl>
+       <dt><%= t(:"event.item_views.table.from") -%>:</dt>
+		   <dd><%= user_profile_link_for event.originator -%></dd> 
+       <dt><%= t(:"event.item_views.table.location") -%>:</dt>
+       <% unless event.location.blank? -%>
+       <dd><%= link_to h(event.location.name), location_path(event.location) -%></dd>
+       <% else -%>
+       <dd><%=v event.address.to_short -%></dd>
+       <% end -%>
+       <dt>Zeitraum:</dt>
+       <dd><%= time_span_for(event)%></dd>
+     </dl>
+    </div>          
+  </div>
+</div>

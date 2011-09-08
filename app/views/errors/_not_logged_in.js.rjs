@@ -1,0 +1,9 @@
+page << "$.nyroModalManual(
+{
+	bgColor: '#000000',
+	content: '#{ render(:partial => "/errors/lightbox_not_logged_in").gsub("\n", '\ \n') }',
+	type: 'content',
+	width: 560,
+	height: 150
+});
+"

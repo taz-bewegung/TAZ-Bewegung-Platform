@@ -23,12 +23,15 @@ module Search::EventSearch
   end
 
   # Build the date filter options.
-  def date_filter_conditions  
+  def date_filter_conditions
     if @from_date.present?
-      @conditions.add_condition ["events.ends_at > ?", Date.strptime(from_date, '%d.%m.%Y').beginning_of_day.to_s(:db)]
-      @conditions.add_condition ["days_with_events.day > ?", Date.strptime(from_date, '%d.%m.%Y').beginning_of_day.to_s(:db)]
+      Rails.logger.info "from_date: #{from_date}"
+      Rails.logger.info "= " + Date.strptime(from_date, '%d.%m.%Y').to_s
+      sleep 5
+      @conditions.add_condition ["events.ends_at >= ?", Date.strptime(from_date, '%d.%m.%Y').beginning_of_day.to_s(:db)]
+      @conditions.add_condition ["days_with_events.day >= ?", Date.strptime(from_date, '%d.%m.%Y').beginning_of_day.to_s(:db)]
     else
-      @conditions.add_condition ["events.starts_at > ?", Date.today.beginning_of_day]
+      @conditions.add_condition ["days_with_events.day >= ?", Time.now.beginning_of_day.to_s(:db)]
     end
   end
 
@@ -40,7 +43,7 @@ module Search::EventSearch
     Event.find_with_ferret(@search_query, query_options,
                                           :conditions => @conditions,
                                           :include => [:address, :social_category_memberships, :days_with_events])
-    
+
   end
-  
+
 end

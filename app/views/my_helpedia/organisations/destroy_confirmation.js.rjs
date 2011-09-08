@@ -1,0 +1,8 @@
+page << "$.nyroModalManual(
+{
+	bgColor: '#000000',
+	content: '#{ render(:partial => "destroy_confirmation").gsub("\n", '\ \n') }',
+	type: 'content',
+	width: 560,
+	height: 150
+});"

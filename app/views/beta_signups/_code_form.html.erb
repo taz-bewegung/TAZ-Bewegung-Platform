@@ -1,0 +1,25 @@
+<div class="header-box code">
+  <div class="header-box-header">
+   <%= image_tag ("beta/dot-invite.gif") %> <div class="header-left big-header">Einladungs-Passwort eingeben</div>
+  </div>
+  <div class="header-box-content"> 
+    <p>
+      Hier geht es zur Test- und Aufbauphase. Wir freuen uns über Ideen, Wünsche und Kritik und hoffen, dass ihr in bewegung.taz.de genau soviel Potential seht wie wir. Es soll Eure Plattform werden.
+    </p>
+    <%- unless flash[:code].blank? -%>
+    <div class="error_flash">
+      <%= flash[:code] %>
+    </div>
+    <%- end -%>
+    <% form_for(@beta_signup, :url => check_code_beta_signups_path) do |f| %>
+        <%= f.text_field :code, :title => "Code eingeben", :class => "toggle"  %>
+        <div class="check_code">
+          <%= shadow_form_button("Jetzt freischalten*", :css_class => 35, :font_size => 14, :class => "check_code") %>
+        </div>
+        <br style="clear: both">        
+        <div class="comment">
+          * Wenn der aktuell verwendete Browser geschlossen wird, muss das Passwort erneut eingegeben werden.
+        </div>                
+    <% end %>
+  </div>
+</div>

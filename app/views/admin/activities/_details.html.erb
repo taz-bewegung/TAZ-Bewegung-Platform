@@ -1,0 +1,60 @@
+<tr style="display: none" id="detail-<%= activity.object_id -%>">
+  <td colspan="8"> 
+   
+    <div class="flora">
+      <ul class="admin-tabs">
+        <li><a href="#tab-details-<%= activity.object_id -%>">Details</a></li>
+      </ul>
+      
+      <div id="tab-details-<%= activity.object_id -%>">
+    
+        <table>
+          <tr>
+            <td>Titel:</td>
+            <td><%=h activity.title -%></td>
+          </tr>
+          <tr>
+            <td>interne ID:</td>
+            <td><%=h activity.id -%></td>
+          </tr>
+          <tr>
+            <td>Permalink:</td>
+            <td><%=h activity.permalink -%></td>
+          </tr>
+          <tr>
+            <td>Startet:</td>
+            <td><%=date_time_for activity.starts_at -%></td>
+          </tr>
+          <tr>
+            <td>Endet:</td>
+            <td><%=date_time_for activity.ends_at -%></td>
+          </tr>                                        
+          <tr>
+            <td>Adresse:</td>
+            <td><%=h activity.address.to_long -%></td>
+          </tr>
+          <tr>
+            <td>Aktiver (Name):</td>
+            <td><%=h(activity.owner.notify_name) unless activity.owner.nil? -%></td>
+          </tr>
+          <tr>
+            <td>Aktiver (E-Mail):</td>
+            <td><%= mail_to activity.owner.notify_email unless activity.owner.nil?  -%></td>
+          </tr>
+          <tr>
+            <td>Aktiver (Telefon):</td>
+            <td><%=h activity.owner.notify_phone unless activity.owner.nil?  -%></td>
+          </tr>          
+          <tr>
+            <td>Erstellt:</td>
+            <td><%=l activity.created_at -%></td>
+          </tr>
+          <tr>
+            <td>Letztes Update:</td>
+            <td><%=l activity.updated_at -%></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </td>
+</tr>

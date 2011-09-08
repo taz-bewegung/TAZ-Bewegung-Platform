@@ -1,0 +1,20 @@
+<div id="about" class="edit-container">
+
+                 <%= render :partial => "/shared/profile_edit_header", :locals => { :header => "Über uns", 
+                                                                     :object => @organisation,
+                                                                     :path => edit_part_my_helpedia_organisation_path(@organisation, :part => "about"), 
+                                                                     :prefix => "about",
+                                                                     :button => image_tag("buttons/btn-edit.png")
+                                                                    } -%>  
+  
+  <div class="clearfloats edit-profile">
+    <div class="two-column">
+      <div class="column-100">
+        <dl>
+          <dt><%= Organisation.human_attribute_name("description") -%>:</dt>
+          <dd><%= truncate(secured_rte_text(@organisation.description, :plain => true), :length => 200) -%></dd>
+        </dl>          
+      </div>
+    </div>
+  </div>
+</div>
