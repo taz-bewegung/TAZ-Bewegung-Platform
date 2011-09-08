@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::FriendshipsHelper
   
   def my_helpedia_user_friendship_menu(active)

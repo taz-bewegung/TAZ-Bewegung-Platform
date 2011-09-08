@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module NewsHelper
 
   def news_sub_menu_items

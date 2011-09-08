@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module FeedEventsHelper
   
   def feed_event_partial_name(event, options = {})

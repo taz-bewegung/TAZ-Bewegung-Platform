@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::ActivitiesHelper
   
     def my_helpedia_activity_sub_menu(active)

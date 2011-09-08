@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Admin::LocationsHelper
 
   def location_icons_for(location)

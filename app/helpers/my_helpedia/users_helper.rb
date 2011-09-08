@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::UsersHelper
 
   def my_helpedia_user_sub_menu_items

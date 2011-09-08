@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Admin::ActivitiesHelper
 
   def formal_activity_status_for(activity)

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module EventsHelper
     
   # FIXME Using send for urls is not nice, but polymorphic_path doesn't work in this situation (why?)

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module EngagementsHelper
   
   def engagement_sub_menu_items

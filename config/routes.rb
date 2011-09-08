@@ -1,4 +1,7 @@
 Bewegung::Application.routes.draw do
+  
+  match '/kontakt' => 'feedbacks#contact'
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

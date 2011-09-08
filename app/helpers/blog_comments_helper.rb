@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module BlogCommentsHelper
   
   # Renders the comment form depending of the commentables settings.

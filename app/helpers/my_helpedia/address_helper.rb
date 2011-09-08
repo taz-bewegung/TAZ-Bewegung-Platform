@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::AddressHelper
   
   def wordify_geo_information(address)

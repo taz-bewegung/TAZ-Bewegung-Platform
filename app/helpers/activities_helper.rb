@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module ActivitiesHelper
   
   def render_activity_info_box(activity, mode)

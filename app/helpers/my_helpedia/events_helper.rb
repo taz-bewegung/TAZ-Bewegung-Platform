@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::EventsHelper
 
   def my_helpedia_event_sub_menu_items

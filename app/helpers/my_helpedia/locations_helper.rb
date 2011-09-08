@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::LocationsHelper
 
   def my_helpedia_location_sub_menu(active)

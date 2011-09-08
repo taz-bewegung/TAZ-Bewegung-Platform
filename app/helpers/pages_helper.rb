@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module PagesHelper
 
 	def static_sub_menu_items

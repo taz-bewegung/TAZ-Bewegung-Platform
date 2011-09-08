@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module OrganisationsHelper
 
   def country_flags_for(organization)

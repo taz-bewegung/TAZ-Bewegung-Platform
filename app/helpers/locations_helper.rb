@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module LocationsHelper
   
   def render_location_info_box(location, mode)

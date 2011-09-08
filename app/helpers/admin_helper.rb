@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module AdminHelper
   
   def admin_sub_menu_items

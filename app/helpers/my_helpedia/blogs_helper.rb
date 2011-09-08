@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module MyHelpedia::BlogsHelper
 
   def my_helpedia_blog_sub_menu(active)

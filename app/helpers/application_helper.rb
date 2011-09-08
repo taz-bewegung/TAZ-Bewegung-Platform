@@ -1,8 +1,9 @@
+# encoding: UTF-8
 # Methods added to this helper will be available to all templates in the application.
 module ApplicationHelper 
   
-  WillPaginate::ViewHelpers.pagination_options[:previous_label] = '&laquo; zurück'
-  WillPaginate::ViewHelpers.pagination_options[:next_label] = 'weiter &raquo;'
+  #WillPaginate::ViewHelpers.pagination_options[:previous_label] = '&laquo; zurück'
+  #WillPaginate::ViewHelpers.pagination_options[:next_label] = 'weiter &raquo;'
   
   def small_finder(context)
     content_for :finder do
@@ -13,9 +14,11 @@ module ApplicationHelper
   # Shows a lightbox on page load with given content.
   def show_lightbox_onload(options = {}, &block)
     options.reverse_merge!({ :selector => "show-remote-lightbox" })
-    concat(content_tag :div, :id => options[:selector], :style => "display: none" do
+    concat(
+    content_tag(:div, :id => options[:selector], :style => "display: none") do
       yield
-    end)
+    end
+    )
   end    
   
   def right_column(content)

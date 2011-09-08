@@ -1,3 +1,4 @@
+# encoding: UTF-8
 module Admin::EventsHelper
 
   # Lists the icons for an event.
