@@ -1,5 +1,6 @@
+# encoding: UTF-8
 class Comment < ActiveRecord::Base
-
+  include Gravtastic
   # Plugins
   is_gravtastic :with => :email 
   acts_as_paranoid
@@ -17,7 +18,12 @@ class Comment < ActiveRecord::Base
   validates_with_hidden_captcha
   
   # Scopes
-  named_scope :visible, { :conditions => { :state => "visible" } }
+  #named_scope :visible, { :conditions => { :state => "visible" } }
+  class << self
+    def visible
+      where(:state => "visible")
+    end
+  end
    
   # State machine
   acts_as_state_machine :initial => :visible

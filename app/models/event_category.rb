@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class EventCategory < ActiveRecord::Base
   
   has_many :events
@@ -7,5 +8,5 @@ class EventCategory < ActiveRecord::Base
   end
   
   # Finder
-  named_scope :available
+  #named_scope :available
 end

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BetaSignup < ActiveRecord::Base
   
   validates_presence_of :email

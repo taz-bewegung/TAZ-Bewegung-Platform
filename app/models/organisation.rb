@@ -66,9 +66,9 @@ class Organisation < ActiveRecord::Base
   validates_presence_of     :corporate_form
   validates_length_of       :corporate_form_id, :minimum => 10
   validates_overall_uniqueness_of :contact_email, :if => :contact_email_changed?  
-#  validates_presence_of     :email
-#  validates_length_of       :email,    :within => 6..100 #r@a.wk
-#  validates_format_of       :email,    :with => Authentication.email_regex
+  validates_presence_of     :email
+  validates_length_of       :email,    :within => 6..100 #r@a.wk
+  validates_format_of       :email,    :with => Authentication.email_regex
   validates_presence_of     :corporate_form
   validates_presence_of     :contact_name
   validates_presence_of     :contact_phone
@@ -101,14 +101,16 @@ class Organisation < ActiveRecord::Base
   #}    
   #named_scope :latest, { :order => "organisations.created_at DESC" }
   
+  
   def self.find_latest_for_teaser_elements(offset)
     self.active.with_image.latest.find(:all, :limit => "#{offset},1")[0]
   end
   
-  def self.active
-    where("organisations.state", "active")
+  class << self
+    def active
+      where(:state => "active")
+    end
   end
-  
  # ##
  # # Acts as ferret
  # acts_as_ferret(

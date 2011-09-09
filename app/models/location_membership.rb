@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class LocationMembership < ActiveRecord::Base
   
   # Associations

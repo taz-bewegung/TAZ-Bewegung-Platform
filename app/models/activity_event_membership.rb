@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ActivityEventMembership < ActiveRecord::Base
   
   attr_accessor :event_id_autocomplete

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class News < ActiveRecord::Base
   
   before_save :create_permalink

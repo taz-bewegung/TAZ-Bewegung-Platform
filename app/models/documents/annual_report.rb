@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class AnnualReport < Document
   
   belongs_to :documentable, :polymorphic => true

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class OrganisationRegistrationPresenter < Presenter
 
   # TODO Find a dynamic way to add the delegators

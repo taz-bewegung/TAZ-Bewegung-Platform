@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class DailyId < ActiveRecord::Base
   
   class << self

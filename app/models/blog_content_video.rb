@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BlogContentVideo < ActiveRecord::Base
   
   attr_accessor :contentable_type  

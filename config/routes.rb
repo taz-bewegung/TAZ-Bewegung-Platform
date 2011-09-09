@@ -23,7 +23,7 @@ Bewegung::Application.routes.draw do
   match 'login' => 'sessions#new'
   match 'register' => 'sessions#create'
   match 'reset_password/:key' => 'sessions#reset_password', :key => nil
-  match 'forgot_password' => 'sessions#orgot_password'  
+  match 'forgot_password' => 'sessions#forgot_password'  
   match 'forget_password' => 'sessions#forget_password'
   match 'change_password' => 'sessions#change_password'
   match 'password_changed' => 'sessions#password_changed'

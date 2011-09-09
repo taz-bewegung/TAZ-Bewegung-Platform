@@ -1,13 +1,14 @@
+# encoding: UTF-8
 class Friendship < ActiveRecord::Base
     
   belongs_to :user
   belongs_to :friend, :class_name => "User"
   
   # Scopes
-  named_scope :pending, { :conditions => "friendships.state = 'pending'" }
-  named_scope :requested, { :conditions => "friendships.state = 'requested'" }
-  named_scope :accepted, { :conditions => "friendships.state = 'accepted'" }
-  named_scope :accepted_with_user, { :conditions => "friendships.state = 'accepted' AND (SELECT users.state FROM users WHERE users.uuid = friendships.friend_id) = 'active'" }
+  #named_scope :pending, { :conditions => "friendships.state = 'pending'" }
+  #named_scope :requested, { :conditions => "friendships.state = 'requested'" }
+  #named_scope :accepted, { :conditions => "friendships.state = 'accepted'" }
+  #named_scope :accepted_with_user, { :conditions => "friendships.state = 'accepted' AND (SELECT users.state FROM users WHERE users.uuid = friendships.friend_id) = 'active'" }
   
   ##
   # Acts as state machine

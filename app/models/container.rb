@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Container < ActiveRecord::Base
   
   has_many :content_elements, :as => :container

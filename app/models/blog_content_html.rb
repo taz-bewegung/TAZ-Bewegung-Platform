@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BlogContentHtml < ActiveRecord::Base
   
   attr_accessor :contentable_type  

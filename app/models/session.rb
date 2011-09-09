@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Session
   include ActiveModel::Validations
   include ActiveModel::Conversion

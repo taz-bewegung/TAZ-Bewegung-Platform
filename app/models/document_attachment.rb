@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class DocumentAttachment < ActiveRecord::Base
   
   belongs_to :attachable, :polymorphic => true

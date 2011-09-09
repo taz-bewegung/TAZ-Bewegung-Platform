@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FeedEvent < ActiveRecord::Base
   
   acts_as_mappable  

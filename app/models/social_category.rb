@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class SocialCategory < ActiveRecord::Base 
   
 #  self.skip_time_zone_conversion_for_attributes=[]

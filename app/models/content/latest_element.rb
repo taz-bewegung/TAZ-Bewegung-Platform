@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Content::LatestElement < ActiveRecord::Base
 
   set_table_name :content_latest_elements 

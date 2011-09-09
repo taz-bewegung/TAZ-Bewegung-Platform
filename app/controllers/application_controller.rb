@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   include AuthenticatedSystem
   include RoleRequirementSystem
-  #include Helpedia::SslRequirement
+  include Helpedia::SslRequirement
   #include ExceptionNotifiable
 
   TAZ_TINY_MCE_OPTIONS = {

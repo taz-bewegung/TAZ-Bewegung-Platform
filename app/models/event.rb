@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'icalendar'
 class Event < ActiveRecord::Base
   
@@ -70,19 +71,19 @@ class Event < ActiveRecord::Base
   ##
   # Scopes and finders
   
-  named_scope :active, { :conditions => { :state => 'active' } }
-  named_scope :upcoming, lambda { 
-    { :conditions => ["events.starts_at > ?", Time.now], :order => "events.starts_at ASC"}
-  }
-  named_scope :running, { :conditions => ["events.ends_at > ?", Time.now], :order => "events.starts_at ASC"}
-  named_scope :finished, { :conditions => ["events.ends_at < ?", Time.now] }
-  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }  
-  named_scope :latest, { :order => "events.created_at DESC" }
-  named_scope :recent, { :order => "events.created_at ASC" }
-  
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }
+  #named_scope :active, { :conditions => { :state => 'active' } }
+  #named_scope :upcoming, lambda { 
+  #  { :conditions => ["events.starts_at > ?", Time.now], :order => "events.starts_at ASC"}
+  #}
+  #named_scope :running, { :conditions => ["events.ends_at > ?", Time.now], :order => "events.starts_at ASC"}
+  #named_scope :finished, { :conditions => ["events.ends_at < ?", Time.now] }
+  #named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }  
+  #named_scope :latest, { :order => "events.created_at DESC" }
+  #named_scope :recent, { :order => "events.created_at ASC" }
+  #
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}
   
   
   def self.find_latest_for_teaser_elements(offset)
@@ -92,15 +93,15 @@ class Event < ActiveRecord::Base
 
 # Acts as ferret 
 
- acts_as_ferret(
-   :fields => {
-     :title => { :boost => 5  },
-     :description => { :boost => 3 }
-   },
-   :additional_fields => [:index_user, :index_organisation, :index_address],
-   :store_class_name => true,
-   :remote => true
- )
+ #acts_as_ferret(
+ #  :fields => {
+ #    :title => { :boost => 5  },
+ #    :description => { :boost => 3 }
+ #  },
+ #  :additional_fields => [:index_user, :index_organisation, :index_address],
+ #  :store_class_name => true,
+ #  :remote => true
+ #)
   
   def index_user
     originator.full_name

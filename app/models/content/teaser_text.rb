@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Content::TeaserText < Content::Text
   
   EDIT_TEMPLATE = "/content/landing_page/edit_teaser_text" unless defined? EDIT_TEMPLATE

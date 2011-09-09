@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Activity < ActiveRecord::Base 
   
   include Commentable
@@ -51,18 +52,18 @@ class Activity < ActiveRecord::Base
   ##
   # Scopes and finders
 
-  named_scope :running, { :conditions => ["activities.ends_at > ?", Time.now] }
-  named_scope :active, { :conditions => "activities.state = 'active'" }
-  named_scope :recent, { :order => "activities.starts_at ASC" }
-  named_scope :latest, { :order => "activities.created_at DESC" }  
-  named_scope :finished, { :conditions => ["activities.continuous = ? AND activities.ends_at < ?", false, Time.now] }
-  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
-  named_scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || 'activities.created_at DESC' }
-  }
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }
+  #named_scope :running, { :conditions => ["activities.ends_at > ?", Time.now] }
+  #named_scope :active, { :conditions => "activities.state = 'active'" }
+  #named_scope :recent, { :order => "activities.starts_at ASC" }
+  #named_scope :latest, { :order => "activities.created_at DESC" }  
+  #named_scope :finished, { :conditions => ["activities.continuous = ? AND activities.ends_at < ?", false, Time.now] }
+  #named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
+  #named_scope :ordered, lambda { |*order|
+  #  { :order => order.flatten.first || 'activities.created_at DESC' }
+  #}
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}
 
   def self.find_latest_for_teaser_elements(offset)
     self.active.with_image.running.latest.find(:all, :limit => "#{offset},1")[0]
@@ -70,17 +71,17 @@ class Activity < ActiveRecord::Base
 
 
 #  Acts as ferret
- acts_as_ferret(
-   :fields => {
-     :title => { :boost => 5 },
-     :description => { :boost => 3 },
-     :index_user => { :boost => 2 }, 
-     :index_address => { :boost => 2 }
-   },
-   :store_class_name => true,
-   :remote => true,
-   :if => Proc.new { |activity| activity.running? }
- )
+#acts_as_ferret(
+#  :fields => {
+#    :title => { :boost => 5 },
+#    :description => { :boost => 3 },
+#    :index_user => { :boost => 2 }, 
+#    :index_address => { :boost => 2 }
+#  },
+#  :store_class_name => true,
+#  :remote => true,
+#  :if => Proc.new { |activity| activity.running? }
+#)
   
   def wikileaked?
     true if self.permalink == '4wikileaks'

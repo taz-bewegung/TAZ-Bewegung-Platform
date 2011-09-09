@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ExternalProfile < ActiveRecord::Base
   
   has_many :external_profile_mappings

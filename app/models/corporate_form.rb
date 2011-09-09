@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class CorporateForm < ActiveRecord::Base
   
   has_many :organisations

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ExternalProfileMembership < ActiveRecord::Base
   
   belongs_to :user

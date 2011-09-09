@@ -1,8 +1,9 @@
+# encoding: UTF-8
 class CachingStats < ActiveRecord::Base
   
-  named_scope :with_key, lambda { |key|
-    { :conditions => ["key = ?", key] }
-  }  
+  #named_scope :with_key, lambda { |key|
+  #  { :conditions => ["key = ?", key] }
+  #}  
   
   class << self
     #extend ActiveSupport::Memoizable

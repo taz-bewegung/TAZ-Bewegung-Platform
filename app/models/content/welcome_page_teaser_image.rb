@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Content::WelcomePageTeaserImage < ActiveRecord::Base
   
   set_table_name "content_welcome_page_teaser_images"

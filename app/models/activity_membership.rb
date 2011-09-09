@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ActivityMembership < ActiveRecord::Base
   
   before_create :check_for_duplicate
@@ -21,13 +22,13 @@ class ActivityMembership < ActiveRecord::Base
     transitions :from => :pending, :to => :active
   end    
   
-  named_scope :active, :conditions => ["state = 'active'"]
-  named_scope :active_with_user, :conditions => ["state = 'active' AND (SELECT users.state FROM users WHERE users.uuid = activity_memberships.user_id) = 'active'"]
-  named_scope :latest, :order => "created_at DESC"
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }
-  named_scope :pending, :conditions => ["state = 'pending'"]  
+  #named_scope :active, :conditions => ["state = 'active'"]
+  #named_scope :active_with_user, :conditions => ["state = 'active' AND (SELECT users.state FROM users WHERE users.uuid = activity_memberships.user_id) = 'active'"]
+  #named_scope :latest, :order => "created_at DESC"
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}
+  #named_scope :pending, :conditions => ["state = 'pending'"]  
       
   def do_activate
   end

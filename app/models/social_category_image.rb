@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class SocialCategoryImage < ActiveRecord::Base 
 
   belongs_to :social_category

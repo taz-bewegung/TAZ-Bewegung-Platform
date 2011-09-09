@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :show]
   before_filter :check_visibility, :only => [:show]  
   before_filter :check_for_user, :only => [:new, :create]
-  
+
   ssl_required :new, :create
   
   def index

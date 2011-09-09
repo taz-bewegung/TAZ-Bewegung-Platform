@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ContentElement < ActiveRecord::Base
 
   belongs_to :element, :polymorphic => true

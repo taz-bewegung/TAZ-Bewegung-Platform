@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   
   before_filter :check_for_user, :only => [:new, :create]
   
-  #ssl_required :new, :create, :forgot_password, :forget_password, :password_changed
-  #ssl_allowed :destroy
+  ssl_required :new, :create, :forgot_password, :forget_password, :password_changed
+  ssl_allowed :destroy
 
   # render new.rhtml
   def new

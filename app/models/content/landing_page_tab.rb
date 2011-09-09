@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Content::LandingPageTab < ActiveRecord::Base
   
   set_table_name "content_landing_page_tabs"

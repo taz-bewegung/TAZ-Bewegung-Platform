@@ -7,5 +7,8 @@ require "#{Rails.root}/lib/extensions/role_requirement_system.rb"
 # Active Record
 require "#{Rails.root}/lib/extensions/active_record.rb"
 
-# Require common stuff
+# SSL filters
 require "#{Rails.root}/lib/extensions/helpedia/ssl_requirement.rb"
+
+# Presenter
+require "#{Rails.root}/lib/extensions/presenter.rb"

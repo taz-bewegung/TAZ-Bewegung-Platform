@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Location < ActiveRecord::Base
   
   include Commentable
@@ -42,15 +43,15 @@ class Location < ActiveRecord::Base
   ##
   # Scopes and finders
   
-  named_scope :active, { :conditions => { :state => 'active' } }      
-  named_scope :latest, { :order => "locations.created_at DESC" }  
-  named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
-  named_scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || 'locations.created_at DESC' }
-  }
-  named_scope :limit, lambda { |*num|
-    { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
-  }  
+  #named_scope :active, { :conditions => { :state => 'active' } }      
+  #named_scope :latest, { :order => "locations.created_at DESC" }  
+  #named_scope :with_image, { :conditions => ["images.filename != ''"], :include => [:image] }
+  #named_scope :ordered, lambda { |*order|
+  #  { :order => order.flatten.first || 'locations.created_at DESC' }
+  #}
+  #named_scope :limit, lambda { |*num|
+  #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
+  #}  
   
   def self.find_latest_for_teaser_elements(offset)
     self.active.with_image.latest.find(:all, :limit => "#{offset},1")[0]
@@ -58,15 +59,15 @@ class Location < ActiveRecord::Base
   
 
 #Acts as ferret
-  acts_as_ferret(
-  :fields => {
-    :name => { :boost => 5  },
-    :description => { :boost => 3 }
-    },
-    :additional_fields => [:index_address],
-    :store_class_name => true,
-    :remote => true
-    )
+#  acts_as_ferret(
+#  :fields => {
+#    :name => { :boost => 5  },
+#    :description => { :boost => 3 }
+#    },
+#    :additional_fields => [:index_address],
+#    :store_class_name => true,
+#    :remote => true
+#    )
   
   def index_address
     self.address.to_short

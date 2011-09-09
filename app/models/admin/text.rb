@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::Text
   
   attr_accessor :data, :file

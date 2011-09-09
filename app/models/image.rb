@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Image < ActiveRecord::Base
   
   STANDARD_THUMBNAILS = {

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class StatuteDocument < Document
 
   belongs_to :documentable, :polymorphic => true

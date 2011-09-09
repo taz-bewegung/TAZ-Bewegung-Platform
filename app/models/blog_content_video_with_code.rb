@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BlogContentVideoWithCode < ActiveRecord::Base
   include ActionView::Helpers
   ALLOWED_SITES = %w(taz.de bewegung.taz.de player.vimeo.com youtube.com www.youtube.com maps.google.de maps.google.com flickr.com www.flickr.com www.vimeo.com) unless defined?(ALLOWED_SITES)

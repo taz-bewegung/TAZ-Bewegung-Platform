@@ -1,0 +1,12 @@
+development:
+  site_name: bewegung.taz.de
+  site_url: http://localhost:3000  
+  site_url_without_http: localhost:3000
+  ssl_only: false    
+  email:
+    admin_address: stop@hamertime.com
+    admin_name: bewegung
+  google_maps:
+    key: ABQIAAAAG5eOnG1tj-2lGYwdZGzraxTJQa0g3IQ9GZqIMmInSLzwtGDKaBR_-qqeJi19OtezPhwMyAaFQyqDjA
+  production_enviroments:
+    - production

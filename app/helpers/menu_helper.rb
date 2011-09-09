@@ -32,7 +32,7 @@ module MenuHelper
   
   def breadcrumb(items)
     html = items.join(" / ")
-    content_for(:breadcrumb) { html } 
+    content_for(:breadcrumb) { html.html_safe }
   end
   
   def edit_header(html)

@@ -23,16 +23,15 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
-  #include Authorization::StatefulRoles
-    
+
   # Virtual attributes
   attr_accessor :do_not_create_address
   attr_accessor :forgotten_password  
   attr_accessor :force_password_required
-  
+
   # For Migration
   attr_accessor :temp_image
-    
+
   # Associations
   has_one :address, :as => :addressable
   has_one :image, :through => :image_attachment, :dependent => :destroy
@@ -43,12 +42,11 @@ class User < ActiveRecord::Base
   has_many :images, :as => :owner, :order => "created_at DESC", :dependent => :destroy
   has_many :activity_memberships, :dependent => :destroy
 
-#  has_many :event_activity_memberships, :class_name => "ActivityMembership", :conditions => ["activity_type = ?", "Event" ]
   has_many :organisation_activity_memberships, :class_name => "ActivityMembership", :conditions => ["activity_type = ?", "Organisation" ]
   has_many :activity_activity_memberships, :class_name => "ActivityMembership", :conditions => ["activity_type = ?", "Activity" ]
   has_many :location_activity_memberships, :class_name => "ActivityMembership", :conditions => ["activity_type = ?", "Location" ]
   has_many :participating_activities, :through => :activity_memberships, :class_name => "Activity", :source => :activity
-  
+
   has_many :foreign_bookmarks, :as => :bookmarkable, :class_name => "Bookmark", :dependent => :destroy
   has_many :bookmarks, :dependent => :destroy, :dependent => :destroy
   has_many :event_bookmarks, :through => :bookmarks, :source_type => "Event", :source => :bookmarkable, :uniq => true
@@ -60,12 +58,12 @@ class User < ActiveRecord::Base
   # Destroy friendships in before_destroy_filter 
   has_many :friendships, :as => :user
   has_many :events, :as => :originator, :dependent => :destroy
-  
+
   #Feed Events
   has_many :feed_events, :as => :operator, :dependent => :destroy
   has_many :feed_event_streams, :as => :streamable, :dependent => :destroy
   has_many :aggregated_feed_events, :through => :feed_event_streams, :source => :feed_event, :uniq => true
-  
+
 
   has_many :system_messages, :class_name => 'Message', :conditions => ["messages.recipient_deleted_at is NULL AND system_message = ?", true], :as => :recipient, :dependent => :destroy
   has_many :received_messages, :class_name => 'Message', :conditions => ["messages.recipient_deleted_at is NULL AND system_message = ?", false], :as => :recipient, :dependent => :destroy
@@ -91,9 +89,9 @@ class User < ActiveRecord::Base
   validates_presence_of     :password, :if =>  Proc.new { |user| user.password_required? || user.force_password_required? }
   validates_confirmation_of :password, :if => Proc.new { |user| user.password_required? || user.force_password_required? }
   validates_confirmation_of :email, :only => :create
-  validates_overall_uniqueness_of :email, :if => :email_changed?
-  validates_uniqueness_of   :email
-  validates_uniqueness_of   :permalink, :case_sensitive => false
+  #validates_overall_uniqueness_of :email, :if => :email_changed?
+  #validates_uniqueness_of   :email
+  #validates_uniqueness_of   :permalink, :case_sensitive => false
   validates_presence_of     :permalink
   validates_format_of       :permalink, :with => /^([^\d\W]|[-]|[\w])*$/
   validates_presence_of     :email_confirmation, :on => :create

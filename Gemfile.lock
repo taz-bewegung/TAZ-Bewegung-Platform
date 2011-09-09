@@ -282,7 +282,7 @@ DEPENDENCIES
   factory_girl_rails (>= 1.1.rc1)
   faker
   geokit-rails3-1beta (~> 0.3.1.beta1)
-  gravtastic (~> 3.2.4)
+  gravtastic (~> 3.2.6)
   httparty
   icalendar (~> 1.1.6)
   jquery-rails
