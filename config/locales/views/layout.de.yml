@@ -1,0 +1,12 @@
+de:
+  layout:
+    
+    menu:
+      activities: "Aktionen"
+      organisations: "Organisationen"
+      events: "Termine"
+      locations: "Orte"
+      my_helpedia: "Mein Profil"
+    
+    content:
+      breadcrumb_label: "Du bist hier:"

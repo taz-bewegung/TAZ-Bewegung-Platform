@@ -1,0 +1,20 @@
+de:
+  activerecord: 
+    attributes:
+      request:
+        email: E-Mail-Adresse
+        email_tooltip: Gib hier die E-Mail-Adresse ein, an die wir uns für eine eventuelle Antwort wenden können.
+        message: Deine Nachricht
+        message_tooltip: Gib hier ein, warum Du mit uns in Kontakt treten willst.
+        name: Dein Name
+        name_tooltip: "Gib hier Deinen Namen ein."
+        
+  request:
+                
+    new:  
+      header: Kontakt zum bewegung.taz-Team
+      message: "Bei Fragen, Anregungen oder Kritik freuen wir uns, von Ihnen zu hören. Bitte prüfen Sie vorher, ob Ihr Anliegen schon in den Fragen oder im Feedback-Forum behandelt wird. Ansonsten können Sie sich dort oder über das unten stehende Kontaktformular jederzeit an uns wenden. Weitere Kontaktmöglichkeiten finden Sie auf unserem Profil."       
+      
+    show:  
+      header: Vielen Dank für Deine Anfrage!
+      message: "Wir werden Deine Anfrage schnellstmöglich bearbeiten und Dir eine Antwort senden, falls Du Deine E-Mail-Adresse mit angegeben hast."      

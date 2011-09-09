@@ -1,0 +1,14 @@
+de:
+  activerecord: 
+    attributes:
+      news:
+        title: Titel
+        title_tooltip: Das ist der Titel
+        subtitle: Untertitel
+        message: Nachricht
+        teaser: Teaser
+        image: Bild
+        document: Dokument
+        url: Link zur externer URL
+        publisher: Veröffentlich in
+        published_on: Veröffentlicht am

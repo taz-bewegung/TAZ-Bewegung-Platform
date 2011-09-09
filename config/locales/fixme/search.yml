@@ -1,0 +1,8 @@
+--- 
+de: !map:HashWithIndifferentAccess 
+  activerecord: !map:HashWithIndifferentAccess 
+    models:
+      search/search: Suche
+    attributes: !map:HashWithIndifferentAccess 
+      search/search: !map:HashWithIndifferentAccess 
+        search_word: Suche

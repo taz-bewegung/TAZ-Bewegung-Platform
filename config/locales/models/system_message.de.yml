@@ -1,0 +1,63 @@
+de:
+  system_message:
+    activity:
+      suspend:
+        subject: "Deine Aktion {{title}} wurde gespeert"
+        message: "Deine Aktion wurde gespeert und ist nun nur noch für Dich sichtbar.\r\n
+        \r\nSolltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      destroy:
+        subject: "Deine Aktion {{title}} wurde gelöscht"
+        message: "Deine Aktion wurde gelöscht.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      activate:
+        subject: "Deine Aktion {{title}} ist wieder aktiv."
+        message: "Deine Aktion ist wieder aktiv.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+    location:
+      suspend:
+        subject: "Dein Ort {{title}} wurde gespeert"
+        message: "Dein Ort wurde gespeert und ist nun nur noch für Dich sichtbar.\r\n
+        \r\nSolltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      destroy:
+        subject: "Dein Ort {{title}} wurde gelöscht"
+        message: "Dein Ort wurde gelöscht.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      activate:
+        subject: "Dein Ort {{title}} ist wieder aktiv."
+        message: "Dein Ort ist wieder aktiv.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+    event:
+      suspend:
+        subject: "Dein Termin {{title}} wurde gespeert"
+        message: "Dein Termin wurde gespeert und ist nun nur noch für Dich sichtbar.\r\n
+        \r\nSolltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      destroy:
+        subject: "Dein Termin {{title}} wurde gelöscht"
+        message: "Dein Termin wurde gelöscht.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      activate:
+        subject: "Dein Termin {{title}} ist wieder aktiv."
+        message: "Dein Termin ist wieder aktiv.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."        
+    user:
+      suspend:
+        subject: "Dein Profil {{title}} wurde gespeert"
+        message: "Dein Profil wurde gespeert und Du kannst Dich nicht mehr anmelden.\r\n
+        \r\nSolltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+      destroy:
+        subject: "Dein Profil bei bewegung.taz.de {{title}} wurde gelöscht"
+        message: "Dein Profil wurde gelöscht.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."
+    image:
+      destroy:
+        subject: "Ein Bild bei bewegung.taz.de wurde gelöscht"
+        message: "Ein Bild wurde gelöscht.\r\n
+        \r\n
+        Solltest Du hierzu weitere Fragen haben, wende Dich an bewegung@taz.de."        

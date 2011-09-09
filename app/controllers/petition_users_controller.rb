@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class PetitionUsersController < ApplicationController
   before_filter :find_activity
   before_filter :create_brain_buster, :only => [:activate]

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BookmarksController < ApplicationController
 
   before_filter :login_required, :only => [:create, :destroy]

@@ -1,0 +1,89 @@
+de: !map:HashWithIndifferentAccess 
+  activity: !map:HashWithIndifferentAccess 
+    
+    calculations:
+      time_distance: "{{from}} bis {{until}}"
+      time_left: "endet in {{distance}}"
+      time_over: "beendet seit {{distance}}"
+      time_waiting: "eingestellt seit {{distance}}"
+      time_starting: "startet in {{distance}}"
+      
+    item_views:
+      table:
+        from: Aktion von
+        to: Aktion für
+        state: Aktionsstatus
+        donation_sum: Spendenstand
+        donation_target: Spendenziel
+          
+      
+    public_profile: !map:HashWithIndifferentAccess 
+
+      head_content: !map:HashWithIndifferentAccess 
+        from: "Aktion von:"
+        to: "Aktion f\xC3\xBCr:" 
+        donation_sum_label: Spendenstand
+        donation_target_label: Spendenziel
+      
+      right_content:
+        send_message: ... Nachricht an {{user_name}}
+        become_member: ... bei der Aktion mitmachen
+        recommend_activity: ... Aktion weiterempfehlen
+           
+      sub_content: !map:HashWithIndifferentAccess 
+        tabs:
+          overview: !map:HashWithIndifferentAccess 
+            title: "\xC3\x9Cberblick"
+            content:
+              blog_latest_header: Neu im Blog
+              donations_latest_header: Letzte Spender
+              donations_show_all: Alle Spender anzeigen
+              about_header: Über die Aktion
+              members_latest_header: Aktiv für die Aktion
+              
+          about: !map:HashWithIndifferentAccess 
+            title: "\xC3\x9Cber die Aktion"
+            content:
+              header: Über meine Aktion
+              address_header: Ort der Aktion
+              event_header: Zugehörige Veranstaltung
+            
+
+          blog: !map:HashWithIndifferentAccess 
+            title: Aktions-Blog
+            
+          donations:
+            title: Spender
+          
+          members:
+            title: Sympathisanten
+
+            
+    register: !map:HashWithIndifferentAccess 
+      step1: !map:HashWithIndifferentAccess 
+        header: Eine neue Aktion starten
+
+      subheaders: !map:HashWithIndifferentAccess 
+        sponsors: Sponsoren der Aktion
+        address: Ort der Aktion 
+
+    created: !map:HashWithIndifferentAccess 
+      user_email: !map:HashWithIndifferentAccess 
+        message: "Hallo {{user_name}},\r\n\
+          \r\n\
+          Du hast soeben erfolgreich Deine eigene individuelle Charity-Aktion {{activity_name}}
+          auf Helpedia.de erstellt. Wir freuen uns über Dein Engagement.\r\n\
+          \r\n\
+          Diese ist zunächst nur für Dich sichtbar und wird in 24 Stunden auf helpedia.de erscheinen.\r\n\ 
+          \r\n\
+          Deine Aktion wird unter folgender Adresse erreichbar sein:\r\n\          
+          {{url}}\r\n\          
+          \r\n\
+          Nach der Freischaltung kannst Du dann Deine Freunde, Kollegen und Familie auf Deine Aktion einladen.\r\n\ 
+          \r\n\
+          Bei Fragen kannst Du uns unter info@helpedia.de erreichen.\r\n\
+          \r\n\
+          Viele Spaß und Erfolg wünscht Dir Dein \r\n\
+          Helpedia-Team          
+          "
+        subject: Deine individuelle Charity-Aktion auf Helpedia.de

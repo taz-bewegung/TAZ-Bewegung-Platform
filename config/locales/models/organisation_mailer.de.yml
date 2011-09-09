@@ -1,0 +1,39 @@
+de:
+  organisation_mailer:
+    signup_notification:
+      subject: Anmeldung bestätigen
+      message: "Liebe(r) {{contact_name}} von {{name}} \r\n
+        \r\n
+        das Profil von {{name}} wurde erfolgreich auf bewegung.taz.de erstellt. \r\n
+        Wir werden nach Prüfung der Daten das Organisationsprofil umgehend freischalten und Dich darüber informieren. \r\n
+        \r\n
+        Sobald das Profil freigeschaltet ist, kann {{name}} Termine ankündigen, Aktionen starten, alternative Orte empfehlen und vieles mehr.\r\n
+        \r\n
+        Bei Fragen wende Dich bitte an info@bewegung.taz.de\r\n
+        \r\n
+        Viele Grüße\r\n
+        das Team von bewegung.taz.de"
+
+    activation:
+      subject: Anmeldung abgeschlossen
+      message: "Hallo {{contact_name}}, \r\n
+      \r\n
+      und herzlich Willkommen bei bewegung.taz.de  \r\n
+      Ab sofort ist {{name}} unter \r\n
+      \r\n
+      {{organisation_url}} \r\n
+      \r\n
+      freigeschaltet. \r\n
+      \r\n 
+      Anmelden kannst Du Dich mit {{contact_email}} und dem gewählten Passwort.\r\n
+      Passwort vergessen? {{password_url}}\r\n
+      \r\n
+      Nun könnt Ihr in aller Ruhe Eure Organisation nach eigenen Vorstellungen präsentieren, Termine ankündigen, Aktionen starten, alternative Orte empfehlen und vieles mehr.\r\n
+      \r\n
+      Änderungen an Eurem Organisationsprofil könnt Ihr jederzeit in dem persönlichen Benutzerkonto vornehmen. \r\n
+      \r\n
+      Bei Rückfragen stehen wir selbstverständlich per Email oder Telefon zur Verfügung.\r\n
+      \r\n
+      Beste Grüße\r\n
+      \r\n
+      das Team von bewegung.taz.de"

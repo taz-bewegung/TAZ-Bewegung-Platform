@@ -1,0 +1,7 @@
+de:
+  activerecord:
+    attributes:
+      beta_signup:
+        name: Name
+        email: E-Mail
+        comment: Kommentar

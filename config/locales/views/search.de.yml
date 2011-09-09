@@ -1,0 +1,25 @@
+de:
+  search:
+    main_sentence:
+      one: "Es wurde {{object}} gefunden."
+      other: "Es wurden {{object}} gefunden."
+    other_sentence: "Außerdem wurden {{objects}} gefunden."
+    activities:
+      one: '1 Aktion'
+      other: '{{count}} Aktionen'
+    organisations:
+      one: '1 Organisation'
+      other: '{{count}} Organisationen'
+    locations:
+      one: '1 Ort'
+      other: '{{count}} Orte'
+    events:
+      one: '1 Termin'
+      other: '{{count}} Termine'
+      
+    
+    header:
+      activities: Aktionen
+      locations: Orte
+      organisations: Organisationen
+      events: Termine                  

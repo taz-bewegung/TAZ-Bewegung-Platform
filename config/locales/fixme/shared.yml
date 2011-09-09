@@ -1,0 +1,32 @@
+de:
+  shared:
+    
+    links:
+      more: mehr >>  
+      
+    boolean:
+      yes: Ja
+      no: Nein
+    
+    form:
+      error-title-message: Bitte korrigieren Sie die Fehler
+      next: weiter
+      back: zurück
+      register: Registrieren
+      save: Anlegen
+      update: Speichern
+      cancel: zurück
+      
+      select:
+        blank: Bitte auswählen
+        choose_category: Bitte Kategorie auswählen
+
+    public_profile:
+      right_content:
+        give_feedback: ... bedenklichen Inhalt melden
+        add_bookmark: ... zu meinen Favoriten hinzufügen
+        remove_bookmark: ... von meinen Favoriten löschen
+        add_as_friend: ... zu meinen Freunden hinzufügen
+        remove_as_friend: ... von meinen Freunden entfernen
+        cancel_friend_request: ... Freundesanfrage abbrechen
+        send_a_message: ... eine Nachricht schicken

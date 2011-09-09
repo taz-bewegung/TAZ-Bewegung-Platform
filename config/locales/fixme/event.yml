@@ -1,0 +1,51 @@
+de:
+  event:   
+
+    calculations:
+      time_distance: "{{from}} bis {{until}}"
+      time_left: "endet in {{distance}}"
+      time_over: "beendet seit {{distance}}"
+      time_waiting: "eingestellt seit {{distance}}"            
+      time_starting: "startet in {{distance}}"    
+    
+    item_views:
+      table:
+        from: Erstellt von
+        to: Event für
+        starts_at: Beginn
+        ends_at: Ende
+        location: Ort
+    
+    public_profile:    
+    
+      head_content:
+        organisation: Veranstalter
+        originator: Eingestellt von
+        starts_at: Beginn
+        ends_at: Ende
+        location: Ort des Events
+        social_categories: Kategorien    
+      
+      right_content:
+        recommend_event: "... Event empfehlen"
+        
+      sub_content: !map:HashWithIndifferentAccess 
+        tabs:
+          overview: !map:HashWithIndifferentAccess 
+            title: Über das Event
+            
+          activities: !map:HashWithIndifferentAccess 
+            title: Aktionen zum Event
+            content:
+              list_title: Aktionen die zum Event gehören
+            
+          jobs: !map:HashWithIndifferentAccess 
+            title: Jobs zum Event            
+
+          engagements: !map:HashWithIndifferentAccess 
+            title: Engagements zum Event            
+    
+  
+ 
+      
+      

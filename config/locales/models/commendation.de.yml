@@ -1,0 +1,27 @@
+de:
+  activerecord: 
+    attributes:
+      commendation:
+        message: Deine Nachricht
+        message_tooltip: Hier kannst Du noch eine kurze persönliche Nachricht mitschicken.
+        receiver_email: Empfänger E-Mail 
+        receiver_email_tooltip: Gib hier die E-Mail-Adressen der Empfänger an. Mehrere Empfänger durch Komma trennen.
+        receiver_email_error: 
+        sender_name: Dein Name 
+        sender_name_tooltip: ""
+        sender_email: Deine E-Mail-Adresse
+        sender_email_tooltip: ""
+        
+        
+  commendation:
+    type:
+      activity: Die Aktion
+      location: Der Ort
+      organisation: Die Organisation
+      event: Der Termin
+      
+    subject_type:
+      activity: eine Aktion
+      location: einen Ort
+      organisation: eine Organisation
+      event: einen Termin

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class DocumentsController < ApplicationController
 
   before_filter :find_documents, :only => :index

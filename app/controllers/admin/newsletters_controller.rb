@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::NewslettersController < ApplicationController
   
   layout 'admin'

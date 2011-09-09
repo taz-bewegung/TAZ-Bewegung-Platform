@@ -1,0 +1,61 @@
+de:
+  user:
+    
+    states:
+      pending: "registriert am {{date}}"
+      active: "aktiviert am {{date}}"
+      suspended: "gesperrt am {{date}}"      
+    
+    info_box:
+      public_profile:
+        current_page: Meine öffentliche Seite
+        profile_not_visible: Profil ist nicht für andere Nutzer sichtbar
+        edit_link: "Profil bearbeiten >>"
+      private_profile:
+        current_page: Meine Seite
+        edit_link_not_visible: Meine Seite ist nicht öffentlich sichtbar
+        edit_link: "Meine öffentliche Seite anzeigen >>"
+
+    public_profile: !map:HashWithIndifferentAccess 
+      head_content: !map:HashWithIndifferentAccess 
+        location: Ich komme aus
+        external_profiles: Ich im Netz          
+       
+        company: Ich arbeite für
+
+      right_content:
+        send_message: "... Nachricht an {{user_name}}"
+        become_member: "... bei der Aktion mitmachen"
+        recommend_activity: "... Aktion weiterempfehlen"
+
+      sub_content: !map:HashWithIndifferentAccess 
+        tabs:
+          overview: !map:HashWithIndifferentAccess 
+            title: "\xC3\x9Cberblick"
+            content:
+              blog_latest_header: Neu im Blog
+              donations_latest_header: Letzte Spender
+              donations_show_all: Alle Spender anzeigen
+              about_header: "Über die Aktion"
+              members_latest_header: Aktiv für die Aktion
+              
+          activities: !map:HashWithIndifferentAccess 
+            title: Aktionen
+            content:
+              list_title: Meine Aktionen
+              
+          events: !map:HashWithIndifferentAccess 
+            title: Veranstaltungen
+            content:
+              list_title: Meine Veranstaltungen
+          external_profile_memberships: 
+            title: Gute Seiten im Netz
+          
+          supports:
+            title: Unterstützungen
+    activated:
+      message: "Erfolgreich aktiviert! Du kannst Dich nun mit Deiner E-Mail-Adresse und Deinem Passwort bei bewegung.taz.de einloggen."
+      error: "Es ist ein Fehler aufgetreten. Entweder ist der Aktivierungslink ungültig oder dein Account ist schon aktiviert."
+    terms_of_use_text: "Ich habe die {{agb}} und die {{datenschutzbestimmungen}} gelesen und akzeptiert."
+    delete_question: "Willst du wirklich dein Profil löschen?"
+        

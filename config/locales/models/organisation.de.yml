@@ -1,0 +1,88 @@
+de:
+  organisation:  
+    dativ: der Organisation
+    akkusativ: die Organisation
+    subject: Die Organisation
+    plural: Organisationen
+      
+  activerecord: 
+    attributes:
+      organisation:
+        description: Beschreibung
+        corporate_form_id_tooltip: "Bestimme hier die Rechtsform eurer Organisation oder die eurer Tr\xC3\xA4gerorganisation."
+        terms_of_use_tooltip: Du musst die AGB akzeptieren, damit Du dich bei Helpedia anmelden kannst.
+        phone_number: Telefonnummer (Zentrale)
+        contact_phone_tooltip: "Bitte gib eine Telefonnummer an, unter der wir den/die
+        AnsprechpartnerIn erreichen können. \r\n\
+        \r\n\
+        *Diese Angabe wird nicht veröffentlicht*"
+        phone_country_code_tooltip: ""
+        email: Offizielle E-Mail
+        phone: Telefon
+        terms_of_use: AGB
+        password_tooltip: "Bestimme hier Dein pers\xC3\xB6nliches Passwort.\r\n\
+          \r\n\
+          Mit Deinem Passwort kannst Du dich bei Deinem n\xC3\xA4chsten Beusch auf bewegung.taz.de anmelden.\r\n\
+          \r\n\
+          *Dein Passwort muss aus mindestens 6 Zeichen bestehen.*"
+        permalink_tooltip: "Hier kannst Du eine eigene Internet-Adresse f\xC3\xBCr eure Organisation auf bewegung.taz.de bestimmen.\r\n\
+          \r\n\
+          Beispiel:\r\n\
+          \r\n\
+          Name der Organisation: Hoffnungs-Organisation-Musterstadt e.V.\r\n\
+          \r\n\
+          *Kurzname: hoffnung*\r\n\
+          \r\n\
+          URL-Pfad: bewegung.taz.de/hoffnung"
+        street_tooltip: "Diese Angabe wird ver\xC3\xB6ffentlicht."
+        website: Website
+        city: Stadt
+        email_tooltip: "Hier kannst Du die offizielle E-Mail-Adresse eurer Organisation angeben.\r\n\
+          \r\n\
+          Beipsiel: info@musterverein.de\r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht."
+        corporate_form_id: Organisationsform
+        name_tooltip: "Bitte gebe hier den *vollst\xC3\xA4ndigen Namen* Deiner Organisation an."
+        name: Organiationsame
+        image: Bild
+        image_id: Bild
+        password_confirmation_tooltip: Bitte wiederhole Deine Angabe, um Tippfehler zu vermeiden.
+        zip_code: Postleitzahl
+        city_tooltip: "Diese Angabe wird ver\xC3\xB6ffentlicht."
+        phone_number_tooltip: ""
+        street: "Stra\xC3\x9Fe"
+        contact_email_tooltip: "Bitte gebe hier Deine pers\xC3\xB6nliche eMail-Adresse an.\r\n\
+          \r\n\
+          Wichtig: Deine eMail-Adresse ist gleichzeitig dein *Benutzername f\xC3\xBCr* mit dem Du Dich bei deinem n\xC3\xA4chsten Besuch anmelden kannst.\r\n\
+          \r\n\
+          *Diese Angabe wird nicht ver\xC3\xB6ffentlicht*"
+        
+        contact_email_confirmation: "E-Mail-Adresse wiederholen"
+        contact_email_confirmation_tooltip: "Bitte wiederhole deine E-Mail-Adresse, um Tippfehler zu vermeiden."
+        description_tooltip: "*Verrate* hier etwas \xC3\xBCber eure Arbeit und das, was eure Organisation ausmacht. \r\n\
+          \r\n\
+          Dazu stehen Dir 3000 Zeichen zur Verf\xC3\xBCgung."
+        website_tooltip: ""
+        receive_newsletter_tooltip: "Der kostenlose *Helpedia-Newsletter* informiert Dich \xC3\xBCber Entwicklungen bei Helpedia.de und enth\xC3\xA4lt Wissenswertes aus dem gemeinn\xC3\xBCtzigen Sektor."
+        zip_code_tooltip: "Diese Angabe wird ver\xC3\xB6ffentlicht."
+        fax_number_tooltip: ""
+        password_confirmation: Passwort wiederholen
+        phone_country_code: Landesvorwahl (Telefon)
+        password: Passwort
+        permalink: Kurzname
+        phone_area_code: Vorwahl (Telefon)
+        receive_newsletter: Newsletter empfangen
+        fax_number: Faxnummer
+        contact_name: Name (Ansprechpartner)
+        contact_name_tooltip: "Organisationen werden erst nach einer Prüfung durch uns freigeschaltet.\r\n\
+        Bitte benenne eine Ansprechperson für Deine Organisation. \r\n\r\n *Diese Angabe wird nicht veröffentlicht*"
+        contact_phone: Telefon
+        contact_email: E-Mail (Ansprechpartner)
+        agb_tooltip: ""  
+        social_categories: Themenkategorien
+        subscribed_newsletter: Newsletter empfangen
+        subscribed_newsletter_tooltip: ""        
+        phone_tooltip: "Hier kannst Du die *offizielle Telefonnummer* von eurer Organisation angeben.\r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht."

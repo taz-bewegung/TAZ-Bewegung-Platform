@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FeedEventsController < ApplicationController
   
   before_filter :setup

@@ -1,0 +1,14 @@
+de:
+  activerecord:
+      attributes:
+          message:
+              subject: Betreff
+              recipient_id: Empfänger
+              body: Nachricht
+              do_not_send: Keine Nachricht
+              system_message: Systemnachricht
+              recipient_ids: Empfänger
+              recipient_id_tooltip: Gib hier den Namen deiner Bezugsperson ein
+              subject_tooltip: Gib hier den Betreff für die Nachricht ein.
+              body_tooltip: Hier hast Du Platz für Deine Nachricht.
+      

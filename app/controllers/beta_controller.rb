@@ -1,4 +1,0 @@
-class BetaController < ApplicationController
-
-  
-end

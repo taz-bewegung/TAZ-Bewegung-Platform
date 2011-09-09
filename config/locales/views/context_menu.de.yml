@@ -1,0 +1,36 @@
+de:
+  context_menu:
+    public:
+      shared:
+        create_friendship:
+          type_1: ... mit Aktivist vernetzen
+          type_2: ... mit Aktivistin vernetzen
+          type_0: ... mit AktivistIn vernetzen
+        create_message:
+          type_1: ... Nachricht an Aktivist
+          type_2: ... Nachricht an Aktivistin
+          type_0: ... Nachricht an AktivistIn
+        bookmark:
+          create: ... zu meinen Favoriten
+          destroy: ... Favorit entfernen
+        feedback:
+          create: ... bedenklichen Inhalt melden
+        ical:
+          download: ... im iCal-Format herunterladen
+          
+
+      activity:
+        recommend: ... Aktion weiterempfehlen
+      event:
+        recommend: ... Termin weiterempfehlen
+      location:
+        recommend: ... Ort weiterempfehlen
+      organisation:
+        recommend: ... Organisation weiterempfehlen
+    profile:
+      activity:
+      event:
+      location:
+      organisation:
+      activity_membership:
+    

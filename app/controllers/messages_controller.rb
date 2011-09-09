@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class MessagesController < ApplicationController
 
   before_filter :login_required, :only => [:new, :create]

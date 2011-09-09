@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class RequestsController < ApplicationController
   
   ssl_required :new, :create, :index

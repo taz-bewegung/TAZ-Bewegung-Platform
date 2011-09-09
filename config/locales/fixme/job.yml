@@ -1,0 +1,112 @@
+de:
+  activerecord: 
+    attributes:
+      job:
+        city: Stadt
+        country_code: Land
+        offer_tooltip: Beschreibe in kurzen Worten, was ein Kandidat von eurer Organisation erwarten kann.
+        organisation_id: "F\xC3\xBCr Organisation"
+        permalink: Kurzname
+        street_tooltip: ""
+        duties: Aufgaben
+        duties_tooltip: Beschreibe in kurzen Worten, welche Aufgaben mit dem Angbebot verbunden ist.
+        requirements_tooltip: Beschreibe in kurzen Worten, welche Vorraussetzungen ein Kandidat mitbringen sollte.
+        title: Titel der Mitarbeit
+        contact_name_tooltip: "Gebe hier einen *Ansprechpartner* an, der \xC3\xBCber das Mitarbeitsangebot Auskunft geben kann.\r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht."
+        expires_on: Anzeigen bis
+        salary: "Verg\xC3\xBCtung"
+        contact_comment: Anmerkungen
+        contact_phone: Telefon
+        permalink_tooltip: |-
+          Erstelle hier einen *Kurznamen* mit dem eine URL erstellt werden kann.
+          
+          Beispiel:
+          
+          Kurzname: *Hausaufgabenhilfe*
+          
+          URL: www.helpedia.de/jobs/hausaufgabenhilfe
+        remark: Anmerkungen
+        zip_code: PLZ
+        zip_code_tooltip: ""
+        contact_email_tooltip: "Hier kannst Du eine *E-Mail-Adresse des Ansprechpartners* angeben.\r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht."
+        occupation_type_id: "Besch\xC3\xA4ftigungsverh\xC3\xA4ltnis"
+        duration_tooltip: ""
+        offer: Wir bieten
+        starts_on: Beginn
+        starts_on_tooltip: ""
+        title_tooltip: "Unter welchem Titel soll Ihr Angebot auf Helpedia ver\xC3\xB6ffentlicht werden?"
+        contact_email: E-Mail
+        expires_on_tooltip: ""
+        salary_tooltip: "Geben Sie einen monatlichen Betrag in \xE2\x82\xAC an."
+        street: "Stra\xC3\x9Fe"
+        city_tooltip: ""
+        contact_phone_tooltip: "Bitte geben hier die Telefonnummer ses Ansprechpartners an. \r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht."
+        country_code_tooltip: ""
+        remark_tooltip: "Hier kannst Du noch weitere Informationen \xC3\xBCber das Angebot eingeben."
+        duration: Dauer
+        occupation_type_id_tooltip: ""
+        requirements: Anforderungen
+        contact_name: Name
+        document: Dokument
+        
+  job:
+    item_views:
+      table:
+        to: Angebot von
+        occupation_type: Art des Jobs
+        location: Ort
+        start: Beginn
+
+    public_profile: !map:HashWithIndifferentAccess
+    
+      head_content:
+        organisation: Arbeitgeber
+        location: Einsatzort
+        starts_on: Beginn
+        duration: Dauer
+        occupation_type: Art des Jobs
+        salary: Vergütung
+        social_categories: Tätigkeitsbereiche
+
+      right_content:
+        recommend_job: ... Job weiterempfehlen        
+        apply: ... für den Job bewerben
+        
+      sub_content: !map:HashWithIndifferentAccess 
+        tabs:
+          overview: !map:HashWithIndifferentAccess 
+            title: Über den Jobs
+            content:
+              requirements_header: Anforderungen
+              duties_header: Aufgaben
+              offer_header: Wir bieten
+
+          contact: !map:HashWithIndifferentAccess 
+            title: Ansprechpartner
+            content:
+              contact_header: Fragen oder Bewerbungen an
+              additional_info_header: Weitere Anmerkungen
+
+          downloads: !map:HashWithIndifferentAccess 
+            title: Downloads
+    
+    subheaders:
+       contact_person: Ansprechpartner
+       address: Ort des Jobs
+       show_on: Dauer der Anzeige
+        
+    tooltips:
+      title: Bitte geben Sie hier den vollen Namen des Jobs ein.
+      contact_name: Bitte geben Sie hier den Namen des Ansprechpartners an.
+      contact_email: Bitte geben Sie hier die E-Mail-Adresse des Ansprechpartners an.
+      contact_phone: Bitte geben Sie hier die Telefonnr. des Ansprechpartners an.
+      job_occupation_type_id: Hmm...
+    register:
+      step1:
+        header: Einen neuen Job eingeben

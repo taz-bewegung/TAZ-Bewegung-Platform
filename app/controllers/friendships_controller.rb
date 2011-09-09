@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FriendshipsController < ApplicationController
   
   before_filter :login_required, :only => [:create, :destroy]

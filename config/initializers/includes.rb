@@ -8,4 +8,4 @@ require "#{Rails.root}/lib/extensions/role_requirement_system.rb"
 require "#{Rails.root}/lib/extensions/active_record.rb"
 
 # Require common stuff
-require "#{Rails.root}/lib/extensions/helpedia.rb"
+require "#{Rails.root}/lib/extensions/helpedia/ssl_requirement.rb"

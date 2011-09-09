@@ -1,0 +1,15 @@
+de:
+  activerecord: 
+    attributes:
+      address:
+        street: Straße
+        street_tooltip: Bitte geben sie die Straße des Hauptsitzes an.
+        zip_code: PLZ
+        zip_code_tooltip:  Bitte geben sie die PLZ des Hauptsitzes an.
+        city: Stadt
+        city_tooltip: Bitte geben sie die Stadt des Hauptsitzes an.
+        country_code: Land
+        nationwide: Bundesweit
+        nationwide_tooltip: ""
+        name: Verantstaltugnsort
+        name_tooltip: ""

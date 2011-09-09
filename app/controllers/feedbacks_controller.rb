@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class FeedbacksController < ApplicationController
 
   skip_after_filter :store_location

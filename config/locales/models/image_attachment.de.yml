@@ -1,0 +1,12 @@
+de:
+  activerecord:
+    attributes: 
+      image_attachment:
+        repeat: "wiederholen" 
+        repeat_tooltip: "Soll das Bild nur einmal in seiner vollen Größe angezeigt werden oder sich in verschiedene Richtungen wiederholen?"
+        horizontical_align: "ausrichten" 
+        horizontical_align_tooltip: "In welcher Richtung soll das gewählte Bild positioniert werden?"
+        width: Breite
+        width_tooltip: Gib hier die Breite des Bildes in px an. Das Bild wird dann in dieser Breite angezeigt.
+        height: Höhe
+        height_tooltip: Gib hier die Höhe des Bildes in px an. Das Bild wird dann in dieser Höhe angezeigt.

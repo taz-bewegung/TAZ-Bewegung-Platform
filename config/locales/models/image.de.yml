@@ -1,0 +1,13 @@
+de:
+  image:
+    crop:
+      header: Bild anpassen
+      text: Die Bilder bei bewegung.taz.de sollten (außer bei Blogeinträgen) ein Seitenverhältnis von 1.3 haben, damit sie optimal dargestellt werden.
+        Verschiebe den Bildausschnitt, um das Bild anzupassen.
+    new:
+      header: Neues Bild hochladen
+      text:  Hier kannst Du ein Bild hochladen.<br />
+        Hast Du bereits ein Bild hochgeladen, welches Du erneut verwenden willst, dann wähle es aus Deinem Bild-Archiv aus.
+    archive:
+      header: Mein Bild-Archiv
+      text:  Zum Auswählen einfach auf das Bild klicken. Mit einem Klick auf das Papierkorb-Icon kannst Du das Bild löschen. 

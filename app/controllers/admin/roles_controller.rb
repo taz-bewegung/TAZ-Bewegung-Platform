@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::RolesController < ApplicationController
   
   layout 'admin'

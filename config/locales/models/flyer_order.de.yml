@@ -1,0 +1,18 @@
+de:
+  activerecord:
+    attributes:
+      flyer_order:
+        name: "Vor- und Nachname"
+        name_tooltip: "Bitte gib hier deinen Namen ein."
+        street: Straße
+        street_tooltip: ""
+        zip: PLZ
+        zip_tooltip: ""
+        city: Stadt
+        city_tooltip: ""
+        email: E-Mail
+        email_tooltip: Angabe nur für die Bestätigung eurer Bestellung und eventuelle Rückfragen.
+        flyer_amount: Anzahl Flyer
+        flyer_amount_tooltip: ""
+        poster_amount: Anzahl Poster
+        poster_amount_tooltip: ""        

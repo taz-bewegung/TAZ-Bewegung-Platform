@@ -1,3 +1,4 @@
+# encoding: UTF-8
 =begin rapidoc
   name:: Themen-Kategorien
   json:: <%= CodeRay.encode(SocialCategory.first.api_hash.to_json, :json, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %>

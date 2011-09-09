@@ -1,3 +1,4 @@
+# encoding: UTF-8
 =begin rapidoc
   name:: Organisationen
   json:: <%= CodeRay.encode(Organisation.first.api_hash.to_json, :json, :html, :line_numbers => :table, :hint => :info, :css => :style, :wrap => :div) %>

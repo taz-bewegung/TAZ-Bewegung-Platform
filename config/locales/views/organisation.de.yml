@@ -1,0 +1,102 @@
+de:  
+  organisation:
+    
+    grant:
+      subject: "Vereinfachter Zuwendungsnachweis\r\n\
+        nach § 50 Abs. 2 Nr. 2 b EStDV"
+      intro: "Wenn Sie die Organisation {{organisation_name}} mit bis zu 200 Euro im Jahr 
+        unterstützt haben, benötigen Sie keine gesonderte Zuwendungsbestätigung von uns. Es reicht aus, wenn Sie dieses Dokument 
+        zusammen mit einem Bareinzahlungsbeleg oder einer Buchungsbestätigung eines Kreditinstituts, etwa in Form eines 
+        Kontoauszuges, mit Ihrer Steuererklärung beim Finanzamt vorlegen. Für darüber hinausgehende Zuwendungen ist als 
+        Nachweis eine vom Verein ausgestellte Zuwendungsbestätigung nach amtlich vorgeschriebenem Vordruck erforderlich, die 
+        wir Ihnen bei Bedarf gerne ausstellen."      
+      text: "Die Organisation {{organisation_name}} ist durch Bescheinigung 
+        des Finanzamtes für Körperschaften I Berlin, Steuernummer 27 / 681 / 51985 mit Bescheid vom 11. Oktober 2007 
+        als gemeinnützig anerkannt. Es wird bestätigt, dass Zuwendungen nur zur Förderung der Bildung im Sinne der 
+        Anlage 1 zu § 48 Abs. 2 der Einkommensteuer-Durchführungsverordnung, Abschnitt A Nr. 4 (ggf. auch im Ausland) 
+        verwendet werden. \r\n\
+        \r\n\        
+        Der Verein ist berechtigt, sowohl für Mitgliedsbeiträge als auch für Spenden, die ihm zur Verwendung für die 
+        Erfüllung satzungsgemäßer Zwecke zugewendet werden, Zuwendungsbestätigungen auszustellen."         
+      thank: "Vielen Dank für Ihre Spende"
+      thank_text: "Im Namen der {{organisation_name}} möchten wir Ihnen ganz herzlich für Ihre Spende danken. Sie 
+        haben damit einen wichtigen Beitrag zur Förderung Freien Wissens geleistet. Wenn Sie sich dafür interessieren, 
+        wie wir die uns anvertrauten Spendengelder einsetzen, können Sie sich jederzeit auf unserer Website über die 
+        Aktivitäten von Wikimedia Deutschland e.V. informieren."
+              
+    
+    item_views:
+      table:
+        location: Adresse
+
+    
+    item_views:
+      table:
+        location: Adresse
+    
+    
+    public_profile:
+      
+      head_content:
+        address: "Adresse:"
+        contact_person: "Ansprechpartner:"
+        website: "Webseite:"
+        social_categories: "Tätigkeitsbereiche:"
+        
+      sub_content:
+        tabs:
+          overview:
+            title: Überblick
+            content:
+              about_header: Über die Organisation
+              latest_blog_header: Neu im Blog
+              latest_activity_header: Neueste Aktion
+              latest_job_header: Neuester Job
+              latest_engagement_header: Neuestes Engagement
+              latest_event_header: Neuestes Event
+          
+          about:
+            title: Über uns
+            content:
+              header: Über unsere Organisation
+              stuff_header: Sonstiges
+          
+          blog:
+            title: Neuigkeiten
+          
+          activities:
+            title: Aktionen
+          
+          jobs:
+            title: Jobs & Ehrenämter
+          
+          engagements:
+            title: Engagements
+          
+          events:
+            title: Veranstaltungen
+            
+      right_content:
+        new_activity: ... neue Aktion für uns starten
+        new_engagement: ... neues Engagement anlegen
+        new_event: ... neues Event für uns eintragen
+      
+    
+    subheaders:
+      contact_person: Ansprechpartner gegenüber Helpedia
+      organisation_certificates: Siegel und Zertifikate
+    
+    register:
+      header: Organisation registrieren
+      step1:
+        header: Registrieren als Organisation
+      step2:
+        header: Organisation - Kontaktdaten
+      step3:
+        header: Organisation - Ansprechpartner
+      step4:
+        header: Organisation - Bankdaten
+      step5:
+        header: Organisation - Kategorien
+      step6:
+        header: Organisation - Letzte Daten

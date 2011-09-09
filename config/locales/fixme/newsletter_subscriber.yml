@@ -1,0 +1,24 @@
+de:
+  activerecord: 
+    model:
+      newsletter_subscriber: Newsletter      
+    attributes:
+      newsletter_subscriber:
+        name: Dein Name
+        name_tooltip: ""
+        email: Deine E-Mail-Adresse
+        email_tooltip: ""
+        subscribable_type: Art des Newsletters
+
+  newsletter_subscriber:
+    
+    tooltips:
+      email: Bitte gib deine E-Mail-Adresse an.     
+          
+    subscribe:
+      header: Newsletter - Anmeldung
+      message: "Hier kannst du dich für den kostenlosen bewegung.taz-Newsletter eintragen. Wir werden dich dann regelmäßig über die wichtigsten Neuigkeiten bezüglich bewegung.taz insgesamt informieren."
+
+    unsubscribe:
+      header: Newsletter - Abmeldung
+      message: "Hier kannst du den Newsletter abbestellen."      

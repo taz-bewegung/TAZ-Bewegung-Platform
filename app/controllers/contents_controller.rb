@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ContentsController < ApplicationController
 
   before_filter :user_login_required

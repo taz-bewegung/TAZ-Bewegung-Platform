@@ -1,0 +1,11 @@
+de:
+  activerecord:
+    models:
+      external_profile_membership: Gute-Seiten-im-Netz 
+    attributes:
+      external_profile_membership:
+        url: Url
+        url_tooltip: Gib hier die URL der Seite an.
+        external_profile_id: Profil
+        description: Beschreibung
+        description_tooltip: Gib eine Beschreibung der Seite in maximal 300 Zeichen an.

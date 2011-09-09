@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::NewsController < ApplicationController
 
   layout 'admin'
@@ -5,7 +6,7 @@ class Admin::NewsController < ApplicationController
   before_filter :user_login_required
   access_control :DEFAULT => '(admin | news)'
   ssl_required  :destroy, :index, :show, :cancel_edit_part, :update, :new, :edit, :create
-  
+
   def index
     @news = News.paginate :per_page => 10, :order => 'created_at DESC', :page => params[:page], :include => [:author], :conditions =>  ['press_news = ?', false]
   end

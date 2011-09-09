@@ -9,13 +9,13 @@
   Wenn Du noch kein Nutzerkonto bei bewegung.taz.de hast, dann melde Dich <%= link_to "hier", split_users_path -%> an.
 </p>
 
-<%- form_for(@session, 
+<%= form_for(@session, 
              :url => session_path, 
              :builder => EditFormBuilder) do |form| -%>
 <table border="0" class="reg-form w-230">  
-  <%= form.text_field :email, :required => true, :labels_from => Session -%>
-  <%= form.password_field :password, :required => true, :labels_from => Session -%>
-  <%= form.check_box :remember_me, :labels_from => Session %>  
+  <%=raw(form.text_field :email, :required => true, :labels_from => Session) -%>
+  <%= raw(form.password_field :password, :required => true, :labels_from => Session) -%>
+  <%= raw(form.check_box :remember_me, :labels_from => Session) %>  
 </table>
  <div>
     <table border="0" class="reg-form w-230">

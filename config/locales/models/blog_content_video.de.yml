@@ -1,0 +1,6 @@
+de:
+  activerecord: 
+    attributes:
+      blog_content_video:
+        video_url: URL des Videos
+        video_url_tooltip: Hier kannst Du die URL eines Videos eingeben. Momenten werden *YouTube* und *Vimeo* unterstützt.

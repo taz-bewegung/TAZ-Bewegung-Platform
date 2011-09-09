@@ -1,0 +1,27 @@
+de:
+  activerecord:
+    attributes:
+      content/teaser_text:
+        title: Überschrift
+        bodytext: Text
+      content/landing_page_tab:
+        latest: Neuestes Element
+        element_type: Typ
+        element_id: Element
+        hide_at: Anzeigen bis
+        hide_date: Anzeigen bis
+      content/top_element:
+        title: Überschrift
+        element_type: Typ
+        element_id: Element
+      content/welcome_page_teaser:
+        title: Überschrift
+        element_type: Typ
+        element_id: Element
+        show_element: Element anzeigen
+        show_text: Text anzeigen
+        bodytext: Text
+        image: Bild
+      content/welcome_page_teaser_image:
+        uploaded_data: Bild
+        

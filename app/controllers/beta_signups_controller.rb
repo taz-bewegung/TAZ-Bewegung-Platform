@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BetaSignupsController < ApplicationController
   
   layout "beta"  

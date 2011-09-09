@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ImagesController < ApplicationController
   
   before_filter :find_images, :only => :index

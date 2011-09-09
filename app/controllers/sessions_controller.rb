@@ -4,8 +4,8 @@ class SessionsController < ApplicationController
   
   before_filter :check_for_user, :only => [:new, :create]
   
-  ssl_required :new, :create, :forgot_password, :forget_password, :password_changed
-  ssl_allowed :destroy
+  #ssl_required :new, :create, :forgot_password, :forget_password, :password_changed
+  #ssl_allowed :destroy
 
   # render new.rhtml
   def new
@@ -32,8 +32,8 @@ class SessionsController < ApplicationController
       redirect_to my_helpedia_path
       #flash[:notice] = I18n.t(:"session.login.success")
     else
-      @session.errors.add(['email'],' und Passwort stimmen nicht überein.')
-      @session.errors.add(['password'],' und E-Mail-Adresse stimmen nicht überein.')
+      @session.errors.add(:email,' und Passwort stimmen nicht überein.')
+      @session.errors.add(:password,' und E-Mail-Adresse stimmen nicht überein.')
       note_failed_signin
       @login       = params[:login]
       @remember_me = params[:remember_me]

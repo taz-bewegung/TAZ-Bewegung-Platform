@@ -1,0 +1,58 @@
+--- 
+de: !map:HashWithIndifferentAccess 
+  activerecord: !map:HashWithIndifferentAccess 
+    models:
+      donation: Spende
+    attributes: !map:HashWithIndifferentAccess 
+      donation: !map:HashWithIndifferentAccess 
+        city: Stadt
+        email_tooltip: ""
+        message: Deine Nachricht
+        message_tooltip: "F\xC3\xBCge Deiner Spende noch eine kurze pers\xC3\xB6nliche Gru\xC3\x9Fbotschaft hinzu.\r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht.\r\n"
+        owner_id_tooltip: ""
+        street_tooltip: ""
+        donation_account_number: Kontonummer
+        donation_account_number_tooltip: ""        
+        donation_account_number_confirmation: Kontonummer (wiederholen)
+        donation_account_number_confirmation_tooltip: Bitte wiederhole hier die eingebene Kontonummer.
+        donation_account_number_tooltip: ""
+        donation_agb_tooltip: ""        
+        zip: Postleitzahl
+        donation_bank: Bank
+        donation_bank_tooltip: ""
+        custom_amount_tooltip: Bitte gib einen beliebigen Spendenbetrag in EUR an.
+        donation_bank_number_confirmation: Bankleitzahl (wiederholen)
+        country: Land
+        username: Anzeigename
+        username_tooltip: "Bitte gib hier einen Namen an, mit welchem Du in der Spendenliste erscheinen m\xC3\xB6chtest. \r\n\
+          \r\n\
+          \r\n\
+          Dies kann Dein Vorname, Dein vollst\xC3\xA4ndiger Name oder auch der Name Deines Unternehmens sein.\r\n\
+          \r\n\
+          Diese Angabe wird ver\xC3\xB6ffentlicht."
+        birthday_tooltip: ""
+        zip_tooltip: ""
+        agb: AGB
+        amount: Betrag
+        amount_tooltip: "Bitte w\xC3\xA4hlen einen Spendenbetrag aus. W\xC3\xA4hle <i>Freie Eingabe</i>, falls Dein gew\xC3\xBCnschter Betrag nicht in der Liste ist."
+        donation_account_owner_tooltip: Bitte gebe hier Vor- und Nachname ein.
+        last_name_tooltip: ""
+        birthday: Geburtsdatum
+        donation_bank_number_tooltip: ""
+        donation_bank_number_confirmation_tooltip: Bitte wiederhole hier die eingebene Bankleitzahl.
+        real_amount: Spendenbetrag
+        street: "Stra\xC3\x9Fe"
+        city_tooltip: Stadt
+        country_tooltip: ""
+        first_name: Vorname
+        first_name_tooltip: ""
+        agb_text: Ich habe die {{agb}} und {{datenschutzbestimmungen}} gelesen und akzeptiert.
+        donation_account_owner: Kontoinhaber
+        donation_bank_number: Bankleitzahl
+        last_name: Nachname
+        created_at: Spendendatum
+        email: E-Mail-Adresse
+        amount: Betrag
+        agb_tooltip: ""

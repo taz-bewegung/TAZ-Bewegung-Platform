@@ -1,0 +1,18 @@
+de:
+  activerecord: 
+    attributes:
+      comment:
+        name: Name
+        email: E-Mail Adresse
+        website: Website
+        body: Kommentar
+        
+        name_tooltip: ""
+        email_tooltip: "Die hier angegebene E-Mail-Adresse wird *nicht* veröffentlicht! Wenn Du bei Gravatar angemeldet bist, dann erscheint Dein Avatar neben Deinem Kommentar."
+        website_tooltip: ""
+        body_tooltip: ""
+        
+
+  comments:
+    one: '1 Kommentar'
+    other: '{{count}} Kommentare'

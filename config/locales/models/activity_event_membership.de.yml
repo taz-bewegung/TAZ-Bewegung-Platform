@@ -1,0 +1,10 @@
+de:
+  activerecord:
+    attributes:
+      activity_event_membership:
+        event_id: Termin
+        event_id_autocomplete: Termin
+        event_id_autocomplete_tooltip: "Wähle einen Termin zur Verknüpfung aus. Beginne zu schreiben und wähle dann in der Liste den entsprechenden Termin aus."
+        activity_id: Aktion
+        activity_id_autocomplete: Verknüpfte Aktion
+        activity_id_autocomplete_tooltip: "Wähle einen Aktion zur Verknüpfung aus. Beginne zu schreiben und wähle dann in der Liste die entsprechende Aktion aus."        

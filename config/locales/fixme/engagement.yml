@@ -1,0 +1,29 @@
+de:
+  activerecord: 
+    attributes:
+      engagement:
+
+        
+  engagement:
+    
+    calculations:
+      running_since: "laufend seit {{date}}"
+
+      
+    public_profile: !map:HashWithIndifferentAccess
+
+      head_content:
+        organisation: Arbeitgeber
+        user: Aktiver
+        starts_on: Dauer
+        location: Ort
+        occupation_type: Art des Engagments
+        social_categories: Tätigkeitsbereiche      
+    
+    item_views:
+      table:
+        from: Von
+        to: Für
+        period: Zeitraum
+        occypation_type: Tätigkkeitsart
+        social_categories: Bereiche

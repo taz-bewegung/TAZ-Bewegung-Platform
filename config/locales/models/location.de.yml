@@ -1,0 +1,47 @@
+de:
+  location:  
+    dativ: dem Ort
+    akkusativ: den Ort
+    subject: Der Ort
+    plural: Orte  
+  activerecord:
+    models:
+      location: Ort
+    attributes:
+      location:
+        name: Name
+        permalink_tooltip: "Hier kannst Du eine eigene Internetadresse f\xC3\xBCr den Ort bestimmen.\r\n\
+          \r\n\
+          Der von Dir angegebene *Kurzname* bildet die URL. \r\n\
+          \r\n\
+          Beispiel:\r\n\
+          \r\n\
+          *Kurzname:* ein-ort\r\n\
+          URL: bewegung.taz.de/orte/ein-ort"
+        permalink: "URL-Kürzel"
+        name_tooltip: ""
+        description: Beschreibung
+        description_tooltip: ""
+        image: Bild
+        image_id: Bild
+        image_tooltip: ""
+        street: Straße
+        street_tooltip: ""
+        zip_code: "Postleitzahl"
+        zip_code_tooltip: ""
+        city: Stadt
+        city_tooltip: ""
+        country_code: Land
+        country_code_tooltip: ""
+        website: Website
+        website_tooltip: ""
+        email: "E-Mail-Adresse"
+        email_tooltip: ""
+        phone: "Telefon"
+        phone_tooltip: ""
+        fax: Fax
+        fax_tooltip: ""
+        contact_person: Kontaktperson
+        contact_person_tooltip: ""
+        location_categories: Ortskategorien
+        commentable: Kommentare

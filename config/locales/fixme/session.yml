@@ -1,0 +1,47 @@
+de:
+  activerecord: 
+    attributes:
+      session:
+        email: E-Mail-Adresse
+        forget_password_email: E-Mail-Adresse
+        password: Passwort
+        remember_me: Angemeldet bleiben
+        forget_password_email_tooltip: Bitte gibt hier die E-Mail-Adresse ein, mit der Du Dich bei bewegung.taz.de registriert hast.
+        email_tooltip: "Bitte gib hier die E-Mail-Adresse ein, mit der Du Dich bei bewegung.taz.de angemeldet hast.
+         *Organisationen* verwenden die E-Mail-Adresse des Ansprechpartners.\r\n  
+        "
+        password_tooltip: Passwort eingeben
+        remember_me_tooltip: Wählen Sie diese Funktion, wenn Sie sich nicht jedesmal neu anmelden möchten.
+  session:
+          
+    login:
+      label: Anmelden
+      header: Anmelden
+      message: Bitte geben Sie Ihre E-Mail-Adresse und Ihr Passwort ein.
+      error: "Leider gab es einen Fehler bei der Anmeldung. Bitte überprüfen Sie Ihre E-Mail und Ihr Passwort."
+      success: Sie haben Sich erfolgreich angemeldet.
+
+        
+    logout:
+      label: Logout            
+      header: Logout
+      message: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec ullamcorper diam et arcu. Nulla facilisi. "
+      success: Sie haben Sich erfolgreich abgemeldet.
+
+
+    forgot_password:
+      email:
+        subject: Dein Password auf bewegung.taz.de
+        message: |
+          Hallo {{user_name}},
+
+          bewegung.taz.de sendet Dir den folgenden Link, um Dein Passwort zurückzusetzen. Falls Du dies nicht selbst veranlasst hast, hat jemand Deine E-Mail-Adresse in die "Passwort vergessen"-Funktion von bewegung.taz.de eingegeben.
+
+          Bitte klicke auf den folgenden Link, um zu der Seite zu gelangen, auf der Du Dein Passwort ändern kannst:
+
+          {{url}}
+
+          Sollte der Link nicht komplett verlinkt sein, kopiere diesen bitte in die Adresszeile.
+
+          Dein bewegung.taz.de-Team
+          

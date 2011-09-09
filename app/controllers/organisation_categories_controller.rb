@@ -1,7 +1,8 @@
+# encoding: UTF-8
 class OrganisationCategoriesController < ApplicationController
-  
+
   before_filter :setup
-  
+
   def index
     unless fragment_exist?("organisation_categories/index")    
       @latest_organisations = Organisation.find( :all,:limit=>2, :order=> 'rand()', :conditions => ["state = 'active' AND length(description)> ?", 100])
@@ -10,13 +11,13 @@ class OrganisationCategoriesController < ApplicationController
                                                          :include => ['social_category'], :order => 'social_categories.title ASC')
     end
     render :partial => "/organisation_categories/index", :layout => true
-    
+
   end
-  
+
   private
-  
+
     def setup
       @template.search_default :organisations      
     end
-  
+
 end

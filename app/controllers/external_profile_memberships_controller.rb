@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ExternalProfileMembershipsController < ApplicationController
   
   def index

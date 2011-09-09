@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class CommendationsController < ApplicationController
   
   before_filter :find_commendable

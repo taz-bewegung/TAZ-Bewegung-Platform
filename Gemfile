@@ -24,6 +24,7 @@ gem "restful-authentication", :git => "git://github.com/Satish/restful-authentic
 gem "rmagick", "~> 2.13.1"
 gem "mini_magick", "~> 3.3"
 gem "will_paginate", "~> 3.0.0"
+gem "dynamic_form"
 
 group :test, :development do
   gem "sqlite3"

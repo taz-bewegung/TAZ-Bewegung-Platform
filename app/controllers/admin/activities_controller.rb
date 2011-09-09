@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Admin::ActivitiesController < ApplicationController
   
   layout "admin"

@@ -1,0 +1,358 @@
+de:
+  user_mailer:
+    
+    friendship:
+      request:
+        subject: Vernetzungsanfrage von {{friend_name}}
+        message: "Hallo {{user_name}},\r\n
+            \r\n
+            {{friend_name}} möchte sich mit Dir vernetzen.\r\n
+            \r\n
+            Im „Meine Seite – Bereich“ kannst Du unter dem Punkt Bezugsgruppe der Anfrage zustimmen.\r\n
+            \r\n
+            {{url}}\r\n
+            \r\n
+            Viele Grüße vom\r\n
+            bewegung.taz-Team"
+          
+    message:
+      info:
+        subject: "Hallo {{user_name}}, {{sender_name}} hat dir eine Nachricht auf bewegung.taz.de geschrieben."
+        message: "Hallo {{user_name}},\r\n
+            \r\n
+            {{sender_name}} hat dir eine Nachricht auf bewegung.taz.de geschrieben.\r\n
+            \r\n
+            Betreff: {{subject}}\r\n
+            \r\n
+            Um die vollständige Nachricht zu lesen musst du dich in deinen bewegung.taz-Account einloggen:\r\n
+            \r\n
+            {{url}}\r\n
+            \r\n
+            Viele Grüße vom\r\n
+            bewegung.taz-Team"
+            
+      full:
+        subject: "Hallo {{user_name}}, {{sender_name}} hat dir eine Nachricht auf bewegung.taz.de geschrieben."
+        message: "Hallo {{user_name}},\r\n
+            \r\n
+            {{sender_name}} hat dir eine Nachricht auf bewegung.taz.de geschrieben.\r\n
+            \r\n
+            Betreff: {{subject}}\r\n
+            \r\n
+            {{message}}
+            \r\n
+            \r\n
+            Hier kannst Du auf die Nachricht antworten: {{url}}\r\n
+            \r\n
+            Viele Grüße vom\r\n
+            bewegung.taz-Team"
+    
+    activity:
+      created:
+        subject: "Deine Aktion auf bewegung.taz.de"
+        message: "Hallo {{user_name}},\r\n
+          \r\n
+          Du hast soeben erfolgreich Deine eigene Aktion {{activity_name}}
+          auf bewegung.taz.de erstellt. Wir freuen uns über Dein Engagement.\r\n
+          \r\n
+         
+          Deine Aktion ist unter folgender Adresse erreichbar:\r\n          
+          {{url}}\r\n          
+          \r\n
+          Bei Fragen kannst Du uns unter bewegung@taz.de erreichen.\r\n
+          \r\n
+          Viele Spaß und Erfolg wünscht Dir Dein \r\n
+          bewegung.taz-Team"
+      
+    activity_membership:
+    
+      created:
+        subject: Symphatisierungsanfrage bei Deiner Aktion {{activity_title}}
+        message: "Hallo {{activity_user_name}},\r\n
+            \r\n
+            {{membership_user_name}} möchte sich an deiner Aktion {{activity_title}} aktiv beteiligen.\r\n
+            Seine Nachricht lautet:\r\n
+            \r\n
+            {{membership_message}}\r\n
+            \r\n
+            Wenn Du die Anfrage freischaltest, dann erscheint der Benutzer mit seinem Text auf deiner Aktionsseite.\r\n
+            \r\n
+            Du kannst seine Anfrage freischalten oder ablehnen, indem Du Dich auf bewegung.taz.de anmeldest. Im „Meine Seite – Bereich“ findest Du unter dem Punkt Bezugsgruppe die unbeantworteten Anfragen.\r\n 
+            \r\n
+            Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de.\r\n
+            \r\n
+            Viele Grüße vom\r\n
+            bewegung.taz-Team"
+    
+      confirmed:
+        subject: "Deine Anfrage zum Mitmachen bei der Aktion {{activity_title}}"
+        message: "Hallo {{membership_user_name}},\r\n
+            \r\n
+            {{activity_user_name}} hat Deine Teilnahme an der Aktion {{activity_title}} bestätigt.\r\n
+            Du erscheinst nun mit Deiner Nachricht auf der Aktionsseite.\r\n
+            \r\n
+            Du kannst Deine Teilnahme und Deine Nachricht bearbeiten, indem Du Dich auf bewegung.taz.de anmeldest.\r\n
+            Im „Meine Seite – Bereich“ findest Du unter dem Punkt „Meine Aktionen“ eine Auflistung aller Teilnahmen an Aktionen.\r\n 
+            \r\n
+            Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de.\r\n
+            \r\n
+            Viele Grüße vom\r\n
+            bewegung.taz-Team"
+    
+      cancelled:
+        subject: "Deine Anfrage zum Mitmachen bei der Aktion {{activity_title}}"
+        message: "Hallo {{membership_user_name}},\r\n
+            \r\n
+            {{activity_user_name}} hat Deine Teilnahme an der Aktion {{activity_title}} abgelehnt/beendet.\r\n
+            \r\n
+            Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de.\r\n
+            \r\n
+            Viele Grüße vom\r\n
+            bewegung.taz-Team"
+    
+    
+    signup_notification:
+      subject: Deine Anmeldung bei bewegung.taz.de
+      message: "
+        Herzlich Willkommen bei bewegung.taz.de.\r\n 
+        \r\n 
+        Dein Benutzerkonto wurde erfolgreich eingerichtet. Bitte schließe die Anmeldung ab, indem Du auf folgenden Bestätigungs-Link klickst: \r\n 
+        \r\n 
+        {{url}}
+        \r\n 
+        Hinweis! Voreingestellt ist eure eigene Seite für niemanden sichtbar.\r\n
+        Dies könnt ihr unter Einstellungen ändern, damit andere Euch kontaktieren und sich mit euch vernetzen können. \r\n
+        \r\n          
+        Vielen Dank und gutes Gelingen \r\n 
+        \r\n 
+        wünscht das Team von bewegung.taz.de"
+
+    activation:
+      subject: Benutzerkonto erfolgreich aktiviert
+      message: "
+      Hallo, \r\n
+      \r\n
+      Dein Benutzerkonto auf bewegung.taz.de wurde aktiviert. \r\n
+      \r\n
+      Nickname:  {{permalink}} \r\n
+      \r\n
+      Damit kannst Du Dich nun einloggen... \r\n
+      \r\n
+      {{url}} 
+      \r\n
+      ...und Termine ankündigen, Aktionen starten, alternative Orte empfehlen und vieles mehr. \r\n 
+      \r\n
+      Zum guten Start auf der Bewegungsplattform hier vorab ein paar Tipps:\r\n
+      \r\n
+      1) Zur Zeit ist eure Seite unsichtbar geschaltet. Dies könnt ihr unter \"Meine Seite\" ändern - wenn ihr wollt, dass euch andere Aktive finden und euer Engagement und eure Seite einsehen können. \r\n
+      \r\n
+      2) Apropos \"Meine Seite\" - hier könnt ihr euch und euer Engagement für eine bessere Welt vorstellen, gute Seiten im Netz empfehlen und ein Bild dazu hochladen. \r\n
+      \r\n
+      3) Du willst wissen, was in Deiner Nähe passiert? Dann gib Deinen Wohnort an, und Du wirst auf dem Laufenden gehalten, z.B. darüber, welche Termine in Deiner Stadt angekündigt werden. \r\n
+      \r\n
+      4) Dich interessieren bestimmte Aktionen und Organisationen besonders? Dann sympathisiere mit ihnen und Du wirst über Neuigkeiten informiert. \r\n
+      \r\n
+      5) Wenn Du Dich mit anderen Aktiven vernetzt, dann kannst du mit ihnen Nachrichten austauschen, und du wirst über deren Aktivitäten auf dem Laufenden gehalten. \r\n
+      \r\n
+      Eine Hilfe findest Du hier: \r\n
+      http://bewegung.taz.de/downloads/anleitung.pdf \r\n 
+      \r\n
+      und bitte lese Dir doch auch unsere Aktionsrichtlinien durch: \r\n 
+      {{aktionsrichtlinien}} \r\n 
+      \r\n
+      Hinweis! Voreingestellt ist eure eigene Seite für niemanden sichtbar.\r\n
+      Dies könnt ihr unter Einstellungen ändern, damit andere Euch kontaktieren und sich mit euch vernetzen können. \r\n
+      \r\n
+      Viel Spaß und gutes Gelingen          \r\n 
+      wünscht das Team von bewegung.taz.de"
+        
+    password_changed:
+      subject: Dein Passwort bei bewegung.taz.de wurde geändert
+      message: "
+        Hallo {{user_full_name}}, \r\n
+        \r\n
+        Dein Passwort bei bewegung.taz.de wurde geändert.\r\n  
+        Wenn dies nicht auf Deine Veranlassung hin geschehen ist, dann hat jemand anderes Zugang zu Deinem Benutzerkonto und das Passwort geändert.\r\n 
+        \r\n 
+        Du kannst Dich nun unter folgendem Link anmelden:\r\n
+          \r\n  
+          {{url}}\r\n  
+          \r\n 
+        Weitere Fragen beantworten wir gern unter bewegung@taz.de.\r\n
+         \r\n 
+        Viele Grüße vom\r\n 
+        bewegung.taz-Team"
+    
+    send_password:
+      subject: Dein Password auf bewegung.taz
+      message: "Hallo {{user_name}},\r\n
+              \r\n
+              bewegung.taz.de sendet Dir den folgenden Link, um Dein Passwort zurückzusetzen. Falls Du dies nicht selbst veranlasst hast, hat jemand Deine E-Mail-Adresse in die „Passwort vergessen“-Funktion von bewegung.taz.de eingegeben.
+              \r\n
+              Bitte klicke auf den folgenden Link, um zu der Seite zu gelangen, auf der Du Dein Passwort ändern kannst: \r\n
+               \r\n
+              {{url}} \r\n
+               \r\n
+              Sollte der Link nicht komplett verlinkt sein, kopiere diesen bitte in die Adresszeile. \r\n
+               \r\n
+              Viele Grüße \r\n
+              Dein bewegung.taz-Team"
+    
+    
+    commendation:
+      subject: "{{site_name}} - {{sender_name}} empfiehlt Dir {{subject_type}} auf bewegung.taz.de"
+      message: "Hallo, \r\n 
+      \r\n 
+      {{sender_name}} möchte Dich auf „{{title}}“ auf bewegung.taz.de aufmerksam machen.\r\n
+      \r\n
+      Seine Nachricht an Dich lautet:\r\n
+      \r\n
+      {{message}} \r\n  
+       \r\n  
+      {{type}} ist unter folgender URL erreichbar:\r\n
+        \r\n  
+        {{url}}\r\n  
+        \r\n
+      Bitte beachte, dass bewegung.taz.de die Identität des Absenders nicht überprüft. \r\n
+      Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de. \r\n
+       \r\n
+      Viele Grüße \r\n
+      Dein bewegung.taz.de-Team"
+        
+    commendation_taz:
+      subject: "{{sender_name}} möchte Dich auf die Bewegungsplattform der taz - www.bewegung.taz.de aufmerksam machen."
+      message: "Hallo, \r\n 
+      \r\n
+      {{sender_name}} möchte Dich auf die Bewegungsplattform der taz bewegung.taz.de aufmerksam machen.\r\n
+      \r\n
+      Seine Nachricht an Dich lautet:\r\n
+      \r\n
+      {{message}} \r\n
+      \r\n
+      www.bewegung.taz.de - für politisch und gesellschaftlich engagierte
+      Menschen, Initiativen und Organisationen. Hier können alle ihre Ideen
+      und ihr Engagement vorstellen, sich informieren und vernetzen.
+      Es gibt viele Möglichkeiten sich zu beteiligen: Termine ankündigen -
+      Aktionen starten - alternative Orte empfehlen - Organisationen
+      vorstellen - einen Blog betreiben und vieles mehr.\r\n  
+      \r\n
+      Bitte beachte, dass bewegung.taz.de die Identität des Absenders nicht überprüft. 
+      Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de.\r\n
+      \r\n
+      Viele Grüße \r\n
+      Dein bewegung.taz.de-Team"        
+
+    newsletter:
+      subscribed:
+        subject: "Registrierung für den bewegung.taz-Newsletter"
+        message: "Hallo,\r\n
+          \r\n
+          Du hast Dich mit folgender Adresse erfolgreich für den bewegung-taz-Newsletter eingetragen:\r\n
+          \r\n
+          {{subscriber_email}} \r\n
+          \r\n
+          Falls Du den Newsletter wieder abbestellen möchtest, kannst Du dies unter folgender URL tun:\r\n
+          \r\n
+          {{url}} \r\n
+          \r\n
+          Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de.\r\n
+           \r\n
+          Viele Grüße \r\n
+          Dein bewegung.taz.de-Team"
+              
+      confirm:
+        subject: "Bestätigung der E-Mail-Adresse für den bewegung.taz-Newsletter"
+        message: "Hallo, \r\n
+        \r\n
+        Du möchtest Dich mit folgender E-Mail-Adresse für den bewegung-taz-Newsletter eingetragen:
+        \r\n
+        {{subscriber_email}} \r\n
+        \r\n
+        Klicke auf den folgenden Link, um dies zu bestätigen.
+        \r\n
+        {{url}} \r\n
+        \r\n
+        Solltest Du Fragen haben, beantworten wir sie Dir gern unter bewegung@taz.de.\r\n
+        \r\n
+        Viele Grüße \r\n
+        Dein bewegung.taz.de-Team"  
+        
+    beta_notification:
+      subject: Deine Anmeldung bei bewegung.taz.de
+      message: "
+        Herzlich Willkommen zur Test- und Aufbauphase von bewegung.taz.de. \r\n 
+        Ihr seid die Ersten.\r\n 
+          \r\n 
+        Bitte bestätige Deine Anmeldung auf www.bewegung.taz.de: \r\n 
+          \r\n 
+        {{url}}
+          \r\n 
+        Das Einladungspasswort (Code) lautet: ich-bin-dabei \r\n 
+        \r\n
+        Wir haben viel vor: mit euch eine bundesweite und Themen übergreifende
+        Plattform für die bewegte Gesellschaft schaffen.\r\n
+        \r\n
+        In der Test- und Aufbauphase wollen wir zum einen die Funktionalität der
+        Plattform optimieren und zum anderen die Seiten mit eurem Inhalt
+        füllen. Die Plattform lebt von dem Engagement ihrer NutzerInnen. Deshalb
+        freuen wir uns über konstruktive Kritik, Wünsche und Ideen. Aber bitte
+        bedenkt, dass es eine Testphase ist und da kann es hier und da noch ein
+        bisschen ruckeln. \r\n
+        \r\n
+        Ab Juni wollen wir die Plattform dann für alle öffnen. Wir hoffen, dass
+        wir bis dahin viel Bewegung auf der Seite haben und diese damit auch
+        auslösen.\r\n
+        \r\n
+        Eine Anleitung zum schnellen Start auf der Bewegungsplattform gibt es
+        auf jeder Seite unten im Menü, oder auch hier: \r\n
+        http://bewegung.taz.de/downloads/anleitung.pdf \r\n
+        \r\n
+        Viel Spaß und Bewegung \r\n
+        \r\n
+        Euer Team von bewegung.taz.de"
+                
+    fairdo:
+      subject: "Bewegung und fairdo wachsen zusammen"
+      message: "Liebe fairdo-Nutzerin, lieber fairdo-Nutzer, \r\n
+      \r\n
+      bewegung.taz und fairdo sind ab heute eins. In Zukunft werden wir gemeinsam die Plattform von \r\n
+      bewegung.taz nutzen und weiterentwickeln. Dein fairdo-Profil und Deine Kontakte haben wir – soweit möglich – übertragen. \r\n
+      Allerdings musst Du noch einen Usernamen und ein Passwort wählen. Bitte klicke auf den folgenden Link.\r\n
+      \r\n
+      {{url}} \r\n
+      \r\n
+      Wir wünschen Dir viel Spaß. Sollte irgendetwas nicht funktionieren oder wenn Du noch Fragen hast, wende Dich bitte an:\r\n
+      bewegung@taz.de \r\n
+      \r\n
+      Das Team von fairdo und bewegung.taz"
+       
+    fairdo_activation:
+      subject: "Dein Account auf bewegung.taz.de wurde aktiviert"
+      message: "
+      Herzlichen Glückwunsch – Du hast deinen Account auf bewegung.taz.de aktiviert. \r\n
+      \r\n
+      Klicke hier, um dich einzuloggen: https://bewegung.taz.de/anmelden\r\n
+      Deine e-mail-Adresse lautet {{email}} \r\n
+      Dein Username lautet {{username}} \r\n
+      \r\n
+      Bewegung.taz ist anders aufgebaut als fairdo. Bewegung.taz kannst du nach Terminen, Organisationen, Aktionen und Orte durchsuchen. Um Dein Profil zu sehen und zu bearbeiten klicke auf \r\n
+        „Meine Seite“ (oben rechts). \r\n
+      Deine Kontakte von fairdo findest du unter \r\n
+        Meine Seite > Bezugsgruppe \r\n
+      \r\n
+      Viel Spaß beim Entdecken! \r\n
+      \r\n
+      Das Team von fairdo und bewegung.taz \r\n
+      \r\n
+      P.S. Eine Anleitung zu bewegung.taz als pdf findest Du, wenn Du auf der Seite ganz nach unten scrollst."
+    fairdo_profil_merge:
+      subject: "Dein fairdo-Profil auf bewegung.taz.de"
+      message: "Liebe fairdo-Nutzerin, lieber fairdo-Nutzer, \r\n
+      \r\n
+      bewegung.taz und fairdo sind ab heute eins. In Zukunft werden wir gemeinsam die Internet-Seite von bewegung.taz nutzen und weiterentwickeln. Dein fairdo-Profil und Deine Kontakte haben wir – soweit möglich – übertragen. Da Du schon ein bewegung.taz-Profil hast, kannst Du dieses einfach weiternutzen. \r\n
+      \r\n
+      Wir wünschen Dir viel Spaß. Sollte irgendetwas nicht funktionieren oder wenn Du noch Fragen hast, wende Dich bitte an: \r\n
+      \r\n
+      bewegung@taz.de \r\n
+      \r\n
+      Herzliche Grüße, das Team von fairdo und bewegung.taz"

@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class NewsletterController < ApplicationController
   protect_from_forgery :only => [:create, :update, :destroy] 
   def subscribe
@@ -46,6 +47,6 @@ class NewsletterController < ApplicationController
        render :action => 'unsubscribe'
      end
    end
- end              
+ end
 
 end

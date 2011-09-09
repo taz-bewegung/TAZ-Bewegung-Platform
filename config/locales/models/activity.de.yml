@@ -1,0 +1,80 @@
+de:
+  activity:  
+    
+    dativ: der Aktion
+    akkusativ: die Aktion
+    subject: Die Aktion
+    plural: Aktionen
+      
+  activerecord: !map:HashWithIndifferentAccess 
+    models:
+      activity: Aktion
+    attributes: !map:HashWithIndifferentAccess 
+      activity: !map:HashWithIndifferentAccess
+        active_petition: Petition möglich
+        code: Iframe/HTML Code
+        code_tooltip: "Hier kann man ein Iframe/HTML-Code von folgenden Anbietern einbinden: Youtube, Vimeo, Flickr"
+        city: Stadt
+        country_code: Land
+        event_id: Event
+        organisation_id: Organisation
+        owner_id_tooltip: ""
+        permalink: Kurzname
+        street_tooltip: ""
+        activated_at: Aktiviert
+        location_id: Veranstaltungsort
+        location_id_tooltip: Hier kannst du nach einem bereits existierenden Veranstaltungsort suchen
+        title: Titel
+        state_tooltip: ""
+        about_tooltip: "Beschreibe hier in kurzen Worten Deine Aktion und erkl\xC3\xA4re Deinen Unterst\xC3\xBCtzer, warum Du diese Aktion ins Leben gerufen hast und f\xC3\xBCr welchen Zweck die Spendengelder eingesetzt werden. "
+        permalink_tooltip: "Hier kannst Du eine eigene Internetadresse f\xC3\xBCr Deine Aktion bestimmen.\r\n\
+          \r\n\
+          Der von Dir angegebene *Kurzname* bildet die URL. \r\n\
+          \r\n\
+          Beispiel:\r\n\
+          \r\n\
+          *Kurzname:* meine-aktion\r\n\
+          URL: bewegung.taz.de/aktionen/meine-aktion"
+        zip_code: PLZ
+        zip_code_tooltip: ""
+        activated_at_tooltip: ""
+        starts_at: Beginn
+        starts_at_tooltip: ""
+        attendable_tooltip: ""
+        description: "Beschreibung"
+        title_tooltip: ""
+        owner_id: Aktiver
+        street: "Stra\xC3\x9Fe"
+        city_tooltip: ""
+        country_code_tooltip: ""
+        donation_target: Spendenziel
+        email_message: E-Mail Nachricht an einen Spender
+        ends_at: Läuft bis
+        ends_at_tooltip: ""
+        event_id_tooltip: ""
+        organisation_id_tooltip: "W\xC3\xA4hle hier die *Organisation*, f\xC3\xBCr die Du deine eigene Charity-Aktion starten m\xC3\xB6chtest."
+        image: Bild
+        image_id: Bild
+        image_tooltip: "Bitte lade hier ein aussagekr\xC3\xA4ftiges *Photo* zu Deiner Charity-Aktion in einem g\xC3\xA4ngigen Bildformat hoch."
+        state: Status
+        has_geo_information: Position auf Karte
+        continuous: Fortlaufend
+        continuous_tooltip:
+        social_categories: Themenkategorien
+        about: "Beschreibung"        
+        website: Website
+        website_tooltip: ""
+        activity_type: Aktionstyp
+        activity_type_tooltip: "Aktionstypen sind zum Beispiel: Vortrag, Podiumsdiskussion, Kongress, Bus Treffpunkt, Demonstration, ..."
+        end_date: Läuft bis
+        end_date_tooltip: "4 Wochen vor Ende der Aktion wird eine Erinnerungsemail versendet. Das Datum kann jederzeit, auch nach Ablauf, verändert werden."
+        nationwide: Bundesweit
+        nationwide_tooltip: ""
+        name: Aktionsort
+        name_tooltip: "Name des Aktionsorts eintragen: z.B: Bürgertreff, Vereinshaus Kunterbunt, Rote Flora..."        
+        participation: Mitmachen
+        participation_tooltip: "Wie können Interessierte sich beteiligen, mitmachen, die Aktion unterstützen."
+        goal: Ziel
+        goal_tooltip: "Eine kurze Beschreibung, worum es geht, was mit der Aktion erreicht werden soll."
+        commentable: Kommentare
+        

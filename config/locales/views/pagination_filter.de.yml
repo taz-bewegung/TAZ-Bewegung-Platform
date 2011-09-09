@@ -1,0 +1,12 @@
+de:
+  pagination_filter:
+    filter:
+      rows: Liste
+      maps: Karte
+      cal: Kalender
+      cards: Block 
+      tiny: Liste
+    order:
+      title: Titel
+      updated_at: Aktivität
+      created_at: Neuigkeit

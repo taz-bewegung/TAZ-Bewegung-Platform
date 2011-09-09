@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class BlogPostsController < ApplicationController
 
   before_filter :find_association

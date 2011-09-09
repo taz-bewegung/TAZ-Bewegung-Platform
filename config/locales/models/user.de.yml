@@ -1,0 +1,63 @@
+de:
+  activerecord: 
+    attributes:
+      user:
+        city: Stadt
+        country_code: Land
+        email_tooltip: "Bitte gebe hier eine aktuelle E-Mail-Adresse an. Mit dieser E-Mail-Adresse kannst Du Dich bei jedem Besuch auf bewegung.taz.de anmelden. \r\n\ 
+          \r\n\
+          *Diese Angabe wird nicht ver\xC3\xB6ffentlicht.*"
+        permalink: "Benutzername"
+        street_tooltip: "Diese Angabe wird nicht ver\xC3\xB6ffentlicht."
+        visibility: Profil anzeigen
+        company_name: Firmenname
+        title: Titel
+        about_me: "\xC3\x9Cber mich"
+        password_confirmation: Passwort wiederholen
+        receive_newsletter: Newsletter empfangen
+        permalink_tooltip: "Gib hier Deinen Nutzernamen an, mit dem Du bei bewegung.taz.de unterwegs bist. \r\n Erlaubt sind nur Buchstaben und Zahlen. Leerzeichen, Sonderzeichen und Umlaute werden nicht akzeptiert."
+        visibility_tooltip: ""
+        zip_code: Postleitzahl
+        zip_code_tooltip: ""
+        country_code: "Land"
+        gender: Geschlecht
+        last_name_tooltip: ""
+        title_tooltip: "Diese Angabe wird in Verbindung mit Deinem Namen ver\xC3\xB6ffentlicht."
+        about_me_tooltip: ""
+        birthday: Jahrgang
+        birthday_tooltip: ""
+        email_confirmation: E-Mail wiederholen
+        password_confirmation_tooltip: Bitte *wiederhole* Dein Passwort, um Tippfehler zu vermeiden.
+        subscribed_newsletter: Newsletter empfangen
+        subscribed_newsletter_tooltip: ""        
+        receive_newsletter_tooltip: ""
+        receive_message_notification_tooltip: ""
+        street: "Stra\xC3\x9Fe"
+        city_tooltip: "Diese Angabe wird nicht ver\xC3\xB6ffentlicht."
+        country_code_tooltip: ""
+        first_name: Vorname
+        first_name_tooltip: ""
+        gender_tooltip: ""
+        activated:
+          message: "Dein User-Account wurde erfolgreich aktiviert."
+          error: "Es ist ein Fehler aufgetreten. Entweder ist der Aktivierungslink ungültig oder dein Account ist schon aktiviert."
+        image: Bild
+        image_id: Bild
+        image_tooltip: |-
+          Hier kannst Du ein Foto von Dir hochladen.
+          
+          Das Foto wird in Verbindung mit Deinem Namen angezeigt.
+        last_name: Nachname
+        password: Passwort
+        password_tooltip: "Bestimme hier Dein pers\xC3\xB6nliches Passwort mit mindestens 6 Zeichen. \r\n\
+          \r\n\
+          Mit deinem Passwort kannst Du Dich bei deinem n\xC3\xA4chsten Besuch auf bewegung.taz.de anmelden."
+        company_name_tooltip: ""
+        email: E-Mail
+        email_confirmation_tooltip: Bitte wiederhole Deine E-Mail-Adresse, um Tippfehler zu vermeiden.
+        receive_message_notification: Vollständige Benachrichtung über neue Nachrichten via E-Mail
+        has_geo_information: Position auf Karte
+        changed_my_life: "Das hat mein Leben verändert"
+        inspires_me: "Das inspiriert mich"
+        my_contribution: "Beitrag zur Weltverbesserung"
+        dislike: "Das lehne ich ab"

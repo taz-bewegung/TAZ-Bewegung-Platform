@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class ActivityMembershipsController < ApplicationController
 
   include ImageHelper 

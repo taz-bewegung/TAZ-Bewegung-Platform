@@ -1,0 +1,87 @@
+de:
+  activerecord: 
+    attributes:
+      activity:
+        title: Aktion
+        description: "Über die Aktion"
+        permalink: URL-Kürzel
+        donation_target: "Spendenziel"
+        organisation_id: "Empfangende Organisation"
+        activity_category_id: "Kategorie"
+        type: "Art der Aktion"
+        multi_bloggable: "Teilnehmer dürfen Bloggen"
+        email_message: "E-Mail Nachricht an einen Spender"                                
+        
+  activity:
+    
+    profile:
+      
+      head:
+        from: "Aktion von:"
+        to: "Aktion für:"
+      
+      sub_content:
+        overview: 
+          title: "Überblick"          
+          about:
+            title: "Über die Aktion"
+            more: "mehr >>"
+          last_donations:
+            title: "Letzte Spender"
+            about: "Über die Aktion"
+            more: "mehr >>"
+          new_at_blog:
+            title: "Neu im Blog"
+
+      
+    time_left: " (noch {{distance}})"
+    time_distance: "{{from}} bis {{until}}" 
+    
+    donations:
+      sum_label: Spendenstand
+      target_label: Spendenziel      
+        
+    subheaders:
+       address: Ort der Aktion
+       sponsors: Sponsoren der Aktion
+        
+    tooltips:
+      name: Bitte geben Sie hier den vollen Namen Ihrer Aktion ein.
+      description: Bitte beschreiben Sie hier mit max. 2000 Zeichen Ihre Aktion.
+      donation_target: "Bitte geben Sie hier das Spendenziel der Aktion in € an. <br /><br />Wählen Sie das Spendenziel so aus, dass es auch erreicht werden kann. Denken Sie daran, dass die Spenden aus <b>Ihrem Netzwerk</b> generiert werden.<br /><br />Selbstverständlich können Sie das Spendenziel im Nachhinein noch korrigieren."
+      email_message: "Hier können Sie einen Text angeben, der autmatisch an jeden Spender per E-Mail geschickt wird. <br /><br /> Beachten Sie dabei, dass sie Platzhalter definieren können, an deren Stelle später Werte automatisch ersetzt werden. Folgende Platzhalter sind möglich:<br /><br /> <b>&#0123;&#0123;name&#0125;&#0125;</b> für den Namen des Spenders<br /> <b> &#0123;&#0123;amount&#0125;&#0125; </b> für den Betrag der Spende."      
+      
+    register:
+      step1:
+        header: Eine neue Aktion starten
+        
+
+    started:
+      user_email:
+        subject: Ihre Aktion ist gerade gestartet
+        message: |
+          Hallo {{user_name}},
+
+          Ihre Aktion bei ist soeben gestartet.
+          Wir freuen uns, dass Sie Sich auf Helpedia engagieren.
+
+          Die Aktion läuft bis zum {{activity_end}}. 
+          Du kannst die Laufzeit ab einen Monat vor Ablauf um weitere drei Monate verlängern. 
+          Die Aktion ist unter folgender Adresse erreichbar:
+
+          {{url}}
+          
+    created:
+      user_email:
+        subject: Ihre Aktion ist eingestellt
+        message: |
+          Hallo {{user_name}},
+
+          vielen Dank für Ihre Aktion und Ihr Engagement auf elargio.de.
+
+          Ihre neue Aktion wurde erfolgreich eingestellt. 
+          Diese ist zunächst nur für Sie sichtbar und wird in 24 Stunden auf helpedia.de erscheinen.
+
+          Die Aktion wird unter folgender Adresse erreichbar sein:
+
+          {{url}}          

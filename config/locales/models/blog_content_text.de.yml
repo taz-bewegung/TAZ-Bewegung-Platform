@@ -1,0 +1,6 @@
+de:
+  activerecord: 
+    attributes:
+      blog_content_text:
+        image_alignment: Position der Bilder
+        image_alignment_tooltip: ""

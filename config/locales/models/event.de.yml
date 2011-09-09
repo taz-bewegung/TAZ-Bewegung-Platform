@@ -1,0 +1,64 @@
+de:
+  event: 
+    dativ: dem Termin
+    akkusativ: der Termin
+    subject: Der Termin
+    plural: Termine
+  
+  activerecord: 
+    attributes:      
+      event:
+        city: Stadt
+        country_code: Land
+        organisation_id: Veranstalter
+        permalink: Kurzname
+        street_tooltip: ""
+        event_category_id: Veranstaltungsform
+        originator_id_tooltip: ""
+        title: Titel
+        location_id_autocomplete: Veranstaltungsort
+        location_id_autocomplete_tooltip: Hier kannst du nach einem bereits existierenden Veranstaltungsort suchen
+        location_id: Veranstaltungsort
+        location_id_tooltip: Hier kannst du nach einem bereits existierenden Veranstaltungsort suchen
+        description_tooltip: Hier kannst Du die Veranstaltung etwas genauer beschreiben.
+        permalink_tooltip: "Gebe hier einen *Kurzname* der Veranstaltung ein.\r\n\
+          Nach dem Kurzname wird eine URL-Internetadresse benannt, \xC3\xBCber die man die Veranstaltung abrufen kann.\r\n\
+          \r\n\
+          Beispiel:\r\n\
+          \r\n\
+          Kurzname: Tagung-Nachhaltigkeit\r\n\
+          \r\n\
+          URL: bewegung.taz.de/termine/tagung-nachhaltigkeit"
+        zip_code: PLZ
+        zip_code_tooltip: ""
+        event_category_id_tooltip: ""
+        starts_at: Start
+        starts_at_tooltip: ""
+        website: Website
+        description: Beschreibung
+        title_tooltip: Geben Sie hier einen *Titel* der Veranstaltung an.
+        street: "Stra\xC3\x9Fe"
+        city_tooltip: ""
+        country_code_tooltip: ""
+        ends_at: Ende
+        ends_at_tooltip: ""
+        organisation_id_tooltip: ""
+        originator_id: Erstellt von
+        image: Bild
+        image_id: Bild
+        website_tooltip: "Auf welcher *Website* kann man mehr \xC3\xBCber die Veranstaltung erfahren?"
+        social_categories: Themenkategorien
+        event_type: Aktionstyp
+        event_type_tooltip: ""
+        start_date: Beginn
+        start_date_tooltip: ""
+        start_time: Uhrzeit des Startdatums
+        start_time_tooltip: "Hier kannst Du die Uhrzeit des Startdatums im folgenden Format eingeben: hh:mm. Beispiel: 12:00"
+        end_date: Ende
+        end_date_tooltip: ""
+        start_time: Uhrzeit des Enddatums
+        end_time_tooltip: "Hier kannst Du die Uhrzeit des Enddatums im folgenden Format eingeben: hh:mm. Beispiel: 12:00"        
+        nationwide: Bundesweit
+        nationwide_tooltip: ""
+        name: Veranstaltungsort
+        name_tooltip: "Name des Veranstaltungsorts eintragen: z.B: Bürgertreff, Vereinshaus Kunterbunt, Rote Flora..."

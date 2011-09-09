@@ -1,27 +1,32 @@
 Bewegung::Application.routes.draw do
-  
+
   #match '/kontakt' => 'feedbacks#contact'
-  
+
   # Feed Events
   resources :feed_events
-  
+
   # Events
   resources :events
-  
+
   # Activities
   resources :activities
-  
+
   # Organisations
   resources :organisations
-  
+
   # Locations
   resources :locations
-  
-  # Users
 
+  # User & Sessions
+  resource :session
   match 'logout' => 'sessions#destroy'
   match 'login' => 'sessions#new'
   match 'register' => 'sessions#create'
+  match 'reset_password/:key' => 'sessions#reset_password', :key => nil
+  match 'forgot_password' => 'fsessions#orgot_password'  
+  match 'forget_password' => 'sessions#forget_password'
+  match 'change_password' => 'sessions#change_password'
+  match 'password_changed' => 'sessions#password_changed'
 
   resources :users do
     collection do
@@ -29,17 +34,17 @@ Bewegung::Application.routes.draw do
       get 'registered'
     end
   end
-  
+
   # Old Helpedia Stuff, to be renamed
-  
+
   match 'my_helpedia' => 'my_helpedia#index'
-  
+
   namespace :my_helpedia do
   end
-  
+
   # Request
   resource :request
-  
+
   # Newsletter
   match 'unsubscribe_newsletter' => 'newsletter#unsubscribe'
   match 'unsubscribed_newsletter' => 'newsletter#unsubscribed'   
@@ -54,6 +59,9 @@ Bewegung::Application.routes.draw do
   
   # Commendations
   resources :commendations
+  
+  # Session
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

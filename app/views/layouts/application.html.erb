@@ -16,8 +16,7 @@
     
   </script>
   
-  <%= include_stylesheets :application %>
-  <%= include_javascripts :default, :application %>
+  <%= stylesheet_link_tag "home", :cache => true %>
   
 <!--[if IE 7]>
 <%= stylesheet_link_tag 'ie7' %>
@@ -88,5 +87,6 @@ DD_belatedPNG.fix('#nav-main ul li, #hc-home,  #sticker, #bd, #hc-content, #ft, 
   <%# render :partial => "/activities/wikileaks" if session[:wikileaked].blank? and cookies[:wikileaked].blank? %>  
   <%# render :partial => "/activities/iran" if session[:iranized].blank? and cookies[:iranized].blank?%>
   <%= render :partial => "/shared/piwik" if Rails.env == "production" %>
+    <%= javascript_tag :application %>
 </body>
 </html>

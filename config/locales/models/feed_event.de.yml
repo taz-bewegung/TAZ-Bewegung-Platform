@@ -1,0 +1,10 @@
+de:
+  feed_event:
+    stream:
+      header:
+        user: "in meiner Bezugsgruppe, wo ich sympathisiere, bei meinen Aktionen, Blogs..."
+        organisation: "in unseren Blogs, Terminen, Aktionen und Orten..."      
+    location:
+      header:      
+        user: "damit ihr euch lokal vernetzen könnt..."
+        organisation: "rund um die Adresse eurer Organisation"

@@ -1,7 +1,8 @@
+# encoding: UTF-8
 class OrganisationsController < ApplicationController
-  
+
   include ImageHelper
-  include GoogleMapsHelper  
+  include GoogleMapsHelper
   
   before_filter :setup                            
   before_filter :setup_params, :include_gm_header, :only => [:index]    

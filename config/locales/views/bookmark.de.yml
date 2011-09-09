@@ -1,0 +1,10 @@
+de:
+  bookmarks:
+    list_header:
+      event: "Termine"
+      activity: "Aktionen"
+      location: "Orte"
+      organisation: "Organisationen"
+    no_records_found: "Keine Favoriten gefunden."
+     
+    

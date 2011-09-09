@@ -1,10 +1,10 @@
+# encoding: UTF-8
 # Let's use a custom form builder instead of our own wrappers around every form method.
 # Rails makes it easy to use a different "Builder" for a form. In this class we
 # create our own one and override the default form helpers.
 
 class EditFormBuilder < ActionView::Helpers::FormBuilder
   include ActionController::Routing
-  
   attr_accessor :use_divs
   
   helpers = field_helpers +
@@ -27,8 +27,9 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
       # Get rid of unoppropriate options
       options.delete_if { |key, value| not [:include_blank, :style, :rel, :rows, :cols, :class, :multiple, :title, :id, :name, :maxlength, :value, :type, :size, :"data-update", :"data-href", :"data-disable"].include?(key.to_sym)}      
       
+      Rails.logger.info field
       # Build html
-      wrap_field(super, field, options)
+      wrap_field(super(field, *args), field, options)
     end
     
   end
@@ -56,7 +57,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
     # Get rid of unoppropriate options
     options.delete_if { |key, value| not [:rel, :class, :style, :id, :name, :value, :type, :title, :size].include?(key.to_sym)}      
     
-    wrap_field(html, field, options)                
+    wrap_field(html, field, options)
   end
   
   # An image field for forms to upload

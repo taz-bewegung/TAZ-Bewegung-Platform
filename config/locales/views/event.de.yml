@@ -1,0 +1,12 @@
+de:
+  event:
+    my_helpedia:
+      users:
+        title: Termine
+      organisations:
+        title: Termine
+      index:
+        organisations:
+          list_title: Unsere Termine
+        users:
+          list_title: Meine Termine

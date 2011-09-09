@@ -1,0 +1,6 @@
+de:
+  activerecord: 
+    attributes:
+      blog_content_video_with_code:
+        code: Code des Videos
+        code_tooltip: Hier kannst Du den HTML-Code des Videos eingeben.

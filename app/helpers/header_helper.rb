@@ -5,11 +5,12 @@ module HeaderHelper
   end
   
   def shadow_text(text, options = {})
-    image_tag MagickFontMaker.create_shadow_text(text, options)    
+    #image_tag MagickFontMaker.create_shadow_text(text, options)    
   end
   
   def shadow_text_filename(text, options = {})
-    MagickFontMaker.get_shadow_text_filename(text, options)    
+    #MagickFontMaker.get_shadow_text_filename(text, options)
+    text
   end
   
   def welcome_header(left, right)

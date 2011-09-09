@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'coderay'
 
 class Api::V1::DocsController < ApplicationController

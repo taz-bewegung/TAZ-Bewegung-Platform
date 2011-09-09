@@ -1,0 +1,62 @@
+de:
+  activerecord: 
+    attributes:
+      activity_membership:
+        message: Deine Nachricht
+        message_tooltip: Diese Nachricht erscheint in der Sympathisierungsliste. 
+        
+  activity_membership:
+      
+    new:
+      header: "Bei der Aktion: {{activity_title}} mitmachen"
+      message: Trage hier ein, wie Du dies tust und warum. Der Starter der Aktion erhält daraufhin eine Nachricht und wird Dich so schnell wie möglich freischalten.
+        
+          
+    created:
+      email:
+        subject: Anfrage zum Mitmachen bei Deiner Aktion {{activity_title}}
+        message: |
+          Hallo {{activity_user_name}},
+
+          {{membership_user_name}} möchte sich an deiner Aktion {{activity_title}} aktiv beteiligen.
+          Seine Nachricht lautet:
+
+          {{membership_message}}
+
+          Wenn Du die Anfrage freischaltest, dann erscheint der Benutzer mit seinem Text auf deiner Aktionsseite.
+
+          Du kannst seine Anfrage freischalten oder ablehnen, indem Du Dich auf helpedia.de anmeldest. Im „Mein Helpedia – Bereich findest Du unter dem Punkt Aktive die unbeantworteten Anfragen. 
+
+          Solltest Du Fragen haben, beantworten wir sie Dir gern unter info@helpedia.de.
+
+          Viele Grüße vom
+          helpedia-Team
+      
+    confirmed:
+      email:
+        subject: Deine Anfrage zum Mitmachen bei der Aktion {{activity_title}}
+        message: |
+          Hallo {{membership_user_name}},
+
+          {{activity_user_name}} hat Deine Teilnahme an der Aktion {{activity_title}} bestätigt.
+          Du erscheinst nun mit Deiner Nachricht auf der Aktionsseite.
+
+          Du kannst Deine Teilnahme und Deine Nachricht bearbeiten, indem Du Dich auf helpedia.de anmeldest. Im „Mein Helpedia – Bereich“ findest Du unter dem Punkt "Meine Aktionen - Übersicht" eine Auflistung aller Teilnahmen an Aktionen. 
+
+          Solltest Du Fragen haben, beantworten wir sie Dir gern unter info@helpedia.de.
+
+          Viele Grüße vom
+          helpedia-Team 
+
+            
+    canceled:
+      email:
+        subject: Deine Anfrage zum Mitmachen bei der Aktion {{activity_title}}
+        message: |
+          Hallo {{membership_user_name}},
+
+          {{activity_user_name}} hat Deine Teilnahme an der Aktion {{activity_title}} abgelehnt/beendet.
+          Solltest Du Fragen haben, beantworten wir sie Dir gern unter info@helpedia.de.
+
+          Viele Grüße vom
+          helpedia-Team            

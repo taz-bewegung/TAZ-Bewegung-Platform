@@ -1,10 +1,11 @@
+# encoding: UTF-8
 class Admin::MessagesController < ApplicationController
 
   before_filter :setup
   before_filter :login_required
-  
+
   ssl_required :new, :create, :reply, :index, :sent, :show, :destroy, :system
-  
+
   def new
     @message = Message.new(params[:message])
     @message.sender = current_user

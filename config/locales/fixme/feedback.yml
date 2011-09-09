@@ -1,0 +1,26 @@
+de:
+  activerecord: 
+    attributes:
+      feedback:
+        name: "Name"
+        email: "E-Mail-Adresse"
+        message: "Nachricht"
+        name_tooltip: ""
+        email_tooltip: "" 
+        message_tooltip: ""
+        captcha:  ""
+        
+  feedback:
+
+    new:
+      email:
+        subject: Neues Feedback
+        message: |
+          Neues Feedback 
+            von: {{name}}
+            E-Mail: {{email}}
+            URL: {{url}}
+            
+          Nachricht:
+            {{message}}
+

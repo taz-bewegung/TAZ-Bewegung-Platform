@@ -1,0 +1,12 @@
+de: 
+  activerecord: 
+    models:
+      blog_post: Blognachricht
+    attributes: 
+      blog_post: 
+        title: Titel
+        title_tooltip: ""
+        commentable: "Kommentare"
+        commentable_tooltip: ""
+        temp_tag_list: "Tags" 
+        temp_tag_list_tooltip: "Hier kannst Du Deinen Blogeintrag mit Tags versehen. Unterschiedliche Tags bitte durch ein Komma trennen."
