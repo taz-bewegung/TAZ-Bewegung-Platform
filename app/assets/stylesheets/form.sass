@@ -1,0 +1,472 @@
+
+
+// Generelle Form-Styles
+table.pagination-table
+  width: 656px
+  font-size: 0.9em
+  background: url(layout/icons-pagination/icons/pagination-bg.gif) repeat-x 0 3px
+  margin-bottom: 12px
+  height: 34px
+  
+  td.search-item-type
+    select
+      margin-top: 2px
+  
+  td
+    padding: 0px
+    vertical-align: middle !important
+    
+    select.pages
+      margin-top: 10px
+    
+    a:active
+      outline: none
+      -moz-outline-style: none
+          
+    img.pagination-image
+      margin-top: 3px
+    
+    img.pagination-image-left
+      margin-top: 3px
+      
+      
+    img.pagination-image-right
+      margin-top: 3px 
+      display: inline
+    
+    input.search-btn
+      border: 0px !important
+      background: none
+      margin-left: 5px
+      margin-top: 2px
+    
+    input.search-field
+      border: 0px !important
+      background: transparent url(search/search-input.png) no-repeat !important
+      width: 189px
+      height: 20px
+      margin: 0px
+      padding-left: 3px
+      padding-top: 2px
+      margin-top: 10px
+      padding-right: 0px
+      
+    img.search-arrow-first
+      margin-right: 2px
+     
+    img.search-arrow-second
+      margin-right: -4px
+      margin-left: 2px 
+    
+    form
+      display: inline !important
+      
+      select
+        margin-left: 10px
+    
+    label
+      display: none
+    
+    select
+      margin-top: 4px
+    
+    div select
+      margin-top: 0px
+      margin-left: 10px
+    
+    div a
+      margin: 0
+      padding: 0
+
+  td.page-control
+    text-align: left
+    vertical-align: middle !important
+  td.sort
+    text-align: right
+    width: 25%
+  
+  td.entries
+    text-align: right
+  
+  div
+    display: inline
+    
+    
+div.list-view
+  background: #f4f4f4
+  border: 1px solid #dcdcdc
+  margin-right: 15px
+  padding: 0px
+  vertical-align: middle
+  border-bottom: 0px
+  margin-bottom: 0.6em
+  
+table.date_select
+  float: left !important
+
+form  
+  
+  input.checkbox
+  
+  span.checkbox-label-hover
+    text-decoration: underline
+    cursor: pointer
+  
+  span.checkbox-label-active
+    color: #B02D4B
+  
+  table 
+    td
+      padding: 0px
+    
+      input#user_password_confirmation
+        width: 196px
+        
+      div
+        display: inline
+        
+      .block
+        display: block
+        margin-bottom: 12px
+
+      .image-item
+        float: left
+        width: 100px
+        margin-right: 20px
+        display: block
+
+      .width-height
+        float: left
+        width: 70px
+        display: block
+      
+      .comment
+        float: left
+        width: 70px
+        display: block        
+        margin-right: 20px
+        padding-top: 21px
+
+      .delete    
+        float: left
+        width: 70px  
+        display: block
+        padding-top: 15px        
+
+    td.input-area
+      padding: 0.3em !important
+  
+  img.ui-datepicker-trigger
+    margin-top: 3px
+    cursor: pointer
+  
+  table.date_select div
+    float: left
+    
+  div.select-wrapper
+    float: none
+  
+  table.normal-input, table.active-input
+    
+    input, textarea, div.date select
+      color: #000
+      border: 0px
+      background: url(overlay1/textfeld_hellgrau_bg.gif) repeat-x
+      font-size: 0.95em !important
+      padding: 4px
+      font-family: Arial, Helvetica, sans-serif
+      vertical-align: middle
+      border-top: 0px solid #e9e9e9 
+      border-left: 0px solid #e9e9e9 
+      border-right: 1px solid #ccc
+      border-bottom: 1px solid #ccc
+      
+    textarea
+      height: 180px
+      width: 200px
+      
+    td.lo, td.ro, td.ru, td.lu
+      background: none
+      height: 3px
+      width: 3px
+      
+    td.mo, td.mu
+      background: none
+      height: 3px        
+        
+    td.lm, td.rm
+      background: none
+      width: 3px                    
+
+  table.active-input
+
+    input, textarea, div.date select
+      color: #000
+      border: 0px
+      background: url(overlay1/textfeld_dunkelgrau_bg.gif) repeat-x 
+      font-size: 0.95em !important
+      padding: 4px
+      font-family: Arial, Helvetica, sans-serif
+      vertical-align: middle
+      border-top: 0px solid #e9e9e9 
+      border-left: 0px solid #e9e9e9 
+      border-right: 1px solid #cccccc 
+      border-bottom: 1px solid #cccccc 
+    
+    textarea
+      height: 180px
+      width: 200px
+      
+    td.lo, td.ro, td.ru, td.lu
+      background: none
+      height: 3px
+      width: 3px
+      
+    td.mo, td.mu
+      background: none
+      height: 3px        
+        
+    td.lm, td.rm
+      background: none
+      width: 3px 
+
+// Error Felder
+
+  table.error-input
+
+    input, textarea, div.date select
+      color: #000
+      background: url(overlay1/textfeld_hellrot_bg.gif) repeat-x
+      font-size: 0.95em !important
+      padding: 4px
+      font-family: Arial, Helvetica, sans-serif
+      vertical-align: middle
+      border: 0px !important
+      margin: 0px
+    textarea
+      height: 100px
+      width: 200px
+    
+    td.lo
+      background: url(overlay1/ecke_top_left_rot.gif) no-repeat
+      height: 3px
+      width: 3px
+     
+    td.ro
+      background: url(overlay1/ecke_top_right_rot.gif) no-repeat
+      height: 3px
+   
+    td.lu
+      background: url(overlay1/ecke_bottom_left_rot.gif) no-repeat
+      height: 3px
+      width: 3px
+   
+    td.ru
+      background: url(overlay1/ecke_bottom_right_rot.gif) no-repeat
+      height: 3px
+      width: 3px
+   
+    td.mo
+      background: url(overlay1/border_top_rot.gif) repeat-x
+      height: 3px
+      vertical-align: bottom
+   
+    td.mu
+      background: url(overlay1/border_bottom_rot.gif) repeat-x
+      height: 3px
+   
+    td.lm
+      background: url(overlay1/border_left_rot.gif) repeat-y
+      width: 3px
+   
+    td.rm
+      background: url(overlay1/border_right_rot.gif) repeat-y
+      width: 3px 
+
+// Bild hochladen 
+
+  .image-field
+
+    img
+      float: left
+      margin-right: 10px  
+  
+  .chose-image
+    margin-top: 7px
+    float: left
+
+  
+      
+  
+.form-submit
+  td
+    padding-top: 15px
+    
+// Labels
+
+table.reg-form th
+  padding-right: 10px
+  text-align: right !important
+  
+  label
+    line-height: 35px
+    width: auto !important
+    font-weight: bold
+    vertical-align: middle
+
+#content table.reg-form td
+  padding: 0.5em
+  
+  input
+    background
+
+#content table.reg-form td table td
+  padding: 0px   
+  
+
+table.reg-form.w-230 th
+  width: 230px
+  
+table.reg-form.w-210 th
+  width: 210px  
+
+table.reg-form.w-140 th
+  width: 140px      
+
+table.reg-form.w-165 
+  th
+    width: 165px
+    
+  textarea
+    width: 260px
+    height: 180px
+  
+//
+
+.modal-left-content table.reg-form th label
+  font-weight: normal
+  font-size: 12px
+ 
+  
+// Labels für den Mein_Helpedia-Bereich
+ 
+.edit-part-content
+
+
+  table.reg-form
+   
+    td
+      padding: 0.3em !important
+      
+      table tr td
+        padding: 0px !important
+      
+    .form-content
+      a
+        margin-left: 0px
+
+      td a
+        margin-left: 0px
+  
+    th
+      text-align: right
+      width: 130px
+      vertical-align: middle
+      padding-right: 5px
+    
+      label
+        font-size: 1em 
+        line-height: 20px
+        width: auto !important
+        font-weight: normal
+        color: #888888
+        padding-top: 4px          
+      
+    td.input-area        
+      width: auto
+      
+    table.normal-input, table.active-input
+
+      input, textarea, select
+        color: #000
+        border: 0px 
+        background: #EBE9DF url(overlay1/eingabefeld-bg.gif) repeat-x !important
+        
+// Custom styles
+
+table.reg-form  
+
+  div.shortname
+    font-size: 0.8em
+    font-weight: bold
+    background: url(overlay1/shortname-arrow.png) no-repeat 0 0
+    padding-left: 10px
+
+    span
+//      color: red
+    
+  select
+    font-size: 1em
+    font-weight: normal
+    font-family: Arial, Helvetica, sans-serif 
+    width: 215px
+
+  select#activity_starts_at_6i,
+  select#activity_starts_at_5i,  
+  select#activity_starts_at_4i,
+  select#activity_starts_at_3i,
+  select#activity_starts_at_2i,
+  select#activity_starts_at_1i,
+  select#activity_ends_at_6i,
+  select#activity_ends_at_5i,
+  select#activity_ends_at_4i,
+  select#activity_ends_at_3i,
+  select#activity_ends_at_2i,
+  select#activity_ends_at_1i,
+  select#event_starts_at_6i,
+  select#event_starts_at_5i,
+  select#event_starts_at_4i,
+  select#event_starts_at_3i,
+  select#event_starts_at_2i,
+  select#event_starts_at_1i,
+  select#event_ends_at_6i,
+  select#event_ends_at_5i,
+  select#event_ends_at_4i,
+  select#event_ends_at_3i,
+  select#event_ends_at_2i,
+  select#event_ends_at_1i,
+  select#user_birthday_3i,
+  select#user_birthday_2i,
+  select#user_birthday_1i
+    width: auto
+  
+  select.date,
+  table.date select
+    width: auto
+  
+  table.error-input select
+    background: #EFEFEF !important
+  
+  input.image
+    border: 0px !important
+    background: transparent
+
+  input.hasDatepicker
+    width: 96px !important
+  input.time
+    width: 95px !important
+    
+  input.grey
+    color: #666 !important
+    
+.edit-part-content
+  .reg-form
+    input.hasDatepicker
+      width: 90px !important
+    input.time
+      width: 89px !important
+      
+
+.chars-remaining
+  font-size: 11px
+  padding-left: 5px

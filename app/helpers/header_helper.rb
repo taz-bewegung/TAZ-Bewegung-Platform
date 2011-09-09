@@ -5,7 +5,8 @@ module HeaderHelper
   end
   
   def shadow_text(text, options = {})
-    #image_tag MagickFontMaker.create_shadow_text(text, options)    
+    #image_tag MagickFontMaker.create_shadow_text(text, options)
+    text
   end
   
   def shadow_text_filename(text, options = {})
@@ -15,10 +16,8 @@ module HeaderHelper
   
   def welcome_header(left, right)
     content_for(:magick_header) do
-#      cache("#{Rails.env.to_s}_welcome_header", :expires_in => 30.minutes) do        
-      "<h2><span style='float:left'>#{left}</span><span class='right'>#{right}</span></h2>"
-#      end
+      "<h2><span style='float:left'>#{left}</span><span class='right'>#{right}</span></h2>".html_safe
     end
   end
-  
+
 end

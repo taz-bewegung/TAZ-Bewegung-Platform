@@ -1,0 +1,149 @@
+#nav-main
+  position: absolute
+  right: 5px
+  top: 28px
+  cursor: pointer
+  ul
+  
+    li 
+      float: left
+      height: 70px 
+      display: block
+      position: relative
+                
+      a
+        height: 58px
+        padding: 0em 1em
+        display: block
+        color: #000
+        text-decoration: none
+        font-size: 1.2em
+        position: relative
+        
+        span
+          background: url(menu/nav-main.png) no-repeat scroll bottom left
+          display: block
+          position: absolute
+          top: 0
+          left: 0
+          height: 70px
+          width: 100%
+          z-index: 100
+          cursor: pointer
+   
+    li.act a span
+      cursor: default
+
+    li#start, li#start.act
+      background: url(menu/nav-main.png) no-repeat          
+      width: 58px
+      
+      span
+        background-position: 0px -100px
+        width: 55px
+    
+    li#start.act
+      background-position: 0px -200px
+      
+    li#activities, li#activities.act
+      background: url(menu/nav-main.png) no-repeat
+      background-position: -92px 0px
+      width: 105px
+      
+      span
+        background: none
+        width: 95px
+        
+    li#activities.act 
+      background-position: -92px -72px
+      margin-left: 0px
+            
+    li#organisations, li#organisations.act
+      background: url(menu/nav-main.png) no-repeat
+      background-position: -200px 0px
+      width: 160px
+      
+      span
+        background: none
+        width: 160px
+
+    li#organisations.act
+      background-position: -200px -72px
+      margin-left: 0px      
+
+    li#locations, li#locations.act
+      background: url(menu/nav-main.png) no-repeat
+      background-position: -360px 0px
+      width: 60px
+      
+      span
+        background: none
+        width: 60px   
+    
+    li#locations.act
+      background-position: -360px -72px
+      margin-left: 0px      
+            
+    li#events, li#events.act
+      background: url(menu/nav-main.png) no-repeat
+      background-position: -0px 0px
+      background-repeat: no-repeat
+      width: 92px
+      
+      span
+        
+        background: none
+        width: 92px
+    
+    li#events.act
+      background-position: -0px -72px
+      background-repeat: no-repeat
+     
+
+    li#my_helpedia, li#my_helpedia.act
+      background: url(menu/nav-main.png) no-repeat
+      background-position: -422px 0px      
+      width: 113px
+      span
+        background: none
+        width: 113px
+    
+    li#my_helpedia.act
+      background-position: -422px -72px
+      margin-left: 0px
+      
+      
+
+* html #nav-main ul
+  li#activities, li#activities.act
+    span
+      background-position: -58px -100px
+  li#organisations, li#organisations.act
+    span
+      background-position: -145px -100px
+  li#jobs, li#jobs.act
+    span
+      background-position: -284px -100px   
+  li#events, li#events.act
+    span
+      background-position: -433px -100px
+  li#my_helpedia, li#my_helpedia.act
+    span
+      background-position: -518px -100px
+
+*+html #nav-main ul
+  li#activities, li#activities.act
+    span
+      background-position: -58px -100px
+  li#organisations, li#organisations.act
+    span
+      background-position: -145px -100px
+  li#jobs, li#jobs.act
+    span
+      background-position: -284px -100px   
+  li#events, li#events.act
+    span
+      background-position: -433px -100px
+  li#my_helpedia, li#my_helpedia.act
+    span
+      background-position: -518px -100px

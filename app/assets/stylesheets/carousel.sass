@@ -1,0 +1,287 @@
+.cal_slide_holder,
+.slide_holder
+  :background-image url(layout/teaserbox/teaserbox_bg.jpg)
+  :background-repeat repeat-x
+  :height 253px
+  :overflow hidden
+  :position relative
+  :text-align left
+  :width 278px
+  :z-index 1
+
+
+.cal_slide_holder_inner,
+.slide_holder_inner
+  :height 205px
+  :overflow hidden
+  :position absolute
+  :width 278px
+  :z-index 2000
+
+  div
+    :position absolute
+
+
+div
+  &.slide_holder_inner div.slide div,
+  &.cal_slide_holder_inner div.cal_slide div  
+    :position relative
+
+  &.cal_carousel_controls,
+  &.carousel_controls
+    :background-image url(layout/teaserbox/teaserbox_leiste_bottom_bg.jpg)
+    :background-position 0 0
+    :background-repeat repeat-x
+    :height 31px
+    :z-index 4000  
+    :top 205px
+    :border-top 1px solid #fff
+    :width 278px
+    :position absolute
+    :padding-left 20px     
+    
+.carousel_split
+  :background-image url(layout/teaserbox/leiste_trenner.jpg)
+  :float left
+  :width 1px  
+  :height 31px 
+
+ul.cal_slide_buttons,
+ul.slide_buttons
+  :padding 15px 30px 15px 15px
+  :position relative
+  :float right
+  :width auto
+  :left 0px
+  :top -5px
+  :z-index 1000
+
+  li
+    :background-image url(layout/teaserbox/punkt-grau.png)
+    :display block
+    :float left
+    :height 9px
+    :list-style none
+    :margin 0 0 0 3px
+    :padding 2px
+    :width 10px 
+    :background-repeat no-repeat
+    :overflow hidden
+    :top 0px    
+    :cursor pointer
+    :cursor hand    
+
+    &:hover
+    &.button_selected
+      :background-image url(layout/teaserbox/punkt-rot.png)
+
+      &:hover
+  
+.hover_next_button,
+.cal_hover_next_button
+  :width 23px
+  :height 31px
+  :float left
+  :cursor pointer
+  :cursor hand  
+  :background-image url(layout/teaserbox/pfeil_vor_no.jpg)
+  
+  &:hover
+    :background-image url(layout/teaserbox/pfeil_vor_akt.jpg)  
+  
+  span
+    display: none
+
+.hover_prev_button,
+.cal_hover_prev_button
+  :background-image url(layout/teaserbox/pfeil_zuruck_no.jpg)
+  :width 23px  
+  :height 31px 
+  :cursor pointer
+  :cursor hand  
+  :float left
+
+  &:hover
+    :background-image url(layout/teaserbox/pfeil_zuruck_akt.jpg)  
+  
+  span
+    display: none
+
+
+.slide_captions
+  :color #333
+  :left 8px
+  :overflow visible
+  :top 5px
+  :z-index 6000
+
+  span
+    :font-family Tahoma
+    :font-size 15px
+    :height 20px
+    :line-height 20px
+    :overflow visible
+
+.row_of_slides,
+.cal_row_of_slides
+  :position absolute
+  :top 0
+
+  .slide,
+  .cal_slide
+    :position absolute
+    :width 276px
+    
+    .title
+      padding: 0px 10px
+      height: 39px
+      margin-top: -39px
+      line-height: 39px
+      font-size: 21px
+      background: url(layout/teaserbox/slider-title-bg.png) no-repeat
+    
+    
+// Slider für die Landing-Pages
+
+.two-columns-application
+  .slide_holder
+    width: 392px
+    
+    .slide_holder_inner
+      width: 392px 
+      left: 0
+      top: 0
+      height: 197px
+      
+      .row_of_slides
+        .slide
+          width: 392px
+        
+          .title
+            padding: 0px 10px
+            height: 39px
+            margin-top: -39px
+            line-height: 39px
+            font-size: 21px
+            background: url(layout/teaserbox/slider-title-bg.png)
+  
+    .carousel_controls
+      width: 392px
+      top: 197px
+      
+      .slide_buttons
+        position: relative 
+        left: 0
+        float: right
+        margin-right: 30px
+        width: auto
+        z-index: 500
+        
+// Kalender  
+
+.cal_hover_next_button
+  :width 8px
+  :margin-left 15px
+  :height 43px
+  :line-height 43px
+  :float left
+  :cursor pointer
+  :background-image url(calendar/pfeil_rechts.png) !important
+  :background-repeat no-repeat
+  
+  &:hover  
+    :background-image url(calendar/pfeil_rechts_hover.png) !important
+    
+  span
+    display: none
+
+.cal_hover_prev_button
+  :background-image url(calendar/pfeil_links.png) !important
+  :background-repeat no-repeat
+  :width 8px  
+  :height 43px
+  :line-height 43px
+  :cursor pointer
+  :float left
+  
+  &:hover  
+    :background-image url(calendar/pfeil_links_hover.png) !important  
+
+
+
+#day-events
+  margin-top: 15px
+
+  .cal_slide_holder
+    width: 654px
+    height: 172px
+    background-image: none
+    
+  .cal_slide_holder_inner
+    width: 654px
+    margin-top: 50px
+    
+    .cal_slide
+      width: 654px
+      
+      .list-table-item 
+        border-bottom: none !important 
+        
+        dl
+          font-size: 11px
+      
+  .cal_carousel_controls
+    top: 0px
+    width: 634px 
+    background: transparent url(my_helpedia/headline-bg.gif) no-repeat scroll right 0
+    height: 43px
+    line-height: 43px
+    
+    .label
+      line-height: 42px
+      font-weight: bold
+      float: left
+      font-size: 14px
+    
+    .next-prev
+      float: right  
+      margin-right: 15px
+    
+    .cal_slide_buttons
+      float: right 
+      padding: 16px 0px
+      position: static
+      width: auto
+      margin-right: 30px
+      
+            
+// Start page teaser carousel
+
+.teaser-items
+  
+  .teaser-image
+    float: left
+    width: 110px
+    margin-bottom: 10px
+    
+  h3
+    white-space: normal
+    min-height: inherit
+    margin-bottom: 12px
+  
+  .title-link
+    padding: 0px 10px
+    height: 39px
+    margin-top: -39px
+    line-height: 39px
+    font-size: 21px
+    background: url(layout/teaserbox/slider-title-bg.png) no-repeat
+    position: absolute
+    bottom: 0
+    left: 0
+    width: 257px
+    margin-bottom: 10px
+    
+    a
+      color: black
+      text-decoration: none

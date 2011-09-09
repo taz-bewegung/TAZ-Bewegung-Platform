@@ -1,0 +1,127 @@
+.message-table
+  width: 631px
+  
+  
+  tr.alternate
+    td
+      background: #faf9f4
+    
+  tr
+    td
+        
+    textarea
+      width: 350px !important
+      height: 180px !important
+
+    td.seperator
+      background: url(layout/messages/nachrichten_seperator.png) no-repeat 0px 0px
+      line-height: 1px
+      text-align: center
+      vertical-align: middle
+      padding: 1px
+
+    td.image
+      :padding 5px
+      width: 56px !important
+
+    td.name-and-date
+      :width 170px
+      :padding 5px
+      
+      span.name
+        :display block
+        :margin-right 20px
+        :overflow hidden
+        :width 170px
+        :padding-left 23px
+      span.date
+        :color #777777
+        :display block
+        :font-size 10px
+        :padding 1px 0 0
+        :padding-left 23px
+    td.subject
+      :padding 5px
+      
+      span.subject
+        :display block
+      span.message
+        :display block
+        :font-size 11px
+
+  tr.unread 
+    font-weight: bold
+    
+    td.name-and-date
+      span.name
+        background: url(layout/messages/nachrichten_namepoint.png) no-repeat 0px 0px
+
+
+.message-table.show
+  tr
+    td.image
+      vertical-align: top
+      :padding 15px 0px 5px 0px
+      
+    td.name-and-date
+      vertical-align: top
+      :padding 15px 0px 5px 0px
+            
+      span.name
+        padding-left: 10px
+      span.date
+        padding-left: 10px
+
+    td.subject
+      :padding 15px 0px 5px 0px
+    
+        
+.message_header
+  margin-top: 20px
+
+
+.message
+  :overflow hidden
+  
+  .sender_image
+    :float left
+    :padding 0 0 10px
+    :padding-bottom 0
+    :width 50px
+
+  .sender_info 
+    :float left  
+    :font-size 10px
+    :font-weight normal
+    :padding 0 10px 0 0
+    :text-align right
+    :width 140px
+    
+    .name
+      :font-size 11px
+      :font-weight bold
+      :overflow hidden
+      :padding 3px 5px 0
+
+    .date
+      :color #777777
+      :display block
+      :padding 2px 5px 0 0
+      
+  .body
+    :float left
+    :width 425px
+    
+.msg_divide_bottom    
+  :background #DDDDDD none repeat scroll 0 0
+  :height 1px
+  :margin 0 0 10px 185px
+  :overflow hidden
+  
+.conversation  
+  margin: 10px 0
+  font-size: 13px
+   
+  
+.bold
+  font-weight: bold

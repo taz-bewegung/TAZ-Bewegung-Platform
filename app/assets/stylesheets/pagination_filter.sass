@@ -1,0 +1,232 @@
+$link_color:  #B02D4B
+
+.pagination-filter
+  height: 40px
+  width: 100%
+  background-repeat: repeat-x
+  background-image: url(pagination-filter/pagination-bg.png)
+  position: relative
+  font-size: 12px
+  
+  .item
+    float: left
+    padding: 5px 10px
+    height: 30px
+    width: 100px
+    
+    &.category-filter
+      width: auto
+      
+      div.spinner
+        margin-right: -30px !important
+    
+    div.spinner      
+      float: right !important
+      margin-right: 0px !important
+      margin-top: -27px !important
+      
+      img
+        margin: 0px !important
+      
+    span
+      color: #a1a1a1
+      display: block 
+      font-size: 11px
+    
+    .deactivated
+      cursor: default !important
+    
+    .active-filter
+    
+      span.hover-span
+        display: inline-block
+        overflow: hidden
+    
+      .act-filter-item
+        font-size: 12px
+        font-weight: bold
+        float: left
+        padding-right: 6px
+        display: block
+    
+      img
+        background-color: $link_color
+        float: left
+        margin-top: -20px
+    
+    .filter-list
+      position: absolute
+      margin-left: -15px
+      margin-top: 21px
+      display: none
+      z-index: 15
+      
+      .bottom-middle
+        background-image: url(pagination-filter/box_schatten_bottom_middle.png)
+        background-repeat: repeat-x
+        height: 7px
+
+      .bottom-right
+        background-image: url(pagination-filter/box_schatten_bottom_right.png)
+        background-repeat: no-repeat
+        height: 7px
+        width: 4px 
+        
+      .bottom-left
+        background-image: url(pagination-filter/box_schatten_bottom_left.png)
+        background-repeat: no-repeat
+        height: 7px
+        width: 4px
+
+      .middle-left
+        background-image: url(pagination-filter/box_schatten_left.png)
+        background-repeat: repeat-y
+        width: 4px
+        
+      .middle-right
+        background-image: url(pagination-filter/box_schatten_right.png)
+        background-repeat: repeat-y
+        width: 4px 
+        
+      .middle-content
+            
+      ul
+        background-color: #eae8df
+        border: 1px solid #b9bfca
+        min-width: 119px
+           
+        li
+          padding: 1px 4px
+          margin: 1px
+          a
+            color: #666
+            text-decoration: none 
+            display: block
+            padding: 2px 0
+            font-weight: normal
+            font-size: 12px
+            
+            &:hover
+              text-decoration: none
+              color: #000
+              font-weight: bold
+              
+            img
+              background-color: $link_color
+              margin-right: 10px
+              float: left
+              
+          &.act
+            background-color: #ced3da
+            
+            a
+              font-weight: bold
+              color: #000
+
+      ul.layout_icons
+        li
+          a 
+            height: 23px
+            line-height: 23px
+            font-weight: normal
+            font-size: 12px            
+            
+            img
+              margin-top: 0px
+              
+              
+  .view-filter
+    border-right: 3px solid #fff
+    width: 100px
+  
+  .pagination, .calendar-pagination
+    border-left: 3px solid #fff
+    float: right
+    width: 120px
+    
+    div.spinner
+      margin-left: 50px    
+    
+    .filter-list
+      margin-right: -7px
+      right: 0px
+    
+    div.container
+      background-color: #eae8df
+      border: 1px solid #b9bfca
+      padding: 10px 0px
+      overflow: hidden
+      line-height: 20px
+      width: 180px
+      
+      a, span, select
+        float: left
+        margin-right: 10px 
+        display: block
+      
+      a.previous, a.previous-month
+        img
+          margin-top: -1px
+      
+      a.next, a.next-month
+        img
+          margin-top: -1px
+      
+      a.first
+        margin-left: 10px
+
+      a.last
+        margin-right: 10px
+        
+      img
+        background-color: $link_color
+        float: left
+        margin-top: -1px
+    
+    .active-filter
+      width: 92px
+    
+      .act-filter-item
+        float: left
+        margin-right: 6px
+            
+      a
+        float: left 
+        display: inline-block
+        margin-right: 10px
+        font-size: 12px
+      
+      a.previous, a.previous-month
+        img
+          margin-top: -19px
+      
+      a.next, a.next-month
+        float: right
+        
+        img
+          margin-top: -19px
+        
+      img
+        background-color: $link_color
+        float: left
+        margin-top: -20px
+      
+      a.stats
+        margin-right: 5px
+      img.arrow-bottom
+        margin-right: 5px
+      
+      .filter-list
+        a.next
+          float: left
+          
+  .calendar-pagination
+    width: 125px
+  
+    div.spinner
+      margin-left: 70px
+      
+    .active-filter
+      width: 115px
+  
+    

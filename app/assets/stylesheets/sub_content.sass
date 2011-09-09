@@ -1,0 +1,486 @@
+#sub-content-modal,
+#sub-content-lightbox,
+#sub-content
+  padding: 15px
+  font-size: 0.95em  
+  background: url(layout/contentbox/content_box_bg.jpg) no-repeat
+  min-height: 150px  
+  clear: both
+  
+  object, embed
+    max-width: 594px !important
+  
+  .video-teaser
+    object, embed
+      max-width: 90px !important
+      max-height: 70px !important
+      
+  .large-video-teaser
+    object, embed
+      max-width: 200px !important
+      max-height: 120px !important
+
+.overview-item
+  width: 292px
+  height: 140px
+  float: left
+  margin-right: 20px
+  margin-bottom: 10px
+  
+  .membership-image
+    height: 44px
+    width: 58px
+    float: left
+    
+  .membership-name
+    width: 60px
+    text-align: center
+
+.blog-content-element
+  width: 100px
+  padding: 4px
+  float: left
+  margin-right: 10px
+  z-index: 1000
+  border: 1px solid black
+
+.ui-draggable-dragging
+    
+.new-content-element
+  border: 1px dotted red 
+  width: 100%
+  
+.droppable-hover
+  border: 1px solid red     
+  padding: 10px 0
+    
+
+.blog-content
+  float: left
+  width: 520px
+  margin-right: 10px
+
+.blog-sidebar
+  padding: 10px
+  float: left
+  
+
+// Multi-Spalten-Elemente im Sub-Content
+
+.two-column
+  overflow: hidden
+  width: 627px  
+  
+  .column-75
+    width: 450px
+    float: left
+    margin-right: 10px
+    
+    .code
+      margin-top: 10px
+      margin-bottom: 10px
+      clear: left
+      overflow: hidden
+      iframe
+        border: 0px
+  
+  .column-25
+    width: 25%
+    float: right
+  
+  .column-50
+    width: 47%
+    float: left
+    margin-right: 5px
+    
+    
+.view-filter    
+  .spinner
+    float: right
+    margin-right: 30px
+    padding-top: 4px
+
+
+// Header für die Listenansichten
+
+#sub-content-filter
+  overflow: hidden
+  margin-bottom: 10px
+
+  .filter-item
+    float: left
+    margin-right: 20px
+ 
+h1.list-title
+  white-space: nowrap
+  width: 80%
+  
+.list-switch-icon-wrap
+  overflow: hidden
+  float: right         
+      
+  .list-switch-icons
+    margin-bottom: 10px
+    overflow: hidden
+
+  img
+    float: left
+
+  a, span
+    height: 24px
+    display: block
+    float: left
+
+  a.maps, span.maps
+    background: transparent url(layout/icons-pagination/icons/icon-weltkugel-no.gif) no-repeat
+    width: 27px      
+
+  a.maps:hover      
+    background: transparent url(layout/icons-pagination/icons/icon-weltkugel-hover.gif) no-repeat
+
+  a.maps.act
+    background: transparent url(layout/icons-pagination/icons/icon-weltkugel-act.gif) no-repeat
+
+  a.card
+    background: transparent url(layout/icons-pagination/icons/icon-cards-no.gif) no-repeat      
+    width: 26px      
+
+  a.card:hover      
+    background: transparent url(layout/icons-pagination/icons/icon-cards-hover.gif) no-repeat      
+
+  a.card.act
+    background: transparent url(layout/icons-pagination/icons/icon-cards-act.gif) no-repeat      
+  
+  a.list
+    background: transparent url(layout/icons-pagination/icons/icon-liste-no.gif) no-repeat
+    width: 26px      
+  
+  a.list:hover      
+    background: transparent url(layout/icons-pagination/icons/icon-liste-hover.gif) no-repeat
+
+  a.list.act
+    background: transparent url(layout/icons-pagination/icons/icon-liste-act.gif) no-repeat
+
+  a.cal
+    background: transparent url(layout/icons-pagination/icons/icon-kalender-no.gif) no-repeat
+    width: 26px      
+
+  a.cal:hover      
+    background: transparent url(layout/icons-pagination/icons/icon-kalender-hover.gif) no-repeat  
+
+  a.cal.act
+    background: transparent url(layout/icons-pagination/icons/icon-kalender-act.gif) no-repeat
+    
+  a.tiny
+    background: transparent url(layout/icons-pagination/icons/icon-compressed-no.gif) no-repeat
+    width: 26px      
+
+  a.tiny:hover      
+    background: transparent url(layout/icons-pagination/icons/icon-compressed-hover.gif) no-repeat  
+
+  a.tiny.act
+    background: transparent url(layout/icons-pagination/icons/icon-compressed-act.gif) no-repeat    
+
+
+// Mehr Filter 
+
+.more-filter
+  position: relative
+  margin-left: 3px
+  margin-bottom: 8px
+  margin-top: -1px
+  float: right
+  
+  input
+    vertical-align: bottom
+  
+  
+  .filter-hide-show
+    position: absolute
+    margin-top: -4px
+    z-index: 1
+    right: 0px
+    display: none
+
+    .ol
+      background: url(layout/icons-pagination/box-more/hover-box-left-top.png) no-repeat
+      width: 4px
+      height: 3px
+
+    .om
+      background: url(layout/icons-pagination/box-more/hover-box-top.png) repeat-x
+
+
+    .mr
+      background: url(layout/icons-pagination/box-more/hover-box-right.png) repeat-y
+      width: 4px
+
+    .mm
+      padding: 10px
+      background-color: #CCC9C1
+
+    .ml
+      background: url(layout/icons-pagination/box-more/hover-box-left.png) repeat-y
+      width: 4px
+
+    .ul
+      background: url(layout/icons-pagination/box-more/hover-box-left-bottom.png) no-repeat
+      width: 4px
+      height: 3px
+
+    .um
+      background: url(layout/icons-pagination/box-more/hover-box-bottom.png) repeat-x
+
+    .ur
+      background: url(layout/icons-pagination/box-more/hover-box-right-bottom.png) no-repeat
+      width: 4px
+      height: 3px    
+    
+// Elemente für die Karten-Listenansicht
+
+.list-card
+  width: 670px
+
+  &:after
+    content: "."
+    display: block
+    height: 0
+    clear: both
+    visibility: hidden
+
+  .list-card-item
+    float: left 
+    background-color: #F4F3ED
+    border: 1px solid #E6E5E2
+    width: 48%
+    margin-right: 10px
+    margin-bottom: 10px
+    font-size: 12px
+    height: 114px    
+    
+    .item-inner-wrap
+      padding: 10px
+      
+    .item-title
+      margin-bottom: 6px
+      font-weight: bold
+      font-size: 12px
+
+    .item-title.not-logged-in
+      margin-left: 0px      
+    
+    .item-text
+      font-size: 0.99em
+      
+      .item-left
+        float: left
+        text-align: center 
+        
+      .description
+        margin-left: 100px
+        width: 202px
+        position: absolute
+        white-space: normal
+        
+      .item-image-wrap
+        margin-right: 10px
+        margin-bottom: 4px
+        border: 1px solid #acacac
+        background-color: #fff
+        height: 69px
+        width: 90px
+        vertical-align: middle
+        line-height: 70px
+        display: block
+        position: relative
+          
+        img
+          vertical-align: middle
+       
+      a
+        display: block
+
+// Kleine Listen
+
+.list-tiny 
+  width: 656px
+  
+  .list-tiny-item
+    margin: 0px 4px 5px 0px
+    padding-left: 0px
+    padding-bottom: 5px
+    border-bottom: 1px dashed #BFBFBF !important
+    
+    &:after
+      content: "."
+      display: block
+      height: 0
+      clear: both
+      visibility: hidden    
+    
+    .item-left
+      float: left
+      text-align: center
+      
+    .item-content-wrap
+      margin-left: 58px
+      
+      .item-title
+        margin-bottom: 5px 
+        font-weight: bold
+      
+      label
+        color: $labels
+    
+    .item-image-wrap
+      margin-right: 10px
+      margin-bottom: 4px
+      border: 1px solid #acacac
+      background-color: #fff
+      height: 38px
+      width: 50px
+      vertical-align: middle
+      line-height: 50
+      display: block
+      position: relative
+        
+      img
+        vertical-align: middle
+    
+    .meta
+      font-size: 11px
+      
+      span
+  
+    &.last
+      border: none !important
+            
+
+// Elemente für die Tabellen-Listenansicht
+
+.list-table 
+  width: 656px
+  
+  .list-table-item
+    margin: 0px 4px 15px 0px
+    padding-bottom: 15px
+    border-bottom: 1px dashed #BFBFBF !important
+
+    .item-left
+      float: left
+      text-align: center
+    
+    .list-image-wrap
+      height: 69px
+      width: 90px
+      vertical-align: middle
+      line-height: 69px
+      position: relative
+      border: 1px solid #acacac
+   
+      
+    .item-content-wrap
+      margin-left: 104px
+      
+    .item-title
+      margin-bottom: 4px
+     
+           
+    .item-content
+      font-size: 0.9em 
+      overflow: hidden
+  
+      .description
+        float: left
+        width: 328px
+  
+      dl
+        margin-left: 335px
+      
+        dt
+          width: 80px
+          float: left
+          text-align: right
+          color: $labels
+          line-height: 16px
+      
+        dd
+          margin-left: 89px
+          line-height: 16px
+
+  .list-table-item.last
+    border: none !important 
+
+#sub-content
+  .list-table
+    width: 630px  
+  
+    .list-table-item 
+      .item-content
+        .description
+          width: 320px
+        dl
+          margin-left: 320px
+    
+  .list-card
+    width: 635px
+
+.list-card, .list-table, .list-tiny
+  h2
+    clear: both
+    background-color: transparent
+    background: url(layout/landingpages/group_header.gif) no-repeat 
+    font-size: 16px
+    font-weight: bold
+    height: 43px
+    line-height: 43px
+    padding-left: 10px
+    
+    span
+      display: block
+      float: right
+      font-size: 12px
+      margin-right: 15px
+
+    
+
+// Google Maps
+
+#map_div
+  
+  div
+    span
+    white-space: normal !important
+  
+  .info-window
+    line-height: 16px
+    padding: 4px
+    width: 280px  
+  
+  .title
+    font-weight: bold
+    margin-bottom: 8px 
+    width: 240px
+    
+  .address
+    float: left
+    font-size: 0.9em    
+    overflow: hidden
+    width: 220px
+    
+    dl
+    
+      dt
+        width: 155px
+        color: $labels
+        
+      dd
+        width: 150px
+        margin-bottom: 4px
+
+  .image
+    float: left
+    height: 24px
+    margin-right: 8px
+    width: 32px
+               

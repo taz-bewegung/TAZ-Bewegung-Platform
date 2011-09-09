@@ -2,7 +2,7 @@
   <ul>
     <% top_menu_items.each do |item| -%>
         <li <%= css_class_for(item) %> id="<%= item[:id] %>">
-          <%= link_to "<span>&nbsp;</span>", item[:link_to] %>
+          <%= link_to "<span>&nbsp;</span>".html_safe, item[:link_to] %>
         </li>
     <% end -%>
   </ul>

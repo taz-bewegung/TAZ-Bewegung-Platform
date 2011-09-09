@@ -6,7 +6,7 @@
 class EditFormBuilder < ActionView::Helpers::FormBuilder
   include ActionController::Routing
   attr_accessor :use_divs
-  
+
   helpers = field_helpers +
             %w{date_select datetime_select time_select} +
             %w{collection_select select country_select time_zone_select} -
@@ -309,7 +309,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
         input = label + @before_html+ fancy_table_content + @after_html + tooltip.to_s
       end
       
-      input
+      input.html_safe
       
     end
   

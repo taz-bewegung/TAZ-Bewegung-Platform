@@ -1,0 +1,211 @@
+
+// Override pagination styles
+
+.admin
+
+  .edit-admin-comment
+    textarea
+
+  table.pagination-table td input.search-field
+    width: 130px
+
+#edit-texts
+
+  ul
+    margin-left: 12px
+    margin-bottom: 20px 
+    
+    b
+      font-size: 1.4em
+          
+    li
+      display: block
+      margin-bottom: 12px
+      overflow: hidden   
+
+      b
+        font-size: 1.4em
+      
+      li b
+        font-size: 1.3em
+
+      li li b
+        font-size: 1.1em        
+
+      li li li b
+        font-size: 1.0em          
+    
+    label
+      display: block
+      float: left
+      width: 200px
+      font-weight: bold
+    
+    textarea
+      width: 300px
+      height: 30px
+      margin-bottom: 0pt     
+      
+
+    div.grippie
+      background: #EEEEEE url(/javascripts/textarea-resize/grippie.png) no-repeat scroll center 2px
+      border-color: #DDDDDD
+      border-style: solid
+      border-width: 0pt 1px 1px
+      cursor: s-resize
+      height: 9px
+      overflow:hidden 
+      margin-left: 200px
+      
+    .resizable-textarea textarea
+      margin-bottom: 0pt  
+
+// Feedevents
+
+.admin
+
+  #feed-events
+
+    .feed-event-item
+      &.admin
+        overflow: hidden
+        background: transparent url(layout/messages/nachrichten_seperator.png) no-repeat scroll bottom center  
+        padding: 15px 0
+        font-size: 0.95em
+    
+        .feed-event-date
+          color: grey
+          width: 125px
+          margin-bottom: 2px
+          float: left      
+    
+        .feed-event-content
+          float: left
+          margin-left: 15px
+          width: 350px
+    
+        .feed-event-functions
+          float: left
+          margin-left: 15px
+          width: 150px 
+    
+.alternate.feed-event-item
+  background: #FAF9F4 url(layout/messages/nachrichten_seperator.png) no-repeat scroll bottom center  
+      
+// Tabs
+
+.admin 
+
+  tr.grey
+    td
+      opacity: 0.5
+  
+  td
+    padding: 4px 4px
+
+  .state 
+
+  .icons
+    width: 100px
+    padding-left: 10px
+  
+    a
+      float: left
+      margin-right: 4px
+      
+      img
+        float: left
+
+  .ui-tabs-nav 
+    list-style: none
+    margin: 0
+    padding: 0 0 0 3px
+    list-style-type: none 
+    margin: 0px
+    margin-bottom: 0px !important
+  
+  
+  .ui-tabs-nav:after
+    display: block
+    clear: both
+    content: " "
+  
+  
+  .ui-tabs-nav li 
+    float: left
+    margin: 0 0 0 0px !important
+    font-weight: bold 
+    list-style-type: none !important    
+    background-color: #888
+    height: 20px
+    line-height: 20px              
+    
+  .ui-tabs-nav .ui-tabs-selected    
+    height: 22px
+    margin-top: -2px  
+  
+  .ui-tabs-nav a, .ui-tabs-nav a span 
+    float: left
+    padding: 0 12px
+    
+  .ui-tabs-nav a    
+    border: 1px solid #ccc  
+  
+  .ui-tabs-nav a 
+    padding-left: 0
+    background-position: 100% 0
+    text-decoration: none
+    white-space: nowrap
+    outline: 0  
+    color: #000
+  
+  .ui-tabs-nav a:link, .ui-tabs-nav a:visited 
+  
+  .ui-tabs-nav .ui-tabs-selected a 
+    position: relative
+    padding-top: 0px 
+    z-index: 2
+  
+  .ui-tabs-nav a span 
+    padding-right: 0
+    height: 20px
+    background-position: 0 0
+    line-height: 20px
+  
+  .ui-tabs-nav .ui-tabs-selected a span 
+    padding-top: 0
+    height: 27px
+    background-position: 0 -23px
+    line-height: 27px
+  
+  .ui-tabs-nav .ui-tabs-selected a:link, .ui-tabs-nav .ui-tabs-selected a:visited,
+  .ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited
+    cursor: text
+  
+  .ui-tabs-nav a:hover, .ui-tabs-nav a:focus, .ui-tabs-nav a:active,
+  .ui-tabs-nav .ui-tabs-unselect a:hover, .ui-tabs-nav .ui-tabs-unselect a:focus, .ui-tabs-nav .ui-tabs-unselect a:active
+    cursor: pointer
+  
+  .ui-tabs-disabled 
+    opacity: 0.4
+    filter: alpha(opacity=40)
+  
+  .ui-tabs-nav .ui-tabs-disabled a:link, .ui-tabs-nav .ui-tabs-disabled a:visited 
+    color: #000
+  
+  .ui-tabs-panel 
+    border: 1px solid #ccc
+    padding: 10px
+    background: #fff 
+    
+  .ui-tabs-hide
+    display: none
+
+  * html .ui-tabs-nav  /* auto clear @ IE 6 & IE 7 Quirks Mode */
+    display: inline-block
+  
+  *:first-child+html .ui-tabs-nav   /* auto clear @ IE 7 Standards Mode - do not group selectors, otherwise IE 6 will ignore complete rule (because of the unknown + combinator)... */
+    display: inline-block
+  
+      
+  
