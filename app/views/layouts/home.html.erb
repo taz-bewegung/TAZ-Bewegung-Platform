@@ -3,30 +3,28 @@
      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="de" lang="de">
 <head>
-
    <title>bewegung.taz - Startseite</title>
    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
    <meta name="description" content="bewegung taz termine aktionen orte" />
    <meta name="keywords" content="bewegung taz termine aktionen orte" />
-
-  <%= stylesheet_link_tag "home", :cache => true %>
-
+   <%= stylesheet_link_tag :home, :cache => true %>
+   <%= stylesheet_link_tag :yui, :cache => true %>
    <%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>                                                                  
-   
+
    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> 
-   
+
   <!--[if lt IE 7]>
-    <%#= stylesheet_link_tag 'ie6' %>	  
-    <%#= stylesheet_link_tag 'ie6_home' %>    
+    <%= stylesheet_link_tag 'ie6' %>
+    <%= stylesheet_link_tag 'ie6_home' %> 
     <script src="/javascripts/DD_belatedPNG_0.0.6a-min.js"></script>
     <script>
       DD_belatedPNG.fix('#nav-main ul li, #hc-home,  #sticker, #bd, #hc-content, #ft, #logo-link');
     </script>
   <![endif]-->
   <!--[if IE 7]>
-    <%#= stylesheet_link_tag 'ie7' %>	  
+    <%= stylesheet_link_tag 'ie7' %>	
   <![endif]-->
-  
+
 <%= yield :googlemaps -%>
 </head>
 <body>
@@ -43,8 +41,8 @@
       <div id="hc-home">
         <%= render :partial => "/users/user_bar_home" %>
       </div>
-  <div id="bd">         
-        <div class="main"> 
+  <div id="bd">
+        <div class="main">
 		<div class="fancy-header">
 			<%= yield :magick_header %>
 		</div>

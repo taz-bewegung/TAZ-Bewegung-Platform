@@ -37,6 +37,7 @@ group :test, :development do
   gem 'rspec-rails', '>= 2.0.0'
   gem 'factory_girl_rails', '>=1.1.rc1'
   gem "selenium-webdriver"
+  gem "autotest", "~> 4.4.6"
 end
 
 # Gems used only for assets and not required

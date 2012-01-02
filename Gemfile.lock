@@ -19,6 +19,7 @@ GEM
   specs:
     RedCloth (4.2.8)
     Saikuro (1.1.0)
+    ZenTest (4.6.2)
     actionmailer (3.1.0)
       actionpack (= 3.1.0)
       mail (~> 2.3.0)
@@ -54,6 +55,8 @@ GEM
     acts_as_state_machine (2.2.0)
       activerecord (>= 2.1)
     arel (2.2.1)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     bcrypt-ruby (3.0.0)
     builder (3.0.0)
     capybara (1.1.1)
@@ -272,6 +275,7 @@ DEPENDENCIES
   acts-as-taggable-on
   acts_as_list (~> 0.1.4)
   acts_as_state_machine (~> 2.2.0)
+  autotest (~> 4.4.6)
   capybara
   coffee-rails (~> 3.1.0)
   configatron (~> 2.8.2)

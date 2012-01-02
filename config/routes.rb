@@ -60,9 +60,12 @@ Bewegung::Application.routes.draw do
   # Commendations
   resources :commendations
   
-  # Session
   
-  
+  # Contact Form
+  #map.contact_person '/request/contact', :controller => 'requests', :action => 'contact'
+  #map.done_request '/request/done', :controller => 'requests', :action => 'done'
+  match '/requests/contact' => 'request#contact', :as => :contact_person
+  match '/requests/done' => 'request#done', :as => :done_request
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
