@@ -49,7 +49,7 @@ class CustomLinkRenderer
       if(@options[:previous_links] == true)
         links.unshift page_link_or_span(@collection.previous_page, 
                                         'disabled prev page', 
-                                        @template.image_tag( image_path + 'zuruck-no.gif',
+                                        view_context.image_tag( image_path + 'zuruck-no.gif',
                                                             :alt => @options[:previous_label],
                                                             :align => 'top',
                                                             :class => 'pagination-image')
@@ -57,7 +57,7 @@ class CustomLinkRenderer
         
         links.unshift page_link_or_span(1, 
                                         'disabled prev page', 
-                                        @template.image_tag( image_path + 'erste-seite-no.gif',
+                                        view_context.image_tag( image_path + 'erste-seite-no.gif',
                                                             :alt => @options[:first_label],
                                                             :align => 'top',
                                                             :class => 'pagination-image')
@@ -67,7 +67,7 @@ class CustomLinkRenderer
       if(@options[:next_links] == true)
         links.push page_link_or_span(@collection.next_page, 
                                      'disabled next_page', 
-                                      @template.image_tag( image_path + 'vor-no.gif',
+                                      view_context.image_tag( image_path + 'vor-no.gif',
                                                             :alt => @options[:next_label],
                                                             :align => 'top',
                                                             :class => 'pagination-image')
@@ -75,7 +75,7 @@ class CustomLinkRenderer
                                      
         links.push page_link_or_span(@collection.total_pages, 
                                      'disabled last_page',  
-                                      @template.image_tag( image_path + 'letzte-seite-no.gif',
+                                      view_context.image_tag( image_path + 'letzte-seite-no.gif',
                                                           :alt => @options[:last_label],
                                                             :align => 'top',
                                                             :class => 'pagination-image')
@@ -83,7 +83,7 @@ class CustomLinkRenderer
       end  
       html = links.join(@options[:separator])
     
-    #@options[:container] ? @template.content_tag(:div, html, html_attributes) : html
+    #@options[:container] ? view_context.content_tag(:div, html, html_attributes) : html
   end
   
   def start_page
@@ -185,11 +185,11 @@ protected
   
  
   def page_link(page, text, attributes = {})
-    @template.link_to text, url_for(page), attributes
+    view_context.link_to text, url_for(page), attributes
   end
 
   def page_span(page, text, attributes = {})
-    @template.content_tag :span, text, attributes
+    view_context.content_tag :span, text, attributes
   end
 
   # Returns URL params for +page_link_or_span+, taking the current GET params
@@ -199,7 +199,7 @@ protected
     unless @url_string and !page_one
       @url_params = {}
       # page links should preserve GET parameters
-      stringified_merge @url_params, @template.params if @template.request.get?
+      stringified_merge @url_params, view_context.params if view_context.request.get?
       stringified_merge @url_params, @options[:params] if @options[:params] 
             
       if complex = param_name.index(/[^\w-]/)
@@ -211,7 +211,7 @@ protected
         @url_params[param_name] = page_one ? 1 : 2
       end
 
-      url = @template.url_for(@url_params)
+      url = view_context.url_for(@url_params)
       return url if page_one
       
       if complex
@@ -220,7 +220,7 @@ protected
       else
         @url_string = url
         @url_params[param_name] = 3
-        @template.url_for(@url_params).split(//).each_with_index do |char, i|
+        view_context.url_for(@url_params).split(//).each_with_index do |char, i|
           if char == '3' and url[i, 1] == '2'
             @url_string[i] = '@'
             break

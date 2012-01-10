@@ -60,7 +60,7 @@ class MyHelpedia::LocationsController < ApplicationController
   end  
   
   def index 
-    @template.use_googlemaps              
+    view_context.use_googlemaps              
     index_for_user                 if current_user.is_a?(User)
     index_for_organisation         if current_user.is_a?(Organisation)
   end  
@@ -202,7 +202,7 @@ class MyHelpedia::LocationsController < ApplicationController
     end    
 
     def setup
-      @template.main_menu :my_helpedia  
+      view_context.main_menu :my_helpedia  
     end  
   
   

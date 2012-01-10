@@ -1,5 +1,4 @@
 module ImageHelper 
-  
 
   # Renders the image with an icon in the upper right corner.
   def archive_image(image, size)
@@ -15,7 +14,7 @@ module ImageHelper
     
     # Show the context menu if required
     if options[:context_menu]
-      html = @template.context_menu_for(object, options[:context_menu])
+      html = view_context.context_menu_for(object, options[:context_menu])
     end
     
     if object.temp_image.blank? and not object.image.blank?
@@ -23,16 +22,16 @@ module ImageHelper
       # Try to find the thumbnail with the correct size. If the thumbnail does not exist, create it on the fly.
       object.image.find_or_create_thumbnail(size)      
       
-      image_html = @template.image_tag(object.image.public_filename(size), :width => object.image.size_for_thumbnail(size).width, 
+      image_html = view_context.image_tag(object.image.public_filename(size), :width => object.image.size_for_thumbnail(size).width, 
                                                                             :height => object.image.size_for_thumbnail(size).height)
     elsif object.temp_image
       image = Image.find(object.temp_image)
-      image_html = @template.image_tag(image.public_filename(size), :width => image.size_for_thumbnail(size).width, 
+      image_html = view_context.image_tag(image.public_filename(size), :width => image.size_for_thumbnail(size).width, 
                                                                :height => image.size_for_thumbnail(size).height)    
     else
       
       if File.exists?("#{RAILS_ROOT}/public/images/default/#{object.class.to_s.pluralize.downcase}/#{object.class.to_s.downcase}_#{size}.gif")
-        image_html = @template.image_tag "default/#{object.class.to_s.pluralize.downcase}/#{object.class.to_s.downcase}_#{size}.gif"
+        image_html = view_context.image_tag "default/#{object.class.to_s.pluralize.downcase}/#{object.class.to_s.downcase}_#{size}.gif"
       else
         image_html = "<span class='noimage'> - </span>"
       end

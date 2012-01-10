@@ -107,7 +107,7 @@ class ActivitiesController < ApplicationController
 
     
     def add_googlemaps      
-      @template.use_googlemaps
+      view_context.use_googlemaps
     end
     
     def index_for_event
@@ -189,7 +189,7 @@ class ActivitiesController < ApplicationController
 
     
     def setup
-      @template.main_menu :activities  
+      view_context.main_menu :activities  
     end
 
     def order

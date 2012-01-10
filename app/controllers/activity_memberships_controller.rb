@@ -148,7 +148,7 @@ class ActivityMembershipsController < ApplicationController
  
   
     def setup
-      @template.main_menu @membershipable.class.to_s.pluralize.downcase.to_sym
+      view_context.main_menu @membershipable.class.to_s.pluralize.downcase.to_sym
     end
   
 end

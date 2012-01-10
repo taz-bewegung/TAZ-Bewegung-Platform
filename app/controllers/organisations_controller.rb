@@ -133,7 +133,7 @@ class OrganisationsController < ApplicationController
     end  
     
     def setup
-      @template.main_menu :organisations
+      view_context.main_menu :organisations
     end 
     
     def check_for_user

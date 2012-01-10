@@ -179,15 +179,15 @@ class MyHelpedia::JobsController < ApplicationController
 
        markers = []
        for job in @jobs
-         tooltip = @template.content_tag :div, @template.link_to(job.title, my_helpedia_job_path(job)), :class => "title" 
-         tooltip << @template.content_tag(:div, @template.link_to(image_for(job.organisation, :mini), my_helpedia_job_path(job)), :class => "image")        
+         tooltip = view_context.content_tag :div, view_context.link_to(job.title, my_helpedia_job_path(job)), :class => "title" 
+         tooltip << view_context.content_tag(:div, view_context.link_to(image_for(job.organisation, :mini), my_helpedia_job_path(job)), :class => "image")        
 
-         content = "<dl><dt>Angebot von:</dt><dd>#{@template.link_to(job.organisation.name, organisation_path(job.organisation))}</dd>"
+         content = "<dl><dt>Angebot von:</dt><dd>#{view_context.link_to(job.organisation.name, organisation_path(job.organisation))}</dd>"
          content << "<dt>Art des Jobs:</dt><dd>#{job.occupation_type.name}</dd>"
          content << "<dt>Adresse:</dt><dd>#{job.address.to_html_long}</dd></dl>"
 
-         tooltip << @template.content_tag(:div, content, :class => "address")
-         tooltip = @template.content_tag(:div, tooltip, :class => "info-window")
+         tooltip << view_context.content_tag(:div, content, :class => "address")
+         tooltip = view_context.content_tag(:div, tooltip, :class => "info-window")
          marker = GMarker.new([job.address.lat, job.address.lng], :title => job.title, :info_window => tooltip, :icon => icon)
          markers << marker
        end      
@@ -202,8 +202,8 @@ class MyHelpedia::JobsController < ApplicationController
      end
 
      def setup
-       @template.main_menu :my_helpedia
-       @template.search_default :activities         
+       view_context.main_menu :my_helpedia
+       view_context.search_default :activities         
      end
   
 end

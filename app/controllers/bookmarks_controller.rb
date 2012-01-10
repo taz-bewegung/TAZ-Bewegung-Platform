@@ -21,10 +21,10 @@ class BookmarksController < ApplicationController
    			height: 150
   		});"
   		page[".context-menu-items"].hide
-      page["bookmark_#{@bookmarkable.id}"].replace_html @template.link_to(I18n.t(:"context_menu.public.shared.bookmark.destroy"), 
+      page["bookmark_#{@bookmarkable.id}"].replace_html view_context.link_to(I18n.t(:"context_menu.public.shared.bookmark.destroy"), 
                                                                           polymorphic_path([@bookmarkable, @bookmark]), 
                                                                           :class => "ajax-link-delete-without-confirm")
-      page["bookmark_right_column_#{@bookmarkable.id}"].replace_html @template.link_to(I18n.t(:"context_menu.public.shared.bookmark.destroy"), 
+      page["bookmark_right_column_#{@bookmarkable.id}"].replace_html view_context.link_to(I18n.t(:"context_menu.public.shared.bookmark.destroy"), 
                                                                                        polymorphic_path([@bookmarkable, @bookmark]), 
                                                                                        :class => "ajax-link-delete-without-confirm")
     end
@@ -43,10 +43,10 @@ class BookmarksController < ApplicationController
    			height: 150
   		});"
   		page[".context-menu-items"].hide  		
-      page["bookmark_#{@bookmarkable.id}"].replace_html(@template.link_to(I18n.t(:"context_menu.public.shared.bookmark.create"), 
+      page["bookmark_#{@bookmarkable.id}"].replace_html(view_context.link_to(I18n.t(:"context_menu.public.shared.bookmark.create"), 
                                                                           polymorphic_path([@bookmarkable, :bookmarks]), 
                                                                           :class => "ajax-link-post"))
-      page["bookmark_right_column_#{@bookmarkable.id}"].replace_html(@template.link_to(I18n.t(:"context_menu.public.shared.bookmark.create"), 
+      page["bookmark_right_column_#{@bookmarkable.id}"].replace_html(view_context.link_to(I18n.t(:"context_menu.public.shared.bookmark.create"), 
                                                                                        polymorphic_path([@bookmarkable, :bookmarks]), 
                                                                                        :class => "ajax-link-post"))
     end

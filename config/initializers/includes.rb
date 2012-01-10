@@ -15,3 +15,6 @@ require "#{Rails.root}/lib/extensions/presenter.rb"
 
 # UUID Tools
 require "#{Rails.root}/lib/extensions/bewegung/uuid.rb"
+
+# HASH
+require "#{Rails.root}/lib/extensions/hash.rb"

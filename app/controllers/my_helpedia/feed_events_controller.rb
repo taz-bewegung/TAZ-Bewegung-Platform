@@ -62,7 +62,7 @@ class MyHelpedia::FeedEventsController < ApplicationController
   private
   
     def setup
-      @template.main_menu :my_helpedia  
+      view_context.main_menu :my_helpedia  
     end      
   
 end

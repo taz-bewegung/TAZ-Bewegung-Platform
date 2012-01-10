@@ -18,7 +18,7 @@ module Content::ContentsHelper
 
     html = ""
     for content in container.content_elements
-      html +=  render(:partial => content.element.class::PUBLIC_TEMPLATE, :locals => { :content => content, :elements => container.content_elements, :options => options })
+      #html +=  render(:partial => content.element.class::PUBLIC_TEMPLATE, :locals => { :content => content, :elements => container.content_elements, :options => options })
     end
     html
   end  

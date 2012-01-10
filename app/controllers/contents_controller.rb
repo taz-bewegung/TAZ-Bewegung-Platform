@@ -13,7 +13,7 @@ class ContentsController < ApplicationController
   
   def get_data
     @collection = params[:type].to_class.active.latest.latest.limit(50).map{ |e| [e.title, e.id]}
-    render :text => @template.options_for_select([["Kein Element ausgewählt", ""]] + @collection)
+    render :text => view_context.options_for_select([["Kein Element ausgewählt", ""]] + @collection)
   end  
   
   def destroy_image
@@ -29,7 +29,7 @@ class ContentsController < ApplicationController
     render :update do |page|
       page << "$.nyroModalManual(
       {
-      	content: '#{ @template.escape_javascript(render(:partial => @content.class::EDIT_TEMPLATE)) }',
+      	content: '#{ view_context.escape_javascript(render(:partial => @content.class::EDIT_TEMPLATE)) }',
       	type: 'content', width: 550, height: 400,	bgColor: '#000000'
       });"
     end
@@ -58,7 +58,7 @@ class ContentsController < ApplicationController
     render :update do |page|
       page << "$.nyroModalManual(
       {
-      	content: '#{ @template.escape_javascript(render(:partial => "/content/landing_page/edit_carousel")) }',
+      	content: '#{ view_context.escape_javascript(render(:partial => "/content/landing_page/edit_carousel")) }',
       	type: 'content', width: 550, height: 400,	bgColor: '#000000'
       });"
     end
@@ -84,7 +84,7 @@ class ContentsController < ApplicationController
     render :update do |page|
       page << "$.nyroModalManual(
       {
-      	content: '#{ @template.escape_javascript(render(:partial => "/content/start_page/edit_top_element")) }',
+      	content: '#{ view_context.escape_javascript(render(:partial => "/content/start_page/edit_top_element")) }',
       	type: 'content', width: 550, height: 400,	bgColor: '#000000'
       });"
     end    
@@ -115,7 +115,7 @@ class ContentsController < ApplicationController
     render :update do |page|
       page << "$.nyroModalManual(
       {
-      	content: '#{ @template.escape_javascript(render(:partial => "/content/start_page/edit_carousel")) }',
+      	content: '#{ view_context.escape_javascript(render(:partial => "/content/start_page/edit_carousel")) }',
       	type: 'content', width: 550, height: 600,	bgColor: '#000000'
       });"
     end

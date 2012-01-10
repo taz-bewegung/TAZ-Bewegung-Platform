@@ -205,8 +205,8 @@ class EventsController < ApplicationController
       else
         params[:list_type] ||= 'rows'
       end
-      
-      params[:event] = {} if params[:event].blank?  
+
+      params[:event] = {} if params[:event].blank?
       @per_page = case 
                   when %w(maps cal).include?(params[:list_type]) then 2_000
                   when %w(tiny).include?(params[:list_type]) then 40
@@ -219,7 +219,7 @@ class EventsController < ApplicationController
     end     
   
     def setup
-      #@template.main_menu :events
+      #view_context.main_menu :events
       @current_main_menu_id = :events
     end
     

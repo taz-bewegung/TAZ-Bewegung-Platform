@@ -9,7 +9,7 @@ class CommendationsController < ApplicationController
 
  def new
    @commendation = Commendation.new
-   @template.escape_javascript(render(:partial => "new"))
+   view_context.escape_javascript(render(:partial => "new"))
  end
  
  def create

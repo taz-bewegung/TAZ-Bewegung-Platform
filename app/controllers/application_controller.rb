@@ -26,6 +26,8 @@ class ApplicationController < ActionController::Base
   ActionView::Base.field_error_proc = proc { |input, instance| input }
 
   helper :all # include all helpers, all the time
+  helper_method :view_context
+  
   protect_from_forgery
   #filter_parameter_logging :password
 
@@ -54,6 +56,7 @@ class ApplicationController < ActionController::Base
   rescue_from WillPaginate::InvalidPage, :with => :render_404 if Rails.env == 'production'
 
   protected
+
 
     def wikileaked
       session[:wikileaked] = true
@@ -84,7 +87,7 @@ class ApplicationController < ActionController::Base
     helper_method :taz_tiny_mce_options
 
     def include_gm_header
-      @template.use_googlemaps
+      view_context.use_googlemaps
     end
 
 

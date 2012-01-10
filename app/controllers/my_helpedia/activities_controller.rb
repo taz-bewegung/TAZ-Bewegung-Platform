@@ -15,7 +15,7 @@ class MyHelpedia::ActivitiesController < ApplicationController
   uses_tiny_mce :only => [:edit, :new, :create], :options => TAZ_TINY_MCE_OPTIONS
   
   def index 
-    @template.use_googlemaps        
+    view_context.use_googlemaps        
     index_for_user                 if current_user.is_a?(User)
     index_for_organisation         if current_user.is_a?(Organisation)
   end
@@ -201,7 +201,7 @@ class MyHelpedia::ActivitiesController < ApplicationController
     end
   
     def setup
-      @template.main_menu :my_helpedia  
+      view_context.main_menu :my_helpedia  
     end
   
 end

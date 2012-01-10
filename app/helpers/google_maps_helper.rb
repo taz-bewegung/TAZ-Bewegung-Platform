@@ -39,21 +39,21 @@ module GoogleMapsHelper
   end
   
   def organisation_tooltip(organisation)
-    @template.content_tag :div, :class => "info-window" do
-      @template.content_tag(:div, @template.link_to(organisation.name, organisation_path(organisation)), :class => "title") +
-      @template.content_tag(:div, @template.link_to(image_for(organisation, :mini), organisation_path(organisation)), :class => "image") +
-      @template.content_tag(:div, :class => "address") do
+    view_context.content_tag :div, :class => "info-window" do
+      view_context.content_tag(:div, view_context.link_to(organisation.name, organisation_path(organisation)), :class => "title") +
+      view_context.content_tag(:div, view_context.link_to(image_for(organisation, :mini), organisation_path(organisation)), :class => "image") +
+      view_context.content_tag(:div, :class => "address") do
         "<dt>Adresse:</dt><dd>#{organisation.address.to_html_long}</dd></dl>"
       end
     end
   end
   
   def activity_tooltip(activity)
-    @template.content_tag :div, :class => "info-window" do
-      @template.content_tag(:div, @template.link_to(activity.title, activity_path(activity)), :class => "title") +
-      @template.content_tag(:div, @template.link_to(image_for(activity, :mini), activity_path(activity)), :class => "image") +
-      @template.content_tag(:div, :class => "address") do
-        "<dl><dt>Aktion von:</dt><dd>#{@template.user_profile_link_for(activity.owner)}</dd>" +
+    view_context.content_tag :div, :class => "info-window" do
+      view_context.content_tag(:div, view_context.link_to(activity.title, activity_path(activity)), :class => "title") +
+      view_context.content_tag(:div, view_context.link_to(image_for(activity, :mini), activity_path(activity)), :class => "image") +
+      view_context.content_tag(:div, :class => "address") do
+        "<dl><dt>Aktion von:</dt><dd>#{view_context.user_profile_link_for(activity.owner)}</dd>" +
         "<dt>Adresse:</dt><dd>#{activity.address.to_html_long}</dd></dl>"
       end
     end
@@ -61,11 +61,11 @@ module GoogleMapsHelper
   
   def event_tooltip(event)
 
-    @template.content_tag :div, :class => "info-window" do
-      @template.content_tag(:div, @template.link_to(event.title, event_path(event)), :class => "title") + 
-      @template.content_tag(:div, @template.link_to(image_for(event, :mini), event_path(event)), :class => "image") +
-      @template.content_tag(:div, :class => "address") do
-        "<dl><dt>Termin von:</dt><dd>#{@template.user_profile_link_for(event.originator)}</dd>" +
+    view_context.content_tag :div, :class => "info-window" do
+      view_context.content_tag(:div, view_context.link_to(event.title, event_path(event)), :class => "title") + 
+      view_context.content_tag(:div, view_context.link_to(image_for(event, :mini), event_path(event)), :class => "image") +
+      view_context.content_tag(:div, :class => "address") do
+        "<dl><dt>Termin von:</dt><dd>#{view_context.user_profile_link_for(event.originator)}</dd>" +
         "<dt>Zeitraum:</dt><dd>#{time_span_for(event)}" +
         "<dt>Adresse:</dt><dd>#{event.address.to_html_long}</dd></dl>"
       end
@@ -73,10 +73,10 @@ module GoogleMapsHelper
   end
 
   def location_tooltip(location)
-    @template.content_tag :div, :class => "info-window" do
-      @template.content_tag(:div, @template.link_to(location.name, location_path(location)), :class => "title") +
-      @template.content_tag(:div, @template.link_to(image_for(location, :mini), location_path(location)), :class => "image") +
-      @template.content_tag(:div, :class => "address") do
+    view_context.content_tag :div, :class => "info-window" do
+      view_context.content_tag(:div, view_context.link_to(location.name, location_path(location)), :class => "title") +
+      view_context.content_tag(:div, view_context.link_to(image_for(location, :mini), location_path(location)), :class => "image") +
+      view_context.content_tag(:div, :class => "address") do
         "<dt>Adresse:</dt><dd>#{location.address.to_html_long}</dd></dl>"
       end
     end

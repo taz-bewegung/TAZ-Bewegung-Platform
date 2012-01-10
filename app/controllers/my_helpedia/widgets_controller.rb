@@ -47,7 +47,7 @@ class MyHelpedia::WidgetsController < ApplicationController
     end  
 
     def setup
-      @template.main_menu :my_helpedia
+      view_context.main_menu :my_helpedia
     end
     
 end

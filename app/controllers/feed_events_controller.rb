@@ -19,7 +19,7 @@ class FeedEventsController < ApplicationController
   private
   
   def setup
-    #@template.main_menu :feed_events
+    #view_context.main_menu :feed_events
   end
     
 end

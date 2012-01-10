@@ -17,7 +17,7 @@ class OrganisationCategoriesController < ApplicationController
   private
 
     def setup
-      @template.search_default :organisations      
+      view_context.search_default :organisations      
     end
 
 end

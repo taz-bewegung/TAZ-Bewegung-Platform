@@ -135,7 +135,7 @@ class LocationsController < ApplicationController
     end
     
     def setup
-      @template.main_menu :locations
+      view_context.main_menu :locations
     end
 
     def order
