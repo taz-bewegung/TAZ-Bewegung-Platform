@@ -18,3 +18,6 @@ require "#{Rails.root}/lib/extensions/bewegung/uuid.rb"
 
 # HASH
 require "#{Rails.root}/lib/extensions/hash.rb"
+
+# Array
+require "#{Rails.root}/lib/extensions/array.rb"

@@ -3,39 +3,40 @@ module GoogleMapsHelper
   include ::ApplicationHelper
   def build_map(collection, options = {})
    options.reverse_merge!({:large_map => true, :small_map => false, :map_type => true, :zoom => 5, :max_visible_markers => 100})
-   @map = GMap.new("map_div")
-   @map.control_init(:large_map => options[:large_map], :map_type => options[:map_type], :small_map => options[:small_map], :hierarchical_map_type => true)
-   
-   lat = options[:lat] || GEOCODE_DEFAULT_LOCATION["lat"]
-   lng = options[:lng] || GEOCODE_DEFAULT_LOCATION["lng"]
-   
-   @map.center_zoom_init([lat, lng], options[:zoom])
-
-#   @map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
-   @map.set_map_type_init(GMapType::G_PHYSICAL_MAP) 
-   
-   @map.clear_overlays
-   @map.width = options[:width]
-   @map.height = options[:height] 
-         
-    markers = []
-    for item in collection
-      # create markers for map
-      icon = GIcon.new(
-        :image => "/images/markers/gmaps-pint-#{item.class.to_s.downcase}.png",
-        :iconSize => GSize.new(21, 21),
-        :iconAnchor => GPoint.new(1, 1),
-        :infoWindowAnchor => GPoint.new(1, 1),
-        :infoShadowAnchor => GPoint.new(18, 25)
-      )      
-      marker = GMarker.new([item.address.lat, item.address.lng], 
-                          :title => item.title, 
-                          :info_window => self.send("#{item.class.to_s.downcase}_tooltip".to_sym, item),
-                          :icon => icon)
-      markers << marker
-    end      
-    clusterer = Clusterer.new(markers, :icon => icon, :max_visible_markers => options[:max_visible_markers])
-    @map.overlay_init clusterer
+   #map = GMap.new("map_div")
+   #map.control_init(:large_map => options[:large_map], :map_type => options[:map_type], :small_map => options[:small_map], :hierarchical_map_type => true)
+   #
+   #at = options[:lat] || GEOCODE_DEFAULT_LOCATION["lat"]
+   #ng = options[:lng] || GEOCODE_DEFAULT_LOCATION["lng"]
+   #
+   #map.center_zoom_init([lat, lng], options[:zoom])
+   #
+#  #@map.add_map_type_init(GMapType::G_PHYSICAL_MAP)
+   #map.set_map_type_init(GMapType::G_PHYSICAL_MAP) 
+   #
+   #map.clear_overlays
+   #map.width = options[:width]
+   #map.height = options[:height] 
+   #     
+   #markers = []
+   #for item in collection
+   #  # create markers for map
+   #  icon = GIcon.new(
+   #    :image => "/images/markers/gmaps-pint-#{item.class.to_s.downcase}.png",
+   #    :iconSize => GSize.new(21, 21),
+   #    :iconAnchor => GPoint.new(1, 1),
+   #    :infoWindowAnchor => GPoint.new(1, 1),
+   #    :infoShadowAnchor => GPoint.new(18, 25)
+   #  )      
+   #  marker = GMarker.new([item.address.lat, item.address.lng], 
+   #                      :title => item.title, 
+   #                      :info_window => self.send("#{item.class.to_s.downcase}_tooltip".to_sym, item),
+   #                      :icon => icon)
+   #  markers << marker
+   #end      
+   #clusterer = Clusterer.new(markers, :icon => icon, :max_visible_markers => options[:max_visible_markers])
+   #@map.overlay_init clusterer
+   "use geocoder"
   end
   
   def organisation_tooltip(organisation)

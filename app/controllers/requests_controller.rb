@@ -9,9 +9,6 @@ class RequestsController < ApplicationController
     render :action => 'new'
   end
   
-  def contact
-  end
-  
   def new
     @request = Request.new
   end

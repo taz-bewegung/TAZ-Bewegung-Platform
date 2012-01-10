@@ -27,8 +27,8 @@ module ApplicationHelper
   
   def use_googlemaps
     content_for :googlemaps do 
-      html = GMap.header 
-      html << javascript_include_tag("clusterer")
+      #html = GMap.header 
+      #html << javascript_include_tag("clusterer")
     end
   end  
 

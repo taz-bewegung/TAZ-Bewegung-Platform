@@ -60,7 +60,7 @@ class EventsController < ApplicationController
     end
     
     respond_to do |format|
-      format.html { render :partial => "/events/index", :layout => true }
+      format.html { render "/events/_index", :layout => true }
       format.js { }      
       format.xml do
         if params[:i_search].present?
