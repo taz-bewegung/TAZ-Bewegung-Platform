@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class FeedEvent < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   acts_as_mappable  
   
   serialize :changes

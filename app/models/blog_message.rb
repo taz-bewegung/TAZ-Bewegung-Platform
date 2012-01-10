@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class BlogMessage < ActiveRecord::Base
-
+  
+  # Modules
+  include Bewegung::Uuid
+  
   # Associations
   belongs_to :blog, :polymorphic => true
   belongs_to :blogger, :foreign_key => "blogger_id", :class_name => "User"

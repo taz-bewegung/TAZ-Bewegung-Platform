@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Content::WelcomePageTeaser < ActiveRecord::Base
 
+  # Modules
+  include Bewegung::Uuid
+
   set_table_name "content_welcome_page_teasers" 
 
   has_one :content, :as => :element

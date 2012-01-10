@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class LocationCategory < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   before_create :generate_unique_permalink  
   
   # Associations

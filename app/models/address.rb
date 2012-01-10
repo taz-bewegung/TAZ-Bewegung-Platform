@@ -15,6 +15,9 @@ class Address < ActiveRecord::Base
   before_save :set_geocode
   after_save :update_feed_events
   
+  # Modules
+  include Bewegung::Uuid
+  
   # Validations
   validates_presence_of :street, :if => Proc.new { |a| not a.nationwide? }
   validates_presence_of :zip_code, :if => Proc.new { |a| not a.nationwide? }

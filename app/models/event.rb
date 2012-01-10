@@ -1,7 +1,10 @@
 # encoding: UTF-8
 require 'icalendar'
 class Event < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   # Plugins
   acts_as_paranoid
                                           

@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class NewsletterSubscriber < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   before_create :create_confirmation_code
   after_create :send_confirmation_email
     

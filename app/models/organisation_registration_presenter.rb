@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class OrganisationRegistrationPresenter < Presenter
 
+  # Modules
+  include Bewegung::Uuid
+
   # TODO Find a dynamic way to add the delegators
   def_delegators :organisation, :name, :password, :password_confirmation, :permalink, :corporate_form, :email, :website, :phone_number,
   :contact_name, :contact_name=, :contact_phone, :contact_phone=, :contact_email, :contact_email=,

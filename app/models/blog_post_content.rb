@@ -1,5 +1,8 @@
 # encoding: UTF-8
 class BlogPostContent < ActiveRecord::Base
+
+  # Modules
+  include Bewegung::Uuid
   
   ##
   # Plugins

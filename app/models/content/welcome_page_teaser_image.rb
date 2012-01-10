@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Content::WelcomePageTeaserImage < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   set_table_name "content_welcome_page_teaser_images"
   
   belongs_to :teaser, :class_name => "Content:WelcomePageTeaser", :foreign_key => "content_welcome_page_teaser_id"

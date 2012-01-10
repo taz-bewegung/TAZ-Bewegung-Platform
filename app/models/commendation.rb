@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Commendation < ActiveRecord::Base
 
+  # Modules
+  include Bewegung::Uuid
+
   # Filter
   before_create :send_notifications
   

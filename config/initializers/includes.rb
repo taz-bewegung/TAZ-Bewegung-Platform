@@ -12,3 +12,6 @@ require "#{Rails.root}/lib/extensions/helpedia/ssl_requirement.rb"
 
 # Presenter
 require "#{Rails.root}/lib/extensions/presenter.rb"
+
+# UUID Tools
+require "#{Rails.root}/lib/extensions/bewegung/uuid.rb"

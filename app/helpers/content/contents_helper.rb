@@ -78,7 +78,7 @@ module Content::ContentsHelper
       content.element = Content::TopElement.new
       content.element.title = "Blogeintrag der Woche"
       content.element.element = BlogPost.last
-      content.save      
+      content.save  
     end
 
     html = ""

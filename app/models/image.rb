@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Image < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   STANDARD_THUMBNAILS = {
     :mini => '32x24',
     :small => '90x69',

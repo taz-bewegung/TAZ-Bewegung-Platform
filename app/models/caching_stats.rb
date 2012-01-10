@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class CachingStats < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   #named_scope :with_key, lambda { |key|
   #  { :conditions => ["key = ?", key] }
   #}  

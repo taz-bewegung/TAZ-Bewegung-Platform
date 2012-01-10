@@ -3,6 +3,9 @@ class ActivityEventMembership < ActiveRecord::Base
   
   attr_accessor :event_id_autocomplete
   attr_accessor :activity_id_autocomplete
+  
+  # Modules
+  include Bewegung::Uuid
     
   def validate
     if self.event_id.blank? or ActivityEventMembership.exists?(:event_id => self.event.id, :activity_id => self.activity_id)

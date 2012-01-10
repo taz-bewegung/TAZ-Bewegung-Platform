@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class PetitionUser < ActiveRecord::Base
 
+  # Modules
+  include Bewegung::Uuid
+
   establish_connection "petition_#{Rails.env}"
   set_table_name "users"
 

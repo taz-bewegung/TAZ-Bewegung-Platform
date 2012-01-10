@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Organisation < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   # Plugins
   acts_as_paranoid
   

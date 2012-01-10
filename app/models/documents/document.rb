@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Document < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   belongs_to :owner, :polymorphic => true
   has_many :document_attachments, :as => :attachable, :dependent => :destroy  
   has_many :feed_events, :as => :trigger, :dependent => :destroy  

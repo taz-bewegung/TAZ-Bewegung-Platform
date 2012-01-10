@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class DaysWithEvent < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   belongs_to :event
   
   #named_scope :running, { :conditions => ["days_with_events.day >= ? AND events.starts_at <= ? AND events.ends_at >= ?", Time.now.beginning_of_day-2.hours, Time.now.end_of_day, Time.now.beginning_of_day],

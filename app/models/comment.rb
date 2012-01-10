@@ -1,6 +1,10 @@
 # encoding: UTF-8
 class Comment < ActiveRecord::Base
+
+  # Modules
+  include Bewegung::Uuid
   include Gravtastic
+
   # Plugins
   is_gravtastic :with => :email 
   acts_as_paranoid

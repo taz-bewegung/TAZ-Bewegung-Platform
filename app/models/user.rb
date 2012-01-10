@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
             
   VISIBILITY = [["Profil nicht anzeigen", "1"],
                 ["Profil angemeldeten Nutzern zeigen", "2"],
-                ["Profil allen Nutzern zeigen", "3"]] unless defined?(VISIBILITY)                      
+                ["Profil allen Nutzern zeigen", "3"]] unless defined?(VISIBILITY)
                 
   MESSAGES_PER_PAGE = 20 unless defined?(MESSAGES_PER_PAGE)
 
@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   include Authentication
   include Authentication::ByPassword
   include Authentication::ByCookieToken
+  include Bewegung::Uuid
 
   # Virtual attributes
   attr_accessor :do_not_create_address

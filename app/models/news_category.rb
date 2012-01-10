@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class NewsCategory < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   before_save :create_permalink
 
   has_many :news_memberships  

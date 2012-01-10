@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class BlogContentText < ActiveRecord::Base
   
+  # Modules
+  include Bewegung::Uuid
+  
   attr_accessor :contentable_type  
   
   ##

@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Content::LandingPageTab < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   set_table_name "content_landing_page_tabs"
   
   has_one :content, :as => :element

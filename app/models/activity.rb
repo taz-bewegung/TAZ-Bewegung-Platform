@@ -46,6 +46,8 @@ class Activity < ActiveRecord::Base
   validates_date :end_date
   validate :check_code
   
+  # Modules
+  include Bewegung::Uuid
 
   accepts_nested_attributes_for :image_attachment
 

@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class SocialCategory < ActiveRecord::Base 
-  
+
+  # Modules
+  include Bewegung::Uuid
+
 #  self.skip_time_zone_conversion_for_attributes=[]
   
   before_create :generate_unique_permalink  

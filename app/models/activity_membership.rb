@@ -10,6 +10,9 @@ class ActivityMembership < ActiveRecord::Base
   
   acts_as_state_machine :column => :state, :initial => :pending
   
+  # Modules
+  include Bewegung::Uuid
+  
   # States
   state :pending
   state :active, :enter => :do_activate

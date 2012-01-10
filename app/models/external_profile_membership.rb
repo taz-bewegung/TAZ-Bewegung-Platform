@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class ExternalProfileMembership < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   belongs_to :user
   belongs_to :external_profile
   before_save :fix_url

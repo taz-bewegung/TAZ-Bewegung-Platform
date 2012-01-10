@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class ExternalProfile < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   has_many :external_profile_mappings
   has_many :users, :through => :external_profile_mappings
   

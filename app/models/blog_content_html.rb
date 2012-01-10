@@ -7,6 +7,9 @@ class BlogContentHtml < ActiveRecord::Base
   # Associations
   
   has_one :blog_post_content, :as => :contentable
+  
+  # Modules
+  include Bewegung::Uuid
     
   ##
   # Plugins

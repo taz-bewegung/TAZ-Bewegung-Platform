@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Message < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   # Filters
   before_create :assign_conversation_id
   

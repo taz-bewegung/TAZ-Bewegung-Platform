@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class BlogPost < ActiveRecord::Base  
-  
+  # Modules
+  include Bewegung::Uuid
   include Commentable
   
   before_create :set_unique_permalink  

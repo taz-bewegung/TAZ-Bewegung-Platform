@@ -5,6 +5,9 @@ class Blog < ActiveRecord::Base
   belongs_to :bloggable, :polymorphic => true
   has_many :posts, :class_name => 'BlogPost'
   
+  # Modules
+  include Bewegung::Uuid
+  
   # Plugins
   acts_as_tagger
   

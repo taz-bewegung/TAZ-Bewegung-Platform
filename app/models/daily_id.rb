@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class DailyId < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   class << self
     
     # Creates a uniqe integer for a specific date

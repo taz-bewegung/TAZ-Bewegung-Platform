@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Friendship < ActiveRecord::Base
-    
+
+  # Modules
+  include Bewegung::Uuid
+
   belongs_to :user
   belongs_to :friend, :class_name => "User"
   

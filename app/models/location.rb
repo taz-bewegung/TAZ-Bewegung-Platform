@@ -1,6 +1,9 @@
 # encoding: UTF-8
 class Location < ActiveRecord::Base
-  
+
+  # Modules
+  include Bewegung::Uuid
+
   include Commentable
   
   # Plugins
