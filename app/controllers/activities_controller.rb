@@ -66,7 +66,7 @@ class ActivitiesController < ApplicationController
     
     ###
     # Rendering for various "index" actions (organiation/user)´
-    
+
     def index_for_categories
 
       conditions = ['activities.state = "active"']
@@ -96,7 +96,7 @@ class ActivitiesController < ApplicationController
       
     respond_to do |format|
       format.html do
-        render :partial => "/activities/index", :layout => true
+        render "/activities/_index", :layout => true
       end    
       format.js do
         render :action => :index

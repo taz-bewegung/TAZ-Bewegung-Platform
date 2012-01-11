@@ -5,18 +5,6 @@ Bewegung::Application.routes.draw do
   # Feed Events
   resources :feed_events
 
-  # Events
-  resources :events
-
-  # Activities
-  resources :activities
-
-  # Organisations
-  resources :organisations
-
-  # Locations
-  resources :locations
-
   # User & Sessions
   resource :session
   match 'logout' => 'sessions#destroy'
@@ -29,18 +17,42 @@ Bewegung::Application.routes.draw do
   match 'password_changed' => 'sessions#password_changed'
 
   resources :users do
-    collection do
-      get 'split'
-      get 'registered'
+    
+    member do
+      get :edit_part
+      put :save_part
+      put :set_password
+      get :edit_password
+      get :delete_fairdouser
     end
+
+    collection do
+      get :split
+      get :registered
+    end
+
+    resource :feedback
+
+    resources :activities
+    resources :locations
+    resources :engagements
+    resources :events
+    resources :messages
+    resources :friendships
+    resources :external_profile_memberships
+
+    resources :activity_memberships do
+      collection do
+        get :view
+      end
+    end
+    
   end
 
   # Old Helpedia Stuff, to be renamed
 
   match 'my_helpedia' => 'my_helpedia#index'
 
-  namespace :my_helpedia do
-  end
 
   # Request
   resource :request
@@ -266,6 +278,45 @@ Bewegung::Application.routes.draw do
     member do
       get :change_view
     end
+  end
+  
+  
+  # Activities
+  resources :activities do
+
+    resources :commendations
+    resources :bookmarks
+    resources :activity_memberships
+    resources :comments
+
+    member do
+      get :description
+    end
+
+    collection do
+      get :for_day
+    end
+
+    resource :feedback
+    resource :blog
+
+    resources :blog_posts do
+      resources :comments
+    end
+
+    resources :petition_users do
+      collection do
+        get :activities
+      end
+    end
+
+    resources :events do
+      collection do
+        get :map
+        get :iframe_map
+      end
+    end
+
   end
 
   # Events

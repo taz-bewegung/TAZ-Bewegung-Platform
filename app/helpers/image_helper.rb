@@ -30,7 +30,7 @@ module ImageHelper
                                                                :height => image.size_for_thumbnail(size).height)    
     else
       
-      if File.exists?("#{RAILS_ROOT}/public/images/default/#{object.class.to_s.pluralize.downcase}/#{object.class.to_s.downcase}_#{size}.gif")
+      if File.exists?("#{Rails.root}/public/images/default/#{object.class.to_s.pluralize.downcase}/#{object.class.to_s.downcase}_#{size}.gif")
         image_html = view_context.image_tag "default/#{object.class.to_s.pluralize.downcase}/#{object.class.to_s.downcase}_#{size}.gif"
       else
         image_html = "<span class='noimage'> - </span>"

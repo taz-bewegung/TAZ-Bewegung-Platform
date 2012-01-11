@@ -68,7 +68,7 @@ class BlogPost < ActiveRecord::Base
     end
 
     def published
-      where("state", "published")
+      where("state=?", "published")
     end
     
     def with_active_organisation
@@ -77,6 +77,11 @@ class BlogPost < ActiveRecord::Base
     
     def limit(num)
       limit(num.flatten.first || (defined?(per_page) ? per_page : 10))
+    end
+    
+    def for(type)
+        where("blogs.bloggable_type = ?", type).
+        includes(:blog)
     end
     
   end

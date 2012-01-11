@@ -24,10 +24,10 @@
   </div>
   
   <%- if params[:i_search].blank? -%>
-  <%- cache("activity_sidebar", :expires_in => 10.minutes ) do -%>  
-  <div class="full-content-right">     
-    <%= render :partial => 'sidebar' -%>
-  </div>
-  <% end %>
+    <%- cache("activity_sidebar", :expires_in => 10.minutes ) do -%>  
+      <div class="full-content-right">     
+        <%= render :partial => 'sidebar' -%>
+      </div>
+    <% end %>
   <% end %>
 </div>

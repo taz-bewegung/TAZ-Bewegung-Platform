@@ -25,6 +25,7 @@ gem "rmagick", "~> 2.13.1"
 gem "mini_magick", "~> 3.3"
 gem "will_paginate", "~> 3.0.0"
 gem "dynamic_form"
+gem 'rails_autolink'
 #gem "ym4r_gm", :git => "git://github.com/crossroads/ym4r_gm.git"
 
 group :test, :development do
