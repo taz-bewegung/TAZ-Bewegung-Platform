@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Bewegung::Uuid
+  include AASM
 
   # Virtual attributes
   attr_accessor :do_not_create_address
@@ -115,40 +116,41 @@ class User < ActiveRecord::Base
 ##
 # States
 
- acts_as_state_machine :initial => :pending
-  state :passive
-  state :pending
-  state :active,  :enter => :do_activate
-  state :suspended
-  state :fairdo_migrator, :enter => :do_fairdo_migrator
-  state :deleted, :enter => :do_delete
+  aasm :column => :state do
+    state :passive
+    state :pending, :initial => true
+    state :active,  :enter => :do_activate
+    state :suspended
+    state :fairdo_migrator, :enter => :do_fairdo_migrator
+    state :deleted, :enter => :do_delete
+    
+    event :register do
+      transitions :from => [:passive], :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
+    end
+    
+    event :activate do
+      transitions :from => [:pending, :fairdo_migrator], :to => :active 
+    end
+    
+    event :suspend do
+      transitions :from => [:passive, :pending, :active], :to => :suspended
+    end
+    
+    event :delete do
+      transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
+    end
+    
+    event :unsuspend do
+      transitions :from => [:suspended], :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
+      transitions :from => [:suspended], :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
+      transitions :from => [:suspended], :to => :passive
+    end
+    
+    event :fairdo_migrator do
+       transitions :from => [:passive, :pending], :to => :fairdo_migrator
+    end
+  end
 
-  event :register do
-    transitions :from => :passive, :to => :pending, :guard => Proc.new {|u| !(u.crypted_password.blank? && u.password.blank?) }
-  end
-  
-  event :activate do
-    transitions :from => [:pending, :fairdo_migrator], :to => :active 
-  end
-  
-  event :suspend do
-    transitions :from => [:passive, :pending, :active], :to => :suspended
-  end
-  
-  event :delete do
-    transitions :from => [:passive, :pending, :active, :suspended], :to => :deleted
-  end
-
-  event :unsuspend do
-    transitions :from => :suspended, :to => :active,  :guard => Proc.new {|u| !u.activated_at.blank? }
-    transitions :from => :suspended, :to => :pending, :guard => Proc.new {|u| !u.activation_code.blank? }
-    transitions :from => :suspended, :to => :passive
-  end
-  
-  event :fairdo_migrator do
-     transitions :from => [:passive, :pending], :to => :fairdo_migrator
-  end
-  
   # Returns true if the user has just been activated.
   def recently_activated?
     @activated

@@ -8,23 +8,30 @@ class ActivityMembership < ActiveRecord::Base
   validates_length_of :message, :maximum => 140, :allow_blank => true
   validates_with_hidden_captcha  
   
-  acts_as_state_machine :column => :state, :initial => :pending
+
   
   # Modules
   include Bewegung::Uuid
+  include AASM
   
-  # States
-  state :pending
-  state :active, :enter => :do_activate
-  
-  event :pending do 
-    transitions :from => :canceled, :to => :pending
-  end
-  
-  event :activate do
-    transitions :from => :pending, :to => :active
-  end    
-  
+  ##
+  # Acts as state machine
+    aasm :column => :state do
+
+    # States
+    state :pending, :initial => true
+    state :active, :enter => :do_activate
+
+    event :pending do 
+      transitions :from => [:canceled], :to => :pending
+    end
+
+    event :activate do
+      transitions :from => [:pending], :to => :active
+    end
+
+end
+
   #named_scope :active, :conditions => ["state = 'active'"]
   #named_scope :active_with_user, :conditions => ["state = 'active' AND (SELECT users.state FROM users WHERE users.uuid = activity_memberships.user_id) = 'active'"]
   #named_scope :latest, :order => "created_at DESC"

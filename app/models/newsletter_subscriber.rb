@@ -3,6 +3,7 @@ class NewsletterSubscriber < ActiveRecord::Base
 
   # Modules
   include Bewegung::Uuid
+  include AASM
 
   before_create :create_confirmation_code
   after_create :send_confirmation_email
@@ -14,12 +15,13 @@ class NewsletterSubscriber < ActiveRecord::Base
   attr_accessor :confirmed_user
   
   # Use acts_as_state_machine for monitoring the state of a subscribtion.
-  acts_as_state_machine :initial => :pending
-  state :pending
-  state :confirmed,  :enter => :do_confirm
+  aasm :column => :state do
+    state :pending, :initial => true
+    state :confirmed,  :enter => :do_confirm
   
-  event :confirm do
-    transitions :from => :pending, :to => :confirmed 
+    event :confirm do
+      transitions :from => [:pending], :to => :confirmed 
+    end
   end
   
   def do_confirm

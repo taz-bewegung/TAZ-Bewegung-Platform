@@ -3,7 +3,7 @@ class BlogPost < ActiveRecord::Base
   # Modules
   include Bewegung::Uuid
   include Commentable
-  
+  include AASM
   before_create :set_unique_permalink  
   
   # Plugins
@@ -83,17 +83,18 @@ class BlogPost < ActiveRecord::Base
 
 
   # State machine
-  acts_as_state_machine :initial => :unpublished
-  state :unpublished, :enter => :do_unpublish
-  state :published, :enter => :do_publish
+  aasm :column => :state do
+    state :unpublished, :enter => :do_unpublish, :initial => true
+    state :published, :enter => :do_publish
 
-  event :publish do
-    transitions :from => :unpublished, :to => :published
-  end  
+    event :publish do
+      transitions :from => [:unpublished], :to => :published
+    end  
   
-  event :unpublish do
-    transitions :from => :published, :to => :unpublished
-  end  
+    event :unpublish do
+      transitions :from => [:published], :to => :unpublished
+    end
+  end
   
   def do_publish
     self.blog.tag(self, :with => self.temp_tag_list, :on => :blog_tags)

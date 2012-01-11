@@ -3,7 +3,7 @@ class Organisation < ActiveRecord::Base
 
   # Modules
   include Bewegung::Uuid
-
+  include AASM
   # Plugins
   acts_as_paranoid
   

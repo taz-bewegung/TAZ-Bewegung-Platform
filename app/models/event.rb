@@ -4,6 +4,7 @@ class Event < ActiveRecord::Base
 
   # Modules
   include Bewegung::Uuid
+  include AASM
 
   # Plugins
   acts_as_paranoid
@@ -132,15 +133,17 @@ class Event < ActiveRecord::Base
   ##
   # Acts as state machine
   
-  acts_as_state_machine :column => :state, :initial => :active
+  aasm :column => :state do
   
-  # States
-  state :suspended, :enter => :do_suspend
-  state :active, :enter => :do_activate
+    # States
+    state :suspended, :enter => :do_suspend
+    state :active, :enter => :do_activate, :initial => true
   
-  event(:activate) { transitions :from => :suspended, :to => :active }
-  event(:suspend) { transitions :from => :active, :to => :suspended } 
-  
+    event(:activate) { transitions :from => [:suspended], :to => :active }
+    event(:suspend) { transitions :from => [:active], :to => :suspended } 
+
+  end
+
   def do_suspend
   end
   

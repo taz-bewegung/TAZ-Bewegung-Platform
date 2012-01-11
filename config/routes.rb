@@ -60,6 +60,261 @@ Bewegung::Application.routes.draw do
   # Commendations
   resources :commendations
   
+  namespace :my_helpedia do
+
+    resources :activity_memberships do
+      collection do
+        get :view
+      end
+    end
+
+    resources :users do
+      member do
+        get :edit_part
+        get :cancel_edit_part
+        get :destroy_confirmation
+      end
+    end
+
+    resources :external_profile_memberships do
+      member do
+        get :cancel_edit_part
+      end
+    end
+
+    resources :friendships do
+      member do
+        put :deny
+        put :accept
+      end
+      collection do
+        get :view
+      end
+    end
+    
+    # my_helpedia.resources :messages, :collection => { :sent => :get, :system => :get }, :member => { :answer => :get, :reply => :post }
+    resources :messages do
+      member do
+        get :answer
+        post :reply
+      end
+      collection do
+        get :sent
+        get :system
+      end
+    end
+  #  my_helpedia.resources :bookmarks, :collection => { :view => :get }
+    resources :bookmarks do
+      collection do
+        get :view
+      end
+    end
+    
+    resources :feed_events do
+      collection do
+        get :around
+      end
+    end
+
+    resources :activities do
+      resource :image
+      resource :wiki
+
+      member do
+        get :description
+        get :statistics
+        get :edit_part
+        get :cancel_edit_part
+        get :destroy_confirmation
+      end
+
+      resources :activity_event_memberships do
+        member do
+          get :cancel_edit_part
+        end
+        collection do
+          get :event_list
+          get :activity_list
+        end
+      end
+      
+      resources :activity_sponsors do
+        member do
+          get :cancel_edit_part
+        end
+      end
+      
+      resources :activity_memberships do
+        member do
+          put :activate
+        end
+      end
+      
+      resource :blog
+
+      resources :blog_posts do
+        member do
+          put :publish
+          put :unpublish
+        end
+      end
+      
+      resources :blog_post_contents do
+        collection do
+          get :chose
+        end
+      end
+      
+      resources :comments do
+        member do
+          put :hide
+          put :unhide
+        end
+      end
+      
+
+
+    end
+    
+    resources :organisations do
+      member do
+        get :edit_part
+        get :cancel_edit_part
+        get :destroy_confirmation
+      end
+
+      resource :address do
+        member do
+          get :edit_part
+          get :cancel_edit_part
+        end
+      end
+      
+      resource :blog
+
+      resources :blog_posts do
+        member do
+          put :publish
+          put :unpublish
+        end
+      end
+      
+      resources :blog_post_contents do
+        collection do
+          get :chose
+        end
+      end
+      
+      resources :comments do
+        member do
+          put :hide
+          put :unhide
+        end
+      end
+      
+      resources :activity_memberships do
+        member do
+          put :activate
+        end
+      end
+
+    end
+    
+    resources :locations do
+
+      member do
+        get :edit_part
+        get :cancel_edit_part
+        get :destroy_confirmation
+      end
+
+      resources :activity_memberships do
+        member do
+          put :activate
+        end
+      end
+      
+      resources :comments do
+        member do
+          put :hide
+          put :unhide
+        end
+      end
+      
+    end
+
+    resources :events do
+      member do
+        get :edit_part
+        get :cancel_edit_part
+        get :destroy_confirmation
+      end
+      resources :activity_memberships do
+        member do
+          get :cancel_edit_part
+        end
+        collection do
+          get :event_list
+          get :activity_list
+        end
+      end
+    end
+
+  end # Namespace my_helpedia
+
+  resource :search do
+    member do
+      get :change_view
+    end
+  end
+
+  # Events
+  resources :events do
+
+    resources :activities
+    resources :bookmarks
+    resources :commendations
+    resources :comments
+
+    resource :feedback
+
+    collection do
+      get :for_day
+    end
+  end
+
+  # Organisations
+  resources :organisations do
+
+    resources :activities
+    resources :locations
+    resources :messages
+    resources :bookmarks
+    resources :events
+    resources :activity_memberships
+
+    resource :blog
+    resource :feedback
+    resource :rss
+
+    collection do
+      get :registered
+    end
+    
+    member do
+      get :facts
+      get :facts
+      get :bounce
+    end
+    
+    resource :blog
+    
+    resources :blog_posts do
+      resources :comments
+    end
+    
+  end
+
   
   # Contact Form
   #map.contact_person '/request/contact', :controller => 'requests', :action => 'contact'

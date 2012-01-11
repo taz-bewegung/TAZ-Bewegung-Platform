@@ -46,7 +46,7 @@ module ApplicationHelper
   
   def rss_feed(path, title)
     content_for(:rss_feed){
-      "<link href='#{path}' rel='alternate' title='#{title}' type='application/rss+xml' />"
+      "<link href='#{path}' rel='alternate' title='#{title}' type='application/rss+xml' />".html_safe
     }
   end
     
@@ -82,7 +82,7 @@ module ApplicationHelper
   def time_span_for(object, options = {})
     options.reverse_merge!(:mode => :time)
 
-    if object.try("continuous?")
+    if object.respond_to?(:"continuous?")
       "fortlaufend"
     elsif object.starts_at == object.ends_at
       l(object.starts_at.send("to_#{options[:mode]}"))

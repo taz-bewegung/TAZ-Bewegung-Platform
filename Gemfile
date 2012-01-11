@@ -14,7 +14,7 @@ gem "RedCloth"
 gem "devise"
 gem "rails3_acts_as_paranoid"
 gem "validates_timeliness"
-gem "acts_as_state_machine", "~> 2.2.0"
+gem "aasm"
 gem "geokit-rails3"
 gem 'acts-as-taggable-on'
 gem "acts_as_list", "~> 0.1.4"

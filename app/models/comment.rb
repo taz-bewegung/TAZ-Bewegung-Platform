@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
   # Modules
   include Bewegung::Uuid
   include Gravtastic
+  include AASM
 
   # Plugins
   is_gravtastic :with => :email 
@@ -30,16 +31,17 @@ class Comment < ActiveRecord::Base
   end
    
   # State machine
-  acts_as_state_machine :initial => :visible
-  state :visible
-  state :hidden, :enter => :do_hide
+  aasm :column => :state do
+    state :visible, :initial => true
+    state :hidden, :enter => :do_hide
 
-  event :hide do
-    transitions :from => :visible, :to => :hidden
-  end  
+    event :hide do
+      transitions :from => [:visible], :to => :hidden
+    end  
   
-  event :unhide do
-    transitions :from => :hidden, :to => :visible
+    event :unhide do
+      transitions :from => [:hidden], :to => :visible
+    end
   end
   
   def do_hide; end

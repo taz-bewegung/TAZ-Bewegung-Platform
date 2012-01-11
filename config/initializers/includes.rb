@@ -21,3 +21,6 @@ require "#{Rails.root}/lib/extensions/hash.rb"
 
 # Array
 require "#{Rails.root}/lib/extensions/array.rb"
+
+# Will Paginate
+require "#{Rails.root}/lib/extensions/will_paginate.rb"

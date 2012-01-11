@@ -12,7 +12,7 @@
 </p>
 
 <%= form_for(@request, 
-   :url => request_path ) do |f| %>
+   :url => request_path, :builder => EditFormBuilder ) do |f| %>
   <table class="reg-form w-230" width="100%" colspan="0" rowspan="0">
   <%= f.text_field :name, :required => true -%>      
   <%= f.text_field :email, :required => true -%>    

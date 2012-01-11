@@ -3,6 +3,7 @@ class Friendship < ActiveRecord::Base
 
   # Modules
   include Bewegung::Uuid
+  include AASM
 
   belongs_to :user
   belongs_to :friend, :class_name => "User"
@@ -15,19 +16,20 @@ class Friendship < ActiveRecord::Base
   
   ##
   # Acts as state machine
-  acts_as_state_machine :initial => :requested
-  state :requested
-  state :pending
-  state :accepted, :enter => :do_accept
-  
-  event :pend do
-    transitions :from => :requested, :to => :pending
+  aasm :column => :state do
+    state :requested, :initial => true
+    state :pending
+    state :accepted, :enter => :do_accept
+
+    event :pend do
+      transitions :from => [:requested], :to => :pending
+    end
+
+    event :accept do
+      transitions :from => [:pending, :requested], :to => :accepted
+    end
   end
-  
-  event :accept do
-    transitions :from => [:pending, :requested], :to => :accepted
-  end 
-  
+
   def do_accept
     self.updated_at = Time.now 
   end  

@@ -74,7 +74,7 @@
 
 <span id="search-path"><%#=search_path %></span>
 <%- @search = ISearch.new(params[:i_search]) -%>
-<% form_for @search, :url => url_for(params), :html => { :method => :get } do |form| %>
+<%= form_for @search, :url => url_for(params), :html => { :method => :get } do |form| %>
 <%= form.hidden_field(:search_type, :id => "i_search_type", :value => type) -%>
 <%= hidden_field_tag :list_type, params[:list_type], :id => "finder_list_type" -%>
 <%= render :partial => "/menu/finder_menu" -%> 

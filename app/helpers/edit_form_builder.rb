@@ -43,7 +43,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
       options = build_options(options, field)
 
       # Create content
-      html = view_context.v(@object.send(field))
+      html = ApplicationController.view_context.v(@object.send(field))
 
       # Build html
       wrap_field(html, field, options)    

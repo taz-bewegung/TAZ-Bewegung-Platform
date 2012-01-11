@@ -3,7 +3,7 @@ class Location < ActiveRecord::Base
 
   # Modules
   include Bewegung::Uuid
-
+  include AASM
   include Commentable
   
   # Plugins
@@ -80,15 +80,14 @@ class Location < ActiveRecord::Base
   ##
   # Acts as state machine
   
-  acts_as_state_machine :column => :state, :initial => :active
+  aasm :column => :state do  
+    # States
+    state :suspended, :enter => :do_suspend
+    state :active, :enter => :do_activate, :initial => true
   
-  # States
-  state :suspended, :enter => :do_suspend
-  state :active, :enter => :do_activate
-  
-  event(:activate) { transitions :from => :suspended, :to => :active }
-  event(:suspend) { transitions :from => :active, :to => :suspended }
-  
+    event(:activate) { transitions :from => [:suspended], :to => :active }
+    event(:suspend) { transitions :from => [:active], :to => :suspended }
+  end
   def do_suspend
   end
   

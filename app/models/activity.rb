@@ -115,14 +115,15 @@ class Activity < ActiveRecord::Base
 
   ##
   # Acts as state machine
-  acts_as_state_machine :column => :state, :initial => :active
-
-  # States
-  state :suspended, :enter => :do_suspend
-  state :active, :enter => :do_activate
-
-  event(:activate) { transitions :from => :suspended, :to => :active }
-  event(:suspend) { transitions :from => :active, :to => :suspended }
+  include AASM
+  aasm :column => :state do
+    # States
+    state :suspended, :enter => :do_suspend
+    state :active, :enter => :do_activate, :initial => true
+    # Events
+    event(:activate) { transitions :from => [:suspended], :to => :active }
+    event(:suspend) { transitions :from => [:active], :to => :suspended }
+  end
 
   def do_suspend
   end
