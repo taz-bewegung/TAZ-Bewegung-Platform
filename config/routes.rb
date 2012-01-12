@@ -350,7 +350,7 @@ Bewegung::Application.routes.draw do
 
     member do
       get :facts
-      get :facts
+      get :about
       get :bounce
     end
 

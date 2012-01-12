@@ -22,7 +22,7 @@ gem "gravtastic", "~> 3.2.6"
 gem "icalendar", "~> 1.1.6"
 gem "restful-authentication", :git => "git://github.com/Satish/restful-authentication.git", :branch => "rails3"
 gem "rmagick", "~> 2.13.1"
-gem "mini_magick", "~> 3.3"
+gem "mini_magick", "~> 3.4"
 gem "will_paginate", "~> 3.0.0"
 gem "dynamic_form"
 gem 'rails_autolink'

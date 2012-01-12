@@ -5,6 +5,6 @@
   </li>
 </ul>
 <div class="rss" style="margin-left:20px;margin-top: 20px;margin-bottom: 20px">
-  <%=image_tag("rss_right_column.png", :align => :top) + "&nbsp;" + link_to("RSS-Feed abbonieren", events_path(:format => :xml))  %><br /><br />
-  <%=image_tag("rss_right_column.png", :align => :top) + "&nbsp;" + link_to("RSS-Feed zur Suche", params.merge(:format => :xml)) if params[:i_search].present? %>      
+  <%=image_tag("rss_right_column.png", :align => :top) + "&nbsp;".html_safe + link_to("RSS-Feed abbonieren", events_path(:format => :xml))  %><br /><br />
+  <%=image_tag("rss_right_column.png", :align => :top) + "&nbsp;".html_safe + link_to("RSS-Feed zur Suche", params.merge(:format => :xml)) if params[:i_search].present? %>      
 </div>

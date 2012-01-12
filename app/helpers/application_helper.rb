@@ -166,7 +166,7 @@ module ApplicationHelper
     html_options.reverse_merge!({ :class => "#{options[:class]} shadow-button-#{options[:css_class]}", :href => target })
     content_tag :a, html_options do
       content_tag(:button, :class => "left") do
-        label
+        shadow_text label, options
       end
     end
   end
@@ -181,11 +181,13 @@ module ApplicationHelper
 
   # set to true, all tags are stripped out.
   def secured_rte_text(text, options = {})
+
     options.reverse_merge!(:plain => false)
     tags = options[:plain] == true ? [] : %w(p a br ul ol li strong b em img object param embed a)
-    sanitized_text = sanitize(auto_link(text, :href_options => {:target => "_blank"}), :tags => tags,
+    sanitized_text = sanitize(auto_link(text.html_safe, :href_options => {:target => "_blank"}), :tags => tags,
                                                                                        :attributes => %w(alt frameborder title name value href data width height type src allowfullscreen allowscriptaccess))
     html = ''
+
     unless options[:plain] == true
       html << content_tag(:span, :class => "rte-wrapper") do
               sanitized_text
@@ -193,7 +195,8 @@ module ApplicationHelper
     else
       html << sanitized_text
     end
-    html
+
+    html.html_safe
   end
 
   def secured_video_code(code, options = {})
