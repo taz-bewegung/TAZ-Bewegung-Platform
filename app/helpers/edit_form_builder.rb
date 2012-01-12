@@ -5,6 +5,7 @@
 
 class EditFormBuilder < ActionView::Helpers::FormBuilder
   include ActionController::Routing
+  include ActionView::Helpers::TagHelper
   attr_accessor :use_divs
 
   helpers = field_helpers +
@@ -43,7 +44,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
       options = build_options(options, field)
 
       # Create content
-      html = ApplicationController.view_context.v(@object.send(field))
+      html = ApplicationController.v(@object.send(field))
 
       # Build html
       wrap_field(html, field, options)    
@@ -52,7 +53,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
   def localized_country_select(field, highlight, options = {}) 
     options = build_options(options, field)    
     options['method_name']  = 'localized_country_select' 
-    html = view_context.localized_country_select(@object.class.to_s.underscore, field, highlight, options)     
+    html = localized_country_select(@object.class.to_s.underscore, field, highlight, options)     
 
     # Get rid of unoppropriate options
     options.delete_if { |key, value| not [:rel, :class, :style, :id, :name, :value, :type, :title, :size].include?(key.to_sym)}      
@@ -67,22 +68,21 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
     options['method_name'] = 'image_field'
     options.reverse_merge!(:image_size => :mini, :id => "image", :image_object => @object)
     # Create content
-    html = view_context.content_tag :span, 
-                                 view_context.image_for(options[:image_object], options[:image_size], :default_image_from => options[:default_image_from]),
+    html = content_tag :span, image_for(options[:image_object], options[:image_size], :default_image_from => options[:default_image_from]),
                                  :id => "image-#{@object.object_id}",
                                  :class => "image-field"
     html << self.hidden_field(field, :id => options[:id])
-    html << view_context.link_to("Bild auswählen", 
-                              view_context.url_for(:controller => "/images", :action => "lightbox", 
-                                                :image_input => options[:id], 
-                                                :image_size => options[:image_size],
-                                                :part => "image-#{@object.object_id}"), 
-                              :class => 'remote-link chose-image')                                                         
-                              
+    html << link_to("Bild auswählen", url_for(:controller => "/images",
+                                                   :action => "lightbox",
+                                                   :image_input => options[:id],
+                                                   :image_size => options[:image_size],
+                                                   :part => "image-#{@object.object_id}"),
+                                                   :class => 'remote-link chose-image')
+
     if options[:delete_link] == true
-      html << view_context.content_tag(:span, :class => "remove-image-span") do
+      html << content_tag(:span, :class => "remove-image-span") do
         " | " +
-        view_context.link_to("Bild löschen", "javascript:void(0);", :class => "remove-form-image", :rel => options[:id])
+        link_to("Bild löschen", "javascript:void(0);", :class => "remove-form-image", :rel => options[:id])
       end
     end
                               
@@ -100,15 +100,15 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
     options['method_name'] = 'document_field'
 
     # Create content
-    html = view_context.content_tag :span, 
-                                 view_context.document_for(@object),
+    html = content_tag :span, 
+                                 document_for(@object),
                                  :id => "document-#{@object.object_id}",
                                  :class => "document-field",
                                  :style => "line-height: 30px; float: left;"
-    html << view_context.hidden_field_tag(:document, @object.document.id) if @object.temp_document.blank? and not @object.document.blank?
-    html << view_context.hidden_field_tag(:document, @object.temp_document.id) unless @object.temp_document.blank?                                     
-    html << view_context.link_to(view_context.image_tag("buttons/btn-small-edit.png"), 
-                              view_context.url_for(:controller => "/documents", :action => "new", :format => :lightbox, :part => "document-#{@object.object_id}"), 
+    html << hidden_field_tag(:document, @object.document.id) if @object.temp_document.blank? and not @object.document.blank?
+    html << hidden_field_tag(:document, @object.temp_document.id) unless @object.temp_document.blank?                                     
+    html << link_to(image_tag("buttons/btn-small-edit.png"), 
+                              url_for(:controller => "/documents", :action => "new", :format => :lightbox, :part => "document-#{@object.object_id}"), 
                               :class => 'remote-lightbox', :style => 'float: right')
                               
     # Get rid of unoppropriate options
@@ -121,11 +121,11 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
   def color_field(field, options = {})
     options = build_options(options, field)    
     
-    html = view_context.content_tag :div, :style => "background-color: ##{@object.send(field)}; width: 100px; float: left; margin-right: 10px; height: 23px; display: block; border: 1px solid #ddd",
+    html = content_tag :div, :style => "background-color: ##{@object.send(field)}; width: 100px; float: left; margin-right: 10px; height: 23px; display: block; border: 1px solid #ddd",
                                        :id => "#{@object.class.to_s.underscore}_#{field.to_s}_div" do
             self.hidden_field field 
            end
-    html += view_context.link_to "Auswählen", "#", :class => "color-selector chose-image", 
+    html += link_to "Auswählen", "#", :class => "color-selector chose-image", 
                                                 :"data-div" => "#{@object.class.to_s.underscore}_#{field.to_s}_div",
                                                 :"data-input" => "#{@object.class.to_s.underscore}_#{field.to_s}",
                                                 :"data-value" => @object.send(field)
@@ -236,7 +236,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
       
       # Create tooltip message
       if I18n.translate(:"activerecord.attributes.#{@type}.#{field.to_s}_tooltip").to_s.present?
-        tip = view_context.content_tag :div,
+        tip = content_tag :div,
                                     RedCloth.new(I18n.translate(:"activerecord.attributes.#{@type}.#{field.to_s}_tooltip").to_s).to_html, 
                                     :class => "tip "+ @class
       else
@@ -245,12 +245,12 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
 
       # Catch errors if they exist
       unless self.error_message_on(field.to_s).blank?
-        error = view_context.content_tag :div, "#{@base_class.human_attribute_name(field.to_s)} #{self.error_message_on(field.to_s)}", :class => "error "+ @class
+        error = content_tag :div, "#{@base_class.human_attribute_name(field.to_s)} #{self.error_message_on(field.to_s)}", :class => "error "+ @class
       end
       
       # Build tooltip with errors and tip
       unless @use_tooltip.blank?
-        tooltip = view_context.content_tag(:div, "#{error.to_s} #{tip.to_s}", :class => "#{@object.class.to_s.underscore}_#{field.to_s}"+" "+ @class, :style => "display: none;")
+        tooltip = content_tag(:div, "#{error.to_s} #{tip.to_s}", :class => "#{@object.class.to_s.underscore}_#{field.to_s}"+" "+ @class, :style => "display: none;")
       end
       
       label_value = @label_value.present? ? @label_value : I18n.translate(:"activerecord.attributes.#{@type}.#{field.to_s}")
@@ -291,10 +291,10 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
         
         if self.use_divs 
                 
-          input = view_context.content_tag :div, :id =>  "#{@object.class.to_s.underscore}_#{field.to_s}_wrap",
+          input = content_tag :div, :id =>  "#{@object.class.to_s.underscore}_#{field.to_s}_wrap",
                                     :class => "form-item-wrap #{@div_class}" do
-            view_context.content_tag(:div, "#{label}&nbsp;", :class => "form-item-label") +
-            view_context.content_tag(:div, @before_html + fancy_table_content + @after_html, :class => "form-item-input") +
+            content_tag(:div, "#{label}&nbsp;", :class => "form-item-label") +
+            content_tag(:div, @before_html + fancy_table_content + @after_html, :class => "form-item-input") +
             tooltip.to_s
           end
           

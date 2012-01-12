@@ -17,7 +17,7 @@ Bewegung::Application.routes.draw do
   match 'password_changed' => 'sessions#password_changed'
 
   resources :users do
-    
+
     member do
       get :edit_part
       put :save_part
@@ -46,13 +46,12 @@ Bewegung::Application.routes.draw do
         get :view
       end
     end
-    
+
   end
 
   # Old Helpedia Stuff, to be renamed
 
   match 'my_helpedia' => 'my_helpedia#index'
-
 
   # Request
   resource :request
@@ -65,13 +64,13 @@ Bewegung::Application.routes.draw do
   match 'subscribed_newsletter' => 'newsletter#subscribed'
   match 'confirm_newsletter/:id' => 'newsletter#confirm', :id => nil  
   match 'confirmed_newsletter' => 'newsletter#confirmed'
-  
+
   # Flyers
   resources :flyer_orders
-  
+
   # Commendations
   resources :commendations
-  
+
   namespace :my_helpedia do
 
     resources :activity_memberships do
@@ -103,7 +102,7 @@ Bewegung::Application.routes.draw do
         get :view
       end
     end
-    
+
     # my_helpedia.resources :messages, :collection => { :sent => :get, :system => :get }, :member => { :answer => :get, :reply => :post }
     resources :messages do
       member do
@@ -121,7 +120,7 @@ Bewegung::Application.routes.draw do
         get :view
       end
     end
-    
+
     resources :feed_events do
       collection do
         get :around
@@ -149,19 +148,19 @@ Bewegung::Application.routes.draw do
           get :activity_list
         end
       end
-      
+
       resources :activity_sponsors do
         member do
           get :cancel_edit_part
         end
       end
-      
+
       resources :activity_memberships do
         member do
           put :activate
         end
       end
-      
+
       resource :blog
 
       resources :blog_posts do
@@ -170,24 +169,22 @@ Bewegung::Application.routes.draw do
           put :unpublish
         end
       end
-      
+
       resources :blog_post_contents do
         collection do
           get :chose
         end
       end
-      
+
       resources :comments do
         member do
           put :hide
           put :unhide
         end
       end
-      
-
 
     end
-    
+
     resources :organisations do
       member do
         get :edit_part
@@ -201,7 +198,7 @@ Bewegung::Application.routes.draw do
           get :cancel_edit_part
         end
       end
-      
+
       resource :blog
 
       resources :blog_posts do
@@ -210,20 +207,20 @@ Bewegung::Application.routes.draw do
           put :unpublish
         end
       end
-      
+
       resources :blog_post_contents do
         collection do
           get :chose
         end
       end
-      
+
       resources :comments do
         member do
           put :hide
           put :unhide
         end
       end
-      
+
       resources :activity_memberships do
         member do
           put :activate
@@ -231,7 +228,7 @@ Bewegung::Application.routes.draw do
       end
 
     end
-    
+
     resources :locations do
 
       member do
@@ -245,14 +242,14 @@ Bewegung::Application.routes.draw do
           put :activate
         end
       end
-      
+
       resources :comments do
         member do
           put :hide
           put :unhide
         end
       end
-      
+
     end
 
     resources :events do
@@ -279,8 +276,7 @@ Bewegung::Application.routes.draw do
       get :change_view
     end
   end
-  
-  
+
   # Activities
   resources :activities do
 
@@ -351,22 +347,37 @@ Bewegung::Application.routes.draw do
     collection do
       get :registered
     end
-    
+
     member do
       get :facts
       get :facts
       get :bounce
     end
-    
+
     resource :blog
-    
+
     resources :blog_posts do
       resources :comments
     end
-    
+
   end
 
-  
+  resources :locations do
+
+    resource :feedback
+    resources :bookmarks
+    resources :commendations
+    resources :activities
+    resources :events
+    resources :activity_memberships
+    resources :comments
+
+    member do
+      get :description
+    end
+
+  end
+
   # Contact Form
   #map.contact_person '/request/contact', :controller => 'requests', :action => 'contact'
   #map.done_request '/request/done', :controller => 'requests', :action => 'done'
