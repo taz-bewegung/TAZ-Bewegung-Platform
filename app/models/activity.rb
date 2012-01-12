@@ -70,7 +70,43 @@ class Activity < ActiveRecord::Base
   def self.find_latest_for_teaser_elements(offset)
     self.active.with_image.running.latest.find(:all, :limit => "#{offset},1")[0]
   end
+  
+  class << self
+    
+    def running
+      where("activities.ends_at > ?", Time.now)
+    end
 
+    def active
+      where("activities.state = ?", "active")
+    end
+
+    def recent
+      order("activities.starts_at ASC")
+    end
+
+    def latest
+      order("activities.created_at DESC")
+    end
+
+    def finished
+      where("activities.continuous=? AND activities.ends_at < ?", false, Time.now)
+    end
+
+    def with_image
+      where("images.filename != ''").
+      includes(:image)
+    end
+
+    def ordered(o)
+      order(o.flatten.first || 'activities.created_at DESC')
+    end
+
+    def limit(num)
+      limit (num.flatten.first || (defined?(per_page) ? per_page : 10))
+    end
+
+  end
 
 #  Acts as ferret
 #acts_as_ferret(

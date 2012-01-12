@@ -167,7 +167,7 @@ class ActivitiesController < ApplicationController
     # "Show" action rendering
     ##
     def render_partial_for_html(partial, sub_menu_active)
-      render :partial => "/activities/show/show", 
+      render "/activities/show/_show", 
                          :layout => true, 
                          :locals => { :content_partial => partial, :sub_menu_active => sub_menu_active }
     end

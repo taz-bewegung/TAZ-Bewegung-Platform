@@ -27,8 +27,7 @@ class EditFormBuilder < ActionView::Helpers::FormBuilder
 
       # Get rid of unoppropriate options
       options.delete_if { |key, value| not [:include_blank, :style, :rel, :rows, :cols, :class, :multiple, :title, :id, :name, :maxlength, :value, :type, :size, :"data-update", :"data-href", :"data-disable"].include?(key.to_sym)}      
-      
-      Rails.logger.info field
+
       # Build html
       wrap_field(super(field, *args), field, options)
     end

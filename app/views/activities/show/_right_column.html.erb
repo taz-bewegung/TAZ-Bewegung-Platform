@@ -29,9 +29,9 @@
   </li>  
 </ul>
 <% render_or_cache "share_#{@activity.uuid}" do %>
-<div class="share-icons">
-  <%= twitter_link activity_url(@activity)  %>
-</div>
+  <div class="share-icons">
+    <%= twitter_link(activity_url(@activity, :only_path => true) ) %>
+  </div>
 <% end %>
 <% if @activity.events.present? && controller.controller_name == "events" %>
   <br /><%=controller.action_name%>

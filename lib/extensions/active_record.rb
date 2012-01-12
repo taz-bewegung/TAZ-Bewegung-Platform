@@ -23,6 +23,7 @@ end
 
 # Make notify public that we can use it outside the model.
 module ActiveRecord
+  
   class Base
     def notify_observers(method)
       notify(method)

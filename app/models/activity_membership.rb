@@ -16,7 +16,7 @@ class ActivityMembership < ActiveRecord::Base
   
   ##
   # Acts as state machine
-    aasm :column => :state do
+  aasm :column => :state do
 
     # States
     state :pending, :initial => true
@@ -30,7 +30,10 @@ class ActivityMembership < ActiveRecord::Base
       transitions :from => [:pending], :to => :active
     end
 
-end
+  end
+  
+  def do_activate
+  end
 
   #named_scope :active, :conditions => ["state = 'active'"]
   #named_scope :active_with_user, :conditions => ["state = 'active' AND (SELECT users.state FROM users WHERE users.uuid = activity_memberships.user_id) = 'active'"]
@@ -38,11 +41,34 @@ end
   #named_scope :limit, lambda { |*num|
   #  { :limit => num.flatten.first || (defined?(per_page) ? per_page : 10) }
   #}
-  #named_scope :pending, :conditions => ["state = 'pending'"]  
-      
-  def do_activate
-  end
+  #named_scope :pending, :conditions => ["state = 'pending'"]
   
+  # Scopes
+  
+  class << self
+
+    def active
+      where("state = ?", "active")
+    end
+
+    def active_with_user
+      where("state = 'active' AND (SELECT users.state FROM users WHERE users.uuid = activity_memberships.user_id) = 'active'")
+    end
+    
+    def latest
+      order("created_at DESC")
+    end
+
+    def limit(num)
+      limit (num.flatten.first || (defined?(per_page) ? per_page : 10))
+    end
+
+    def pending
+      where("state = ?", "pending")
+    end
+
+  end
+
   private
       
     def check_for_duplicate
