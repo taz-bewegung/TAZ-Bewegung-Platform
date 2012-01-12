@@ -6,5 +6,6 @@ tmp/
 .svn
 config/database.yml
 config/gmaps_api_key.yml
+app/assets/images/magick_button_text/*.png
 
 README.md -> README.markdown
